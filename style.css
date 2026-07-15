@@ -1,0 +1,13 @@
+/*Identificamos la paleta de colores*/
+:root {
+	--color-fondo: #606C38;
+	--color-headersFooter: #283618;
+	/*Fondo de botones, headers, footers*/
+	--color-textoOscuro: #000000;
+	--color-textoBlanco: #FFFFFF;
+	/*Texto de botones*/
+	--color-crema: #FEFAE0;
+	--color-naranjaClaro: #DDA15E;
+	--color-naranjaFuerte: #BC6C25;
+	/*Fondo de botones*/
+}
