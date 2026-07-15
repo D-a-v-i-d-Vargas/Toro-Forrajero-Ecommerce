@@ -1,86 +1,94 @@
-/*Identificamos la paleta de colores*/
 :root {
+    /* Colores */
+    --color-verdeFuerte: #283618;
+    --color-naranjaFuerte: #BC6C25;
+    --color-textoOscuro: #000000;
+    --color-textoBlanco: #FFFFFF;
+    --color-fondo: #FEFAE0;
+    --color-verdeCLaro: #606C38;
+    --color-naranjaClaro: #DDA15E;
 
+    /* Fuentes */
+    --fuente-titulos: 'Geologica', sans-serif;
+    --fuente-cuerpo: 'Montserrat', sans-serif;
 
-	/*Fondo de botones, headers, footers*/
-	--color-verdeFuerte: #283618;
-
-	/*Fondo de botones*/
-	--color-naranjaFuerte: #BC6C25;
-
-
-	/*Texto de botones*/
-	--color-textoOscuro: #000000;
-	--color-textoBlanco: #FFFFFF;
-
-	/*Color fondo*/
-	--color-fondo: #FEFAE0;
-
-	/*Color claro*/
-	--color-verdeCLaro: #606C38;
-	--color-naranjaClaro: #DDA15E;
+    --peso-bold: 700;
 }
 
 body {
-	/* Cambiado a crema: #FEFAE0 */
-	background-color: var(--color-fondo);
-	font-family: 'Montserrat', sans-serif;
-	font-size: 30px;
+    background-color: var(--color-fondo);
+    font-family: var(--fuente-cuerpo);
+    font-size: 1.875rem; 
 }
 
+/* Encabezados*/
 h1 {
-	font-family: 'Geologica', sans-serif;
-	font-size: 80px;
-	font-weight: 700;
-	color: var(--color-verdeFuerte);
+    font-family: var(--fuente-titulos);
+    font-weight: var(--peso-bold);
+    color: var(--color-verdeFuerte);
+    font-size: 5rem;
 }
 
 h2 {
-	font-family: 'Geologica', sans-serif;
-	font-size: 56px;
-	font-weight: 700;
-	color: var(--color-verdeFuerte);
+    font-family: var(--fuente-titulos);
+    font-weight: var(--peso-bold);
+    color: var(--color-verdeFuerte);
+    font-size: 3.5rem;
 }
 
 h3 {
-	font-family: 'Geologica', sans-serif;
-	font-size: 48px;
-	font-weight: 700;
-	color: var(--color-verdeFuerte);
+    font-family: var(--fuente-titulos);
+    font-weight: var(--peso-bold);
+    color: var(--color-verdeFuerte);
+    font-size: 3rem;
 }
 
 h4 {
-	font-family: 'Geologica', sans-serif;
-	font-size: 21px;
-	font-weight: 700;
-	color: var(--color-textoOscuro);
+    font-family: var(--fuente-titulos);
+    font-weight: var(--peso-bold);
+    color: var(--color-textoOscuro);
+    font-size: 1.3125rem;
 }
 
+/* Clases para títulos/subtítulos */
 .subtitulo-muyGrande {
-	font-size: 80spx;
+    font-size: 5rem;
 }
 
 .subtitulo-grande {
-	font-size: 56px;
+    font-size: 3.5rem;
 }
 
 .subtitulo-mediano {
-	font-size: 48px;
+    font-size: 3rem;
 }
 
+/* Clases para Colores */
+.texto-verde-oscuro { color: var(--color-headersFooter); }
+.texto-verde-claro  { color: var(--color-verdeCLaro); }
+.texto-crema        { color: var(--color-textoBlanco); }
+.texto-naranja      { color: var(--color-naranjaFuerte); }
 
-.texto-verde-oscuro {
-	color: var(--color-headersFooter);
+/* Configuración para tablets */
+@media (max-width: 1199px) {
+    body { font-size: 1.25rem; }
+    h1 { font-size: 3.75rem; }
+    h2 { font-size: 2.75rem; }
+    h3 { font-size: 2.25rem; }
+    h4 { font-size: 1.25rem; }
+    .subtitulo-muyGrande { font-size: 3.75rem; }
+    .subtitulo-grande    { font-size: 2.75rem; }
+    .subtitulo-mediano   { font-size: 2.25rem; }
 }
 
-.texto-verde-claro {
-	color: var(--color-verdeCLaro);
-}
-
-.texto-crema {
-	color: var(--color-textoBlanco);
-}
-
-.texto-naranja {
-	color: var(--color-naranjaFuerte);
+/* Configuración para celulares */
+@media (max-width: 767px) {
+    body { font-size: 1rem; }
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.75rem; }
+    h4 { font-size: 1.125rem; }
+    .subtitulo-muyGrande { font-size: 2.5rem; }
+    .subtitulo-grande    { font-size: 2rem; }
+    .subtitulo-mediano   { font-size: 1.75rem; }
 }
