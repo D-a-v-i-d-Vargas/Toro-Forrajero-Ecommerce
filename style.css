@@ -1,13 +1,86 @@
 /*Identificamos la paleta de colores*/
 :root {
-	--color-fondo: #606C38;
-	--color-headersFooter: #283618;
+
+
 	/*Fondo de botones, headers, footers*/
+	--color-verdeFuerte: #283618;
+
+	/*Fondo de botones*/
+	--color-naranjaFuerte: #BC6C25;
+
+
+	/*Texto de botones*/
 	--color-textoOscuro: #000000;
 	--color-textoBlanco: #FFFFFF;
-	/*Texto de botones*/
-	--color-crema: #FEFAE0;
+
+	/*Color fondo*/
+	--color-fondo: #FEFAE0;
+
+	/*Color claro*/
+	--color-verdeCLaro: #606C38;
 	--color-naranjaClaro: #DDA15E;
-	--color-naranjaFuerte: #BC6C25;
-	/*Fondo de botones*/
+}
+
+body {
+	/* Cambiado a crema: #FEFAE0 */
+	background-color: var(--color-fondo);
+	font-family: 'Montserrat', sans-serif;
+	font-size: 30px;
+}
+
+h1 {
+	font-family: 'Geologica', sans-serif;
+	font-size: 80px;
+	font-weight: 700;
+	color: var(--color-verdeFuerte);
+}
+
+h2 {
+	font-family: 'Geologica', sans-serif;
+	font-size: 56px;
+	font-weight: 700;
+	color: var(--color-verdeFuerte);
+}
+
+h3 {
+	font-family: 'Geologica', sans-serif;
+	font-size: 48px;
+	font-weight: 700;
+	color: var(--color-verdeFuerte);
+}
+
+h4 {
+	font-family: 'Geologica', sans-serif;
+	font-size: 21px;
+	font-weight: 700;
+	color: var(--color-textoOscuro);
+}
+
+.subtitulo-muyGrande {
+	font-size: 80spx;
+}
+
+.subtitulo-grande {
+	font-size: 56px;
+}
+
+.subtitulo-mediano {
+	font-size: 48px;
+}
+
+
+.texto-verde-oscuro {
+	color: var(--color-headersFooter);
+}
+
+.texto-verde-claro {
+	color: var(--color-verdeCLaro);
+}
+
+.texto-crema {
+	color: var(--color-textoBlanco);
+}
+
+.texto-naranja {
+	color: var(--color-naranjaFuerte);
 }
