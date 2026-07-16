@@ -92,3 +92,40 @@ h4 {
     .subtitulo-grande    { font-size: 2rem; }
     .subtitulo-mediano   { font-size: 1.75rem; }
 }
+
+/* Fondo del navbar verde, ya definido en root */ 
+.navbar-1 {
+    background-color: var(--color-verdeFuerte);
+    padding: 0.75rem 0;
+}
+
+/*  para el tamaño del logo */
+.logo-navbar {
+    height: 75px;
+    width: auto; 
+}
+
+/* Color de Mi cuenta y Carrito */ 
+.navbar-1 .nav-link {
+    color: var(--color-textoBlanco);
+    font-family: var(var(--fuente-cuerpo));
+}
+
+/* Color al hacer click en Mi cuenta y Carrito */ 
+.navbar-1 .nav-link:hover {
+    color: var(--color-naranjaClaro);
+}
+
+/* Para acomodaer el icono y la descripcion*/ 
+.icon-link{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    font-size:0.5 rem;
+    line-height:1.2;
+}
+
+/* Para tamaño de iconos*/ 
+.icon-link i {
+    font-size:2rem;
+}
