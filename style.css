@@ -92,3 +92,29 @@ h4 {
     .subtitulo-grande    { font-size: 2rem; }
     .subtitulo-mediano   { font-size: 1.75rem; }
 }
+
+/* Dimensión del Carrusel */
+#carruselForrajero {
+    width: 100%;
+}
+
+#carruselForrajero .carousel-item img {
+    height: 480px;      
+    width: 100%;
+    object-fit: cover;  
+}
+
+/* Fondo del Cuadro Verde */
+.cuadro-verde { 
+    background-color: var(--color-verdeCLaro); 
+}
+
+.contenedor-integrantes-placeholder {
+    width: 100%;
+    min-height: 100px;
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
