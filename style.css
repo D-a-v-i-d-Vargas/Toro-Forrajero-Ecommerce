@@ -18,7 +18,7 @@
 body {
     background-color: var(--color-fondo);
     font-family: var(--fuente-cuerpo);
-    font-size: 1.875rem; 
+    font-size: 1.875rem;
 }
 
 /* Encabezados*/
@@ -63,32 +63,101 @@ h4 {
     font-size: 3rem;
 }
 
+
+.texto-parrafo {
+    font-size: 1rem;
+}
+
 /* Clases para Colores */
-.texto-verde-oscuro { color: var(--color-headersFooter); }
-.texto-verde-claro  { color: var(--color-verdeCLaro); }
-.texto-crema        { color: var(--color-textoBlanco); }
-.texto-naranja      { color: var(--color-naranjaFuerte); }
+.texto-verde-oscuro {
+    color: var(--color-headersFooter);
+}
+
+.texto-verde-claro {
+    color: var(--color-verdeCLaro);
+}
+
+.texto-crema {
+    color: var(--color-textoBlanco);
+}
+
+.texto-naranja {
+    color: var(--color-naranjaFuerte);
+}
 
 /* Configuración para tablets */
 @media (max-width: 1199px) {
-    body { font-size: 1.25rem; }
-    h1 { font-size: 3.75rem; }
-    h2 { font-size: 2.75rem; }
-    h3 { font-size: 2.25rem; }
-    h4 { font-size: 1.25rem; }
-    .subtitulo-muyGrande { font-size: 3.75rem; }
-    .subtitulo-grande    { font-size: 2.75rem; }
-    .subtitulo-mediano   { font-size: 2.25rem; }
+    body {
+        font-size: 1.25rem;
+    }
+
+    h1 {
+        font-size: 3.75rem;
+    }
+
+    h2 {
+        font-size: 2.75rem;
+    }
+
+    h3 {
+        font-size: 2.25rem;
+    }
+
+    h4 {
+        font-size: 1.25rem;
+    }
+
+    .subtitulo-muyGrande {
+        font-size: 3.75rem;
+    }
+
+    .subtitulo-grande {
+        font-size: 2.75rem;
+    }
+
+    .subtitulo-mediano {
+        font-size: 2.25rem;
+    }
 }
 
 /* Configuración para celulares */
 @media (max-width: 767px) {
-    body { font-size: 1rem; }
-    h1 { font-size: 2.5rem; }
-    h2 { font-size: 2rem; }
-    h3 { font-size: 1.75rem; }
-    h4 { font-size: 1.125rem; }
-    .subtitulo-muyGrande { font-size: 2.5rem; }
-    .subtitulo-grande    { font-size: 2rem; }
-    .subtitulo-mediano   { font-size: 1.75rem; }
+    body {
+        font-size: 1rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.75rem;
+    }
+
+    h4 {
+        font-size: 1.125rem;
+    }
+
+    .subtitulo-muyGrande {
+        font-size: 2.5rem;
+    }
+
+    .subtitulo-grande {
+        font-size: 2rem;
+    }
+
+    .subtitulo-mediano {
+        font-size: 1.75rem;
+    }
+}
+
+
+/*Misión y visión: caballo*/
+#misionVision .caballo-img {
+    -webkit-mask-image: linear-gradient(-115deg, black 5%, black 8%, transparent 75%);
+    mask-image: linear-gradient(-115deg, black 5%, black 8%, transparent 75%);
 }
