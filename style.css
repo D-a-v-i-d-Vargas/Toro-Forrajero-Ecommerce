@@ -155,8 +155,11 @@ h4 {
     }
 }
 
+/*-----------------------------------
+         Misión y visión
+------------------------------------/
 
-/*Misión y visión: caballo*/
+/*Imagen del caballo*/
 #misionVision .caballo-img {
     -webkit-mask-image: linear-gradient(-115deg, black 5%, black 8%, transparent 75%);
     mask-image: linear-gradient(-115deg, black 5%, black 8%, transparent 75%);
