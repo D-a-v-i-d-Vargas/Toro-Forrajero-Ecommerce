@@ -154,4 +154,5 @@ h4 {
 /* imagen de sección Quienes somos*/ 
 .imagen-somos{
     width: 80%;
+    border-radius: 50px;
 }
