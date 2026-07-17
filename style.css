@@ -130,7 +130,28 @@ h4 {
     font-size:2rem;
 }
 
+/* Titulo de la sección Quienes somos*/ 
+.somos-titulo {
+    font-family: var(--fuente-titulos);
+    font-weight: var(--peso-bold);
+    color: var(--color-naranjaFuerte);
+    font-size: 3.5rem;
+}
 
-.nosotros-texto {
+/* texto de Quienes somos*/ 
+.somos-texto {
     font-family: var(--fuente-cuerpo);
+    font-size: 1.875rem; 
+    text-align: justify;
+}
+
+/* resaltando palabras clave de sección de Quienes somos*/ 
+.somos-bold {
+    font-weight: bold;
+    color: var(--color-verdeFuerte);
+}
+
+/* imagen de sección Quienes somos*/ 
+.imagen-somos{
+    width: 80%;
 }
