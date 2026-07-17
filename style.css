@@ -1,0 +1,156 @@
+/* ==================================================
+                    IMPORTANTE
+    Todo lo que esta debajo de este comentario es necesario
+    para que funcione correctamente toda el area de 
+            "UNA CULTURA QUE NOS DISTINGUE"
+    por favor NO TOCAR nada si hay alguna duda puedes 
+    preguntarme. Atte: David Vargas El Deivid ;)
+    ================================================== *
+
+/* ==================================================
+    1. VARIABLES DE COLOR (Paleta Toro Forrajero )
+    ================================================== */
+:root {
+    --color-verdeFuerte: #283618;
+    --color-beige: #FEFAE0;
+    --color-textoOscuro: #000000;
+    --color-textoBlanco: #FFFFFF;
+    --color-fondo: #BC6C25;
+    --color-verdeClaro: #606C38;
+    --color-naranjaClaro: #DDA15E;
+}
+
+/* ==================================================
+    2. ESTILOS GENERALES 
+   ================================================== */
+body {
+    font-family: Arial, sans-serif; 
+    background-color: var(--color-beige); 
+    margin: 0;
+    padding: 0; 
+}
+
+/* ==================================================
+    3. ENCABEZADO (Franja Verde) (El rectango verde donde va el titulo)
+   ================================================== */
+.cultura-encabezado {
+    background-color: var(--color-verdeClaro); 
+    padding: 30px 20px; 
+    text-align: center;
+    margin: 0; 
+}
+
+.cultura-encabezado h2 {
+    color: var(--color-beige); 
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* ==================================================
+    4. CONTENEDOR PRINCIPAL DE LAS TARJETAS (Los cuatro rectangulos color naranja)
+   ================================================== */
+.cultura-tarjetas-contenedor {
+    padding: 60px 20px; 
+    display: flex;
+    flex-direction: column; 
+    gap: 40px; 
+    max-width: 900px; 
+    margin: 0 auto; 
+}
+
+/* ==================================================
+    5. EFECTO DE TARJETAS (Borde Resplandeciente)
+   ================================================== */
+.tarjeta {
+    --background: linear-gradient(to right, var(--color-naranjaClaro) 0%, var(--color-naranjaClaro) 100%);
+    width: 100%; 
+    padding: 5px; 
+    border-radius: 1rem;
+    background: var(--background);
+    position: relative;
+    z-index: 1;
+}
+
+.tarjeta::after {
+    position: absolute;
+    content: "";
+    top: 0;      
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    transform: scale(1); 
+    filter: blur(15px); 
+    background: var(--background);
+    transition: opacity 0.5s ease;
+}
+
+.tarjeta-interior {
+    background: var(--color-fondo); 
+    color: var(--color-beige); 
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.7rem; 
+    padding: 30px 20px; 
+    text-align: center;
+    transition: color 0.5s ease; 
+    box-sizing: border-box; 
+}
+
+/* ==================================================
+    6. TEXTOS DENTRO DE LA TARJETA
+   ================================================== */
+.tarjeta-interior h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+}
+
+.tarjeta-interior p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6; 
+}
+
+/* ==================================================
+    7. EFECTOS AL PASAR EL MOUSE (HOVER)
+   ================================================== */
+.tarjeta:hover::after {
+    opacity: 0; 
+}
+
+.tarjeta:hover .tarjeta-interior {
+    color: var(--color-textoBlanco); 
+}
+
+/* ==================================================
+    8. ANIMACIONES DE SCROLL (Aparecer hacia arriba)
+   ================================================== */
+.animar-arriba {
+    opacity: 0; /* Empieza totalmente transparente */
+    transform: translateY(60px); /* Empieza desplazado 60px hacia abajo */
+    transition: opacity 0.9s ease-out, transform 0.9s ease-out; /* Velocidad del efecto */
+}
+
+.animar-arriba.visible {
+    opacity: 1; /* Se vuelve totalmente visible */
+    transform: translateY(0); /* Sube a su posición original */
+}
+
+/* ==================================================
+    Listo ya termino todo lo necesario para que la parte
+            "UNA CULTURA QUE NOS DISTINGUE"
+    Debajo de este comentario pueden agregar lo que 
+    ustedes necesiten para su codigo. 
+    
+    Made by el Deivid ;)
+   ================================================== */

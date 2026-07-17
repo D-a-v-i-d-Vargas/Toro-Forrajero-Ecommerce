@@ -1,12 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Acerca de Nosotros - Cultura</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- ==================================================
+                    IMPORTANTE
+    Todo lo que esta debajo de este comentario es necesario
+    para que funcione correctamente toda el area de 
+            "UNA CULTURA QUE NOS DISTINGUE"
+    por favor NO TOCAR nada si hay alguna duda puedes 
+    preguntarme. Atte: David Vargas El Deivid ;)
+    ================================================== * -->
+    <!-- SECCIÓN 1: EL TÍTULO (Franja verde de lado a lado) -->
+    <section>
+        <div class="cultura-encabezado">
+            <h2>UNA CULTURA QUE NOS DISTINGUE</h2>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 2: EL CONTENEDOR DE LAS TARJETAS -->
+    <section>
+        <div class="cultura-tarjetas-contenedor">
+            
+            <!-- Tarjeta 1 (Añadimos la clase animar-arriba) -->
+            <div class="tarjeta animar-arriba">
+                <div class="tarjeta-interior">
+                    <h3>Sostenibilidad y Bienestar</h3>
+                    <p>Actuamos con absoluta responsabilidad ambiental, guiados por el amor, el cuidado de la tierra y el bienestar hacia los animales.</p>
+                </div>
+            </div>
+
+            <!-- Tarjeta 2 (Añadimos la clase animar-arriba) -->
+            <div class="tarjeta animar-arriba">
+                <div class="tarjeta-interior">
+                    <h3>Alianza con el productor</h3>
+                    <p>Respetamos profundamente el esfuerzo diario de los pequeños productores, asegurando que cada solución respalde su dedicación.</p>
+                </div>
+            </div>
+
+            <!-- Tarjeta 3 (Añadimos la clase animar-arriba) -->
+            <div class="tarjeta animar-arriba">
+                <div class="tarjeta-interior">
+                    <h3>Accesibilidad y Equidad</h3>
+                    <p>Somos una plataforma inclusiva que elimina barreras y democratiza el acceso a insumos y soluciones logísticas de calidad.</p>
+                </div>
+            </div>
+
+            <!-- Tarjeta 4 (Añadimos la clase animar-arriba) -->
+            <div class="tarjeta animar-arriba">
+                <div class="tarjeta-interior">
+                    <h3>Pasión por el Campo</h3>
+                    <p>Nos mueve una auténtica vocación y compromiso con el trabajo agrícola, apoyando con orgullo a quienes alimentan a nuestra sociedad.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SCRIPT PARA DETECTAR EL SCROLL Y ANIMAR -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Selecciona todas las tarjetas con la clase 'animar-arriba'
+            const elementosAnimar = document.querySelectorAll('.animar-arriba');
+            
+            // Crea el observador para saber cuándo entran en pantalla
+            const observador = new IntersectionObserver((entradas, observador) => {
+                entradas.forEach(entrada => {
+                    // Si la tarjeta ya es visible en la pantalla (al menos un 15%)
+                    if (entrada.isIntersecting) {
+                        // Le agrega la clase 'visible' que dispara el CSS
+                        entrada.target.classList.add('visible');
+                        // Deja de observarla para que no se repita la animación al subir y bajar
+                        observador.unobserve(entrada.target); 
+                    }
+                });
+            }, {
+                threshold: 0.15 
+            });
+
+            // Le indicamos al observador que vigile cada tarjeta
+            elementosAnimar.forEach(elemento => {
+                observador.observe(elemento);
+            });
+        });
+    </script>
+    <!--==================================================
+    Listo ya termino todo lo necesario para que la parte
+            "UNA CULTURA QUE NOS DISTINGUE"
+    Debajo de este comentario pueden agregar lo que 
+    ustedes necesiten para su codigo. 
     
+    Made by el Deivid ;)
+    ==================================================--> 
 </body>
 </html>
