@@ -174,7 +174,7 @@ h4 {
 
 /*Botón*/
 /* From Uiverse.io by elijahgummer */
-ul {
+#boton-vaca-carrusel {
     position: relative;
     /*Alinea los elementos en fila, por si se colocan más botones*/
     display: flex;
@@ -182,7 +182,7 @@ ul {
     gap: 25px;
 }
 
-ul li {
+#boton-vaca-carrusel li {
     position: relative;
     /*Al ser una lista, quita la viñeta*/
     list-style: none;
@@ -205,7 +205,7 @@ ul li {
 }
 
 /*Efecto para estirar el botón cuando el mouse está encima*/
-ul li:hover {
+#boton-vaca-carrusel li:hover {
     width: 220px;
     /*Indica que todo el texto debe estar en una sola línea*/
     white-space: nowrap;
@@ -213,7 +213,7 @@ ul li:hover {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0);
 }
 
-ul li::before {
+#boton-vaca-carrusel li::before {
     /*Necesario para que aparezca*/
     content: "";
     position: absolute;
@@ -227,13 +227,13 @@ ul li::before {
     transition: 0.5s;
 }
 
-ul li:hover::before {
+#boton-vaca-carrusel li:hover::before {
     /*Hace que el fondo se vuelva visible al pasar el mouse*/
     opacity: 1;
 }
 
 /*Crea un efecto de brillo neón*/
-ul li::after {
+#boton-vaca-carrusel li::after {
     content: "";
     position: absolute;
     /*Se desplaza un poquito hacia abajo*/
@@ -250,19 +250,19 @@ ul li::after {
     opacity: 0;
 }
 
-ul li:hover::after {
+#boton-vaca-carrusel li:hover::after {
     /*Al pasar el mouse, el brillo enciende*/
     opacity: 0.5;
 }
 
-ul li .icon {
+#boton-vaca-carrusel li .icon {
     color: #777;
     font-size: 1.45em;
     transition: 0.5s;
     transition-delay: 0.25s;
 }
 
-ul li:hover .icon {
+#boton-vaca-carrusel li:hover .icon {
     /*Hace que el emoji se achique hasta medir 0*/
     transform: scale(0);
     color: #fff;
@@ -270,12 +270,12 @@ ul li:hover .icon {
     transition-delay: 0s;
 }
 
-ul li span {
+#boton-vaca-carrusel li span {
     position: absolute;
 }
 
 /*Para lo del texto que aparece después de posicionarse en el botón*/
-ul li .title.texto-parrafo {
+#boton-vaca-carrusel li .title.texto-parrafo {
     color: #fff;
     /*font-size: 0.6em; usa el definido en texto-parrafo*/
     letter-spacing: 0.05em;
@@ -288,7 +288,7 @@ ul li .title.texto-parrafo {
     white-space: nowrap;
 }
 
-ul li:hover .title.texto-parrafo {
+#boton-vaca-carrusel li:hover .title.texto-parrafo {
     /*Aparece el texto al estar el mouse sobre él*/
     transform: scale(1);
     transition-delay: 0.25s;
