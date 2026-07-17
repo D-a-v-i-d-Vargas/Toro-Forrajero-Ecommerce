@@ -107,6 +107,11 @@ h4 {
         font-size: 1.25rem;
     }
 
+    .texto-parrafo {
+        font-size: 1.15rem;
+        line-height: 1.5;
+    }
+
     .subtitulo-muyGrande {
         font-size: 3.75rem;
     }
@@ -163,4 +168,126 @@ h4 {
 #misionVision .caballo-img {
     -webkit-mask-image: linear-gradient(-115deg, black 5%, black 8%, transparent 75%);
     mask-image: linear-gradient(-115deg, black 5%, black 8%, transparent 75%);
+}
+
+/*Botón*/
+/* From Uiverse.io by elijahgummer */
+ul {
+    position: relative;
+    /*Alinea los elementos en fila, por si se colocan más botones*/
+    display: flex;
+    /*Separación por si se agregan más botones*/
+    gap: 25px;
+}
+
+ul li {
+    position: relative;
+    /*Al ser una lista, quita la viñeta*/
+    list-style: none;
+    /*Crea el círculo de la vaquita*/
+    width: 60px;
+    height: 60px;
+    /*Hace un fondo blanco*/
+    background: #fff;
+    /*Crea algo redondo*/
+    border-radius: 60px;
+    /*Cambia el cursor a la manita de clic*/
+    cursor: pointer;
+    /*Centra el emoji dentro del círculo*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*Le crea una sombra*/
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: 0.5s;
+}
+
+/*Efecto para estirar el botón cuando el mouse está encima*/
+ul li:hover {
+    width: 220px;
+    /*Indica que todo el texto debe estar en una sola línea*/
+    white-space: nowrap;
+    /*Quita la sombra*/
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0);
+}
+
+ul li::before {
+    /*Necesario para que aparezca*/
+    content: "";
+    position: absolute;
+    /*Ocupa el tamaño del botón*/
+    inset: 0;
+    border-radius: 60px;
+    /*Crea el degradado con los colores usados en el botón*/
+    background: linear-gradient(45deg, var(--i), var(--j));
+    /*Es invisible el otón*/
+    opacity: 0;
+    transition: 0.5s;
+}
+
+ul li:hover::before {
+    /*Hace que el fondo se vuelva visible al pasar el mouse*/
+    opacity: 1;
+}
+
+/*Crea un efecto de brillo neón*/
+ul li::after {
+    content: "";
+    position: absolute;
+    /*Se desplaza un poquito hacia abajo*/
+    top: 10px;
+    width: 100%;
+    height: 100%;
+    border-radius: 60px;
+    background: linear-gradient(45deg, var(--i), var(--j));
+    transition: 0.5s;
+    /*Desenfoca el fondo*/
+    filter: blur(15px);
+    /*Para no tapar al texto*/
+    z-index: -1;
+    opacity: 0;
+}
+
+ul li:hover::after {
+    /*Al pasar el mouse, el brillo enciende*/
+    opacity: 0.5;
+}
+
+ul li .icon {
+    color: #777;
+    font-size: 1.75em;
+    transition: 0.5s;
+    transition-delay: 0.25s;
+}
+
+ul li:hover .icon {
+    /*Hace que el emoji se achique hasta medir 0*/
+    transform: scale(0);
+    color: #fff;
+    /*Se escoge de inmediato al tocarlo*/
+    transition-delay: 0s;
+}
+
+ul li span {
+    position: absolute;
+}
+
+/*Para lo del texto que aparece después de posicionarse en el botón*/
+ul li .title.texto-parrafo {
+    color: #fff;
+    /*font-size: 0.6em; usa el definido en texto-parrafo*/
+    letter-spacing: 0.05em;
+    /*Al inicio, el ver visión mide 0*/
+    transform: scale(0);
+    transition: 0.5s;
+    /*No espera nada al quitar el mouse*/
+    transition-delay: 0s;
+    /*El texto abarca una sola linea*/
+    white-space: nowrap;
+}
+
+ul li:hover .title.texto-parrafo {
+    /*Aparece el texto al estar el mouse sobre él*/
+    transform: scale(1);
+    transition-delay: 0.25s;
 }

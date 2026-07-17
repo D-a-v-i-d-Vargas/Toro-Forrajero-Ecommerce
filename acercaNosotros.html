@@ -48,60 +48,92 @@
     </section>
 
     <!--Misión y visión por mi------------------------------------------------------------------->
-    <section id="misionVision" class="container-fluid py-5 px-0">
+    <!--Hace que el botón y el carrusel sean un contenedor flex vertical-->
+    <section id="misionVision" class="container-fluid py-5 px-0 d-flex flex-column justify-content-between">
+
+        <!--Creación de la fila, donde se encuentra el carrusel y caballo----------------------------------------------->
         <!--gy-4 separa las columnas verticalmente, gy-lg-0 hace que se elimine la separación en computadoras-->
         <!--gx-0 desactiva los márgenes negativos horizontales que aparecen cuando se usa .row-->
         <div class="row gy-4 gy-lg-0 gx-0">
+
+            <!--Div del carrusel---------------------------------------------------------------------------------------->
             <!--En celular usa 12 columnas, y en computadora 7 (la imagen 5)-->
             <!--En celulares el texto aparece abajo/ en computadoras a la izquierda -->
             <div class="col-12 col-lg-7 order-2 order-lg-1 ps-4 ps-lg-5 pe-4 pe-lg-5">
-                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
 
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                            class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                            aria-label="Slide 2"></button>
-                    </div>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <h3>Misión</h3>
-                            <p class="texto-parrafo">
-                                Somos el ecommerce líder en distribución de soluciones nutricionales de la más
-                                alta calidad para el sector agropecuario. Ofrecemos un amplio portafolio de marcas
-                                selectas al
-                                alcance de un clic, mediante una experiencia de compra ágil, transparente y con
-                                envíos
-                                eficientes.
-                            </p>
+                <div class="w-100" style="min-height: 320px">
+                    <!--Contenedor del carrusel----------------------------------------------------------------------------->
+                    <div id="carouselExampleIndicators" class="carousel slide h-100" data-bs-ride="carousel">
+
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                                class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                                aria-label="Slide 2"></button>
                         </div>
-                        <div class="carousel-item">
-                            <h3>Visión</h3>
-                            <p class="texto-parrafo">
-                                Convertirnos en la plataforma digital líder y de referencia en el sector
-                                agropecuario,
-                                evolucionando de manera constante para conectar y empoderar a pequeños y medianos
-                                productores a través de un ecosistema integral de soluciones logísticas, comerciales
-                                y
-                                nutricionales.
-                                <br><br>
-                                Nos proyectamos como una empresa en permanente crecimiento y transformación, donde
-                                la
-                                innovación y la optimización de procesos garanticen que siempre haya espacio para
-                                mejorar.
-                            </p>
+                        <div class="carousel-inner h-100">
+                            <div class="carousel-item active">
+                                <div class="d-flex flex-column justify-content-center w-100" style="min-height: 320px;">
+                                    <h3>Misión</h3>
+                                    <p class="texto-parrafo">
+                                        Somos el ecommerce líder en distribución de soluciones nutricionales de la más
+                                        alta calidad para el sector agropecuario.
+                                        <br>Ofrecemos un amplio portafolio de marcas
+                                        selectas al alcance de un clic, mediante una experiencia de compra ágil,
+                                        transparente y con
+                                        envíos
+                                        eficientes.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="d-flex flex-column justify-content-center w-100" style="min-height: 320px;">
+                                    <h3>Visión</h3>
+                                    <p class="texto-parrafo">
+                                        Convertirnos en la plataforma digital líder y de referencia en el sector
+                                        agropecuario,
+                                        evolucionando de manera constante para conectar y empoderar a pequeños y
+                                        medianos
+                                        productores a través de un ecosistema integral de soluciones logísticas,
+                                        comerciales
+                                        y
+                                        nutricionales.
+                                        <br><br>
+                                        Nos proyectamos como una empresa en permanente crecimiento y transformación,
+                                        donde
+                                        la
+                                        innovación y la optimización de procesos garanticen que siempre haya espacio
+                                        para
+                                        mejorar.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!--Código del botón de la vaca----->
+                <ul class="d-flex justify-content-start mt-4 ps-0">
+                    <li style="--i:#283618;--j:#606C38" id="btnCambiarMV">
+                        <span class="icon" id="flechaBoton">🐄</span>
+                        <span class="title texto-parrafo" id="textoBoton">Ver misión</span>
+                    </li>
+                </ul>
             </div>
+
+            <!--Div del caballo------------------------------------------------------------------------------------>
             <!--px-0 hace que la imagen toque el borde, order 1 y order-lg-2-->
             <!--order-1 en las pantallas pqeuñas hace que la imagen salga primero-->
             <!--order-lg-2 hace que esté a la derecha la imagen-->
+            <!--mt-4 hace que el botón tenga un margen fijo contra el carrusel-->
+            <!--mt-lg-auto hace que se alinee hacia el fondo de la fila, sin importar el tamaño del texto-->
             <div class="col-12 col-lg-5 px-0 order-1 order-lg-2">
                 <!--Ajusta la imagen al ancho del contenedor y adapta-->
                 <img src="recursos-graficos/acerca-nosotros/CaballoMision.jpg"
                     class="caballo-img img-fluid w-100 h-100 object-fit-cover" alt="Caballo Misión">
             </div>
+
+
+
         </div>
     </section>
 
