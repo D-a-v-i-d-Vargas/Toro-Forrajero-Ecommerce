@@ -129,3 +129,8 @@ h4 {
 .icon-link i {
     font-size:2rem;
 }
+
+
+.nosotros-texto {
+    font-family: var(--fuente-cuerpo);
+}
