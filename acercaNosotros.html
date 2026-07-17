@@ -60,20 +60,15 @@
             <!--En celular usa 12 columnas, y en computadora 7 (la imagen 5)-->
             <!--En celulares el texto aparece abajo/ en computadoras a la izquierda -->
             <div class="col-12 col-lg-7 order-2 order-lg-1 ps-4 ps-lg-5 pe-4 pe-lg-5">
-
                 <div class="w-100" style="min-height: 320px">
                     <!--Contenedor del carrusel----------------------------------------------------------------------------->
                     <div id="carouselExampleIndicators" class="carousel slide h-100" data-bs-ride="carousel">
 
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                                class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                                aria-label="Slide 2"></button>
-                        </div>
                         <div class="carousel-inner h-100">
                             <div class="carousel-item active">
-                                <div class="d-flex flex-column justify-content-center w-100" style="min-height: 320px;">
+                                <!--Start alinea por la parte superior, en computadoras se alinea al centro-->
+                                <div class="d-flex flex-column justify-content-start justify-content-lg-center w-100"
+                                    style="min-height: 320px;">
                                     <h3>Misión</h3>
                                     <p class="texto-parrafo">
                                         Somos el ecommerce líder en distribución de soluciones nutricionales de la más
@@ -87,7 +82,8 @@
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <div class="d-flex flex-column justify-content-center w-100" style="min-height: 320px;">
+                                <div class="d-flex flex-column justify-content-start justify-content-lg-center w-100"
+                                    style="min-height: 320px;">
                                     <h3>Visión</h3>
                                     <p class="texto-parrafo">
                                         Convertirnos en la plataforma digital líder y de referencia en el sector
@@ -112,7 +108,8 @@
                     </div>
                 </div>
                 <!--Código del botón de la vaca----->
-                <ul class="d-flex justify-content-start mt-4 ps-0">
+                <ul id="boton-vaca-carrusel" class="d-flex justify-content-start mt-4 ps-0"
+                    data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
                     <li style="--i:#283618;--j:#606C38" id="btnCambiarMV">
                         <span class="icon" id="flechaBoton">🐄</span>
                         <span class="title texto-parrafo" id="textoBoton">Ver misión</span>
