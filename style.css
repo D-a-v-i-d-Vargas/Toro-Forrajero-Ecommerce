@@ -18,7 +18,9 @@
 body {
     background-color: var(--color-fondo);
     font-family: var(--fuente-cuerpo);
-    font-size: 1.875rem; 
+    font-size: 1.875rem;
+    margin: 0;
+    padding: 0; 
 }
 
 /* Encabezados*/
@@ -63,22 +65,66 @@ h4 {
     font-size: 3rem;
 }
 
+
+.texto-parrafo {
+    font-size: 1rem;
+}
+
 /* Clases para Colores */
-.texto-verde-oscuro { color: var(--color-headersFooter); }
-.texto-verde-claro  { color: var(--color-verdeCLaro); }
-.texto-crema        { color: var(--color-textoBlanco); }
-.texto-naranja      { color: var(--color-naranjaFuerte); }
+.texto-verde-oscuro {
+    color: var(--color-headersFooter);
+}
+
+.texto-verde-claro {
+    color: var(--color-verdeCLaro);
+}
+
+.texto-crema {
+    color: var(--color-textoBlanco);
+}
+
+.texto-naranja {
+    color: var(--color-naranjaFuerte);
+}
 
 /* Configuración para tablets */
 @media (max-width: 1199px) {
-    body { font-size: 1.25rem; }
-    h1 { font-size: 3.75rem; }
-    h2 { font-size: 2.75rem; }
-    h3 { font-size: 2.25rem; }
-    h4 { font-size: 1.25rem; }
-    .subtitulo-muyGrande { font-size: 3.75rem; }
-    .subtitulo-grande    { font-size: 2.75rem; }
-    .subtitulo-mediano   { font-size: 2.25rem; }
+    body {
+        font-size: 1.25rem;
+    }
+
+    h1 {
+        font-size: 3.75rem;
+    }
+
+    h2 {
+        font-size: 2.75rem;
+    }
+
+    h3 {
+        font-size: 2.25rem;
+    }
+
+    h4 {
+        font-size: 1.25rem;
+    }
+
+    .texto-parrafo {
+        font-size: 1.15rem;
+        line-height: 1.5;
+    }
+
+    .subtitulo-muyGrande {
+        font-size: 3.75rem;
+    }
+
+    .subtitulo-grande {
+        font-size: 2.75rem;
+    }
+
+    .subtitulo-mediano {
+        font-size: 2.25rem;
+    }
 }
 
 /* Configuración para celulares */
@@ -94,7 +140,7 @@ h4 {
 }
 
 
-/* Carrucel */
+/* Carrusel */
 
 #carruselForrajero .carousel-item img {
     height: 60vh;      
@@ -107,4 +153,684 @@ h4 {
     margin: 0;
 }
 
-/* Carrucel */
+/* Carrusel */
+    body {
+        font-size: 1rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.75rem;
+    }
+
+    h4 {
+        font-size: 1.125rem;
+    }
+
+    .subtitulo-muyGrande {
+        font-size: 2.5rem;
+    }
+
+    .subtitulo-grande {
+        font-size: 2rem;
+    }
+
+    .subtitulo-mediano {
+        font-size: 1.75rem;
+    }
+
+/*-----------------------------------
+        Acerca de nosotros
+------------------------------------*/
+
+/* --- Componente : Misión y visión ---*/
+
+/*Imagen del caballo*/
+#misionVision .caballo-img {
+    -webkit-mask-image: linear-gradient(-115deg, black 5%, black 8%, transparent 75%);
+    mask-image: linear-gradient(-115deg, black 5%, black 8%, transparent 75%);
+}
+
+/*Botón*/
+/* From Uiverse.io by elijahgummer */
+#boton-vaca-carrusel {
+    position: relative;
+    /*Alinea los elementos en fila, por si se colocan más botones*/
+    display: flex;
+    /*Separación por si se agregan más botones*/
+    gap: 25px;
+}
+
+#boton-vaca-carrusel li {
+    position: relative;
+    /*Al ser una lista, quita la viñeta*/
+    list-style: none;
+    /*Crea el círculo de la vaquita*/
+    width: 60px;
+    height: 60px;
+    /*Hace un fondo blanco*/
+    background: #fff;
+    /*Crea algo redondo*/
+    border-radius: 60px;
+    /*Cambia el cursor a la manita de clic*/
+    cursor: pointer;
+    /*Centra el emoji dentro del círculo*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*Le crea una sombra*/
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: 0.5s;
+}
+
+/*Efecto para estirar el botón cuando el mouse está encima*/
+#boton-vaca-carrusel li:hover {
+    width: 220px;
+    /*Indica que todo el texto debe estar en una sola línea*/
+    white-space: nowrap;
+    /*Quita la sombra*/
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0);
+}
+
+#boton-vaca-carrusel li::before {
+    /*Necesario para que aparezca*/
+    content: "";
+    position: absolute;
+    /*Ocupa el tamaño del botón*/
+    inset: 0;
+    border-radius: 60px;
+    /*Crea el degradado con los colores usados en el botón*/
+    background: linear-gradient(45deg, var(--i), var(--j));
+    /*Es invisible el otón*/
+    opacity: 0;
+    transition: 0.5s;
+}
+
+#boton-vaca-carrusel li:hover::before {
+    /*Hace que el fondo se vuelva visible al pasar el mouse*/
+    opacity: 1;
+}
+
+/*Crea un efecto de brillo neón*/
+#boton-vaca-carrusel li::after {
+    content: "";
+    position: absolute;
+    /*Se desplaza un poquito hacia abajo*/
+    top: 10px;
+    width: 100%;
+    height: 100%;
+    border-radius: 60px;
+    background: linear-gradient(45deg, var(--i), var(--j));
+    transition: 0.5s;
+    /*Desenfoca el fondo*/
+    filter: blur(15px);
+    /*Para no tapar al texto*/
+    z-index: -1;
+    opacity: 0;
+}
+
+#boton-vaca-carrusel li:hover::after {
+    /*Al pasar el mouse, el brillo enciende*/
+    opacity: 0.5;
+}
+
+#boton-vaca-carrusel li .icon {
+    color: #777;
+    font-size: 1.45em;
+    transition: 0.5s;
+    transition-delay: 0.25s;
+}
+
+#boton-vaca-carrusel li:hover .icon {
+    /*Hace que el emoji se achique hasta medir 0*/
+    transform: scale(0);
+    color: #fff;
+    /*Se escoge de inmediato al tocarlo*/
+    transition-delay: 0s;
+}
+
+#boton-vaca-carrusel li span {
+    position: absolute;
+}
+
+/*Para lo del texto que aparece después de posicionarse en el botón*/
+#boton-vaca-carrusel li .title.texto-parrafo {
+    color: #fff;
+    /*font-size: 0.6em; usa el definido en texto-parrafo*/
+    letter-spacing: 0.05em;
+    /*Al inicio, el ver visión mide 0*/
+    transform: scale(0);
+    transition: 0.5s;
+    /*No espera nada al quitar el mouse*/
+    transition-delay: 0s;
+    /*El texto abarca una sola linea*/
+    white-space: nowrap;
+}
+
+#boton-vaca-carrusel li:hover .title.texto-parrafo {
+    /*Aparece el texto al estar el mouse sobre él*/
+    transform: scale(1);
+    transition-delay: 0.25s;
+}
+
+/* Fondo del navbar1 verde, ya definido en root */
+.navbar-1 {
+    background-color: var(--color-verdeFuerte);
+    padding: 0.75rem 0;
+}
+
+/*  para el tamaño del logo */
+.logo-navbar {
+    height: 75px;
+    width: auto;
+}
+
+/* Color de Mi cuenta y Carrito */
+.navbar-1 .nav-link {
+    color: var(--color-textoBlanco);
+    font-family: (var(--fuente-cuerpo));
+}
+
+/* Color al hacer click en Mi cuenta y Carrito */
+.navbar-1 .nav-link:hover {
+    color: var(--color-naranjaClaro);
+}
+
+/* Brillo del ícono al hacer click */
+.navbar-1 .nav-link:hover i {
+    text-shadow:
+        0 0 8px rgba(221, 161, 94, 1),
+        0 0 20px rgba(221, 161, 94, 0.9),
+        0 0 40px rgba(221, 161, 94, 0.6);
+}
+
+/* Para acomodar el icono y la descripcion*/
+.icon-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.7rem;
+    /* Tamaño de iconos*/
+    line-height: 1.2;
+}
+
+/* Para tamaño de iconos*/
+.icon-link i {
+    font-size: 2rem;
+}
+
+
+/* Contenedor principal del navbar */
+.navbar2 {
+    background: #606C38;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+/* Lista de links del menú */
+.navbar2 ul {
+    position: relative;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Cada elemento del menú (INICIO, NOSOTROS, etc.) */
+.navbar2 ul li {
+    width: 150px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+}
+
+/* Links dentro de cada elemento del menú */
+.navbar2 ul li a {
+    text-decoration: none;
+    color: wheat;
+    font-weight: bold;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+/* circilito que se mueve detrás del texto al hacer hover */
+.indicator {
+    position: absolute;
+    width: 150px;
+    height: 60px;
+    border-radius: 30px;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    transition: 0.4s;
+    box-shadow:
+        0 0 20px rgba(245, 222, 179, 0.454),
+        0 0 55px rgba(222, 196, 145, 0.4);
+}
+
+/* Posiciones del indicator según qué elemento tiene el hover */
+.navbar2 ul li:nth-child(1):hover~.indicator {
+    left: 0;
+}
+
+.navbar2 ul li:nth-child(2):hover~.indicator {
+    left: 150px;
+}
+
+.navbar2 ul li:nth-child(3):hover~.indicator {
+    left: 300px;
+}
+
+.navbar2 ul li:nth-child(4):hover~.indicator {
+    left: 450px;
+}
+
+
+/* Estilo Hero Section */
+.hero-division {
+    position: relative;
+    /*para que el texto y el video sepan cuál es su referencia*/
+    height: 75vh;
+    /*Este controla la altura del hero!!!*/
+    overflow: hidden;
+    /*Este recorta lo que sobresalga del video!*/
+}
+
+.hero-text {
+    height: 100%;
+    position: relative;
+}
+
+.hero-video {
+    width: 100%;
+    height: 100%;
+    /*display:block;*/
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .25);
+    z-index: 2;
+}
+
+.hero-content {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 3;
+}
+
+.hero-content h1 {
+    color: white;
+    font-size: 5rem;
+}
+
+
+/* Titulo de la sección Quienes somos*/
+.somos-titulo {
+    font-family: var(--fuente-titulos);
+    font-weight: var(--peso-bold);
+    color: var(--color-naranjaFuerte);
+    font-size: 3.5rem;
+}
+
+/* texto de Quienes somos*/
+.somos-texto {
+    font-family: var(--fuente-cuerpo);
+    font-size: 1.875rem;
+    text-align: justify;
+}
+
+/* resaltando palabras clave de sección de Quienes somos*/
+.somos-bold {
+    font-weight: bold;
+    color: var(--color-verdeFuerte);
+}
+
+/* imagen de sección Quienes somos*/
+.imagen-somos {
+    width: 80%;
+    border-radius: 50px;
+}
+
+/* Fondo del navbar1 verde, ya definido en root */
+.navbar-1 {
+    background-color: var(--color-verdeFuerte);
+    padding: 0.75rem 0;
+}
+
+/*  para el tamaño del logo */
+.logo-navbar {
+    height: 75px;
+    width: auto;
+}
+
+/* Color de Mi cuenta y Carrito */
+.navbar-1 .nav-link {
+    color: var(--color-textoBlanco);
+    font-family: (var(--fuente-cuerpo));
+}
+
+/* Color al hacer click en Mi cuenta y Carrito */
+.navbar-1 .nav-link:hover {
+    color: var(--color-naranjaClaro);
+}
+
+/* Brillo del ícono al hacer click */
+.navbar-1 .nav-link:hover i {
+    text-shadow:
+        0 0 8px rgba(221, 161, 94, 1),
+        0 0 20px rgba(221, 161, 94, 0.9),
+        0 0 40px rgba(221, 161, 94, 0.6);
+}
+
+/* Para acomodar el icono y la descripcion*/
+.icon-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.7rem;
+    /* Tamaño de iconos*/
+    line-height: 1.2;
+}
+
+/* Para tamaño de iconos*/
+.icon-link i {
+    font-size: 2rem;
+}
+
+
+/* Contenedor principal del navbar */
+.navbar2 {
+    background: #606C38;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+/* Lista de links del menú */
+.navbar2 ul {
+    position: relative;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Cada elemento del menú (INICIO, NOSOTROS, etc.) */
+.navbar2 ul li {
+    width: 150px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+}
+
+/* Links dentro de cada elemento del menú */
+.navbar2 ul li a {
+    text-decoration: none;
+    color: wheat;
+    font-weight: bold;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+/* circilito que se mueve detrás del texto al hacer hover */
+.indicator {
+    position: absolute;
+    width: 150px;
+    height: 60px;
+    border-radius: 30px;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    transition: 0.4s;
+    box-shadow:
+        0 0 20px rgba(245, 222, 179, 0.454),
+        0 0 55px rgba(222, 196, 145, 0.4);
+}
+
+/* Posiciones del indicator según qué elemento tiene el hover */
+.navbar2 ul li:nth-child(1):hover~.indicator {
+    left: 0;
+}
+
+.navbar2 ul li:nth-child(2):hover~.indicator {
+    left: 150px;
+}
+
+.navbar2 ul li:nth-child(3):hover~.indicator {
+    left: 300px;
+}
+
+.navbar2 ul li:nth-child(4):hover~.indicator {
+    left: 450px;
+}
+
+
+/* Estilo Hero Section */
+.hero-division {
+    position: relative;
+    /*para que el texto y el video sepan cuál es su referencia*/
+    height: 75vh;
+    /*Este controla la altura del hero!!!*/
+    overflow: hidden;
+    /*Este recorta lo que sobresalga del video!*/
+}
+
+.hero-text {
+    height: 100%;
+    position: relative;
+}
+
+.hero-video {
+    width: 100%;
+    height: 100%;
+    /*display:block;*/
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .25);
+    z-index: 2;
+}
+
+.hero-content {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 3;
+}
+
+.hero-content h1 {
+    color: white;
+    font-size: 5rem;
+}
+
+
+/* Titulo de la sección Quienes somos*/
+.somos-titulo {
+    font-family: var(--fuente-titulos);
+    font-weight: var(--peso-bold);
+    color: var(--color-naranjaFuerte);
+    font-size: 3.5rem;
+}
+
+/* texto de Quienes somos*/
+.somos-texto {
+    font-family: var(--fuente-cuerpo);
+    font-size: 1.875rem;
+    text-align: justify;
+}
+
+/* resaltando palabras clave de sección de Quienes somos*/
+.somos-bold {
+    font-weight: bold;
+    color: var(--color-verdeFuerte);
+}
+
+/* imagen de sección Quienes somos*/
+.imagen-somos {
+    width: 80%;
+    border-radius: 50px;
+}/* ==================================================
+                    IMPORTANTE
+    Todo lo que esta debajo de este comentario es necesario
+    para que funcione correctamente toda el area de 
+            "UNA CULTURA QUE NOS DISTINGUE"
+    por favor NO TOCAR nada si hay alguna duda puedes 
+    preguntarme. Atte: David Vargas El Deivid ;)
+    ================================================== *
+
+/* ==================================================
+    3. ENCABEZADO (Franja Verde) (El rectango verde donde va el titulo)
+   ================================================== */
+.cultura-encabezado {
+    background-color: var(--color-verdeCLaro); 
+    padding: 30px 20px; 
+    text-align: center;
+    margin: 0; 
+}
+
+.cultura-encabezado h2 {
+    color: var(--color-fondo); 
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* ==================================================
+    4. CONTENEDOR PRINCIPAL DE LAS TARJETAS (Los cuatro rectangulos color naranja)
+   ================================================== */
+.cultura-tarjetas-contenedor {
+    padding: 60px 20px; 
+    display: flex;
+    flex-direction: column; 
+    gap: 40px; 
+    max-width: 900px; 
+    margin: 0 auto; 
+}
+
+/* ==================================================
+    5. EFECTO DE TARJETAS (Borde Resplandeciente)
+   ================================================== */
+.tarjeta {
+    --color-fondo: linear-gradient(to right, var(--color-naranjaClaro) 0%, var(--color-naranjaClaro) 100%);
+    width: 100%; 
+    padding: 5px; 
+    border-radius: 1rem;
+    background: var(--color-fondo);
+    position: relative;
+    z-index: 1;
+}
+
+.tarjeta::after {
+    position: absolute;
+    content: "";
+    top: 0;      
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    transform: scale(1); 
+    filter: blur(15px); 
+    background: var(--color-fondo);
+    transition: opacity 0.5s ease;
+}
+
+.tarjeta-interior {
+    background: var(--color-fondo); 
+    color: var(--color-textoBlanco); 
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.7rem; 
+    padding: 30px 20px; 
+    text-align: center;
+    transition: color 0.5s ease; 
+    box-sizing: border-box; 
+}
+
+/* ==================================================
+    6. TEXTOS DENTRO DE LA TARJETA
+   ================================================== */
+.tarjeta-interior h3 {
+    color: var(--color-fondo);
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+}
+
+.tarjeta-interior p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6; 
+}
+
+/* ==================================================
+    7. EFECTOS AL PASAR EL MOUSE (HOVER)
+   ================================================== */
+.tarjeta:hover::after {
+    opacity: 0; 
+}
+
+.tarjeta:hover .tarjeta-interior {
+    color: var(--color-textoBlanco); 
+}
+
+/* ==================================================
+    8. ANIMACIONES DE SCROLL (Aparecer hacia arriba)
+   ================================================== */
+.animar-arriba {
+    opacity: 0; /* Empieza totalmente transparente */
+    transform: translateY(60px); /* Empieza desplazado 60px hacia abajo */
+    transition: opacity 0.9s ease-out, transform 0.9s ease-out; /* Velocidad del efecto */
+}
+
+.animar-arriba.visible {
+    opacity: 1; /* Se vuelve totalmente visible */
+    transform: translateY(0); /* Sube a su posición original */
+}
+
+/* ==================================================
+    Listo ya termino todo lo necesario para que la parte
+            "UNA CULTURA QUE NOS DISTINGUE"
+    Debajo de este comentario pueden agregar lo que 
+    ustedes necesiten para su codigo. 
+    
+    Made by el Deivid ;)
+   ================================================== */
