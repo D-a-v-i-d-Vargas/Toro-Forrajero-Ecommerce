@@ -2,7 +2,7 @@
 
 
 
-Ecosistema digital bilateral (Marketplace B2B) diseñado para democratizar el acceso a insumos de nutrición y soluciones logísticas especializadas en el sector pecuario.
+Ecosistema digital  diseñado para democratizar el acceso a insumos de nutrición y soluciones logísticas especializadas en el sector pecuario.
 
 
 
