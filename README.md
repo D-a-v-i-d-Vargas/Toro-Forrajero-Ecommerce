@@ -20,15 +20,13 @@ Ecosistema digital  diseñado para democratizar el acceso a insumos de nutrició
 
 \- \[Propuesta de valor](#propuesta-de-valor)
 
-\- \[Stack tecnológico](#stack-tecnológico)
-
-\- \[Instalación y uso](#instalación-y-uso)
+\- \[Tecnologías]
 
 \- \[Estructura del proyecto](#estructura-del-proyecto)
 
 \- \[Equipo de desarrollo — 404 Error Club](- \[Roadmap](#roadmap)
 
-\- \[Licencia](#licencia)
+
 
 
 
