@@ -689,14 +689,14 @@ h4 {
     3. ENCABEZADO (Franja Verde) (El rectango verde donde va el titulo)
    ================================================== */
 .cultura-encabezado {
-    background-color: var(--color-verdeClaro); 
+    background-color: var(--color-verdeCLaro); 
     padding: 30px 20px; 
     text-align: center;
     margin: 0; 
 }
 
 .cultura-encabezado h2 {
-    color: var(--color-beige); 
+    color: var(--color-fondo); 
     margin: 0;
     font-size: 1.4rem;
     font-weight: bold;
@@ -719,11 +719,11 @@ h4 {
     5. EFECTO DE TARJETAS (Borde Resplandeciente)
    ================================================== */
 .tarjeta {
-    --background: linear-gradient(to right, var(--color-naranjaClaro) 0%, var(--color-naranjaClaro) 100%);
+    --color-fondo: linear-gradient(to right, var(--color-naranjaClaro) 0%, var(--color-naranjaClaro) 100%);
     width: 100%; 
     padding: 5px; 
     border-radius: 1rem;
-    background: var(--background);
+    background: var(--color-fondo);
     position: relative;
     z-index: 1;
 }
@@ -739,13 +739,13 @@ h4 {
     width: 100%;
     transform: scale(1); 
     filter: blur(15px); 
-    background: var(--background);
+    background: var(--color-fondo);
     transition: opacity 0.5s ease;
 }
 
 .tarjeta-interior {
     background: var(--color-fondo); 
-    color: var(--color-beige); 
+    color: var(--color-textoBlanco); 
     display: flex;
     flex-direction: column; 
     justify-content: center;
@@ -763,6 +763,7 @@ h4 {
     6. TEXTOS DENTRO DE LA TARJETA
    ================================================== */
 .tarjeta-interior h3 {
+    color: var(--color-fondo);
     margin-top: 0;
     margin-bottom: 15px;
     font-size: 1.2rem;
