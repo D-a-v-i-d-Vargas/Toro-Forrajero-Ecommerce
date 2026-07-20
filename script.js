@@ -328,3 +328,20 @@ function generarCard(datos) {
 
 
 
+function validacionCorreo() {
+
+    const inputCorreo = document.querySelector("#correo")
+    const btnEnviar = document.querySelector("#enviar")
+
+
+    // Valiaciones
+    // Los campos no esten vacios
+    if (inputCorreo.textContent == "") {
+        console.log("Llena este campo")
+    }
+    // Cumpla con una direccion de correo electronico correcta
+    // No sea un ocrreo generico 
+
+}
+
+
