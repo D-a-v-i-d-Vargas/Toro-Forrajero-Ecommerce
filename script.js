@@ -19,12 +19,19 @@ if (carruselMisionVIsion && textoBotonVaca) {
     //Slid.bs.carousel se dispara cuando se hace clic y la tarjeta se mueve
     carruselMisionVIsion.addEventListener('slid.bs.carousel', function (event) {
         // event.to dice el índice de la diapositiva activa (0 = Misión, 1 = Visión)
-        if (event.to === 1) {
-            textoBotonVaca.textContent = 'Ver misión';
-            iconoBotonVaca.textContent = '🌾';
-        } else {
-            textoBotonVaca.textContent = 'Ver visión';
-            iconoBotonVaca.textContent = '🐄';
+        switch (event.to) {
+            case 0:
+                textoBotonVaca.textContent = 'Ver misión';
+                iconoBotonVaca.textContent = '🤠';
+                break;
+            case 1:
+                textoBotonVaca.textContent = 'Ver visión';
+                iconoBotonVaca.textContent = '🐄';
+                break;
+            case 2:
+                textoBotonVaca.textContent = '¿Quiénes somos?';
+                iconoBotonVaca.textContent = '🌾';
+                break;
         }
     });
 }
