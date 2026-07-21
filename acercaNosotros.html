@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acerca de Nosotros</title>
 
-    <!--Bootstrap 5.3-->
+    <!--Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
@@ -20,12 +20,14 @@
         href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;700&family=Montserrat:wght@400;700&display=swap"
         rel="stylesheet">
 
-    <!--CSS-->
-    <link rel="stylesheet" href="style.css">
+    <!--CSS Globales-->
+    <link rel="stylesheet" href="css/style.css">
+    <!--CSS de esta página-->
+    <link rel="stylesheet" href="css/pages/nosotros.css">
 </head>
 
 <body>
-    <!--Header, barras de nav, hero---------------------------------------------------------------->
+    <!--Header, barras de nav, herro---------------------------------------------------------------->
     <header>
         <!-- ===========================================================================
             SECCIÓN: NAV BAR 1 
@@ -34,7 +36,7 @@
             <div class="container-fluid px-4">
 
                 <div class="navbar-brand">
-                    <img src="imagenes.jpg/forrajerosinfondo.png" alt="Logo sin fondo de Toro Forrajero"
+                    <img src="recursos-graficos/navbar/forrajerosinfondo.png" alt="Logo sin fondo de Toro Forrajero"
                         class="logo-navbar d-inline-block align-text-top me-2">
                 </div>
                 <ul class="navbar-nav flex-row ms-auto gap-4">
@@ -77,7 +79,7 @@
             <div class="hero-division">
                 <video class="hero-video" autoplay muted loop playsinline preload="metadata"
                     alt="Vacas siendo felices. Fuente Bráulio Jardim">
-                    <source src="VideoHero/VacasComiendo.mp4" type="video/mp4">
+                    <source src="recursos-graficos/acerca-nosotros/VacasComiendo.mp4" type="video/mp4">
                 </video>
 
                 <div class="hero-overlay"></div>
@@ -244,7 +246,7 @@
             <!--mt-lg-auto hace que se alinee hacia el fondo de la fila, sin importar el tamaño del texto-->
             <div class="col-12 col-lg-5 px-0 order-2 order-lg-2 d-flex justify-content-center align-items-center">
                 <!--Ajusta la imagen al ancho del contenedor y adapta-->
-                <img src="imagenes.jpg/ganadero-holman-ferney-rincon-vargas.jpg"
+                <img src="recursos-graficos/acerca-nosotros/ganadero-holman-ferney-rincon-vargas.jpg"
                     class="img-fluid img-thumbnail imagen-somos caballo-img"
                     alt="ganadero-foto-de-holman-ferney-rincon-vargas.jpg">
             </div>
@@ -369,13 +371,16 @@
             <!-- Imagen (Señor y las vacas) -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="./img/pexels-juanjosedz-5565064.jpg" class="d-block w-100" alt="Imagen1">
+                    <img src="recursos-graficos/acerca-nosotros/pexels-juanjosedz-5565064.jpg" class="d-block w-100"
+                        alt="Imagen1">
                 </div>
                 <div class="carousel-item">
-                    <img src="./img/pexels-lukas-kosc-525097851-30649988.jpg" class="d-block w-100" alt="Imagen2">
+                    <img src="recursos-graficos/acerca-nosotros/pexels-lukas-kosc-525097851-30649988.jpg"
+                        class="d-block w-100" alt="Imagen2">
                 </div>
                 <div class="carousel-item">
-                    <img src="./img/pexels-tkirkgoz-11536891.jpg" class="d-block w-100" alt="Imagen3">
+                    <img src="recursos-graficos/acerca-nosotros/pexels-tkirkgoz-11536891.jpg" class="d-block w-100"
+                        alt="Imagen3">
                 </div>
             </div>
 
@@ -406,8 +411,8 @@
             <div class="row g-4">
 
                 <div class="col-12 col-sm-6 col-lg-4">
-                    <img src="img/Daniela.jpg" class="quienesPosible-img rounded-circle d-block " id="daniela"
-                        alt="Daniela.jpg">
+                    <img src="recursos-graficos/acerca-nosotros/perfiles-rancho/dani.png"
+                        class="quienesPosible-img rounded-circle d-block " id="daniela" alt="Daniela.jpg">
                     <div class="p-3 text-center">
                         <h4 class="quienesPosible-rol">Product Owner</h4>
                         <h5>Daniela</h5>
@@ -416,8 +421,8 @@
                 </div>
 
                 <div class="col-12 col-sm-6 col-lg-4">
-                    <img src="img/Oscar.jpg" class="quienesPosible-img rounded-circle d-block" alt="Oscar.jpg"
-                        id="oscar">
+                    <img src="recursos-graficos/acerca-nosotros/perfiles-rancho/oscar.jpeg"
+                        class="quienesPosible-img rounded-circle d-block" alt="Oscar.jpg" id="oscar">
                     <div class="p-3 text-center">
                         <h4 class="quienesPosible-rol">SCRUM Master</h4>
                         <h5>Oscar Andres</h5>
@@ -427,8 +432,8 @@
 
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="p-3 text-center">
-                        <img src="img/Esther.jpg" class="quienesPosible-img rounded-circle d-block" id="esther"
-                            alt="Esther.jpg">
+                        <img src="recursos-graficos/acerca-nosotros/perfiles-rancho/esther2.png"
+                            class="quienesPosible-img rounded-circle d-block" id="esther" alt="Esther.jpg">
                         <h4 class="quienesPosible-rol">Tester</h4>
                         <h5>Esther Alejandra</h5>
                         <h5>Nila Miranda</h5>
@@ -438,8 +443,8 @@
 
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="p-3 text-center">
-                        <img src="img/Elias.jpg" class="quienesPosible-img rounded-circle d-block" id="elias"
-                            alt="Elias.jpg">
+                        <img src="recursos-graficos/acerca-nosotros/perfiles-rancho/elias.jpeg"
+                            class="quienesPosible-img rounded-circle d-block" id="elias" alt="Elias.jpg">
                         <h4 class="quienesPosible-rol">Tester</h4>
                         <h5>Diego Elías</h5>
                         <h5>López Martínez</h5>
@@ -448,8 +453,8 @@
 
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="p-3 text-center">
-                        <img src="img/David.jpg" class="quienesPosible-img rounded-circle d-block" id="david"
-                            alt="David.jpg">
+                        <img src="recursos-graficos/acerca-nosotros/perfiles-rancho/david.png"
+                            class="quienesPosible-img rounded-circle d-block" id="david" alt="David.jpg">
                         <h4 class="quienesPosible-rol">Frontend Developer</h4>
                         <h5>David</h5>
                         <h5>Várgas Miranda</h5>
@@ -458,8 +463,8 @@
 
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="p-3 text-center">
-                        <img src="img/Karen.jpg" class="quienesPosible-img rounded-circle d-block" id="karen"
-                            alt="Karen.jpg">
+                        <img src="recursos-graficos/acerca-nosotros/perfiles-rancho/Karen.jpeg"
+                            class="quienesPosible-img rounded-circle d-block" id="karen" alt="Karen.jpg">
                         <h4 class="quienesPosible-rol">Frontend Developer</h4>
                         <h5>Karen Montserrat</h5>
                         <h5>Luna Salmerón</h5>
@@ -468,8 +473,8 @@
 
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="p-3 text-center">
-                        <img src="img/Vanessa.jpg" class="quienesPosible-img rounded-circle d-block" id="vanessa"
-                            alt="Vanessa.jpg">
+                        <img src="recursos-graficos/acerca-nosotros/perfiles-rancho/vane.jpeg"
+                            class="quienesPosible-img rounded-circle d-block" id="vanessa" alt="Vanessa.jpg">
                         <h4 class="quienesPosible-rol">Frontend Developer</h4>
                         <h5>Ana Vanessa</h5>
                         <h5>Estrada Arellano</h5>
@@ -478,8 +483,8 @@
 
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="p-3 text-center">
-                        <img src="img/Diana.jpg" class="quienesPosible-img rounded-circle d-block" id="diana"
-                            alt="Diana.jpg">
+                        <img src="recursos-graficos/acerca-nosotros/perfiles-rancho/diana.jpeg"
+                            class="quienesPosible-img rounded-circle d-block" id="diana" alt="Diana.jpg">
 
                         <h4 class="quienesPosible-rol">Backend Developer</h4>
                         <h5>Diana Laura</h5>
@@ -489,15 +494,13 @@
 
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="p-3 text-center">
-                        <img src="img/Natalia.jpg" class="quienesPosible-img rounded-circle d-block" id="natalia"
-                            alt="natalia.jpg">
+                        <img src="recursos-graficos/acerca-nosotros/perfiles-rancho/Nat.jpeg"
+                            class="quienesPosible-img rounded-circle d-block" id="natalia" alt="natalia.jpg">
                         <h4 class="quienesPosible-rol">Backend Developer</h4>
                         <h5>Natalia Susana</h5>
                         <h5>Cruz Ruíz</h5>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </section>
@@ -512,7 +515,8 @@
 
             <!-- Logo y redes sociales -->
             <div class="footer-brand">
-                <img src="Imagen/Captura de pantalla 2026-07-16 005749.png" alt="Logo Forrajero" class="footer-logo">
+                <img src="recursos-graficos/footer/Captura de pantalla 2026-07-16 005749.png" alt="Logo Forrajero"
+                    class="footer-logo">
 
                 <div class="footer-social">
                     <a href="#" aria-label="Facebook">
@@ -585,6 +589,7 @@
                     </li>
                 </ul>
             </div>
+
         </div>
 
         <!-- Línea inferior -->
@@ -599,7 +604,7 @@
         crossorigin="anonymous"></script>
 
     <!--Script de js-->
-    <script src="script.js"></script>
+    <script src="style.js"></script>
 </body>
 
 </html>
