@@ -133,10 +133,7 @@ function cardIntegrante() {
         gitHub: "https://github.com/eanila",
         nombreCompleto: "Esther Alejandra Nila Miranda",
         nombre: "Esther",
-        acercaDe: `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci earum asperiores quod esse nemo
-                    consequuntur autem. Cum quia debitis quam ratione totam asperiores, aliquid vel animi minima
-                    voluptatum,
-                    atque non?`,
+        acercaDe: `Desarrolladora Java Full Stack con trayectoria en Psicología Organizacional e Ingeniera en Desarrollo de Software en formación. Domina tecnologías como Java, Python, JavaScript, HTML, CSS y Bootstrap. Combina su inventario técnico y metodologías ágiles con comunicación efectiva, adaptabilidad al cambio y orientación al futuro para potenciar la colaboración del equipo y favorecer el logro de los objetivos.`,
         rol: "Tester",
         rolDescripcion: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci earum asperiores quod esse nemo consequuntur autem. Cum quia debitis quam ratione totam asperiores, aliquid vel animi minima voluptatum, atque non?",
     }
