@@ -352,8 +352,43 @@ function generarCard(datos) {
 ----------------------------------------------------------------------------- */
 
 //Karen
+function validarTelefono() {
 
+    const inputTelefono = document.querySelector("#telefono") //id telefono
+    const btnEnviar = document.querySelector("#btnEnviar") //id del boton enviar
 
+    // Validaciones
+
+    const telefono = inputTelefono.value.replace(/[\s-]/g, "");   //limpiar la cadena de texto, elimina espacios y guiones escritos en el campo de teléfono antes de hacer la validación.
+    const alertMensaje = `<span class="alerta-titulo">Teléfono No válido:</span> `;
+
+    // VALIDACION 1: Input con contendio
+    if (telefono == "") {
+        return (alertMensaje + "Debes llenar el campo")
+    }
+
+    // VALIDACION 2: Input sin caracteres raros o menos o mas de 10 digitos
+    if (!/^\d{10}$/.test(telefono)) {
+        return (alertMensaje + "El teléfono debe tener exactamente 10 dígitos")
+    }
+
+    return ("TELEFONO VALIDO")
+
+}
+
+function crearAlertsTelefono() {
+    const divAlerta = document.querySelector(".alerta") //clase-división donde va a aparecer la alerta
+    const btnEnviar = document.querySelector("#btnEnviar")  //id del boton enviar
+
+    btnEnviar.addEventListener('click', function () {
+        divAlerta.innerHTML = `<div class="alert bg-verdeCLaro alert-dismissible fade show" role="alert">${validarTelefono()}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>`
+    })
+
+}
+
+crearAlertsTelefono();
 
 
 
