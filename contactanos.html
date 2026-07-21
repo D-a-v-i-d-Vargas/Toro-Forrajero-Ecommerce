@@ -95,18 +95,18 @@
         SECCIÓN: FORMULARIO
     ============================================================================ -->
 	<!-- Sección "formulario" -->
-	<div class="alerta"></div> <!--PREGUNTAR Y HOMOGENIZAR / DONDE SE VERÁ LA ALERTA-->
+
 	<section id="formulario">
 		<div class="container py-5">
 			<div class="row justify-content-center">
-
+				<div class="alerta"></div>
 				<!-- COLUMNA PRINCIPAL -->
 				<div class="col-12 col-md-8 col-lg-6">
 
 					<!-- TARJETA CON BORDE -->
 					<div class="contact-card p-4 p-md-5 border border-3 border-warning-subtle rounded-4 shadow-sm">
 
-						<form id="formContacto" novalidate>
+						<form id="formContacto" onsubmit="validar(event)" novalidate>
 
 							<!-- Nombre y Teléfono -->
 							<div class="row g-3 mb-3">
@@ -114,29 +114,33 @@
 								<div class="col-md-7">
 									<label for="nombre"
 										class="form-label-custom fw-bold text-center w-100">Nombre</label>
-									<input type="text" id="nombre" name="nombre"
+									<input type="text" id="nombre" name="nombre" autocomplete="off"
 										class="form-control form-control-custom w-100" placeholder="Escribe tu nombre">
-									<div id="error-nombre" class="text-danger small mt-1 text-center"></div>
+									<div id="error-nombre" class="narnaja-text small mt-1 text-center">
+										<p></p>
+									</div>
 								</div>
 
 								<!-- Teléfono -->
 								<div class="col-md-5">
 									<label for="telefono"
 										class="form-label-custom fw-bold text-center w-100">Teléfono</label>
-									<input type="tel" id="telefono" name="telefono"
+									<input type="tel" id="telefono" name="telefono" autocomplete="off"
 										class="form-control form-control-custom w-100" placeholder="(+52)">
-									<div id="error-telefono" class="text-danger small mt-1 text-center"></div>
+									<div id="error-telefono" class="narnaja-text small mt-1 text-center"><p></p></div>
 								</div>								
 							</div>
 
 							<!-- Correo electrónico -->
-							<div class="mb-3">
+							<div class="mb-3 correo-electronico">
 								<label for="correo" class="form-label-custom fw-bold text-center w-100">Correo
 									electrónico</label>
-								<input type="email" id="correo" name="correo"
+								<input type="email" id="correo" name="correo" autocomplete="off"
 									class="form-control form-control-custom text-center w-100"
 									placeholder="correoelectronico@correodeejemplo.net">
-								<div id="error-correo" class="text-danger small mt-1 text-center"></div>
+								<div id="error-correo" class="narnaja-text small mt-1 text-center">
+									<p></p>
+								</div>
 							</div>
 
 							<!-- Fecha -->
@@ -187,7 +191,10 @@
 					</div>
 				</div>
 			</div>
+
 	</section>
+
+
 
 	<!-- ===========================================================================
         SECCIÓN: FOOTER (Enlaces de navegación, productos y atención al cliente)
@@ -290,6 +297,11 @@
 
 	<!--Script de js-->
 	<script src="script.js"></script>
+
+
+
+
+
 </body>
 
 </html>

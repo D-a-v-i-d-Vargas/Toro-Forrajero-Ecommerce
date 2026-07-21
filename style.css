@@ -1179,6 +1179,16 @@ h4 {
     outline: 2px solid red !important;
 }*/
 
+/* Definición de la clase personalizada */
+/* Definición de la clase personalizada */
+.bg-verdeCLaro {
+    background-color: var(--color-verdeCLaro) !important;
+    color: var(--color-fondo) !important;
+}
+
+.alerta-titulo {
+    font-weight: 900;
+}
 
 /*******************************************************************************
  * 
@@ -1210,4 +1220,8 @@ h4 {
 
 .contact-card {
     background-color: var(--color-naranjaTenue);
+}
+
+.narnaja-text{
+    color: var(--color-naranjaFuerte) !important;
 }
