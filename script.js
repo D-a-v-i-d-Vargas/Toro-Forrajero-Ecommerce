@@ -339,36 +339,32 @@ function generarCard(datos) {
 
 //Óscar
 // valida los datos que el usuario escribe en el label "Nombre"
-function validar() {
+function validar(event) {
 
-    // Obtener el valor del input
-    let nombre = document.getElementById("nombre").value.trim();
+    event.preventDefault();
 
-    // Validar que no esté vacío
+    const nombre = document.getElementById("nombre").value.trim();
+
     if (nombre === "") {
         alert("El campo Nombre no puede estar vacío.");
         return;
     }
 
-    // Validar que no contenga números
     if (/\d/.test(nombre)) {
         alert("El nombre no puede contener números.");
         return;
     }
 
-    // Validar que solo tenga letras y espacios
-    if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(nombre)) {
-        alert("El nombre solo puede contener letras.");
+    if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(nombre)) {
+        alert("El nombre solo puede contener letras y espacios.");
         return;
     }
 
-    // Validar longitud mínima
     if (nombre.length < 3) {
         alert("El nombre debe tener al menos 3 caracteres.");
         return;
     }
 
-    // Si todas las validaciones pasan
     alert("Datos guardados correctamente.");
 }
 
