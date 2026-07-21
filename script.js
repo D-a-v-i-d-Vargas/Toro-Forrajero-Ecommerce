@@ -483,7 +483,8 @@ function validacionCorreo() {
     }
 
 
-    // return ("CORREO VALIDO")
+    correoValidado(correo);
+    return undefined
 
 
     // Cumpla con una direccion de correo electronico correcta
@@ -493,16 +494,24 @@ function validacionCorreo() {
 
 }
 
+function correoValidado(correo) {
+    console.log(correo)
+}
+
 function validacionComentarios() {
     const comentarios = document.querySelector('#comentarios')
-    const btnEnviar = document.querySelector("#btn-enviar")
 
-    return comentarios.value
+    // Si quieres que los comentarios sean obligatorios:
+    if (comentarios.value.trim() === "") {
+        return `<span class="alerta-titulo">Comentarios:</span> Debes escribir un comentario`;
+    }
+
+    // Si no hay error, no retornas nada (devuelve undefined automáticamente)
 }
 
 function mostrarValidaciones() {
 
-    let validaciones = [validacionCorreo(), validacionComentarios()]
+    let validaciones = [validacionCorreo()]
     let mensaje = "";
 
     validaciones = validaciones.filter(validacion => validacion != undefined)
@@ -522,16 +531,23 @@ function crearAlertsCorreo() {
     btnEnviar.addEventListener('click', function () {
         divAlerta.classList.remove('fade-out')
 
-        divAlerta.innerHTML = `<div class="alert bg-verdeCLaro alert-dismissible fade show" role="alert">${mostrarValidaciones()}
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>`
+        const mensajeErrores = mostrarValidaciones()
 
-        divAlerta.classList.add('fade-out')
-        setTimeout(() => {
+        if (mensajeErrores.trim() !== "") {
 
-            divAlerta.innerHTML = " "
-        }, 4000)
+            divAlerta.innerHTML = `<div class="alert bg-verdeCLaro alert-dismissible fade show" role="alert">
+            ${mensajeErrores}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>`
 
+            divAlerta.classList.add('fade-out')
+            setTimeout(() => {
+                divAlerta.innerHTML = ""
+            }, 4000)
+
+        } else {
+            divAlerta.innerHTML = ""
+        }
     })
 
 }
