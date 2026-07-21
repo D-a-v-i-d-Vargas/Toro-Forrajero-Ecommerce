@@ -115,7 +115,7 @@ function cardIntegrante() {
     }
     const datosOscar = {
         id: "oscar",
-        imagen: "img/Oscar.jpg",
+        imagen: "recursos-graficos/acerca-nosotros/perfiles-rancho/oscar.jpeg",
         linkedin: "https://www.linkedin.com/in/oscar-miranda-lopez/",
         gitHub: "https://github.com/OscarAndres008",
         nombreCompleto: "Oscar Andres Miranda Lopez",
@@ -178,7 +178,7 @@ function cardIntegrante() {
     }
     const datosVanessa = {
         id: "vanessa",
-        imagen: "img/Vanessa.jpg",
+        imagen: "recursos-graficos/acerca-nosotros/perfiles-rancho/vane.jpeg",
         linkedin: " https://www.linkedin.com/in/vanessa-estrada-arellano/",
         gitHub: "https://github.com/VanessaEstrada04",
         nombreCompleto: "Ana Vanessa Estrada Arellano",
