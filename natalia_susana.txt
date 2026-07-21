@@ -1,1 +1,0 @@
-Hola, este es un archivo .txt de la rama 'natalia_susana'

@@ -1,3 +1,49 @@
+
+/*******************************************************************************
+ * 
+ * PÁGINA: ACERCA DE NOSOTROS
+ * 
+ ******************************************************************************/
+/* -----------------------------------------------------------------------------
+   SECCION: MISIÓN Y VISIÓN
+----------------------------------------------------------------------------- */
+
+/* --- Elemento: Botón que se transforma --- */
+
+const carruselMisionVIsion = document.getElementById('carouselExampleIndicators');
+const textoBotonVaca = document.getElementById('textoBoton');
+const iconoBotonVaca = document.getElementById('flechaBoton');
+
+//Para detectar si se desplazó el carrusel y modificar el texto del botón #boton-vaca-carrusel
+if (carruselMisionVIsion && textoBotonVaca) {
+    //Slid.bs.carousel se dispara cuando se hace clic y la tarjeta se mueve
+    carruselMisionVIsion.addEventListener('slid.bs.carousel', function (event) {
+        // event.to dice el índice de la diapositiva activa (0 = Misión, 1 = Visión)
+        switch (event.to) {
+            case 0:
+                textoBotonVaca.textContent = 'Ver misión';
+                iconoBotonVaca.textContent = '🤠';
+                break;
+            case 1:
+                textoBotonVaca.textContent = 'Ver visión';
+                iconoBotonVaca.textContent = '🐄';
+                break;
+            case 2:
+                textoBotonVaca.textContent = '¿Quiénes somos?';
+                iconoBotonVaca.textContent = '🌾';
+                break;
+        }
+    });
+}
+
+
+/* -----------------------------------------------------------------------------
+   SECCION: QUIÉNES LO HACEN POSIBLE
+----------------------------------------------------------------------------- */
+
+/* --- Elemento: Tarjetas --- */
+
+
 document.addEventListener('DOMContentLoaded', function () {
     biografia();
 })
@@ -131,7 +177,7 @@ function cardIntegrante() {
         rolDescripcion: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci earum asperiores quod esse nemo consequuntur autem. Cum quia debitis quam ratione totam asperiores, aliquid vel animi minima voluptatum, atque non?",
     }
     const datosVanessa = {
-        id:"vanessa",
+        id: "vanessa",
         imagen: "img/Vanessa.jpg",
         linkedin: " https://www.linkedin.com/in/vanessa-estrada-arellano/",
         gitHub: "https://github.com/VanessaEstrada04",
@@ -282,29 +328,3 @@ function generarCard(datos) {
 
 
 
-
-
-
-/*-----------------------------------
-         Acerca de nosotros
-------------------------------------*/
-
-// --- Componente : Misión y visión ---
-const carruselMisionVIsion = document.getElementById('carouselExampleIndicators');
-const textoBotonVaca = document.getElementById('textoBoton');
-const iconoBotonVaca = document.getElementById('flechaBoton');
-
-//Para detectar si se desplazó el carrusel y modificar el texto del botón #boton-vaca-carrusel
-if (carruselMisionVIsion && textoBotonVaca) {
-    //Slid.bs.carousel se dispara cuando se hace clic y la tarjeta se mueve
-    carruselMisionVIsion.addEventListener('slid.bs.carousel', function (event) {
-        // event.to dice el índice de la diapositiva activa (0 = Misión, 1 = Visión)
-        if (event.to === 1) {
-            textoBotonVaca.textContent = 'Ver misión';
-            iconoBotonVaca.textContent = '🌾';
-        } else {
-            textoBotonVaca.textContent = 'Ver visión';
-            iconoBotonVaca.textContent = '🐄';
-        }
-    });
-}
