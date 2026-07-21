@@ -46,7 +46,10 @@ if (carruselMisionVIsion && textoBotonVaca) {
 
 document.addEventListener('DOMContentLoaded', function () {
     biografia();
+    mensajeCorreo();
     crearAlertsCorreo();
+    mensajeNombre();
+
 })
 
 function biografia() {
@@ -337,35 +340,78 @@ function generarCard(datos) {
 
 //Óscar
 // valida los datos que el usuario escribe en el label "Nombre"
+// 1. La función que SOLO revisa las reglas y devuelve el texto del error (o undefined si está bien)
 function validar(event) {
-
-    event.preventDefault();
-
+    if (event) event.preventDefault();
+    const alertMensaje = `<span class="alerta-titulo">El Nombre </span> `;
     const nombre = document.getElementById("nombre").value.trim();
 
     if (nombre === "") {
-        alert("El campo Nombre no puede estar vacío.");
-        return;
+        return alertMensaje+ "no puede estar vacío."; // SIN punto y coma tras return
     }
 
     if (/\d/.test(nombre)) {
-        alert("El nombre no puede contener números.");
-        return;
+        return alertMensaje+ "no puede contener números.";
     }
 
     if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(nombre)) {
-        alert("El nombre solo puede contener letras y espacios.");
-        return;
+        return alertMensaje+ "solo puede contener letras y espacios.";
     }
 
     if (nombre.length < 3) {
-        alert("El nombre debe tener al menos 3 caracteres.");
-        return;
+        return alertMensaje+ "debe tener al menos 3 caracteres.";
     }
 
-    alert("Datos guardados correctamente.");
+    // Si llegó hasta aquí, todo está correcto
+    nombreValidado(nombre);
+    return undefined;
 }
 
+// 2. La función que se encarga de escuchar el clic o evento y mostrarlo por consola / HTML
+function validarNombreMensaje() {
+    const pErrorNombre = document.querySelector('.error-nombre');
+    const btnEnviar = document.querySelector("#btnEnviar");
+
+    if (btnEnviar) {
+        btnEnviar.addEventListener('click', function (e) {
+            // Le pasamos el evento 'e' a la función validar
+            const mensajeValidado = validar(e);
+
+            // ¡Aquí ya podrás ver los mensajes en la consola!
+            console.log(mensajeValidado);
+
+            if (pErrorNombre) {
+                pErrorNombre.textContent = mensajeValidado || "";
+            }
+        });
+    }
+}
+
+function nombreValidado(nombre) {
+    console.log(nombre);
+}
+
+function mensajeNombre() {
+    const pErrorNombre = document.querySelector("#error-nombre p");
+    const btnEnviar = document.querySelector("#btnEnviar");
+
+    btnEnviar.addEventListener('click', function (e) {
+        clearTimeout(temporizadorAlerta);
+
+        const errorDelNombre = validar(e);
+
+        if (errorDelNombre) {
+            pErrorNombre.innerHTML = errorDelNombre;
+
+            temporizadorAlerta = setTimeout(() => {
+                pErrorNombre.innerHTML = "";
+            }, 3000);
+
+        } else {
+            pErrorNombre.innerHTML = "";
+        }
+    });
+}
 /* -----------------------------------------------------------------------------
    SECCION: VALIDACIÓN DE TELÉFONO
 ----------------------------------------------------------------------------- */
@@ -442,6 +488,7 @@ function validacionCorreo() {
         "undefined"
     ];
 
+    let validacion = true;
     // Valiaciones
     // Los campos no esten vacios
 
@@ -515,17 +562,9 @@ function correoValidado(correo) {
     console.log(correo)
 }
 
-function validacionComentarios() {
-    const comentarios = document.querySelector('#comentarios')
 
-    // Si quieres que los comentarios sean obligatorios:
-    if (comentarios.value.trim() === "") {
-        return `<span class="alerta-titulo">Comentarios:</span> Debes escribir un comentario`;
-    }
 
-    // Si no hay error, no retornas nada (devuelve undefined automáticamente)
-}
-
+let temporizadorAlerta;
 function mostrarValidaciones() {
 
     let validaciones = [validacionCorreo()]
@@ -540,35 +579,56 @@ function mostrarValidaciones() {
     return mensaje
 }
 
-let temporizadorAlerta; // Variable global para reiniciar el tiempo si dan clics seguidos
 
-function crearAlertsCorreo() {
-    const divAlerta = document.querySelector(".alerta")
-    const btnEnviar = document.querySelector("#btnEnviar")
+function mensajeCorreo() {
+    const pErrorCorreo = document.querySelector("#error-correo p");
+    const btnEnviar = document.querySelector("#btnEnviar");
 
     btnEnviar.addEventListener('click', function () {
-        // Cancelamos el temporizador anterior si existía uno en curso
-        clearTimeout(temporizadorAlerta)
+        clearTimeout(temporizadorAlerta);
 
-        const mensajeErrores = mostrarValidaciones()
+        // Evaluamos SOLO la validación del correo para este párrafo
+        const errorDelCorreo = validacionCorreo();
 
-        if (mensajeErrores.trim() !== "") {
-
-            // Inyectamos la clase 'fade-out' directamente dentro de la alerta
-            divAlerta.innerHTML = `<div class="alert bg-verdeCLaro alert-dismissible fade show" role="alert">
-            ${mensajeErrores}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>`
+        if (errorDelCorreo) { // Si retorna un string con el error
+            pErrorCorreo.innerHTML = errorDelCorreo;
 
             temporizadorAlerta = setTimeout(() => {
-                divAlerta.innerHTML = ""
-            }, 4000)
+                pErrorCorreo.innerHTML = "";
+            }, 3000);
 
         } else {
-            divAlerta.innerHTML = ""
+            pErrorCorreo.innerHTML = "";
         }
-    })
+    });
+}
 
+function crearAlertsCorreo() {
+    const divAlerta = document.querySelector(".alerta");
+    const btnEnviar = document.querySelector("#btnEnviar");
+
+    if (btnEnviar && divAlerta) {
+        btnEnviar.addEventListener('click', function (e) {
+            const errorCorreo = validacionCorreo();
+            const errorNombre = validar(e);
+
+            if (errorCorreo || errorNombre) {
+                clearTimeout(temporizadorAlerta);
+
+                divAlerta.innerHTML = `<div class="alert bg-verdeCLaro alert-dismissible fade show" role="alert">
+                    <span class="alerta-titulo">Parece que hay un detalle:</span> Revisa los campos resaltados para poder continuar.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>`;
+
+                temporizadorAlerta = setTimeout(() => {
+                    divAlerta.innerHTML = "";
+                }, 4000);
+
+            } else {
+                divAlerta.innerHTML = "";
+            }
+        });
+    }
 }
 
 /* -----------------------------------------------------------------------------

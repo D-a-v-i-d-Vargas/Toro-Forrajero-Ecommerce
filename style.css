@@ -1221,3 +1221,7 @@ h4 {
 .contact-card {
     background-color: var(--color-naranjaTenue);
 }
+
+.narnaja-text{
+    color: var(--color-naranjaFuerte) !important;
+}
