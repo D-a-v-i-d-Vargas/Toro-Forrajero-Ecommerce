@@ -46,6 +46,7 @@ if (carruselMisionVIsion && textoBotonVaca) {
 
 document.addEventListener('DOMContentLoaded', function () {
     biografia();
+    crearAlertsCorreo();
 })
 
 function biografia() {
@@ -328,20 +329,218 @@ function generarCard(datos) {
 
 
 
+/*******************************************************************************
+ *
+ * PÁGINA: CONTÁCTANOS
+ *
+ ******************************************************************************/
+/* -----------------------------------------------------------------------------
+   SECCION: VALIDACIÓN DE NOMBRE
+----------------------------------------------------------------------------- */
+
+//Óscar
+
+
+
+
+
+
+
+
+
+/* -----------------------------------------------------------------------------
+   SECCION: VALIDACIÓN DE TELÉFONO
+----------------------------------------------------------------------------- */
+
+//Karen
+
+
+
+
+
+
+
+/* -----------------------------------------------------------------------------
+   SECCION: VALIDACIÓN DE CORREO ELECTRÓNICO
+----------------------------------------------------------------------------- */
+
+
 function validacionCorreo() {
 
     const inputCorreo = document.querySelector("#correo")
-    const btnEnviar = document.querySelector("#enviar")
+    const btnEnviar = document.querySelector("#btn-enviar")
 
+    const dominios = ['gmail.com', 'hotmail.com', 'outlook.com', 'yahoo.com', 'ymail.com', 'icloud.com', 'me.com']
+    const caracteresProhibidos = [
+        ',',  // Coma
+        ':',  // Dos puntos
+        ';',  // Punto y coma
+        '(',  // Parenteis
+        ')',
+        '<',  // Menor/Mayor que
+        '>',
+        '[',  // Corchetes
+        ']',
+        '\\', // Barra invertida
+        '"',  // Comillas dobles
+        '/',  // Diagonal
+        '?',  // Signo de interrogación
+        '=',  // Signo de igual
+        '!',  // Signos de admiración
+        '¡',
+        '¿',
+        '#',  // Numeral
+        '$',  // Símbolos monetarios/especiales
+        '%',
+        '&',
+        '*',
+        '^',
+        '~'
+    ];
+    const usuariosGenericos = [
+        "test",
+        "prueba",
+        "admin",
+        "administrator",
+        "correo",
+        "email",
+        "contacto",
+        "hola",
+        "user",
+        "usuario",
+        "123",
+        "1234",
+        "12345",
+        "a",
+        "abc",
+        "asdf",
+        "qwerty",
+        "no",
+        "noreply",
+        "no-reply",
+        "ejemplo",
+        "example",
+        "null",
+        "undefined"
+    ];
 
     // Valiaciones
     // Los campos no esten vacios
-    if (inputCorreo.textContent == "") {
-        console.log("Llena este campo")
+
+
+    const correo = inputCorreo.value
+    const alertMensaje = "Correo Electronico No valido: "
+
+    // VALIDACION 1: Input con contendio
+    if (correo == "") {
+        return (alertMensaje + "Debes llenar el campo")
     }
+
+    // VALIDACION 2: Input sin epacios
+    if (correo.includes(" ")) {
+        return (alertMensaje + "Hay espacios en el correo")
+    }
+    if (caracteresProhibidos.some(caracter => correo.includes(caracter))) {
+        return (alertMensaje + "El correo contiene caracteres no permitidos");
+    }
+
+    // VALIDACION 3: solo puede haber un @
+    if (correo.split("@").length !== 2) {
+        return (alertMensaje + "El correo debe contener exactamente un @");
+
+    }
+    const palabras = correo.split("@");
+    const doominioCorreo = palabras[1];
+    const nombreCorreo = palabras[0];
+    const patron = /\.{2,}/;
+
+    if (usuariosGenericos.some(generico => nombreCorreo.toLowerCase() == generico)) {
+        return (alertMensaje + "Usuario Generico");
+    }
+
+
+
+    // VALIDACION 4: Multiples puntos en el correo
+    if (patron.test(nombreCorreo)) {
+        return (alertMensaje + "Multiples puntos en el correo")
+    }
+
+
+    // VALIDACION 5: Iniciar el correo con un punto
+    if (nombreCorreo[0] == '.') {
+        return (alertMensaje + "Tu correo no puede iniciar con un punto")
+    }
+    // VALIDACION 6: Finalizar el correo con un punto
+    if (correo.endsWith('.')) {
+        return (alertMensaje + "Tu correo no puede acabar con un punto")
+    }
+
+    if (!dominios.includes(doominioCorreo)) {
+        return (alertMensaje + "Dominio no válido");
+    }
+
+
+    return ("CORREO VALIDO")
+
+
     // Cumpla con una direccion de correo electronico correcta
+
+
     // No sea un ocrreo generico 
 
 }
 
+function crearAlertsCorreo() {
+    const divAlerta = document.querySelector(".alerta")
+    const btnEnviar = document.querySelector("#btn-enviar")
 
+    btnEnviar.addEventListener('click', function () {
+
+        divAlerta.innerHTML = `<div class="alert bg-verdeCLaro alert-dismissible fade show" role="alert">${validacionCorreo()}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>`
+
+    })
+
+}
+
+
+
+/* -----------------------------------------------------------------------------
+   SECCION: VALIDACIÓN DE TELÉFONO
+----------------------------------------------------------------------------- */
+
+// Karen
+
+
+
+
+
+
+
+/* -----------------------------------------------------------------------------
+   SECCION: VALIDACIÓN DE MENSAJE
+----------------------------------------------------------------------------- */
+
+//Natalia
+
+
+
+
+/* -----------------------------------------------------------------------------
+   SECCION: VALIDACIÓN DE HORARIO
+----------------------------------------------------------------------------- */
+
+// David
+
+
+
+
+
+
+
+/* -----------------------------------------------------------------------------
+   SECCION: VALIDACIÓN DE MEDIO
+----------------------------------------------------------------------------- */
+
+// David
