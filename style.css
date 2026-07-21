@@ -13,6 +13,7 @@
     --color-fondo: #FEFAE0;
     --color-verdeCLaro: #606C38;
     --color-naranjaClaro: #DDA15E;
+    --color-naranjaTenue: #FFF8E7;
 
     /* Fuentes */
     --fuente-titulos: 'Geologica', sans-serif;
@@ -1201,4 +1202,12 @@ h4 {
     color: var(--color-verdeCLaro);
     font-weight: 400;
     font-size: 3rem;
+}
+
+/* -----------------------------------------------------------------------------
+  SECCION: FORMULARIO CONTÁCTANOS
+----------------------------------------------------------------------------- */
+
+.contact-card {
+    background-color: var(--color-naranjaTenue);
 }
