@@ -102,7 +102,7 @@ function cardIntegrante() {
 
     const datosDaniela = {
         id: "daniela",
-        imagen: "img/Daniela.jpg",
+        imagen: "recursos-graficos/acerca-nosotros/perfiles-rancho/dani.png",
         linkedin: "https://www.linkedin.com/in/daniela-tobon-perez/",
         gitHub: "https://github.com/tobdany",
         nombreCompleto: "Daniela Tobón Pérez",
@@ -116,9 +116,9 @@ function cardIntegrante() {
     }
     const datosOscar = {
         id: "oscar",
-        imagen: "img/Oscar.jpg",
+        imagen: "recursos-graficos/acerca-nosotros/perfiles-rancho/oscar.jpeg",
         linkedin: "https://www.linkedin.com/in/oscar-miranda-lopez/",
-        gitHub: "https://github.com/tobdany",
+        gitHub: "https://github.com/OscarAndres008",
         nombreCompleto: "Oscar Andres Miranda Lopez",
         nombre: "Oscar",
         acercaDe: `Desarrollo fullstack con formación en ingeniería en sistemas y experiencia en robotic process automation.
@@ -128,7 +128,7 @@ function cardIntegrante() {
     }
     const datosEsther = {
         id: "esther",
-        imagen: "img/Esther.jpg",
+        imagen: "recursos-graficos/acerca-nosotros/perfiles-rancho/esther2.png",
         linkedin: "https://www.linkedin.com/in/esthernilamiranda/",
         gitHub: "https://github.com/eanila",
         nombreCompleto: "Esther Alejandra Nila Miranda",
@@ -142,7 +142,7 @@ function cardIntegrante() {
     }
     const datosElias = {
         id: "elias",
-        imagen: "img/Elias.jpg",
+        imagen: "recursos-graficos/acerca-nosotros/perfiles-rancho/elias.jpeg",
         linkedin: "https://www.linkedin.com/in/elias-lopez-dev/",
         gitHub: "https://github.com/DIEGOELIASLOPEZ",
         nombreCompleto: "Diego Elías López Martínez",
@@ -153,7 +153,7 @@ function cardIntegrante() {
     }
     const datosDavid = {
         id: "david",
-        imagen: "img/David.jpg",
+        imagen: "recursos-graficos/acerca-nosotros/perfiles-rancho/david.png",
         linkedin: "https://www.linkedin.com/in/david-vargas-3700951bb/",
         gitHub: "https://github.com/D-a-v-i-d-Vargas",
         nombreCompleto: "David Vargas Miranda",
@@ -167,7 +167,7 @@ function cardIntegrante() {
     }
     const datosKaren = {
         id: "karen",
-        imagen: "img/Karen.jpg",
+        imagen: "recursos-graficos/acerca-nosotros/perfiles-rancho/Karen.jpeg",
         linkedin: "https://www.linkedin.com/in/karen-luna-dev/",
         gitHub: "https://github.com/KarenLunaS",
         nombreCompleto: "Karen Montserrat Luna Salmerón",
@@ -179,7 +179,7 @@ function cardIntegrante() {
     }
     const datosVanessa = {
         id: "vanessa",
-        imagen: "img/Vanessa.jpg",
+        imagen: "recursos-graficos/acerca-nosotros/perfiles-rancho/vane.jpeg",
         linkedin: " https://www.linkedin.com/in/vanessa-estrada-arellano/",
         gitHub: "https://github.com/VanessaEstrada04",
         nombreCompleto: "Ana Vanessa Estrada Arellano",
@@ -190,7 +190,7 @@ function cardIntegrante() {
     }
     const datosDiana = {
         id: "diana",
-        imagen: "img/Diana.jpg",
+        imagen: "recursos-graficos/acerca-nosotros/perfiles-rancho/diana.jpeg",
         linkedin: "https://www.linkedin.com/in/diana-laura-hurtado-ba%C3%B1os/",
         gitHub: "https://github.com/DianaH-314",
         nombreCompleto: "Diana Laura Hurtado Baños",
@@ -201,9 +201,9 @@ function cardIntegrante() {
     }
     const datosNatalia = {
         id: "natalia",
-        imagen: "img/Natalia.jpg",
-        linkedin: "https://www.linkedin.com/in/diana-laura-hurtado-ba%C3%B1os/",
-        gitHub: "https://github.com/DianaH-314",
+        imagen: "recursos-graficos/acerca-nosotros/perfiles-rancho/Nat.jpeg",
+        linkedin: "https://www.linkedin.com/in/nataliasusana/",
+        gitHub: "https://github.com/natalia-susana",
         nombreCompleto: "Natalia Susana Cruz Ruíz",
         nombre: "Natalia",
         acercaDe: `Física, Desarrolladora Java Full Stack, con experiencia previa en desarrollo web. Mi formación científica me dio una base sólida en pensamiento lógico, análisis de datos y resolución de problemas, habilidades que aplico directamente en el desarrollo de software: desde el diseño de la lógica de un programa hasta la depuración y optimización del código. Aporto capacidad analítica, atención al detalle y disposición constante para aprender nuevas tecnologías.`,
@@ -339,14 +339,35 @@ function generarCard(datos) {
 ----------------------------------------------------------------------------- */
 
 //Óscar
+// valida los datos que el usuario escribe en el label "Nombre"
+function validar(event) {
 
+    event.preventDefault();
 
+    const nombre = document.getElementById("nombre").value.trim();
 
+    if (nombre === "") {
+        alert("El campo Nombre no puede estar vacío.");
+        return;
+    }
 
+    if (/\d/.test(nombre)) {
+        alert("El nombre no puede contener números.");
+        return;
+    }
 
+    if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(nombre)) {
+        alert("El nombre solo puede contener letras y espacios.");
+        return;
+    }
 
+    if (nombre.length < 3) {
+        alert("El nombre debe tener al menos 3 caracteres.");
+        return;
+    }
 
-
+    alert("Datos guardados correctamente.");
+}
 
 /* -----------------------------------------------------------------------------
    SECCION: VALIDACIÓN DE TELÉFONO
@@ -369,7 +390,6 @@ function generarCard(datos) {
 function validacionCorreo() {
 
     const inputCorreo = document.querySelector("#correo")
-    const btnEnviar = document.querySelector("#btn-enviar")
 
     const dominios = ['gmail.com', 'hotmail.com', 'outlook.com', 'yahoo.com', 'ymail.com', 'icloud.com', 'me.com']
     const caracteresProhibidos = [
@@ -525,7 +545,7 @@ function mostrarValidaciones() {
 
 function crearAlertsCorreo() {
     const divAlerta = document.querySelector(".alerta")
-    const btnEnviar = document.querySelector("#btn-enviar")
+    const btnEnviar = document.querySelector("#btnEnviar")
 
 
     btnEnviar.addEventListener('click', function () {
