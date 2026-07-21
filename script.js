@@ -338,14 +338,39 @@ function generarCard(datos) {
 ----------------------------------------------------------------------------- */
 
 //Óscar
+// valida los datos que el usuario escribe en el label "Nombre"
+function validar() {
 
+    // Obtener el valor del input
+    let nombre = document.getElementById("nombre").value.trim();
 
+    // Validar que no esté vacío
+    if (nombre === "") {
+        alert("El campo Nombre no puede estar vacío.");
+        return;
+    }
 
+    // Validar que no contenga números
+    if (/\d/.test(nombre)) {
+        alert("El nombre no puede contener números.");
+        return;
+    }
 
+    // Validar que solo tenga letras y espacios
+    if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(nombre)) {
+        alert("El nombre solo puede contener letras.");
+        return;
+    }
 
+    // Validar longitud mínima
+    if (nombre.length < 3) {
+        alert("El nombre debe tener al menos 3 caracteres.");
+        return;
+    }
 
-
-
+    // Si todas las validaciones pasan
+    alert("Datos guardados correctamente.");
+}
 
 /* -----------------------------------------------------------------------------
    SECCION: VALIDACIÓN DE TELÉFONO
