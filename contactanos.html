@@ -26,7 +26,259 @@
 </head>
 
 <body>
+	<!--Header, barras de nav, hero---------------------------------------------------------------->
+	<header>
+		<!-- ===========================================================================
+            SECCIÓN: NAV BAR 1 
+        ============================================================================ -->
+		<nav class="navbar navbar-1">
+			<div class="container-fluid px-4">
 
+				<div class="navbar-brand">
+					<img src="recursos-graficos/navbar/forrajerosinfondo.png" alt="Logo sin fondo de Toro Forrajero"
+						class="logo-navbar d-inline-block align-text-top me-2">
+				</div>
+				<ul class="navbar-nav flex-row ms-auto gap-4">
+					<li class="nav-item">
+						<a class="nav-link icon-link" href="cuenta.html">
+							<i class="bi bi-person"> </i>
+							<span>Mi cuenta</span>
+						</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link icon-link" href="carrito.html">
+							<i class="bi bi-cart3"></i>
+							<span>Carrito</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+
+		</nav>
+
+		<!-- ===========================================================================
+            SECCIÓN: NAV BAR 2 
+        ============================================================================ -->
+
+		<nav class="navbar2">
+			<ul>
+				<li><a href="#">INICIO</a></li>
+				<li><a href="#">NOSOTROS</a></li>
+				<li><a href="#">CONTACTO</a></li>
+				<li><a href="#">PRODUCTO</a></li>
+				<div class="indicator"></div>
+			</ul>
+		</nav>
+	</header>
+
+	<section>
+		<!--margin-top hace que el logo esté separado del navbar-->
+		<div class="container w-100 text-center" style="margin-top:80px">
+			<div class="row justify-content-center mb-0">
+				<div class="col-12 d-flex justify-content-center">
+					<img class="page-header__logo" src="recursos-graficos/formulario-contactanos/Forrajero-naranja.png">
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-12">
+					<h1 class="page-header__title">Contáctanos</h1>
+				</div>
+
+			</div>
+		</div>
+
+
+	</section>
+
+	<!-- ===========================================================================
+        SECCIÓN: FORMULARIO
+    ============================================================================ -->
+	<!-- Sección "formulario" -->
+	<section id="formulario">
+		<div class="container py-5">
+			<div class="row justify-content-center">
+
+				<!-- COLUMNA PRINCIPAL -->
+				<div class="col-12 col-md-8 col-lg-6">
+
+					<!-- TARJETA CON BORDE -->
+					<div class="contact-card p-4 p-md-5 border border-3 border-warning-subtle rounded-4 shadow-sm">
+
+						<form id="formContacto" novalidate>
+
+							<!-- Nombre y Teléfono -->
+							<div class="row g-3 mb-3">
+								<!-- Nombre -->
+								<div class="col-md-7">
+									<label for="nombre"
+										class="form-label-custom fw-bold text-center w-100">Nombre</label>
+									<input type="text" id="nombre" name="nombre"
+										class="form-control form-control-custom w-100" placeholder="Escribe tu nombre">
+									<div id="error-nombre" class="text-danger small mt-1 text-center"></div>
+								</div>
+
+								<!-- Teléfono -->
+								<div class="col-md-5">
+									<label for="telefono"
+										class="form-label-custom fw-bold text-center w-100">Teléfono</label>
+									<input type="tel" id="telefono" name="telefono"
+										class="form-control form-control-custom w-100" placeholder="(+52)">
+									<div id="error-telefono" class="text-danger small mt-1 text-center"></div>
+								</div>
+							</div>
+
+							<!-- Correo electrónico -->
+							<div class="mb-3">
+								<label for="correo" class="form-label-custom fw-bold text-center w-100">Correo
+									electrónico</label>
+								<input type="email" id="correo" name="correo"
+									class="form-control form-control-custom text-center w-100"
+									placeholder="correoelectronico@correodeejemplo.net">
+								<div id="error-correo" class="text-danger small mt-1 text-center"></div>
+							</div>
+
+							<!-- Fecha -->
+							<div class="mb-4 text-center">
+								<label for="fecha" class="form-label-custom fw-bold mb-2">¿Cuándo te podemos
+									contactar?</label>
+								<input type="date" id="fecha" name="fecha"
+									class="form-control form-control-custom text-center w-100">
+								<div id="error-fecha" class="text-danger small mt-1 text-center"></div>
+							</div>
+
+							<!-- Horario en Lapso -->
+							<div class="mb-4 text-center">
+								<label class="form-label-custom fw-bold mb-1">¿En qué horario te es más cómodo?</label>
+								<p class="text-muted small mb-2">(Horario de atención: 8:00 a.m. a 8:00 p.m.)</p>
+
+								<div
+									class="p-2 bg-white rounded-4 border d-flex justify-content-center align-items-center gap-1 gap-sm-2 shadow-sm">
+									<!-- Hora de Inicio -->
+									<input type="time" id="hora-inicio" name="hora_inicio"
+										class="form-control border-0 text-center fw-bold bg-transparent px-1"
+										value="08:00" min="08:00" max="20:00" style="max-width: 165px;">
+									<span class="fw-bold text-muted fs-5">-</span>
+									<!-- Hora de Fin -->
+									<input type="time" id="hora-fin" name="hora_fin"
+										class="form-control border-0 text-center fw-bold bg-transparent px-1"
+										value="20:00" min="08:00" max="20:00" style="max-width: 165px;">
+								</div>
+								<div id="error-hora" class="text-danger small mt-1 text-center"></div>
+							</div>
+
+							<!-- Quejas o sugerencias -->
+							<div class="mb-4">
+								<label for="comentarios" class="form-label-custom fw-bold text-center w-100">Quejas o
+									sugerencias</label>
+								<textarea id="comentarios" name="comentarios"
+									class="form-control form-control-custom w-100" rows="4"
+									placeholder="Escribe tus comentarios"></textarea>
+								<div id="error-comentarios" class="text-danger small mt-1 text-center"></div>
+							</div>
+
+							<!-- Botón Enviar -->
+							<div class="mt-4 pt-2">
+								<button type="submit" id="btnEnviar"
+									class="btn btn-dark w-100 fw-bold py-2">Enviar</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</section>
+
+	<!-- ===========================================================================
+        SECCIÓN: FOOTER (Enlaces de navegación, productos y atención al cliente)
+    ============================================================================ -->
+
+	<!-- Footer -->
+	<footer class="footer-forrajero">
+		<div class="footer-container">
+
+			<!-- Logo y redes sociales -->
+			<div class="footer-brand">
+				<img src="recursos-graficos/footer/Captura de pantalla 2026-07-16 005749.png" alt="Logo Forrajero"
+					class="footer-logo">
+
+				<div class="footer-social">
+					<a href="#" aria-label="Facebook">
+						<i class="fa-brands fa-facebook"></i>
+					</a>
+
+					<a href="#" aria-label="LinkedIn">
+						<i class="fa-brands fa-linkedin"></i>
+					</a>
+
+					<a href="#" aria-label="YouTube">
+						<i class="fa-brands fa-youtube"></i>
+					</a>
+
+					<a href="#" aria-label="Instagram">
+						<i class="fa-brands fa-instagram"></i>
+					</a>
+				</div>
+			</div>
+
+			<!-- Navegación -->
+			<div class="footer-column">
+				<h3>Navegación</h3>
+
+				<ul>
+					<li><a href="#">Inicio</a></li>
+					<li><a href="#AcercaNosotros">Acerca de Nosotros</a></li>
+					<li><a href="#">Contacto</a></li>
+					<li><a href="#">Login / Registro</a></li>
+				</ul>
+			</div>
+
+			<!-- Productos -->
+			<div class="footer-column">
+				<h3>Productos</h3>
+
+				<ul>
+					<li><a href="#">Alimento Bovino</a></li>
+					<li><a href="#">Concentrado de equino</a></li>
+					<li><a href="#">Aves de corral</a></li>
+					<li><a href="#">Porcino</a></li>
+				</ul>
+			</div>
+
+			<!-- Atención al cliente -->
+			<div class="footer-column footer-contact">
+				<h3>Atención al cliente</h3>
+
+				<ul>
+					<li>
+						<i class="fa-solid fa-phone"></i>
+						<a href="tel:+523119553880">(311) 955-3880</a>
+					</li>
+
+					<li>
+						<i class="fa-solid fa-envelope"></i>
+						<a href="mailto:info@toroforrajero.com">
+							info@toroforrajero.com
+						</a>
+					</li>
+
+					<li>
+						<i class="fa-solid fa-location-dot"></i>
+						Cerro Lejos, A dos horas de la Ciudad
+					</li>
+
+					<li>
+						<i class="fa-solid fa-clock"></i>
+						10:00 a.m. - 7:00 p.m.
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- Línea inferior -->
+		<div class="footer-bottom">
+			<p>© 2026 Toro Forrajero. Todos los derechos reservados.</p>
+		</div>
+	</footer>
 
 
 
