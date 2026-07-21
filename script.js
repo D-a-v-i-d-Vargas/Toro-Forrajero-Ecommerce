@@ -383,8 +383,66 @@ function generarCard(datos) {
 /* -----------------------------------------------------------------------------
    SECCION: VALIDACIÓN DE MENSAJE
 ----------------------------------------------------------------------------- */
-
 //Natalia
+//window.alert("Hello world!"); alert("Hello world!"); esta alerta no funciona.
+
+// Recordemos que tenemos 2 id´s de comentarios y contador:
+    
+    let COMENTARIO = document.getElementById("caja_de_comentarios");
+    
+    let CONTADOR = document.getElementById("contador");
+
+    let longitud_maxima = 300; 
+
+    let comentario_valido = false; //empieza vacio
+
+    function contador_de_caracteres(){
+        let texto = COMENTARIO.value; // este es el texto que el usuario escribió
+
+        let texto_sin_espacios = texto.trim(); // trim quita espacio en blanco del inicio y final
+
+        let longitud_de_COMENTARIO = texto.length; //cuenta los caracteres 
+
+        let numero_de_palabras = 0;
+
+        
+
+        if (texto_sin_espacios.length > 0 ){
+            numero_de_palabras = texto_sin_espacios.split(" ").length; //verifica si hay palabras sin los posibles espacios de antes y despues.
+
+        }
+
+        let mensaje = longitud_de_COMENTARIO + " de " + longitud_maxima + " caracteres | " + numero_de_palabras + " palabras ";
+
+        // cuando se escriba puros espacios en balnco
+
+        if (longitud_de_COMENTARIO > 0 && texto_sin_espacios ==0){
+            mensaje = "¡El texto no puede contener solo espacios en blanco!";  
+        }
+
+        if (longitud_de_COMENTARIO > longitud_maxima) {
+        mensaje = "¡Has excedido el límite de " + longitud_maxima + " caracteres! (" + longitud_de_COMENTARIO + " / " + longitud_maxima + ")";
+    }
+
+        CONTADOR.textContent = mensaje; // el usuario ve cuantos elementos va escribiendo
+
+        if (longitud_de_COMENTARIO > longitud_maxima){
+            CONTADOR.style.color= "red";
+            comentario_valido = false; //porque exedió más de 300 caracteres
+        }   else if (texto_sin_espacios.length == 0 && longitud_de_COMENTARIO > 0){
+            CONTADOR.style.color = "red";
+            comentario_valido = "false"; // espacios en balnco
+
+        }   else {
+            CONTADOR.style.color = "black";
+            comentario_valido = true // está dentro del rango
+        }
+    }
+
+COMENTARIO.addEventListener("input", contador_de_caracteres);
+
+
+
 
 
 
