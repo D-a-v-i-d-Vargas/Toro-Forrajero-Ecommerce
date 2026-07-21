@@ -540,25 +540,27 @@ function mostrarValidaciones() {
     return mensaje
 }
 
+let temporizadorAlerta; // Variable global para reiniciar el tiempo si dan clics seguidos
+
 function crearAlertsCorreo() {
     const divAlerta = document.querySelector(".alerta")
     const btnEnviar = document.querySelector("#btnEnviar")
 
-
     btnEnviar.addEventListener('click', function () {
-        divAlerta.classList.remove('fade-out')
+        // Cancelamos el temporizador anterior si existía uno en curso
+        clearTimeout(temporizadorAlerta)
 
         const mensajeErrores = mostrarValidaciones()
 
         if (mensajeErrores.trim() !== "") {
 
+            // Inyectamos la clase 'fade-out' directamente dentro de la alerta
             divAlerta.innerHTML = `<div class="alert bg-verdeCLaro alert-dismissible fade show" role="alert">
             ${mensajeErrores}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>`
 
-            divAlerta.classList.add('fade-out')
-            setTimeout(() => {
+            temporizadorAlerta = setTimeout(() => {
                 divAlerta.innerHTML = ""
             }, 4000)
 
@@ -568,8 +570,6 @@ function crearAlertsCorreo() {
     })
 
 }
-
-
 
 /* -----------------------------------------------------------------------------
    SECCION: VALIDACIÓN DE TELÉFONO
