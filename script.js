@@ -364,6 +364,7 @@ function generarCard(datos) {
    SECCION: VALIDACIÓN DE CORREO ELECTRÓNICO
 ----------------------------------------------------------------------------- */
 
+// Elias
 
 function validacionCorreo() {
 
@@ -429,7 +430,7 @@ function validacionCorreo() {
 
 
     const correo = inputCorreo.value
-    const alertMensaje = "Correo Electronico No valido: "
+    const alertMensaje = `<span class="alerta-titulo">Correo Electrónico No válido:</span> `;
 
     // VALIDACION 1: Input con contendio
     if (correo == "") {
@@ -454,33 +455,35 @@ function validacionCorreo() {
     const nombreCorreo = palabras[0];
     const patron = /\.{2,}/;
 
+    // VALIDACION 5: No permitir usuarios genericos
     if (usuariosGenericos.some(generico => nombreCorreo.toLowerCase() == generico)) {
         return (alertMensaje + "Usuario Generico");
     }
 
 
 
-    // VALIDACION 4: Multiples puntos en el correo
+    // VALIDACION 6: Multiples puntos en el correo
     if (patron.test(nombreCorreo)) {
         return (alertMensaje + "Multiples puntos en el correo")
     }
 
 
-    // VALIDACION 5: Iniciar el correo con un punto
+    // VALIDACION 7: Iniciar el correo con un punto
     if (nombreCorreo[0] == '.') {
         return (alertMensaje + "Tu correo no puede iniciar con un punto")
     }
-    // VALIDACION 6: Finalizar el correo con un punto
+    // VALIDACION 8: Finalizar el correo con un punto
     if (correo.endsWith('.')) {
         return (alertMensaje + "Tu correo no puede acabar con un punto")
     }
 
+    // VALIDACION 9: Dominios no valios
     if (!dominios.includes(doominioCorreo)) {
         return (alertMensaje + "Dominio no válido");
     }
 
 
-    return ("CORREO VALIDO")
+    // return ("CORREO VALIDO")
 
 
     // Cumpla con una direccion de correo electronico correcta
@@ -490,15 +493,44 @@ function validacionCorreo() {
 
 }
 
+function validacionComentarios() {
+    const comentarios = document.querySelector('#comentarios')
+    const btnEnviar = document.querySelector("#btn-enviar")
+
+    return comentarios.value
+}
+
+function mostrarValidaciones() {
+
+    let validaciones = [validacionCorreo(), validacionComentarios()]
+    let mensaje = "";
+
+    validaciones = validaciones.filter(validacion => validacion != undefined)
+
+    validaciones.forEach(validacion => {
+        mensaje = `${mensaje} ${validacion} <br>`
+    });
+
+    return mensaje
+}
+
 function crearAlertsCorreo() {
     const divAlerta = document.querySelector(".alerta")
     const btnEnviar = document.querySelector("#btn-enviar")
 
-    btnEnviar.addEventListener('click', function () {
 
-        divAlerta.innerHTML = `<div class="alert bg-verdeCLaro alert-dismissible fade show" role="alert">${validacionCorreo()}
+    btnEnviar.addEventListener('click', function () {
+        divAlerta.classList.remove('fade-out')
+
+        divAlerta.innerHTML = `<div class="alert bg-verdeCLaro alert-dismissible fade show" role="alert">${mostrarValidaciones()}
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>`
+
+        divAlerta.classList.add('fade-out')
+        setTimeout(() => {
+
+            divAlerta.innerHTML = " "
+        }, 4000)
 
     })
 
