@@ -127,11 +127,13 @@
 								<div class="col-md-5">
 									<label for="telefono"
 										class="form-label-custom fw-bold text-center w-100">Teléfono</label>
-									<input type="number" min="0" id="telefono" name="telefono" autocomplete="off" 
+									<input type="number" min="0" id="telefono" name="telefono" autocomplete="off"
 										class="form-control form-control-custom w-100" placeholder="(+52)">
-									<div id="error-telefono" class="narnaja-text small mt-1 text-center"><p></p></div>
-								</div>	
-															
+									<div id="error-telefono" class="narnaja-text small mt-1 text-center">
+										<p></p>
+									</div>
+								</div>
+
 							</div>
 
 							<!-- Correo electrónico -->
@@ -175,14 +177,39 @@
 								<div id="error-hora" class="text-danger small mt-1 text-center"></div>
 							</div>
 
+							<div class="mb-4 text-center">
+								<label for="motivo" class="form-label-custom fw-bold mb-2">Motivo</label>
+								<select name="motivo" id="motivo" class="form-select" autocomplete="off">
+									<option value="" disabled selected>Selecciona un motivo de contacto</option>
+									<option value="estado-pedido">Estado del pedido</option>
+									<option value="producto-danado">Producto dañado</option>
+									<option value="devoluciones-cambios">Devoluciones y cambios</option>
+									<option value="consultas-producto">Consultas de producto</option>
+									<option value="disponibilidad-stock">Disponibilidad de stock</option>
+									<option value="problemas-pago">Problemas de pago</option>
+									<option value="solicitud-factura">Solicitud de factura</option>
+									<option value="cupones-promociones">Cupones y promociones</option>
+									<option value="soporte-cuenta">Soporte de cuenta</option>
+									<option value="ventas-mayoreo">Ventas al mayoreo</option>
+									<option value="falla-tecnica">Falla técnica</option>
+								</select>
+
+								<div id="error-motivo" class="narnaja-text small mt-1 text-center">
+									<p></p>
+								</div>
+							</div>
+
 							<!-- Quejas o sugerencias -->
 							<div class="form-card">
 
 								<section class="form-card">
-									<label for="caja_de_comentarios" class="form-label-custom fw-bold text-center w-100"> Quejas o sugerencias</label> <br>
-									<textarea id="caja_de_comentarios" class="form-control form-control-custom w-100" placeholder="Por favor, escriba sus comentarios." rows="5" cols="40"></textarea>
+									<label for="caja_de_comentarios"
+										class="form-label-custom fw-bold text-center w-100"> Quejas o
+										sugerencias</label> <br>
+									<textarea id="caja_de_comentarios" class="form-control form-control-custom w-100"
+										placeholder="Por favor, escriba sus comentarios." rows="5" cols="40"></textarea>
 									<p id="contador">0 / 300 caracteres | 0 palabras</p>
-	                            </section>
+								</section>
 								<div id="error-comentarios" class="text-danger small mt-1 text-center"></div>
 							</div>
 

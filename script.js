@@ -47,12 +47,11 @@ if (carruselMisionVIsion && textoBotonVaca) {
 document.addEventListener('DOMContentLoaded', function () {
     biografia();
     mensajeCorreo();
-    crearAlertsCorreo();
     mensajeNombre();
     mensajeTelefono();
-    mostrarDatos();
-
-})
+    mensajeMotivo();     
+    crearAlertsCorreo(); 
+});
 
 function biografia() {
     const imgs = document.querySelectorAll('.quienesPosible-img');
@@ -346,383 +345,159 @@ let mensajeValidado = {
     mTelefono: "",
     mCorreo: "",
     mHorario: "",
+    mMotivo: "",
     mMensaje: ""
 };
 
-// Función para resetear los valores antes de reevaluar
 function reiniciarMensajeValidado() {
     mensajeValidado = {
         mNombre: "",
         mTelefono: "",
         mCorreo: "",
         mHorario: "",
+        mMotivo: "",
         mMensaje: ""
     };
 }
 
-//Óscar
-// valida los datos que el usuario escribe en el label "Nombre"
-// 1. La función que SOLO revisa las reglas y devuelve el texto del error (o undefined si está bien)
+/* -----------------------------------------------------------------------------
+   SECCIÓN: NOMBRE (Óscar)
+----------------------------------------------------------------------------- */
 function validar(event) {
     if (event) event.preventDefault();
     const alertMensaje = `<span class="alerta-titulo">El Nombre </span> `;
-    const nombre = document.getElementById("nombre").value.trim();
+    const inputNombre = document.getElementById("nombre");
 
-    if (nombre === "") {
-        return alertMensaje+ "no puede estar vacío."; // SIN punto y coma tras return
-    }
+    if (!inputNombre) return "No se encontró el campo nombre";
+    const nombre = inputNombre.value.trim();
 
-    if (/\d/.test(nombre)) {
-        return alertMensaje+ "no puede contener números.";
-    }
+    if (nombre === "") return alertMensaje + "no puede estar vacío.";
+    if (/\d/.test(nombre)) return alertMensaje + "no puede contener números.";
+    if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(nombre)) return alertMensaje + "solo puede contener letras y espacios.";
+    if (nombre.length < 3) return alertMensaje + "debe tener al menos 3 caracteres.";
 
-    if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(nombre)) {
-        return alertMensaje+ "solo puede contener letras y espacios.";
-    }
-
-    if (nombre.length < 3) {
-        return alertMensaje+ "debe tener al menos 3 caracteres.";
-    }
-
-    // Si llegó hasta aquí, todo está correcto
-    mensajeValidado.mNombre = nombre;
-    return undefined;
-}
-
-// 2. La función que se encarga de escuchar el clic o evento y mostrarlo por consola / HTML
-function validarNombreMensaje() {
-    const pErrorNombre = document.querySelector('.error-nombre');
-    const btnEnviar = document.querySelector("#btnEnviar");
-
-    if (btnEnviar) {
-        btnEnviar.addEventListener('click', function (e) {
-            // Le pasamos el evento 'e' a la función validar
-            const mensajeValidado = validar(e);
-
-            // ¡Aquí ya podrás ver los mensajes en la consola!
-            console.log(mensajeValidado);
-
-            if (pErrorNombre) {
-                pErrorNombre.textContent = mensajeValidado || "";
-            }
-        });
-    }
-}
-
-function nombreValidado(nombre) {
-    console.log(nombre);
+    return undefined; 
 }
 
 function mensajeNombre() {
     const pErrorNombre = document.querySelector("#error-nombre p");
     const btnEnviar = document.querySelector("#btnEnviar");
 
-    btnEnviar.addEventListener('click', function (e) {
-        clearTimeout(temporizadorAlerta);
-
-        const errorDelNombre = validar(e);
-
-        if (errorDelNombre) {
-            pErrorNombre.innerHTML = errorDelNombre;
-
-            temporizadorAlerta = setTimeout(() => {
-                pErrorNombre.innerHTML = "";
-            }, 3000);
-
-        } else {
-            pErrorNombre.innerHTML = "";
-        }
-    });
-}
-/* -----------------------------------------------------------------------------
-   SECCION: VALIDACIÓN DE TELÉFONO
------------------------------------------------------------------------------ */
-
-//Karen
-function validarTelefono() {
-
-    const inputTelefono = document.querySelector("#telefono") //id telefono
-    const btnEnviar = document.querySelector("#btnEnviar") //id del boton enviar
-
-    // Validaciones
-
-    const telefono = inputTelefono.value.replace(/[\s-]/g, "");   //limpiar la cadena de texto, elimina espacios y guiones escritos en el campo de teléfono antes de hacer la validación.
-    const alertMensaje = `<span class="alerta-titulo">Teléfono No válido:</span> `;
-
-    // VALIDACION 1: Input con contendio
-    if (telefono == "") {
-        return (alertMensaje + "Debes llenar el campo")
-    }
-
-    // VALIDACION 2: Input sin caracteres raros o menos o mas de 10 digitos
-    if (!/^\d{10}$/.test(telefono)) {
-        return (alertMensaje + "El teléfono debe tener exactamente 10 dígitos")
-    }
-
-    mensajeValidado.mTelefono = telefono;
-
-}
-
-function crearAlertsTelefono() {
-    const divAlerta = document.querySelector(".alerta") //clase-división donde va a aparecer la alerta
-    const btnEnviar = document.querySelector("#btnEnviar")  //id del boton enviar
-
-    btnEnviar.addEventListener('click', function () {
-        divAlerta.innerHTML = `<div class="alert bg-verdeCLaro alert-dismissible fade show" role="alert">${validarTelefono()}
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>`
-    })
-
-}
-
-crearAlertsTelefono();
-
-function mensajeTelefono() {
-    const pErrorTelefono = document.querySelector("#error-telefono p");
-    const btnEnviar = document.querySelector("#btnEnviar");
-
-    btnEnviar.addEventListener('click', function (e) {
-        clearTimeout(temporizadorAlerta);
-
-        const errorDelTelefono = validar(e);
-
-        if (errorDelTelefono) {
-            pErrorTelefono.innerHTML = errorDelTelefono;
-
-            temporizadorAlerta = setTimeout(() => {
-                pErrorTelefono.innerHTML = "";
-            }, 3000);
-
-        } else {
-            pErrorTelefono.innerHTML = "";
-        }
-    });
-}
-
-
-
-
-/* -----------------------------------------------------------------------------
-   SECCION: VALIDACIÓN DE CORREO ELECTRÓNICO
------------------------------------------------------------------------------ */
-
-// Elias
-
-function validacionCorreo() {
-
-    const inputCorreo = document.querySelector("#correo")
-
-    const dominios = ['gmail.com', 'hotmail.com', 'outlook.com', 'yahoo.com', 'ymail.com', 'icloud.com', 'me.com']
-    const caracteresProhibidos = [
-        ',',  // Coma
-        ':',  // Dos puntos
-        ';',  // Punto y coma
-        '(',  // Parenteis
-        ')',
-        '<',  // Menor/Mayor que
-        '>',
-        '[',  // Corchetes
-        ']',
-        '\\', // Barra invertida
-        '"',  // Comillas dobles
-        '/',  // Diagonal
-        '?',  // Signo de interrogación
-        '=',  // Signo de igual
-        '!',  // Signos de admiración
-        '¡',
-        '¿',
-        '#',  // Numeral
-        '$',  // Símbolos monetarios/especiales
-        '%',
-        '&',
-        '*',
-        '^',
-        '~'
-    ];
-    const usuariosGenericos = [
-        "test",
-        "prueba",
-        "admin",
-        "administrator",
-        "correo",
-        "email",
-        "contacto",
-        "hola",
-        "user",
-        "usuario",
-        "123",
-        "1234",
-        "12345",
-        "a",
-        "abc",
-        "asdf",
-        "qwerty",
-        "no",
-        "noreply",
-        "no-reply",
-        "ejemplo",
-        "example",
-        "null",
-        "undefined"
-    ];
-
-    let validacion = true;
-    // Valiaciones
-    // Los campos no esten vacios
-
-
-    const correo = inputCorreo.value
-    const alertMensaje = `<span class="alerta-titulo">Correo Electrónico No válido:</span> `;
-
-    // VALIDACION 1: Input con contendio
-    if (correo == "") {
-        return (alertMensaje + "Debes llenar el campo")
-    }
-
-    // VALIDACION 2: Input sin epacios
-    if (correo.includes(" ")) {
-        return (alertMensaje + "Hay espacios en el correo")
-    }
-    if (caracteresProhibidos.some(caracter => correo.includes(caracter))) {
-        return (alertMensaje + "El correo contiene caracteres no permitidos");
-    }
-
-    // VALIDACION 3: solo puede haber un @
-    if (correo.split("@").length !== 2) {
-        return (alertMensaje + "El correo debe contener exactamente un @");
-
-    }
-    const palabras = correo.split("@");
-    const doominioCorreo = palabras[1];
-    const nombreCorreo = palabras[0];
-    const patron = /\.{2,}/;
-
-    // VALIDACION 5: No permitir usuarios genericos
-    if (usuariosGenericos.some(generico => nombreCorreo.toLowerCase() == generico)) {
-        return (alertMensaje + "Usuario Generico");
-    }
-
-
-
-    // VALIDACION 6: Multiples puntos en el correo
-    if (patron.test(nombreCorreo)) {
-        return (alertMensaje + "Multiples puntos en el correo")
-    }
-
-
-    // VALIDACION 7: Iniciar el correo con un punto
-    if (nombreCorreo[0] == '.') {
-        return (alertMensaje + "Tu correo no puede iniciar con un punto")
-    }
-    // VALIDACION 8: Finalizar el correo con un punto
-    if (correo.endsWith('.')) {
-        return (alertMensaje + "Tu correo no puede acabar con un punto")
-    }
-
-    // VALIDACION 9: Dominios no valios
-    if (!dominios.includes(doominioCorreo)) {
-        return (alertMensaje + "Dominio no válido");
-    }
-
-
-    mensajeValidado.mCorreo = correo;
-    return undefined
-
-
-    // Cumpla con una direccion de correo electronico correcta
-
-
-    // No sea un ocrreo generico 
-
-}
-
-
-
-
-let temporizadorAlerta;
-function mostrarValidaciones() {
-
-    let validaciones = [validacionCorreo()]
-    let mensaje = "";
-
-    validaciones = validaciones.filter(validacion => validacion != undefined)
-
-    validaciones.forEach(validacion => {
-        mensaje = `${mensaje} ${validacion} <br>`
-    });
-
-    return mensaje
-}
-
-
-function mensajeCorreo() {
-    const pErrorCorreo = document.querySelector("#error-correo p");
-    const btnEnviar = document.querySelector("#btnEnviar");
-
-    btnEnviar.addEventListener('click', function () {
-        clearTimeout(temporizadorAlerta);
-
-        // Evaluamos SOLO la validación del correo para este párrafo
-        const errorDelCorreo = validacionCorreo();
-
-        if (errorDelCorreo) { // Si retorna un string con el error
-            pErrorCorreo.innerHTML = errorDelCorreo;
-
-            temporizadorAlerta = setTimeout(() => {
-                pErrorCorreo.innerHTML = "";
-            }, 3000);
-
-        } else {
-            pErrorCorreo.innerHTML = "";
-        }
-    });
-}
-
-function crearAlertsCorreo() {
-    const divAlerta = document.querySelector(".alerta");
-    const btnEnviar = document.querySelector("#btnEnviar");
-
-    if (btnEnviar && divAlerta) {
+    if (btnEnviar) {
         btnEnviar.addEventListener('click', function (e) {
-            const errorCorreo = validacionCorreo();
-            const errorNombre = validar(e);
-            const errorTelefono = validarTelefono();
-            
-
-            if (errorCorreo || errorNombre || errorTelefono || comentario_valido == false) {
-                clearTimeout(temporizadorAlerta);
-
-                divAlerta.innerHTML = `<div class="alert bg-verdeCLaro alert-dismissible fade show" role="alert">
-                    <span class="alerta-titulo">Parece que hay un detalle:</span> Revisa los campos resaltados para poder continuar.
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>`;
-
-                temporizadorAlerta = setTimeout(() => {
-                    divAlerta.innerHTML = "";
-                }, 4000);
-
-            } else {
-                
-                divAlerta.innerHTML = `<div class="alert bg-verdeCLaro alert-dismissible fade show" role="alert">
-                    Formulario enviado <span class="alerta-titulo">Correctamente</span>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>`;
+            const errorDelNombre = validar(e);
+            if (pErrorNombre) {
+                pErrorNombre.innerHTML = errorDelNombre || "";
             }
         });
     }
 }
 
 /* -----------------------------------------------------------------------------
-   SECCION: VALIDACIÓN DE TELÉFONO
+   SECCIÓN: TELÉFONO (Karen)
 ----------------------------------------------------------------------------- */
+function validarTelefono() {
+    const inputTelefono = document.querySelector("#telefono");
+    if (!inputTelefono) return "Campo teléfono no encontrado";
 
-// Karen
+    const telefono = inputTelefono.value.replace(/[\s-]/g, ""); 
+    const alertMensaje = `<span class="alerta-titulo">Teléfono No válido:</span> `;
+
+    if (telefono === "") return (alertMensaje + "Debes llenar el campo");
+    if (!/^\d{10}$/.test(telefono)) return (alertMensaje + "El teléfono debe tener exactamente 10 dígitos");
+
+    return undefined;
+}
+
+function mensajeTelefono() {
+    const pErrorTelefono = document.querySelector("#error-telefono p");
+    const btnEnviar = document.querySelector("#btnEnviar");
+
+    if (btnEnviar) {
+        btnEnviar.addEventListener('click', function () {
+            const errorDelTelefono = validarTelefono();
+            if (pErrorTelefono) {
+                pErrorTelefono.innerHTML = errorDelTelefono || "";
+            }
+        });
+    }
+}
+
+/* -----------------------------------------------------------------------------
+   SECCIÓN: CORREO ELECTRÓNICO (Elias)
+----------------------------------------------------------------------------- */
+function validacionCorreo() {
+    const inputCorreo = document.querySelector("#correo");
+    if (!inputCorreo) return "Campo correo no encontrado";
+
+    const dominios = ['gmail.com', 'hotmail.com', 'outlook.com', 'yahoo.com', 'ymail.com', 'icloud.com', 'me.com'];
+    const caracteresProhibidos = [',', ':', ';', '(', ')', '<', '>', '[', ']', '\\', '"', '/', '?', '=', '!', '¡', '¿', '#', '$', '%', '&', '*', '^', '~'];
+    const usuariosGenericos = ["test", "prueba", "admin", "administrator", "correo", "email", "contacto", "hola", "user", "usuario", "123", "1234", "12345", "a", "abc", "asdf", "qwerty", "no", "noreply", "no-reply", "ejemplo", "example", "null", "undefined"];
+
+    const correo = inputCorreo.value.trim();
+    const alertMensaje = `<span class="alerta-titulo">Correo Electrónico No válido:</span> `;
+
+    if (correo === "") return (alertMensaje + "Debes llenar el campo");
+    if (correo.includes(" ")) return (alertMensaje + "Hay espacios en el correo");
+    if (caracteresProhibidos.some(caracter => correo.includes(caracter))) return (alertMensaje + "El correo contiene caracteres no permitidos");
+    if (correo.split("@").length !== 2) return (alertMensaje + "El correo debe contener exactamente un @");
+
+    const palabras = correo.split("@");
+    const nombreCorreo = palabras[0];
+    const doominioCorreo = palabras[1];
+
+    if (usuariosGenericos.some(generico => nombreCorreo.toLowerCase() === generico)) return (alertMensaje + "Usuario Genérico");
+    if (/\.{2,}/.test(nombreCorreo)) return (alertMensaje + "Múltiples puntos seguidos en el correo");
+    if (nombreCorreo[0] === '.') return (alertMensaje + "Tu correo no puede iniciar con un punto");
+    if (correo.endsWith('.')) return (alertMensaje + "Tu correo no puede acabar con un punto");
+    if (!dominios.includes(doominioCorreo)) return (alertMensaje + "Dominio no válido");
 
 
+    return undefined;
+}
 
+function mensajeCorreo() {
+    const pErrorCorreo = document.querySelector("#error-correo p");
+    const btnEnviar = document.querySelector("#btnEnviar");
 
+    if (btnEnviar) {
+        btnEnviar.addEventListener('click', function () {
+            const errorDelCorreo = validacionCorreo();
+            if (pErrorCorreo) {
+                pErrorCorreo.innerHTML = errorDelCorreo || "";
+            }
+        });
+    }
+}
 
+/* -----------------------------------------------------------------------------
+   SECCIÓN: MOTIVO
+----------------------------------------------------------------------------- */
+function validarMotivo() {
+    const selectMotivo = document.querySelector("#motivo");
+    if (!selectMotivo) return "No se encontró el selector de motivo.";
 
+    const valorSeleccionado = selectMotivo.value;
+    const alertMensaje = `<span class="alerta-titulo">Motivo de contacto:</span> `;
+
+    if (valorSeleccionado === "") return alertMensaje + "Debes seleccionar un motivo.";
+
+    return undefined; 
+}
+
+function mensajeMotivo() {
+    const pErrorMotivo = document.querySelector("#error-motivo p");
+    const btnEnviar = document.querySelector("#btnEnviar");
+
+    if (btnEnviar) {
+        btnEnviar.addEventListener('click', function () {
+            const errorDelMotivo = validarMotivo();
+            if (pErrorMotivo) {
+                pErrorMotivo.innerHTML = errorDelMotivo || "";
+            }
+        });
+    }
+}
 
 /* -----------------------------------------------------------------------------
    SECCION: VALIDACIÓN DE MENSAJE
@@ -808,14 +583,62 @@ COMENTARIO.addEventListener("input", contador_de_caracteres);
 
 // David
 
+function crearAlertsCorreo() {
+    const divAlerta = document.querySelector(".alerta");
+    const btnEnviar = document.querySelector("#btnEnviar");
 
-function mostrarDatos(){
-     const btnEnviar = document.querySelector("#btnEnviar");
+    if (btnEnviar && divAlerta) {
+        btnEnviar.addEventListener('click', function (e) {
+            e.preventDefault(); 
 
-     btnEnviar.addEventListener('click', function(){
-        console.log(mensajeValidado)
-     })
+            reiniciarMensajeValidado();
 
+            if (COMENTARIO) contador_de_caracteres();
+
+            const errorCorreo = validacionCorreo();
+            const errorNombre = validar(e);
+            const errorTelefono = validarTelefono();
+            const errorMotivo = validarMotivo();
+
+            const hayErrores = errorCorreo || errorNombre || errorTelefono || errorMotivo || comentario_valido === false;
+
+            if (hayErrores) {
+                divAlerta.innerHTML = `<div class="alert bg-verdeCLaro alert-dismissible fade show" role="alert">
+                    <span class="alerta-titulo">Parece que hay un detalle:</span> Revisa los campos resaltados para poder continuar.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>`;
+
+                console.warn("Envío bloqueado por errores. El objeto se mantiene vacío:", mensajeValidado);
+                return; 
+            }
+
+            const inputNombre = document.getElementById("nombre");
+            const inputTelefono = document.querySelector("#telefono");
+            const inputCorreo = document.querySelector("#correo");
+            const selectMotivo = document.querySelector("#motivo");
+
+            mensajeValidado.mNombre = inputNombre ? inputNombre.value.trim() : "";
+            mensajeValidado.mTelefono = inputTelefono ? inputTelefono.value.replace(/[\s-]/g, "") : "";
+            mensajeValidado.mCorreo = inputCorreo ? inputCorreo.value.trim() : "";
+            mensajeValidado.mMotivo = selectMotivo ? selectMotivo.options[selectMotivo.selectedIndex].text : "";
+            mensajeValidado.mMensaje = COMENTARIO ? COMENTARIO.value.trim() : "";
+
+            divAlerta.innerHTML = `<div class="alert bg-verdeCLaro alert-dismissible fade show" role="alert">
+                Formulario enviado <span class="alerta-titulo">Correctamente</span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>`;
+
+            console.log("¡ÉXITO TOTAL! Objeto listo con los datos validados:", mensajeValidado);
+
+            //  LIMPIEZA DE CAMPOS TRAS EL ENVÍO EXITOSO
+            if (inputNombre) inputNombre.value = "";
+            if (inputTelefono) inputTelefono.value = "";
+            if (inputCorreo) inputCorreo.value = "";
+            if (selectMotivo) selectMotivo.value = ""; 
+            if (COMENTARIO) {
+                COMENTARIO.value = "";
+                contador_de_caracteres(); // Resetea el contador de la caja de comentarios
+            }
+        });
+    }
 }
-mensajeValidado.mNombre
-
