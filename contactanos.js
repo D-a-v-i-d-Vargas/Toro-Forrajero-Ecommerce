@@ -84,7 +84,7 @@ function validarMensaje(inputMensaje) {
     if (!inputMensaje) return "No se encontró la caja de comentarios.";
     const texto = inputMensaje.value.trim();
     
-    if (texto.length === 0) return "El mensaje no puede estar vacío ni contener solo espacios.";
+    if (texto.length === 0) return `<span class="alerta-titulo class narnaja-text">Revisa que no exceda 300 caracteres ni sean solo espacios.</span>`;
     if (texto.length > 300) return "Has excedido el límite de 300 caracteres.";
     
     return undefined;
@@ -119,7 +119,13 @@ function actualizarContador() {
 
 if (COMENTARIO) {
     COMENTARIO.addEventListener("input", actualizarContador);
+
+
 }
+
+
+
+
 
 /* -----------------------------------------------------------------------------
     VALIDACIÓN MAESTRA Y ENVÍO DEL FORMULARIO
