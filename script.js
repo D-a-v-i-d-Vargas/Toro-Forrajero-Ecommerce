@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
     crearAlertsCorreo();
     mensajeNombre();
     mensajeTelefono();
+    mensajeComentario();
     mostrarDatos();
 
 })
@@ -775,7 +776,7 @@ function crearAlertsCorreo() {
             comentario_valido = false; //porque exedió más de 300 caracteres
         }   else if (texto_sin_espacios.length == 0 && longitud_de_COMENTARIO > 0){
             CONTADOR.style.color = "red";
-            comentario_valido = "false"; // espacios en balnco
+            comentario_valido = false; // espacios en balnco
 
         }   else {
             CONTADOR.style.color = "black";
@@ -785,7 +786,34 @@ function crearAlertsCorreo() {
 
 COMENTARIO.addEventListener("input", contador_de_caracteres);
 
+function validarComentario() {
+    const texto = COMENTARIO.value.trim();
+    const alertMensaje = `<span class="alerta-titulo">Comentario No válido:</span> `;
 
+    if (comentario_valido === false) {
+        return alertMensaje + "revisa que no exceda 300 caracteres ni sean solo espacios.";
+    }
+    mensajeValidado.mMensaje = texto;
+    return undefined;
+}
+
+function mensajeComentario() {
+    const pErrorComentario = document.querySelector("#error-comentarios p");
+    const btnEnviar = document.querySelector("#btnEnviar");
+
+    btnEnviar.addEventListener('click', function () {
+        clearTimeout(temporizadorAlerta);
+
+        const errorDelComentario = validarComentario();
+
+        if (errorDelComentario) {
+            pErrorComentario.innerHTML = errorDelComentario;
+
+        } else {
+            pErrorComentario.innerHTML = "";
+        }
+    });
+}
 
 
 
