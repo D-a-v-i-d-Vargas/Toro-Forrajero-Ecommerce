@@ -90,24 +90,7 @@ function validarMensaje(inputMensaje) {
     return undefined;
 }
 
-// Vane - Horario
-function validarHorario(inputInicio, inputFin) {
-    if (!inputInicio || !inputFin) return "No se encontró el campo de horario.";
 
-    const horaInicio = inputInicio.value; // formato "HH:MM"
-    const horaFin = inputFin.value;
-    const HORA_MIN = "08:00";
-    const HORA_MAX = "20:00";
-    const alertMensaje = `<span class="alerta-titulo">Horario:</span>`;
-
-    if (!horaInicio || !horaFin) return `${alertMensaje} Debes llenar el campo`;
-    if (horaFin <= horaInicio) return `${alertMensaje} La hora final debe ser mayor a la hora inicial`;
-    if (horaInicio < HORA_MIN || horaInicio > HORA_MAX || horaFin < HORA_MIN || horaFin > HORA_MAX) {
-        return `${alertMensaje} Debes seleccionar un horario entre 8:00 a.m. y 8:00 p.m.`;
-    }
-
-    return undefined;
-}
 
 /* -----------------------------------------------------------------------------
     LÓGICA DEL CONTADOR EN VIVO (Natalia)
@@ -142,6 +125,24 @@ if (COMENTARIO) {
 
 }
 
+// Vane - Horario
+function validarHorario(inputInicio, inputFin) {
+    if (!inputInicio || !inputFin) return "No se encontró el campo de horario.";
+
+    const horaInicio = inputInicio.value; 
+    const horaFin = inputFin.value;
+    const HORA_MIN = "08:00";
+    const HORA_MAX = "20:00";
+    const alertMensaje = `<span class="alerta-titulo">Horario:</span>`;
+
+    if (!horaInicio || !horaFin) return `${alertMensaje} Debes llenar el campo`;
+    if (horaFin <= horaInicio) return `${alertMensaje} La hora final debe ser mayor a la hora inicial`;
+    if (horaInicio < HORA_MIN || horaInicio > HORA_MAX || horaFin < HORA_MIN || horaFin > HORA_MAX) {
+        return `${alertMensaje} Debes seleccionar un horario entre 8:00 a.m. y 8:00 p.m.`;
+    }
+
+    return undefined;
+}
 
 
 
@@ -164,9 +165,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const inputTelefono = document.getElementById("telefono");
             const inputCorreo = document.getElementById("correo");
             const selectMotivo = document.getElementById("motivo");
+            const divAlerta = document.querySelector(".alerta");
             const inputHoraInicio = document.getElementById("hora-inicio");
             const inputHoraFin = document.getElementById("hora-fin");
-            const divAlerta = document.querySelector(".alerta");
             
             // Ejecutar validaciones
             const errorNombre = validarNombre(inputNombre);
@@ -175,6 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const errorMotivo = validarMotivo(selectMotivo);
             const errorMensaje = validarMensaje(COMENTARIO);
             const errorHorario = validarHorario(inputHoraInicio, inputHoraFin);
+            
 
             // Mostrar u ocultar errores en el DOM
             mostrarError("#error-nombre p", errorNombre);
@@ -183,7 +185,6 @@ document.addEventListener('DOMContentLoaded', () => {
             mostrarError("#error-motivo p", errorMotivo);
             mostrarError("#error-mensaje p", errorMensaje); // Asegúrate de tener este contenedor en tu HTML
             mostrarError("#error-hora p", errorHorario);
-
             const hayErrores = errorNombre || errorTelefono || errorCorreo || errorMotivo || errorMensaje || errorHorario;
 
             if (hayErrores) {
