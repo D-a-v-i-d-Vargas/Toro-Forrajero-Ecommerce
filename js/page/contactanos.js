@@ -133,7 +133,7 @@ function validarHorario(inputInicio, inputFin) {
     const horaFin = inputFin.value;
     const HORA_MIN = "08:00";
     const HORA_MAX = "20:00";
-    const alertMensaje = `<span class="alerta-titulo">Horario:</span>`;
+    const alertMensaje = `<span class="alerta-titulo narnaja-text">Horario:</span>`;
 
     if (!horaInicio || !horaFin) return `${alertMensaje} Debes llenar el campo`;
     if (horaFin <= horaInicio) return `${alertMensaje} La hora final debe ser mayor a la hora inicial`;
