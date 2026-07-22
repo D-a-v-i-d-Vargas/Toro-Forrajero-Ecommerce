@@ -196,9 +196,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
             console.log("¡ÉXITO TOTAL! Objeto listo:", mensajeValidado);
 
-            // Limpieza del formulario
+            console.log(mensajeValidado); //vemos que sí esté el mensaje completo
+
+            /* -----------------------------------------------------------------------------
+            Usamos EmailJS para enviar la información recopilada en el formulario al mail
+            ----------------------------------------------------------------------------- */
+            emailjs.init("3KkLupFj0lLfxdHq2"); //Public API Key del EmailJS
+            
+            emailjs.send(
+            "service_i8a49io", //Service Id de EmailJS
+            "template_7a53bep", //Template del email que creamos en EmailJS 'Contact US'
+            {
+                nombre: mensajeValidado.mNombre,
+                telefono: mensajeValidado.mTelefono,
+                correo: mensajeValidado.mCorreo,
+                asunto: `[${mensajeValidado.mMotivo}] Nuevo mensaje de contacto`,
+                mensaje: mensajeValidado.mMensaje
+            }
+            )
+            .then(() => {
             formulario.reset();
-            actualizarContador(); 
+            actualizarContador();
+            })
+            .catch(error => {
+            console.error(error);
+            });
         });
     }
 });

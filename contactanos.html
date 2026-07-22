@@ -21,9 +21,6 @@
     <!-- CSS Globales y de Página -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/pages/contactanos.css">
-
-    <!-- Archivo JavaScript Exclusivo de esta página -->
-    <script src="contactanos.js" defer></script>
 </head>
 
 <body>
@@ -186,9 +183,12 @@
                             </div>
 
                             <!-- Botón Enviar -->
-                            <div class="mt-4 pt-2">
-                                <button type="submit" id="btnEnviar" class="btn btn-dark w-100 fw-bold py-2">Enviar</button>
-                            </div>
+                            <div class="alertaBoton"></div>
+							<br>
+                                <div class="d-grid gap-2 col-10 mx-auto">
+                                    <button class="btn btn-primary" type="submit">Enviar</button>
+                                </div>
+                            <br>
 
                         </form>
                     </div>
@@ -250,6 +250,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+    <!--Link a la API para que mande el mail con la información-->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <!-- Archivo JavaScript Exclusivo de esta página -->
+    <script src="contactanos.js" defer></script>
 </body>
 
 </html>
