@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
     crearAlertsCorreo();
     mensajeNombre();
     mensajeTelefono();
+    mostrarDatos();
 
 })
 
@@ -339,6 +340,26 @@ function generarCard(datos) {
    SECCION: VALIDACIÓN DE NOMBRE
 ----------------------------------------------------------------------------- */
 
+// Objeto que acumulará los datos si todo sale bien
+let mensajeValidado = {
+    mNombre: "",
+    mTelefono: "",
+    mCorreo: "",
+    mHorario: "",
+    mMensaje: ""
+};
+
+// Función para resetear los valores antes de reevaluar
+function reiniciarMensajeValidado() {
+    mensajeValidado = {
+        mNombre: "",
+        mTelefono: "",
+        mCorreo: "",
+        mHorario: "",
+        mMensaje: ""
+    };
+}
+
 //Óscar
 // valida los datos que el usuario escribe en el label "Nombre"
 // 1. La función que SOLO revisa las reglas y devuelve el texto del error (o undefined si está bien)
@@ -364,7 +385,7 @@ function validar(event) {
     }
 
     // Si llegó hasta aquí, todo está correcto
-    nombreValidado(nombre);
+    mensajeValidado.mNombre = nombre;
     return undefined;
 }
 
@@ -438,7 +459,7 @@ function validarTelefono() {
         return (alertMensaje + "El teléfono debe tener exactamente 10 dígitos")
     }
 
-    return ("TELEFONO VALIDO")
+    mensajeValidado.mTelefono = telefono;
 
 }
 
@@ -604,7 +625,7 @@ function validacionCorreo() {
     }
 
 
-    correoValidado(correo);
+    mensajeValidado.mCorreo = correo;
     return undefined
 
 
@@ -615,9 +636,6 @@ function validacionCorreo() {
 
 }
 
-function correoValidado(correo) {
-    console.log(correo)
-}
 
 
 
@@ -669,8 +687,9 @@ function crearAlertsCorreo() {
             const errorCorreo = validacionCorreo();
             const errorNombre = validar(e);
             const errorTelefono = validarTelefono();
+            
 
-            if (errorCorreo || errorNombre || errorTelefono) {
+            if (errorCorreo || errorNombre || errorTelefono || comentario_valido == false) {
                 clearTimeout(temporizadorAlerta);
 
                 divAlerta.innerHTML = `<div class="alert bg-verdeCLaro alert-dismissible fade show" role="alert">
@@ -683,7 +702,11 @@ function crearAlertsCorreo() {
                 }, 4000);
 
             } else {
-                divAlerta.innerHTML = "";
+                
+                divAlerta.innerHTML = `<div class="alert bg-verdeCLaro alert-dismissible fade show" role="alert">
+                    Formulario enviado <span class="alerta-titulo">Correctamente</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>`;
             }
         });
     }
@@ -784,3 +807,15 @@ COMENTARIO.addEventListener("input", contador_de_caracteres);
 ----------------------------------------------------------------------------- */
 
 // David
+
+
+function mostrarDatos(){
+     const btnEnviar = document.querySelector("#btnEnviar");
+
+     btnEnviar.addEventListener('click', function(){
+        console.log(mensajeValidado)
+     })
+
+}
+mensajeValidado.mNombre
+
