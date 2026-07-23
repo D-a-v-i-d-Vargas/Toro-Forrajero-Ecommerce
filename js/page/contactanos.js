@@ -90,8 +90,6 @@ function validarMensaje(inputMensaje) {
     return undefined;
 }
 
-
-
 /* -----------------------------------------------------------------------------
     LÓGICA DEL CONTADOR EN VIVO (Natalia)
 ----------------------------------------------------------------------------- */
@@ -125,31 +123,76 @@ if (COMENTARIO) {
 
 }
 
-// Vane - Horario
-function validarHorario(inputInicio, inputFin) {
+// NUEVO E IMPORTANTE: Variable de estado para saber si el usuario tocó el horario
+// Ayuando a Vane para mantener los numeros en los horarios Diseño UX 
+// Enfocado en la usabilidad y experiencia del usuario by El Deivid
+
+let horarioFueInteractuado = false;
+
+// Seleccionamos los inputs fuera del submit para poder escuchar sus eventos
+const inputGlobalInicio = document.getElementById("hora-inicio");
+const inputGlobalFin = document.getElementById("hora-fin");
+
+if (inputGlobalInicio && inputGlobalFin) {
+    // Si el usuario cambia algo en estos inputs, marcamos el estado como 'true'
+    inputGlobalInicio.addEventListener("change", () => horarioFueInteractuado = true);
+    inputGlobalFin.addEventListener("change", () => horarioFueInteractuado = true);
+}
+
+// Vane - Horario 
+// Se actualizo la funcion by el Deivid 
+function validarHorario(inputInicio, inputFin, fueInteractuado) { // <-- ¡Agregamos el parámetro aquí!
     if (!inputInicio || !inputFin) return "No se encontró el campo de horario.";
+
+    // Definimos alertMensaje UNA SOLA VEZ
+    const alertMensaje = `<span class="alerta-titulo narnaja-text">Horario:</span>`;
+
+    // 1. NUEVA VALIDACIÓN: Si no lo han tocado, lanzamos el error aunque tengan valor
+    if (!fueInteractuado) return `${alertMensaje} <span class="narnaja-text">Debes confirmar o seleccionar un horario.</span>`;
 
     const horaInicio = inputInicio.value; 
     const horaFin = inputFin.value;
     const HORA_MIN = "08:00";
     const HORA_MAX = "20:00";
-    const alertMensaje = `<span class="alerta-titulo narnaja-text">Horario:</span>`;
-
     
     if (!horaInicio || !horaFin) 
-    return `${alertMensaje} <span class="narnaja-text">Debes llenar el campo</span>`;
+        return `${alertMensaje} <span class="narnaja-text">Debes llenar el campo</span>`;
 
     if (horaFin <= horaInicio) 
-    return `${alertMensaje} <span class="narnaja-text">Pusiste ${horaFin} como hora final, pero debe ser más tarde que ${horaInicio}</span>`;
+        return `${alertMensaje} <span class="narnaja-text">Pusiste ${horaFin} como hora final, pero debe ser más tarde que ${horaInicio}</span>`;
 
     if (horaInicio < HORA_MIN || horaInicio > HORA_MAX || horaFin < HORA_MIN || horaFin > HORA_MAX) {
-    return `${alertMensaje} <span class="narnaja-text">Debes seleccionar un horario entre 8:00 a.m. y 8:00 p.m.</span>`;
+        return `${alertMensaje} <span class="narnaja-text">Debes seleccionar un horario entre 8:00 a.m. y 8:00 p.m.</span>`;
     }
 
-return undefined;
+    return undefined;
 }
 
+// David - Fecha de contacto
+function validarFecha(inputFecha) {
+    if (!inputFecha) return "No se encontró el campo de fecha.";
+    const fechaSeleccionada = inputFecha.value.trim();
+    const alertMensaje = `<span class="alerta-titulo">Fecha de contacto:</span>`;
 
+    // 1. Validar que no esté vacío
+    if (fechaSeleccionada === "") return `${alertMensaje} Debes seleccionar una fecha.`;
+
+    // 2. Validar que no sea una fecha pasada
+    // Asumiendo que tu input es type="date", el valor llega como "YYYY-MM-DD"
+    // Separamos los valores para instanciar la fecha de forma segura y evitar problemas de zona horaria
+    const [year, month, day] = fechaSeleccionada.split('-');
+    const fechaIngresada = new Date(year, month - 1, day); 
+    
+    // Obtenemos la fecha de hoy y le ponemos la hora a 00:00:00 para comparar solo el día
+    const hoy = new Date();
+    hoy.setHours(0, 0, 0, 0);
+
+    if (fechaIngresada < hoy) {
+        return `${alertMensaje} Por favor, elige una fecha a partir de hoy.`;
+    }
+
+    return undefined;
+}
 
 
 /* -----------------------------------------------------------------------------
@@ -173,6 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const divAlerta = document.querySelector(".alerta");
             const inputHoraInicio = document.getElementById("hora-inicio");
             const inputHoraFin = document.getElementById("hora-fin");
+            const inputFecha = document.getElementById("fecha"); // Aqui validamos la Fecha by el Deivid ;) 
             
             // Ejecutar validaciones
             const errorNombre = validarNombre(inputNombre);
@@ -180,17 +224,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const errorCorreo = validarCorreo(inputCorreo);
             const errorMotivo = validarMotivo(selectMotivo);
             const errorMensaje = validarMensaje(COMENTARIO);
-            const errorHorario = validarHorario(inputHoraInicio, inputHoraFin);
-            
+            const errorHorario = validarHorario(inputHoraInicio, inputHoraFin, horarioFueInteractuado); // Pasamos la variable de estado 'horarioFueInteractuado' como tercer argumento
+            const errorFecha = validarFecha(inputFecha); // Se valida la fecha by el Deivid
 
             // Mostrar u ocultar errores en el DOM
             mostrarError("#error-nombre p", errorNombre);
             mostrarError("#error-telefono p", errorTelefono);
             mostrarError("#error-correo p", errorCorreo);
             mostrarError("#error-motivo p", errorMotivo);
-            mostrarError("#error-mensaje p", errorMensaje); // Asegúrate de tener este contenedor en tu HTML
+            mostrarError("#error-mensaje p", errorMensaje); 
             mostrarError("#error-hora p", errorHorario);
-            const hayErrores = errorNombre || errorTelefono || errorCorreo || errorMotivo || errorMensaje || errorHorario;
+            mostrarError("#error-fecha p", errorFecha);
+            const hayErrores = errorNombre || errorTelefono || errorCorreo || errorMotivo || errorMensaje || errorHorario || errorFecha;
 
             if (hayErrores) {
                 if (divAlerta) {
@@ -210,10 +255,8 @@ document.addEventListener('DOMContentLoaded', () => {
             mensajeValidado.mCorreo = inputCorreo.value.trim();
             mensajeValidado.mMotivo = selectMotivo.options[selectMotivo.selectedIndex].text;
             mensajeValidado.mMensaje = COMENTARIO.value.trim();
-            
             mensajeValidado.mHorario = `${inputHoraInicio.value} - ${inputHoraFin.value}`;
-            // Espacio listo para cuando se agregue Fecha
-            mensajeValidado.mFecha = "";
+            mensajeValidado.mFecha = inputFecha.value.trim();
 
             if (divAlerta) {
                 divAlerta.innerHTML = `
@@ -240,7 +283,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 telefono: mensajeValidado.mTelefono,
                 correo: mensajeValidado.mCorreo,
                 asunto: `[${mensajeValidado.mMotivo}] Nuevo mensaje de contacto`,
-                mensaje: mensajeValidado.mMensaje
+                mensaje: mensajeValidado.mMensaje,
+                horario: mensajeValidado.mHorario, 
+                fecha: mensajeValidado.mFecha
             }
             )
             .then(() => {
