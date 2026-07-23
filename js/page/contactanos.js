@@ -135,13 +135,18 @@ function validarHorario(inputInicio, inputFin) {
     const HORA_MAX = "20:00";
     const alertMensaje = `<span class="alerta-titulo narnaja-text">Horario:</span>`;
 
-    if (!horaInicio || !horaFin) return `${alertMensaje} Debes llenar el campo`;
-    if (horaFin <= horaInicio) return `${alertMensaje} La hora final debe ser mayor a la hora inicial`;
+    
+    if (!horaInicio || !horaFin) 
+    return `${alertMensaje} <span class="narnaja-text">Debes llenar el campo</span>`;
+
+    if (horaFin <= horaInicio) 
+    return `${alertMensaje} <span class="narnaja-text">Pusiste ${horaFin} como hora final, pero debe ser más tarde que ${horaInicio}</span>`;
+
     if (horaInicio < HORA_MIN || horaInicio > HORA_MAX || horaFin < HORA_MIN || horaFin > HORA_MAX) {
-        return `${alertMensaje} Debes seleccionar un horario entre 8:00 a.m. y 8:00 p.m.`;
+    return `${alertMensaje} <span class="narnaja-text">Debes seleccionar un horario entre 8:00 a.m. y 8:00 p.m.</span>`;
     }
 
-    return undefined;
+return undefined;
 }
 
 
