@@ -337,7 +337,7 @@ function generarCard(datos) {
    SECCION: VALIDACIÓN DE NOMBRE
 ----------------------------------------------------------------------------- */
 
-//Óscar
+//Óscar  shif+alt+a
 // valida los datos que el usuario escribe en el label "Nombre"
 function validar(event) {
 
