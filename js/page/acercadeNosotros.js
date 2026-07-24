@@ -46,7 +46,12 @@ if (carruselMisionVIsion && textoBotonVaca) {
 
 document.addEventListener('DOMContentLoaded', function () {
     biografia();
-})
+    mensajeCorreo();
+    mensajeNombre();
+    mensajeTelefono();
+    mensajeMotivo();     
+    crearAlertsCorreo(); 
+});
 
 function biografia() {
     const imgs = document.querySelectorAll('.quienesPosible-img');
@@ -101,7 +106,7 @@ function cardIntegrante() {
 
     const datosDaniela = {
         id: "daniela",
-        imagen: "img/Daniela.jpg",
+        imagen: "recursos-graficos/acerca-nosotros/perfiles-rancho/dani.png",
         linkedin: "https://www.linkedin.com/in/daniela-tobon-perez/",
         gitHub: "https://github.com/tobdany",
         nombreCompleto: "Daniela Tobón Pérez",
@@ -115,9 +120,9 @@ function cardIntegrante() {
     }
     const datosOscar = {
         id: "oscar",
-        imagen: "img/Oscar.jpg",
+        imagen: "recursos-graficos/acerca-nosotros/perfiles-rancho/oscar.jpeg",
         linkedin: "https://www.linkedin.com/in/oscar-miranda-lopez/",
-        gitHub: "https://github.com/tobdany",
+        gitHub: "https://github.com/OscarAndres008",
         nombreCompleto: "Oscar Andres Miranda Lopez",
         nombre: "Oscar",
         acercaDe: `Desarrollo fullstack con formación en ingeniería en sistemas y experiencia en robotic process automation.
@@ -127,21 +132,18 @@ function cardIntegrante() {
     }
     const datosEsther = {
         id: "esther",
-        imagen: "img/Esther.jpg",
+        imagen: "recursos-graficos/acerca-nosotros/perfiles-rancho/esther2.png",
         linkedin: "https://www.linkedin.com/in/esthernilamiranda/",
         gitHub: "https://github.com/eanila",
         nombreCompleto: "Esther Alejandra Nila Miranda",
         nombre: "Esther",
-        acercaDe: `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci earum asperiores quod esse nemo
-                    consequuntur autem. Cum quia debitis quam ratione totam asperiores, aliquid vel animi minima
-                    voluptatum,
-                    atque non?`,
+        acercaDe: `Desarrolladora Java Full Stack con trayectoria en Psicología Organizacional e Ingeniera en Desarrollo de Software en formación. Domina tecnologías como Java, Python, JavaScript, HTML, CSS y Bootstrap. Combina su inventario técnico y metodologías ágiles con comunicación efectiva, adaptabilidad al cambio y orientación al futuro para potenciar la colaboración del equipo y favorecer el logro de los objetivos.`,
         rol: "Tester",
         rolDescripcion: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci earum asperiores quod esse nemo consequuntur autem. Cum quia debitis quam ratione totam asperiores, aliquid vel animi minima voluptatum, atque non?",
     }
     const datosElias = {
         id: "elias",
-        imagen: "img/Elias.jpg",
+        imagen: "recursos-graficos/acerca-nosotros/perfiles-rancho/elias.jpeg",
         linkedin: "https://www.linkedin.com/in/elias-lopez-dev/",
         gitHub: "https://github.com/DIEGOELIASLOPEZ",
         nombreCompleto: "Diego Elías López Martínez",
@@ -152,7 +154,7 @@ function cardIntegrante() {
     }
     const datosDavid = {
         id: "david",
-        imagen: "img/David.jpg",
+        imagen: "recursos-graficos/acerca-nosotros/perfiles-rancho/david.png",
         linkedin: "https://www.linkedin.com/in/david-vargas-3700951bb/",
         gitHub: "https://github.com/D-a-v-i-d-Vargas",
         nombreCompleto: "David Vargas Miranda",
@@ -166,7 +168,7 @@ function cardIntegrante() {
     }
     const datosKaren = {
         id: "karen",
-        imagen: "img/Karen.jpg",
+        imagen: "recursos-graficos/acerca-nosotros/perfiles-rancho/Karen.jpeg",
         linkedin: "https://www.linkedin.com/in/karen-luna-dev/",
         gitHub: "https://github.com/KarenLunaS",
         nombreCompleto: "Karen Montserrat Luna Salmerón",
@@ -178,7 +180,7 @@ function cardIntegrante() {
     }
     const datosVanessa = {
         id: "vanessa",
-        imagen: "img/Vanessa.jpg",
+        imagen: "recursos-graficos/acerca-nosotros/perfiles-rancho/vane.jpeg",
         linkedin: " https://www.linkedin.com/in/vanessa-estrada-arellano/",
         gitHub: "https://github.com/VanessaEstrada04",
         nombreCompleto: "Ana Vanessa Estrada Arellano",
@@ -189,7 +191,7 @@ function cardIntegrante() {
     }
     const datosDiana = {
         id: "diana",
-        imagen: "img/Diana.jpg",
+        imagen: "recursos-graficos/acerca-nosotros/perfiles-rancho/diana.jpeg",
         linkedin: "https://www.linkedin.com/in/diana-laura-hurtado-ba%C3%B1os/",
         gitHub: "https://github.com/DianaH-314",
         nombreCompleto: "Diana Laura Hurtado Baños",
@@ -200,9 +202,9 @@ function cardIntegrante() {
     }
     const datosNatalia = {
         id: "natalia",
-        imagen: "img/Natalia.jpg",
-        linkedin: "https://www.linkedin.com/in/diana-laura-hurtado-ba%C3%B1os/",
-        gitHub: "https://github.com/DianaH-314",
+        imagen: "recursos-graficos/acerca-nosotros/perfiles-rancho/Nat.jpeg",
+        linkedin: "https://www.linkedin.com/in/nataliasusana/",
+        gitHub: "https://github.com/natalia-susana",
         nombreCompleto: "Natalia Susana Cruz Ruíz",
         nombre: "Natalia",
         acercaDe: `Física, Desarrolladora Java Full Stack, con experiencia previa en desarrollo web. Mi formación científica me dio una base sólida en pensamiento lógico, análisis de datos y resolución de problemas, habilidades que aplico directamente en el desarrollo de software: desde el diseño de la lógica de un programa hasta la depuración y optimización del código. Aporto capacidad analítica, atención al detalle y disposición constante para aprender nuevas tecnologías.`,
@@ -325,105 +327,3 @@ function generarCard(datos) {
     </div>
 `;
 }
-
-
-
-/*******************************************************************************
- *
- * PÁGINA: CONTÁCTANOS
- *
- ******************************************************************************/
-/* -----------------------------------------------------------------------------
-   SECCION: VALIDACIÓN DE NOMBRE
------------------------------------------------------------------------------ */
-
-//Óscar  shif+alt+a
-// valida los datos que el usuario escribe en el label "Nombre"
-function validar(event) {
-
-    event.preventDefault();
-
-    const nombre = document.getElementById("nombre").value.trim();
-
-    if (nombre === "") {
-        alert("El campo Nombre no puede estar vacío.");
-        return;
-    }
-
-    if (/\d/.test(nombre)) {
-        alert("El nombre no puede contener números.");
-        return;
-    }
-
-    if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(nombre)) {
-        alert("El nombre solo puede contener letras y espacios.");
-        return;
-    }
-
-    if (nombre.length < 3) {
-        alert("El nombre debe tener al menos 3 caracteres.");
-        return;
-    }
-
-    alert("Datos guardados correctamente.");
-}
-
-/* -----------------------------------------------------------------------------
-   SECCION: VALIDACIÓN DE TELÉFONO
------------------------------------------------------------------------------ */
-
-//Karen
-
-
-
-
-
-
-
-/* -----------------------------------------------------------------------------
-   SECCION: VALIDACIÓN DE CORREO ELECTRÓNICO
------------------------------------------------------------------------------ */
-
-// Elías
-
-
-
-
-/* -----------------------------------------------------------------------------
-   SECCION: VALIDACIÓN DE TELÉFONO
------------------------------------------------------------------------------ */
-
-// Karen
-
-
-
-
-
-
-
-/* -----------------------------------------------------------------------------
-   SECCION: VALIDACIÓN DE MENSAJE
------------------------------------------------------------------------------ */
-
-//Natalia
-
-
-
-
-/* -----------------------------------------------------------------------------
-   SECCION: VALIDACIÓN DE HORARIO
------------------------------------------------------------------------------ */
-
-// David
-
-
-
-
-
-
-
-/* -----------------------------------------------------------------------------
-   SECCION: VALIDACIÓN DE MEDIO
------------------------------------------------------------------------------ */
-
-// David

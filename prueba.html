@@ -1,26 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
+	
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+	<link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
+	
 
+	<div class="alerta"></div>
 	<!--Text area es para múltiples líneas de texto-->
 	<!--Permite presioanr enter y escribir párrafos-->
-	<label for="comentarios">Quejas o sugerencias</label>
-	<br>
-	<textarea id="comentarios" placeholder="Escribe tus comentarios" rows="5" cols="40"></textarea>
 
+	<section class="form-card">
+		<label for="caja_de_comentarios">Quejas o sugerencias</label>
+	    <br>
+		<textarea id="caja_de_comentarios" placeholder="Por favor, escriba sus comentarios." rows="5" cols="40"></textarea>
+		<p id="contador">0 / 300 caracteres | 0 palabras</p>
+	</section> 
+
+	<script src="script.js"></script>
 	<br>
 	<!--Input es para texto de una sola línea-->
 	<label for="">Correo Electronico</label>
 	<br>
-	<input id="correo" type="text" name="">
+	<input autocomplete="off" id="correo" type="text" name="">
+	<br>
+	<button id="btn-enviar">Enviar</button>
 
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+		crossorigin="anonymous"></script>
+
+	<script src="script.js"></script>
 </body>
 
 </html>
