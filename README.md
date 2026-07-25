@@ -1,8 +1,13 @@
-<!-- BANNER DEL PROYECTO -->
-<div align="center" style="background-color: #f9f3dd; padding: 20px; width: 100%;">
-  <img src="img/logo-forrajero.jpg" alt="Logo El Toro Forrajero" width="220">
-</div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="width:100% !important; border-collapse:collapse; padding:0; margin:0; table-layout: fixed;">
+  <tr style="padding:0; margin:0;">
+    <td align="center" width="100%" style="width:100% !important; background-color: #f9f3dd; padding: 0 !important; margin: 0 !important;">
+      <!-- La clave es width="100%" y style="width: 100% !important;" -->
+      <img src="img/logo-forrajero.jpg" alt="Logo El Toro Forrajero" width="100%" style="width: 100% !important; max-width: 100% !important; display: block; border: 0; padding: 0; margin: 0;">
+    </td>
+  </tr>
+</table>
 
+<!-- Un pequeño salto de línea para separar el banner del título -->
 <br>
 
 <h1 align="center">🐂 El Toro Forrajero</h1>
