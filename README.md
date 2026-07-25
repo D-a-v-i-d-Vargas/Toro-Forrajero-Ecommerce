@@ -1,22 +1,22 @@
 <!-- BANNER DEL PROYECTO -->
 <table width="100%">
-  <tr>
-    <td align="center" bgcolor="#FDFBF2">
-      <img src="img/logo-forrajero.jpg" alt="Logo El Toro Forrajero" width="250px">
+    <tr>
+        <td align="center" bgcolor="#FDFBF2">
+        <img src="img/logo-forrajero.jpg" alt="Logo El Toro Forrajero" width="250px">
     </td>
-  </tr>
+    </tr>
 </table>
 
 <h1 align="center">🐂 El Toro Forrajero</h1>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Versi%C3%B3n-1.0.0-901e28?style=for-the-badge" alt="Version">
-  <img src="https://img.shields.io/badge/Estado-Lanzamiento-d9bc9a?style=for-the-badge&logoColor=black" alt="Status">
-  <img src="https://img.shields.io/badge/Equipo-404_Error_Club-8f9476?style=for-the-badge" alt="Team">
+    <img src="https://img.shields.io/badge/Versi%C3%B3n-1.0.0-901e28?style=for-the-badge" alt="Version">
+    <img src="https://img.shields.io/badge/Estado-Lanzamiento-d9bc9a?style=for-the-badge&logoColor=black" alt="Status">
+    <img src="https://img.shields.io/badge/Equipo-404_Error_Club-8f9476?style=for-the-badge" alt="Team">
 </p>
 
 <p align="center">
-  <i>Ecosistema digital diseñado para democratizar el acceso a insumos de nutrición y soluciones logísticas especializadas en el sector pecuario.</i>
+    <i>Ecosistema digital diseñado para democratizar el acceso a insumos de nutrición y soluciones logísticas especializadas en el sector pecuario.</i>
 </p>
 
 <hr style="border: 1px solid #ae825b;">
@@ -40,9 +40,9 @@ Los pequeños y medianos productores en zonas rurales o semi-rurales enfrentan b
 <b>✨ Nuestra Solución (La Propuesta)</b><br><br>
 Ofrecemos un entorno digital transparente que rompe el aislamiento comercial mediante:
 <ul>
-  <li><b>Logística especializada:</b> Rediseño dinámico de entregas para mitigar el desabasto regional.</li>
-  <li><b>Transparencia de precios:</b> Eliminación de intermediación opaca y tarifas especulativas.</li>
-  <li><b>Asesoría técnica integrada:</b> Fichas técnicas, Q&A y consultas de optimización productiva.</li>
+    <li><b>Logística especializada:</b> Rediseño dinámico de entregas para mitigar el desabasto regional.</li>
+    <li><b>Transparencia de precios:</b> Eliminación de intermediación opaca y tarifas especulativas.</li>
+    <li><b>Asesoría técnica integrada:</b> Fichas técnicas, Q&A y consultas de optimización productiva.</li>
 </ul>
 </td>
 </tr>
@@ -59,7 +59,7 @@ Ofrecemos un entorno digital transparente que rompe el aislamiento comercial med
 </div>
 
 <p align="center">
-  <i>Construido con estructura semántica pensada en SEO/Accesibilidad, diseño 100% responsivo y validaciones dinámicas del DOM en Vanilla JS.</i>
+    <i>Construido con estructura semántica pensada en SEO/Accesibilidad, diseño 100% responsivo y validaciones dinámicas del DOM en Vanilla JS.</i>
 </p>
 
 ## 📂 Arquitectura del Directorio
@@ -74,25 +74,25 @@ el-toro-forrajero/
 │   └── logo-forrajero.jpg # Recursos gráficos y multimedia
 ├── index.html           # Punto de entrada de la plataforma
 └── README.md            # Documentación
-
+```
 ## 🤠 Equipo de Desarrollo: 404 Error Club
 
 Este ecosistema digital fue planeado, diseñado y codificado por un equipo excepcional:
 
 <table align="center">
-  <tr>
-    <td align="center"><a href="https://github.com/VanessaEstrada04"><img src="https://github.com/VanessaEstrada04.png" width="100px;" alt="Vanessa Estrada"/><br /><sub><b>Vanessa Estrada</b></sub></a></td>
-    <td align="center"><a href="https://github.com/tobdany"><img src="https://github.com/tobdany.png" width="100px;" alt="Daniela Tobón"/><br /><sub><b>Daniela Tobón</b></sub></a></td>
-    <td align="center"><a href="https://github.com/DianaH-314"><img src="https://github.com/DianaH-314.png" width="100px;" alt="Diana Hurtado"/><br /><sub><b>Diana Hurtado</b></sub></a></td>
-  </tr>
-  <tr>
-    <td align="center"><a href="https://github.com/DIEGOELIASLOPEZ"><img src="https://github.com/DIEGOELIASLOPEZ.png" width="100px;" alt="Elias López"/><br /><sub><b>Elias López</b></sub></a></td>
-    <td align="center"><a href="https://github.com/OscarAndres008"><img src="https://github.com/OscarAndres008.png" width="100px;" alt="Oscar Andres Miranda"/><br /><sub><b>Oscar Andrés</b></sub></a></td>
-    <td align="center"><a href="https://github.com/KarenLunaS"><img src="https://github.com/KarenLunaS.png" width="100px;" alt="Karen Luna"/><br /><sub><b>Karen Luna</b></sub></a></td>
-  </tr>
-  <tr>
-    <td align="center"><a href="https://github.com/D-a-v-i-d-Vargas"><img src="https://github.com/D-a-v-i-d-Vargas.png" width="100px;" alt="David Vargas"/><br /><sub><b>David Vargas</b></sub></a></td>
-    <td align="center"><a href="https://github.com/eanila"><img src="https://github.com/eanila.png" width="100px;" alt="Esther Alejandra Nila"/><br /><sub><b>Esther Nila</b></sub></a></td>
-    <td align="center"><a href="https://github.com/natalia-susana"><img src="https://github.com/natalia-susana.png" width="100px;" alt="Natalia Susana"/><br /><sub><b>Natalia Susana</b></sub></a></td>
-  </tr>
+    <tr>
+        <td align="center"><a href="https://github.com/VanessaEstrada04"><img src="https://github.com/VanessaEstrada04.png" width="100px;" alt="Vanessa Estrada"/><br /><sub><b>Vanessa Estrada</b></sub></a></td>
+        <td align="center"><a href="https://github.com/tobdany"><img src="https://github.com/tobdany.png" width="100px;" alt="Daniela Tobón"/><br /><sub><b>Daniela Tobón</b></sub></a></td>
+        <td align="center"><a href="https://github.com/DianaH-314"><img src="https://github.com/DianaH-314.png" width="100px;" alt="Diana Hurtado"/><br /><sub><b>Diana Hurtado</b></sub></a></td>
+    </tr>
+    <tr>
+        <td align="center"><a href="https://github.com/DIEGOELIASLOPEZ"><img src="https://github.com/DIEGOELIASLOPEZ.png" width="100px;" alt="Elias López"/><br /><sub><b>Elias López</b></sub></a></td>
+        <td align="center"><a href="https://github.com/OscarAndres008"><img src="https://github.com/OscarAndres008.png" width="100px;" alt="Oscar Andres Miranda"/><br /><sub><b>Oscar Andrés</b></sub></a></td>
+        <td align="center"><a href="https://github.com/KarenLunaS"><img src="https://github.com/KarenLunaS.png" width="100px;" alt="Karen Luna"/><br /><sub><b>Karen Luna</b></sub></a></td>
+    </tr>
+    <tr>
+        <td align="center"><a href="https://github.com/D-a-v-i-d-Vargas"><img src="https://github.com/D-a-v-i-d-Vargas.png" width="100px;" alt="David Vargas"/><br /><sub><b>David Vargas</b></sub></a></td>
+        <td align="center"><a href="https://github.com/eanila"><img src="https://github.com/eanila.png" width="100px;" alt="Esther Alejandra Nila"/><br /><sub><b>Esther Nila</b></sub></a></td>
+        <td align="center"><a href="https://github.com/natalia-susana"><img src="https://github.com/natalia-susana.png" width="100px;" alt="Natalia Susana"/><br /><sub><b>Natalia Susana</b></sub></a></td>
+    </tr>
 </table>
