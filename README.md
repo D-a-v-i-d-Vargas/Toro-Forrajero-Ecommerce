@@ -74,3 +74,25 @@ el-toro-forrajero/
 │   └── logo-forrajero.jpg # Recursos gráficos y multimedia
 ├── index.html           # Punto de entrada de la plataforma
 └── README.md            # Documentación
+
+## 🤠 Equipo de Desarrollo: 404 Error Club
+
+Este ecosistema digital fue planeado, diseñado y codificado por un equipo excepcional:
+
+<table align="center">
+  <tr>
+    <td align="center"><a href="https://github.com/VanessaEstrada04"><img src="https://github.com/VanessaEstrada04.png" width="100px;" alt="Vanessa Estrada"/><br /><sub><b>Vanessa Estrada</b></sub></a></td>
+    <td align="center"><a href="https://github.com/tobdany"><img src="https://github.com/tobdany.png" width="100px;" alt="Daniela Tobón"/><br /><sub><b>Daniela Tobón</b></sub></a></td>
+    <td align="center"><a href="https://github.com/DianaH-314"><img src="https://github.com/DianaH-314.png" width="100px;" alt="Diana Hurtado"/><br /><sub><b>Diana Hurtado</b></sub></a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/DIEGOELIASLOPEZ"><img src="https://github.com/DIEGOELIASLOPEZ.png" width="100px;" alt="Elias López"/><br /><sub><b>Elias López</b></sub></a></td>
+    <td align="center"><a href="https://github.com/OscarAndres008"><img src="https://github.com/OscarAndres008.png" width="100px;" alt="Oscar Andres Miranda"/><br /><sub><b>Oscar Andrés</b></sub></a></td>
+    <td align="center"><a href="https://github.com/KarenLunaS"><img src="https://github.com/KarenLunaS.png" width="100px;" alt="Karen Luna"/><br /><sub><b>Karen Luna</b></sub></a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/D-a-v-i-d-Vargas"><img src="https://github.com/D-a-v-i-d-Vargas.png" width="100px;" alt="David Vargas"/><br /><sub><b>David Vargas</b></sub></a></td>
+    <td align="center"><a href="https://github.com/eanila"><img src="https://github.com/eanila.png" width="100px;" alt="Esther Alejandra Nila"/><br /><sub><b>Esther Nila</b></sub></a></td>
+    <td align="center"><a href="https://github.com/natalia-susana"><img src="https://github.com/natalia-susana.png" width="100px;" alt="Natalia Susana"/><br /><sub><b>Natalia Susana</b></sub></a></td>
+  </tr>
+</table>
