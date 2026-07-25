@@ -1,10 +1,10 @@
 <!-- BANNER DEL PROYECTO -->
-<table width="100%">
-    <tr>
-        <td align="center" bgcolor="#FDFBF2">
-        <img src="img/logo-forrajero.jpg" alt="Logo El Toro Forrajero" width="250px">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="center" bgcolor="#f9f3dd" style="padding: 20px 0;">
+      <img src="img/logo-forrajero.jpg" alt="Logo El Toro Forrajero" width="200px">
     </td>
-    </tr>
+  </tr>
 </table>
 
 <h1 align="center">🐂 El Toro Forrajero</h1>
