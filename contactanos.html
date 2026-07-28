@@ -14,25 +14,25 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <!-- IMPORTANTE OJO 
     Cambio agregado en la linea  17
     para que los iconos del foother no se vean partidos o como cuadritos
     Cambio realizado por el Deivid-->
 
-    <!-- AOS CSS (Animaciones) --> 
+    <!-- AOS CSS (Animaciones) -->
     <!-- Se agregó la hoja de estilos de la librería AOS para permitir animaciones By El Deivid -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> 
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;700&family=Montserrat:wght@400;700&display=swap"
+        rel="stylesheet">
 
     <!-- CSS Globales y de Página -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/pages/contactanos.css">
-</head>
+    <link rel="stylesheet" href="build/css/app.css">
 
 <body>
     <!-- Header y Navegación -->
@@ -77,7 +77,8 @@
             <div class="row justify-content-center mb-0">
                 <!-- Se agregó el atributo data-aos="fade-up" para animar el logo de abajo hacia arriba By El Deivid -->
                 <div class="col-12 d-flex justify-content-center" data-aos="fade-up">
-                    <img class="page-header__logo" src="recursos-graficos/formulario-contactanos/Forrajero-naranja.png" alt="Logo Naranja">
+                    <img class="page-header__logo" src="recursos-graficos/formulario-contactanos/Forrajero-naranja.png"
+                        alt="Logo Naranja">
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -93,14 +94,15 @@
     <section id="formulario">
         <div class="container py-5">
             <div class="row justify-content-center">
-                
+
                 <!-- Div para alertas de respuesta -->
                 <div class="alerta"></div>
 
                 <!-- Columna Principal -->
                 <div class="col-12 col-md-8 col-lg-6">
                     <!-- Se agregó el atributo data-aos con delay de 400ms a la tarjeta principal del formulario By El Deivid -->
-                    <div class="contact-card p-4 p-md-5 border border-3 border-warning-subtle rounded-4 shadow-sm" data-aos="fade-up" data-aos-delay="400">
+                    <div class="contact-card p-4 p-md-5 border border-3 border-warning-subtle rounded-4 shadow-sm"
+                        data-aos="fade-up" data-aos-delay="400">
 
                         <!-- FORMULARIO VINCULADO AL JS POR ID -->
                         <form id="formulario-contacto" novalidate>
@@ -109,7 +111,8 @@
                             <div class="row g-3 mb-3">
                                 <!-- Nombre -->
                                 <div class="col-md-7">
-                                    <label for="nombre" class="form-label-custom fw-bold text-center w-100">Nombre</label>
+                                    <label for="nombre"
+                                        class="form-label-custom fw-bold text-center w-100">Nombre</label>
                                     <input type="text" id="nombre" name="nombre" autocomplete="off"
                                         class="form-control form-control-custom w-100" placeholder="Escribe tu nombre">
                                     <div id="error-nombre" class="narnaja-text small mt-1 text-center">
@@ -119,8 +122,10 @@
 
                                 <!-- Teléfono -->
                                 <div class="col-md-5">
-                                    <label for="telefono" class="form-label-custom fw-bold text-center w-100">Teléfono</label>
-                                    <input type="tel" min="0" id="telefono" name="telefono"  maxlength="10" autocomplete="off" pattern="[0-9]{10}"
+                                    <label for="telefono"
+                                        class="form-label-custom fw-bold text-center w-100">Teléfono</label>
+                                    <input type="tel" min="0" id="telefono" name="telefono" maxlength="10"
+                                        autocomplete="off" pattern="[0-9]{10}"
                                         class="form-control form-control-custom w-100" placeholder="(+52)">
                                     <div id="error-telefono" class="narnaja-text small mt-1 text-center">
                                         <p></p>
@@ -130,7 +135,8 @@
 
                             <!-- Correo electrónico -->
                             <div class="mb-3 correo-electronico">
-                                <label for="correo" class="form-label-custom fw-bold text-center w-100">Correo electrónico</label>
+                                <label for="correo" class="form-label-custom fw-bold text-center w-100">Correo
+                                    electrónico</label>
                                 <input type="email" id="correo" name="correo" autocomplete="off"
                                     class="form-control form-control-custom text-center w-100"
                                     placeholder="correoelectronico@correodeejemplo.net">
@@ -141,9 +147,13 @@
 
                             <!-- Fecha -->
                             <div class="mb-4 text-center">
-                                <label for="fecha" class="form-label-custom fw-bold mb-2">¿Cuándo te podemos contactar?</label>
-                                <input type="date" id="fecha" name="fecha" class="form-control form-control-custom text-center w-100">
-                                <div id="error-fecha" class="narnaja-text small mt-1 text-center"><p></p></div> <!--Se realiza el cambio para la alerta sea color Naranja by el Deivid-->
+                                <label for="fecha" class="form-label-custom fw-bold mb-2">¿Cuándo te podemos
+                                    contactar?</label>
+                                <input type="date" id="fecha" name="fecha"
+                                    class="form-control form-control-custom text-center w-100">
+                                <div id="error-fecha" class="narnaja-text small mt-1 text-center">
+                                    <p></p>
+                                </div> <!--Se realiza el cambio para la alerta sea color Naranja by el Deivid-->
                             </div>
 
                             <!-- Horario en Lapso -->
@@ -151,7 +161,8 @@
                                 <label class="form-label-custom fw-bold mb-1">¿En qué horario te es más cómodo?</label>
                                 <p class="text-muted small mb-2">(Horario de atención: 8:00 a.m. a 8:00 p.m.)</p>
 
-                                <div class="p-2 bg-white rounded-4 border d-flex justify-content-center align-items-center gap-1 gap-sm-2 shadow-sm">
+                                <div
+                                    class="p-2 bg-white rounded-4 border d-flex justify-content-center align-items-center gap-1 gap-sm-2 shadow-sm">
                                     <input type="time" id="hora-inicio" name="hora_inicio"
                                         class="form-control border-0 text-center fw-bold bg-transparent px-1"
                                         value="08:00" min="08:00" max="20:00" style="max-width: 165px;">
@@ -160,7 +171,9 @@
                                         class="form-control border-0 text-center fw-bold bg-transparent px-1"
                                         value="20:00" min="08:00" max="20:00" style="max-width: 165px;">
                                 </div>
-                                <div id="error-hora" class="narnaja-text small mt-1 text-center"><p></p></div> <!--Se realiza el cambio para la alerta sea color Naranja by el Deivid-->
+                                <div id="error-hora" class="narnaja-text small mt-1 text-center">
+                                    <p></p>
+                                </div> <!--Se realiza el cambio para la alerta sea color Naranja by el Deivid-->
                             </div>
 
                             <!-- Motivo -->
@@ -187,11 +200,13 @@
 
                             <!-- Quejas o sugerencias -->
                             <div class="form-card mb-3">
-                                <label for="caja_de_comentarios" class="form-label-custom fw-bold text-center w-100">Quejas o sugerencias</label>
+                                <label for="caja_de_comentarios"
+                                    class="form-label-custom fw-bold text-center w-100">Quejas o sugerencias</label>
                                 <textarea id="caja_de_comentarios" class="form-control form-control-custom w-100"
                                     placeholder="Por favor, escriba sus comentarios." rows="5" cols="40"></textarea>
                                 <p id="contador" class="mt-2 text-center small">0 de 300 caracteres | 0 palabras</p>
-                                <div id="error-mensaje" class="narnaja-text small mt-1 text-center"> <!--Se realiza el cambio para la alerta sea color Naranja by el Deivid-->
+                                <div id="error-mensaje" class="narnaja-text small mt-1 text-center">
+                                    <!--Se realiza el cambio para la alerta sea color Naranja by el Deivid-->
                                     <p></p>
                                 </div>
                             </div>
@@ -199,9 +214,9 @@
                             <!-- Botón Enviar -->
                             <div class="alertaBoton"></div>
                             <br>
-                                <div class="d-grid gap-2 col-10 mx-auto">
-                                    <button class="btn btn-primary" type="submit">Enviar</button>
-                                </div>
+                            <div class="d-grid gap-2 col-10 mx-auto">
+                                <button class="btn btn-primary" type="submit">Enviar</button>
+                            </div>
                             <br>
 
                         </form>
@@ -216,7 +231,8 @@
     <footer class="footer-forrajero" data-aos="fade-up">
         <div class="footer-container">
             <div class="footer-brand">
-                <img src="recursos-graficos/footer/Captura de pantalla 2026-07-16 005749.png" alt="Logo Forrajero" class="footer-logo">
+                <img src="recursos-graficos/footer/Captura de pantalla 2026-07-16 005749.png" alt="Logo Forrajero"
+                    class="footer-logo">
                 <div class="footer-social">
                     <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
                     <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
@@ -249,7 +265,8 @@
                 <h3>Atención al cliente</h3>
                 <ul>
                     <li><i class="fa-solid fa-phone"></i><a href="tel:+523119553880">(311) 955-3880</a></li>
-                    <li><i class="fa-solid fa-envelope"></i><a href="mailto:info@toroforrajero.com">info@toroforrajero.com</a></li>
+                    <li><i class="fa-solid fa-envelope"></i><a
+                            href="mailto:info@toroforrajero.com">info@toroforrajero.com</a></li>
                     <li><i class="fa-solid fa-location-dot"></i> Cerro Lejos, A dos horas de la Ciudad</li>
                     <li><i class="fa-solid fa-clock"></i> 10:00 a.m. - 7:00 p.m.</li>
                 </ul>
