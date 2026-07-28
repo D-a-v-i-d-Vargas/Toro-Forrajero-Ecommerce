@@ -5,7 +5,7 @@
  ******************************************************************************/
 
 /* -----------------------------------------------------------------------------
-  SECCION: PAGE HEADER
+	SECCION: PAGE HEADER
 ----------------------------------------------------------------------------- */
 .page-header__logo {
 	height: 200px;
@@ -23,7 +23,7 @@
 }
 
 /* -----------------------------------------------------------------------------
-  SECCION: FORMULARIO CONTÁCTANOS
+	SECCION: FORMULARIO CONTÁCTANOS
 ----------------------------------------------------------------------------- */
 
 .contact-card {
@@ -37,8 +37,13 @@
 	color: var(--color-fondo) !important;
 }
 
+.bg-naranjaFuerte {
+	background-color: var(--color-naranjaFuerte) !important;
+	color: var(--color-fondo) !important;
+}
+
 /* -----------------------------------------------------------------------------
-  SECCION: ALERTAS
+    SECCION: ALERTAS
 ----------------------------------------------------------------------------- */
 
 
@@ -48,4 +53,22 @@
 
 .alerta-titulo {
 	font-weight: 900;
+}
+
+/* -----------------------------------------------------------------------------
+    SECCION: Botón de envio
+----------------------------------------------------------------------------- */
+.btn-primary{
+    --bs-btn-font-family: var(--fuente-cuerpo); /*fuente*/
+    --bs-btn-bg: var(--color-verdeFuerte); /*color fondo*/
+    --bs-btn-border-color: var(--color-verdeFuerte); /*color borde*/
+    --bs-btn-hover-bg: var(--color-verdeCLaro); /*color cuando se pone el puntero sobre el botón*/
+    --bs-btn-hover-border-color: var(--color-verdeCLaro); /*color borde cuando se pone el puntero sobre el botón*/
+    --bs-btn-active-bg: var(--color-naranjaFuerte); /*color fondo cuando se hace click*/
+    --bs-btn-active-border-color: var(--color-naranjaFuerte); /*color borde cuando se hace click*/
+}
+
+.alertaBoton{
+    --alert-bg: var(--color-verdeCLaro);
+    border-color: var(--color-verdeCLaro);
 }

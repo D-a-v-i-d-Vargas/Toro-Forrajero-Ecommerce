@@ -9,7 +9,7 @@
 
 @import url("components/navbar.css");
 @import url("components/footer.css");
-@import url("components/forms.css");
+/* @import url("components/forms.css"); */
 @import url("components/button.css");
 
 
@@ -39,7 +39,7 @@ body {
 
 
 /* -----------------------------------------------------------------------------
-  SECCION: DEBUGGEO
+    SECCION: DEBUGGEO
 ----------------------------------------------------------------------------- */
 
 
