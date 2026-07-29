@@ -85,4 +85,10 @@ el-toro-forrajero/
 * Esther Alejandra Nila Miranda
 * Natalia Susana Cruz Ruíz
 
+---
+## Comando para ejecutar el codigo
+
+```text
+npm run dev
+```
 
