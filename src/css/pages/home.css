@@ -1,43 +1,112 @@
-/* npm run dev */
-/* Ctrl + C para interrumpir el script */
-/* ==========================================================================
-   SECCIÓN: DIVISORE VERDE
-========================================================================== */
+/* ==========================================================
+   HERO - HOME
+========================================================== */
+
+#home-calidad {
+    width: 100%;
+    min-height: 520px;
+    background: #F7F0D8;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.home-hero-content {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 40px 60px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.home-hero-text {
+    flex: 1;
+    max-width: 520px;
+}
+
+.home-hero-text h1 {
+    font-family: var(--fuente-titulos);
+    font-size: clamp(2.8rem, 4.5vw, 4.5rem);
+    font-weight: var(--peso-bold);
+    color: var(--color-verdeFuerte);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.home-hero-text p {
+    font-family: var(--fuente-cuerpo);
+    font-size: 1.25rem;
+    color: var(--color-textoOscuro);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.btn-hero {
+    display: inline-block;
+    padding: 15px 32px;
+    background: var(--color-naranjaFuerte);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 700;
+    transition: .3s;
+}
+
+.btn-hero:hover {
+    background: var(--color-naranjaClaro);
+}
+
+.home-hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.home-hero-image img {
+    width: 100%;
+    max-width: 650px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* ==========================================================
+   BENEFICIOS
+========================================================== */
 
 .beneficios {
     width: 100%;
     min-height: 90px;
-    background-color: #283618;
+    background: #283618;
 
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 85px;
 
-    padding: 7px 20px;
+    padding: 10px 20px;
 }
 
 .beneficio {
-    width: 100px;
+    width: 120px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 
     text-align: center;
 }
 
 .beneficio p {
-    margin: 3px 0 0;
-
-    color: #FFFFFF;
-    font-family: Arial, sans-serif;
+    margin-top: 8px;
+    color: #fff;
     font-size: 11px;
     line-height: 1.4;
 }
-
-/* Círculos de los primeros dos iconos */
 
 .icono-circulo {
     width: 48px;
@@ -56,8 +125,6 @@
     font-size: 24px;
 }
 
-/* Icono de atención */
-
 .icono-sin-circulo {
     width: 48px;
     height: 48px;
@@ -71,8 +138,6 @@
     color: #BC6C25;
     font-size: 35px;
 }
-
-/* Icono del camión */
 
 .icono-camion {
     width: 55px;
@@ -88,18 +153,63 @@
     font-size: 42px;
 }
 
-/* Responsive */
+/* ==========================================================
+   ANIMACIÓN
+========================================================== */
 
-@media (max-width: 700px) {
+#hero-title .split-char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: splitCharIn .6s cubic-bezier(.25,.46,.45,.94) forwards;
+}
+
+#hero-title .split-space {
+    display: inline-block;
+    width: .3em;
+}
+
+@keyframes splitCharIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width: 991px) {
+
+    #home-calidad {
+        padding: 3rem 0;
+    }
+
+    .home-hero-content {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1.5rem;
+    }
+
+    .home-hero-text,
+    .home-hero-image {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .home-hero-image {
+        justify-content: center;
+        margin-top: 2rem;
+    }
+
+    .home-hero-text h1 {
+        font-size: 2.8rem;
+    }
 
     .beneficios {
         flex-wrap: wrap;
         gap: 25px 45px;
         padding: 20px;
     }
-
-    .beneficio {
-        width: 120px;
-    }
-
 }
