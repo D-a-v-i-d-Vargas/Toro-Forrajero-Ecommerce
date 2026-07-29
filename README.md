@@ -99,3 +99,11 @@ Este ecosistema digital fue planeado, diseñado y codificado por un equipo excep
         <td align="center"><a href="https://github.com/natalia-susana"><img src="https://github.com/natalia-susana.png" width="100px;" alt="Natalia Susana"/><br /><sub><b>Natalia Susana</b></sub></a></td>
     </tr>
 </table>
+
+## Comando para ejecutar el codigo
+
+```text
+npm run dev
+```
+
+
