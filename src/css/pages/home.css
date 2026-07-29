@@ -1,0 +1,105 @@
+/* npm run dev */
+/* Ctrl + C para interrumpir el script */
+/* ==========================================================================
+   SECCIÓN: DIVISORE VERDE
+========================================================================== */
+
+.beneficios {
+    width: 100%;
+    min-height: 90px;
+    background-color: #283618;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 85px;
+
+    padding: 7px 20px;
+}
+
+.beneficio {
+    width: 100px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.beneficio p {
+    margin: 3px 0 0;
+
+    color: #FFFFFF;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+/* Círculos de los primeros dos iconos */
+
+.icono-circulo {
+    width: 48px;
+    height: 48px;
+
+    border: 1px solid #BC6C25;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icono-circulo i {
+    color: #BC6C25;
+    font-size: 24px;
+}
+
+/* Icono de atención */
+
+.icono-sin-circulo {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icono-sin-circulo i {
+    color: #BC6C25;
+    font-size: 35px;
+}
+
+/* Icono del camión */
+
+.icono-camion {
+    width: 55px;
+    height: 48px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icono-camion i {
+    color: #BC6C25;
+    font-size: 42px;
+}
+
+/* Responsive */
+
+@media (max-width: 700px) {
+
+    .beneficios {
+        flex-wrap: wrap;
+        gap: 25px 45px;
+        padding: 20px;
+    }
+
+    .beneficio {
+        width: 120px;
+    }
+
+}

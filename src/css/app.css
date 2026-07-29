@@ -1,0 +1,8 @@
+/* 1. Configuración Base */
+@import './base/index.css';
+
+/* 2. Componentes Reutilizables */
+@import './components/index.css';
+
+/* 3. Vistas y Páginas */
+@import './pages/index.css';
