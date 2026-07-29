@@ -177,6 +177,66 @@
 }
 
 /* ==========================================================
+   RESEÑAS
+========================================================== */
+
+/*Cards Reseñas - Home*/
+#resenas{
+    /* padding-top:2rem; */
+    padding-bottom:5rem;
+}
+
+.titulo-reseñas{
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+.card-body{
+    padding:2rem;
+}
+
+.reseña{
+    background-color: var(--color-naranjaClaro);
+    border-color: var(--color-naranjaClaro);
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+.reseña:hover{
+    transform: translateY(-6px);
+    box-shadow:
+        0 12px 28px rgba(0,0,0,.12);
+}
+
+.review-author{
+    display:flex;
+    align-items:center;
+    gap:1rem;
+    margin-top:2rem;
+}
+
+.card-body h6{
+    font-size: small;
+}
+
+.review-author h6{
+    margin:0;
+}
+
+.review-author small{
+    color:var(--color-verdeCLaro);
+}
+
+.foto-circulo{ /*Para que estén circulares, tienen que ser cuadradas.*/
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    object-fit:cover;
+    flex-shrink:0;
+}
+
+/* ==========================================================
    RESPONSIVE
 ========================================================== */
 
