@@ -9,7 +9,7 @@ class ItemsController {
 	addItem(nombreProducto, descripcion, destacado, especie, peso, precio, marca) {
 		const item = {
 			id: this.currentId++,
-			nombreProducto: nombre,
+			nombreProducto: nombreProducto,
 			descripcion: descripcion,
 			destacado: destacado,
 			especie: especie,
