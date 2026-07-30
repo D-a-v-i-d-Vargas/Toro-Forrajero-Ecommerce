@@ -25,6 +25,7 @@
 
     <!--CSS Globales-->
     <link rel="stylesheet" href="build/css/app.css">
+    <link rel="stylesheet" href="build/css/productos.css">
 </head>
 
 <body>
@@ -84,23 +85,190 @@
         <!-- -------------------------------------------------------------------
             2. FILTROS Y CATEGORÍAS (Especie y Marca)
         -------------------------------------------------------------------- -->
-        <section>
+        <section class="productos">
+
+            <h1>Productos</h1>
+
+            <p class="descripcion-productos">
+                Contamos con las mejores marcas, para que tus animales crezcan saludables y fuertes.
+            </p>
+
+            <section class="filtro-especies">
+
+                <div class="titulo-especie">
+                    <h3>Especie</h3>
+                </div>
+
+                <div class="contenedor-especies">
+
+                    <!-- Bovinos -->
+                    <button type="button" class="especie" data-especie="bovinos">
+
+                        <div class="imagen-especie">
+                            <img src="recursos-graficos/productos/bovino.jpeg" alt="Bovinos">
+                        </div>
+
+                        <span class="nombre-especie">
+                            Bovinos
+                        </span>
+
+                    </button>
+
+                    <!-- Porcinos -->
+                    <button type="button" class="especie" data-especie="porcinos">
+
+                        <div class="imagen-especie">
+                            <img src="recursos-graficos/productos/porcinos.jpeg" alt="Porcinos">
+                        </div>
+
+                        <span class="nombre-especie">
+                            Porcinos
+                        </span>
+
+                    </button>
+
+                    <!-- Aves -->
+                    <button type="button" class="especie" data-especie="aves">
+
+                        <div class="imagen-especie">
+                            <img src="recursos-graficos/productos/aves.jpeg" alt="Aves">
+                        </div>
+
+                        <span class="nombre-especie">
+                            Aves
+                        </span>
+
+                    </button>
+
+                    <!-- Ovinos -->
+                    <button type="button" class="especie" data-especie="ovinos">
+
+                        <div class="imagen-especie">
+                            <img src="recursos-graficos/productos/ovino.png" alt="Ovinos">
+                        </div>
+
+                        <span class="nombre-especie">
+                            Ovinos
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </section>
 
         </section>
+
+        <!-- BOTÓN DE MARCA -->
+        <section>
+
+            <!-- En realidad, será la "unión" de dos botones. Ambos por bootstrap, 
+        solo que uno será con la categoría button group, y el otro con dropdown para hacerlo desplegable. -->
+
+            <div class="btn-group marca-group">
+
+                <!-- Botón izquierdo-->
+                <button type="button" class="btn btn-marca" disabled>
+                    <!--Le ponemos disabled para que no sea clileable-->
+                    Marca <!-- visible -->
+                </button>
+
+                <!-- Botón derecho desplegable -->
+                <button type="button" class="btn btn-dropdown dropdown-toggle dropdown-toggle-split"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+
+                    <span class="visually-hidden">menú desplegable</span>
+                    <!-- para que no aparezca el titulo en el botón der.-->
+
+                </button>
+
+                <!-- Menú desplegable -->
+                <ul class="dropdown-menu w-100">
+                    <li>
+                        <a class="dropdown-item" href="#"> <!-- El backend reemplazará el href -->
+                            ADM
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#"> <!-- El backend reemplazará el href -->
+                            El Nogal
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#"> <!-- El backend reemplazará el href -->
+                            Alimentos Arandas
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+
 
 
         <!-- -------------------------------------------------------------------
             3. CATÁLOGOS Y TARJETAS DE PRODUCTOS (GRID)
         -------------------------------------------------------------------- -->
-        <section>
-            <div class="container my-4">
-                <!-- Solo creas ESTE row contenedor -->
-                <div class="row g-4" id="catalogo-productos"></div>
+        <section class="catalogo-productos activo">
+            <div class="productos-grid" id="catalogo-productos">
+                <!-- Aquí se inyectarán dinámicamente los productos desde JS -->
             </div>
+        </section>
+
+
+
+        <!-- =====================================================
+        ENCABEZADO
+    ====================================================== -->
+        <section>
+
 
         </section>
 
+        <!-- =====================================================
+        BOTONES DE CATEGORÍAS
+    ====================================================== -->
+        <!--  <section class="categorias-productos">
+
+        <button
+            type="button"
+            class="boton-categoria activo"
+            data-categoria="ganado"
+        >
+            Ganado
+        </button>
+
+        <button
+            type="button"
+            class="boton-categoria"
+            data-categoria="puercos"
+        >
+            Puercos
+        </button>
+
+        <button
+            type="button"
+            class="boton-categoria"
+            data-categoria="gallinas"
+        >
+            Gallinas
+        </button>
+
+        <button
+            type="button"
+            class="boton-categoria"
+            data-categoria="borregos"
+        >
+            Borregos
+        </button>
+
+    </section> -->
+
+
+
     </main>
+
+
 
     <!-- ===========================================================================
         SECCIÓN: PIE DE PÁGINA (FOOTER)
@@ -167,7 +335,6 @@
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
 
-    <!--Script de js-->
     <script src="build/js/itemsController.js"></script>
     <script src="build/js/items.js"></script>
 </body>

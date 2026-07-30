@@ -207,29 +207,41 @@ function cargarItems() {
 			producto.especie,
 			producto.peso,
 			producto.precio,
-			producto.marca
+			producto.marca,
+			producto.imagen,
+			producto.estado
 		);
 	});
 }
+
+
 
 function renderizarHTML(items) {
 	const catalogo = document.getElementById('catalogo-productos');
 	if (!catalogo) return;
 
+	// Inyectamos exactamente la maquetación en HTML que creó tu compañero
 	catalogo.innerHTML = items.map(producto => `
-      <div class="col-12 col-md-6 col-lg-4 mb-4">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title">${producto.nombreProducto}</h5>
-            <p class="card-text">${producto.descripcion}</p>
-            <p class="text-muted"><small>${producto.especie} - ${producto.marca}</small></p>
-            <p><strong>Peso:</strong> ${producto.peso}</p>
-            <p class="fw-bold text-success">$${producto.precio}</p>
-          </div>
-        </div>
-      </div>
+        <article class="tarjeta-producto">
+            <img src="${producto.imagen}" alt="${producto.nombreProducto}">
+
+            <div class="contenido-producto">
+                <h2>${producto.nombreProducto}</h2>
+                <p>${producto.descripcion}</p>
+                <span class="precio">$${producto.precio} MXN</span>
+
+                <button 
+                    type="button" 
+                    class="boton-carrito" 
+                    data-producto="${producto.nombreProducto}" 
+                    data-precio="${producto.precio}">
+                    Agregar al carrito
+                </button>
+            </div>
+        </article>
     `).join('');
 }
+
 
 document.addEventListener("DOMContentLoaded", () => {
 	cargarItems();
