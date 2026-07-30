@@ -40,3 +40,39 @@
 
 }); */
 //si no hay nada borra todo lo de arriba
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    contadorCarrito();
+})
+
+
+function contadorCarrito() {
+    const btns = document.querySelectorAll('.boton-carrito');
+    const divcarrito = document.querySelector('.cart-icon-wrapper')
+    const carrito = document.createElement('P');
+    carrito.classList.add('contador-carrito');
+
+    let contadorCarrito = parseInt(carrito.textContent)
+    let contador = 1;
+
+    btns.forEach(btn => {
+        btn.addEventListener('click', function () {
+
+
+            carrito.textContent = contador
+            if (carrito.textContent == 100) {
+                carrito.innerHTML = `<span class="carrito-mas">+</span>99`;
+            } else {
+                contador++;
+            }
+
+
+
+            divcarrito.append(carrito)
+
+        })
+
+
+    })
+}
