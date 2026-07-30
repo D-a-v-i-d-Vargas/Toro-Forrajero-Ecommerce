@@ -110,19 +110,19 @@
 		0 0 55px rgba(222, 196, 145, 0.4);
 }
 
-/* Posiciones del indicator según qué elemento tiene el hover */
-.navbar2 ul li:nth-child(1):hover~.indicator {
-	left: 0;
-}
+/* -----------------------------------------------------------------------------
+   POSICIÓN DEL INDICADOR (SEGÚN LA PÁGINA ACTIVA Y HOVER)
+----------------------------------------------------------------------------- */
 
-.navbar2 ul li:nth-child(2):hover~.indicator {
-	left: 150px;
-}
+/* 1. Posición inicial por defecto según el botón que tenga la clase .active */
+.navbar2 ul li:has(a.active):nth-child(1) ~.indicator { left: 0; }
+.navbar2 ul li:has(a.active):nth-child(2) ~.indicator { left: 150px; }
+.navbar2 ul li:has(a.active):nth-child(3) ~.indicator { left: 300px; }
+.navbar2 ul li:has(a.active):nth-child(4) ~.indicator { left: 450px; }
 
-.navbar2 ul li:nth-child(3):hover~.indicator {
-	left: 300px;
-}
 
-.navbar2 ul li:nth-child(4):hover~.indicator {
-	left: 450px;
-}
+/* 2. Movimiento al pasar el mouse (sobreescribe la posición activa temporalmente) */
+.navbar2 ul li:nth-child(1):hover ~.indicator { left: 0 !important; }
+.navbar2 ul li:nth-child(2):hover ~.indicator { left: 150px !important; }
+.navbar2 ul li:nth-child(3):hover ~.indicator { left: 300px !important; }
+.navbar2 ul li:nth-child(4):hover ~.indicator { left: 450px !important; }

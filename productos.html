@@ -32,7 +32,8 @@
     <!-- ===========================================================================
         SECCIÓN: ENCABEZADO Y NAVEGACIÓN (HEADER)
     ============================================================================ -->
-    <header>
+    <header class="sticky-top shadow-sm">
+
         <!-- NAV BAR 1: Logo y Accesos rápidos -->
         <nav class="navbar navbar-1">
             <div class="container-fluid px-4">
@@ -71,13 +72,11 @@
             </ul>
         </nav>
     </header>
-
     <!-- ===========================================================================
         SECCIÓN PRINCIPAL: VISTA DE PRODUCTOS (MAIN)
     ============================================================================ -->
     <main class="container my-5">
 
-        <p><span class="carrito-mas">+</span>99</p>
         <!-- -------------------------------------------------------------------
             1. ENCABEZADO DE PÁGINA (Título y Descripción)
         -------------------------------------------------------------------- -->
@@ -89,16 +88,659 @@
         <!-- -------------------------------------------------------------------
             2. FILTROS Y CATEGORÍAS (Especie y Marca)
         -------------------------------------------------------------------- -->
-        <section>
+        <section class="productos">
+
+            <h1>Productos</h1>
+
+            <p class="descripcion-productos">
+                Contamos con las mejores marcas, para que tus animales crezcan saludables y fuertes.
+            </p>
+
+            <section class="filtro-especies">
+
+                <div class="titulo-especie">
+                    <h3>Especie</h3>
+                </div>
+
+                <div class="contenedor-especies">
+
+                    <!-- Bovinos -->
+                    <button type="button" class="especie" data-especie="bovinos">
+
+                        <div class="imagen-especie">
+                            <img src="recursos-graficos/productos/bovino.jpeg" alt="Bovinos">
+                        </div>
+
+                        <span class="nombre-especie">
+                            Bovinos
+                        </span>
+
+                    </button>
+
+                    <!-- Porcinos -->
+                    <button type="button" class="especie" data-especie="porcinos">
+
+                        <div class="imagen-especie">
+                            <img src="recursos-graficos/productos/porcinos.jpeg" alt="Porcinos">
+                        </div>
+
+                        <span class="nombre-especie">
+                            Porcinos
+                        </span>
+
+                    </button>
+
+                    <!-- Aves -->
+                    <button type="button" class="especie" data-especie="aves">
+
+                        <div class="imagen-especie">
+                            <img src="recursos-graficos/productos/aves.jpeg" alt="Aves">
+                        </div>
+
+                        <span class="nombre-especie">
+                            Aves
+                        </span>
+
+                    </button>
+
+                    <!-- Ovinos -->
+                    <button type="button" class="especie" data-especie="ovinos">
+
+                        <div class="imagen-especie">
+                            <img src="recursos-graficos/productos/ovino.png" alt="Ovinos">
+                        </div>
+
+                        <span class="nombre-especie">
+                            Ovinos
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </section>
 
         </section>
+
+        <!-- BOTÓN DE MARCA -->
+        <section>
+
+            <!-- En realidad, será la "unión" de dos botones. Ambos por bootstrap, 
+        solo que uno será con la categoría button group, y el otro con dropdown para hacerlo desplegable. -->
+
+            <div class="btn-group marca-group">
+
+                <!-- Botón izquierdo-->
+                <button type="button" class="btn btn-marca" disabled>
+                    <!--Le ponemos disabled para que no sea clileable-->
+                    Marca <!-- visible -->
+                </button>
+
+                <!-- Botón derecho desplegable -->
+                <button type="button" class="btn btn-dropdown dropdown-toggle dropdown-toggle-split"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+
+                    <span class="visually-hidden">menú desplegable</span>
+                    <!-- para que no aparezca el titulo en el botón der.-->
+
+                </button>
+
+                <!-- Menú desplegable -->
+                <ul class="dropdown-menu w-100">
+                    <li>
+                        <a class="dropdown-item" href="#"> <!-- El backend reemplazará el href -->
+                            ADM
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#"> <!-- El backend reemplazará el href -->
+                            El Nogal
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#"> <!-- El backend reemplazará el href -->
+                            Alimentos Arandas
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+
 
 
         <!-- -------------------------------------------------------------------
             3. CATÁLOGOS Y TARJETAS DE PRODUCTOS (GRID)
         -------------------------------------------------------------------- -->
 
+        <!-- =====================================================
+        CATÁLOGO 1: GANADO
+        Es el único visible al cargar la página
+    ====================================================== -->
+        <section id="ganado" class="catalogo-productos activo">
 
+            <div class="productos-grid">
+
+                <article class="tarjeta-producto">
+                    <img src="recursos-graficos/productos/vaca.png" alt="Alimento V-ital para ganado">
+
+                    <div class="contenido-producto">
+                        <h2>V-ital Ganado</h2>
+
+                        <p>
+                            Alimento balanceado para ganado de carne.
+
+                        </p>
+
+                        <span class="precio">$225.00 MXN</span>
+
+                        <button type="button" class="boton-carrito" data-producto="V-ital Ganado" data-precio="225">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+                <article class="tarjeta-producto">
+                    <img src="recursos-graficos/productos/vaca-gorda.png" alt="Alimento V-ital Ganado Engorda">
+
+                    <div class="contenido-producto">
+                        <h2>V-ital Ganado Engorda</h2>
+
+                        <p>
+                            Alimento balanceado para ganado en etapa de engorda.
+
+                        </p>
+
+                        <span class="precio">$245.00 MXN</span>
+
+                        <button type="button" class="boton-carrito" data-producto="V-ital Ganado Engorda"
+                            data-precio="245">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+                <article class="tarjeta-producto">
+                    <img src="recursos-graficos/productos/Vaca-recria.png" alt="Alimento V-ital Ganado Recría">
+
+                    <div class="contenido-producto">
+                        <h2>V-ital Ganado Recría</h2>
+
+                        <p>
+                            Alimento balanceado para ganado en etapa de recría.
+
+                        </p>
+
+                        <span class="precio">$235.00 MXN</span>
+
+                        <button type="button" class="boton-carrito" data-producto="V-ital Ganado Recría"
+                            data-precio="235">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+                <article class="tarjeta-producto">
+                    <img src="recursos-graficos/productos/Vaca-mantenimiento.png"
+                        alt="Alimento V-ital Ganado Mantenimiento">
+
+                    <div class="contenido-producto">
+                        <h2>V-ital Ganado Mantenimiento</h2>
+
+                        <p>
+                            Alimento balanceado para ganado en mantenimiento.
+
+                        </p>
+
+                        <span class="precio">$230.00 MXN</span>
+
+                        <button type="button" class="boton-carrito" data-producto="V-ital Ganado Mantenimiento"
+                            data-precio="230">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+                <article class="tarjeta-producto">
+                    <img src="recursos-graficos/productos/Vaca-lechero.png" alt="Alimento V-ital Ganado Lechero">
+
+                    <div class="contenido-producto">
+                        <h2>V-ital Ganado Lechero </h2>
+
+                        <p>
+                            Alimento balanceado para ganado lechero de alta producción.
+
+                        </p>
+
+                        <span class="precio">$265.00 MXN</span>
+
+                        <button type="button" class="boton-carrito" data-producto="V-ital Ganado Lechero"
+                            data-precio="265">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+                <article class="tarjeta-producto">
+                    <img src="recursos-graficos/productos/Vaca-iniciador.png" alt="Alimento V-ital Ganado Iniciador">
+
+                    <div class="contenido-producto">
+                        <h2>V-ital Ganado Iniciador</h2>
+
+                        <p>
+                            Alimento balanceado para becerros en etapa inicial.
+
+                        </p>
+
+                        <span class="precio">$240.00 MXN</span>
+
+                        <button type="button" class="boton-carrito" data-producto="V-ital Ganado Iniciador"
+                            data-precio="240">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- =====================================================
+        CATÁLOGO 2: PUERCOS
+    ====================================================== -->
+        <section id="puercos" class="catalogo-productos">
+
+            <div class="productos-grid">
+
+                <article class="tarjeta-producto">
+                    <img src="recursos-graficos/productos/Puerto-balanceado.png"
+                        alt="Alimento V-ital Cerdos Crecimiento">
+
+                    <div class="contenido-producto">
+                        <h2>ADM Nutrición Animal </h2>
+
+                        <p>
+                            Alimento balanceado para cerdos en etapa de crecimiento.
+
+                        </p>
+
+                        <span class="precio">$365.00 MXN</span>
+
+                        <button type="button" class="boton-carrito" data-producto="V-ital Cerdos Crecimiento"
+                            data-precio="365">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+                <article class="tarjeta-producto">
+                    <img src="recursos-graficos/productos/Puerco-engorda.png" alt="Alimento V-ital Cerdos Engorda">
+
+                    <div class="contenido-producto">
+                        <h2>ADM Nutrición Animal</h2>
+
+                        <p>
+                            Alimento balanceado para cerdos en etapa de engorda.
+
+                        </p>
+
+                        <span class="precio">$380.00 MXN</span>
+
+                        <button type="button" class="boton-carrito" data-producto="V-ital Cerdos Engorda"
+                            data-precio="380">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+                <article class="tarjeta-producto">
+                    <img src="recursos-graficos/productos/Puerco-recria.png" alt="Alimento V-ital Cerdos Recría">
+
+                    <div class="contenido-producto">
+                        <h2>ADM Nutrición Animal</h2>
+
+                        <p>
+                            Alimento balanceado para cerdos en etapa de recría.
+
+                        </p>
+
+                        <span class="precio">$360.00 MXN</span>
+
+                        <button type="button" class="boton-carrito" data-producto="V-ital Cerdos Recría"
+                            data-precio="360">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+                <article class="tarjeta-producto">
+                    <img src="recursos-graficos/productos/Puerco-deteste.png" alt="Alimento V-ital Cerdos Destete">
+
+                    <div class="contenido-producto">
+                        <h2>ADM Nutrición Animal</h2>
+
+                        <p>
+                            Alimento balanceado para lechones en etapa de destete.
+
+                        </p>
+
+                        <span class="precio">$355.00 MXN</span>
+
+                        <button type="button" class="boton-carrito" data-producto="V-ital Cerdos Destete"
+                            data-precio="355">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+                <article class="tarjeta-producto">
+                    <img src="recursos-graficos/productos/Puerco-lactante.png" alt="Alimento V-ital Cerdos Lactancia">
+
+                    <div class="contenido-producto">
+                        <h2>ADM Nutrición Animal</h2>
+
+                        <p>
+                            Alimento balanceado para cerdas lactantes de alta producción.
+
+                        </p>
+
+                        <span class="precio">$395.00 MXN</span>
+
+                        <button type="button" class="boton-carrito" data-producto="V-ital Cerdos Lactancia"
+                            data-precio="395">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+                <article class="tarjeta-producto">
+                    <img src="recursos-graficos/productos/Puerco-iniciador.png" alt="Alimento V-ital Cerdos Iniciador">
+
+                    <div class="contenido-producto">
+                        <h2>ADM Nutrición Animal</h2>
+
+                        <p>
+                            Alimento balanceado para lechones en etapa inicial.
+
+                        </p>
+
+                        <span class="precio">$345.00 MXN</span>
+
+                        <button type="button" class="boton-carrito" data-producto="V-ital Cerdos Iniciador"
+                            data-precio="345">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- =====================================================
+        CATÁLOGO 3: GALLINAS
+    ====================================================== -->
+        <section id="gallinas" class="catalogo-productos">
+
+            <div class="productos-grid">
+
+                <article class="tarjeta-producto">
+                    <img src="recursos-graficos/productos/Gallina-corral.png"
+                        alt="Alimento V-ital Gallinas Crecimiento">
+
+                    <div class="contenido-producto">
+                        <h2>MNA</h2>
+
+                        <p>
+                            Alimento balanceado para gallinas de corral.
+
+                        </p>
+
+                        <span class="precio">$220.00 MXN</span>
+
+                        <button type="button" class="boton-carrito" data-producto="V-ital Gallinas Crecimiento"
+                            data-precio="420">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+                <article class="tarjeta-producto">
+                    <img src="recursos-graficos/productos/Gallina-postura.png" alt="Alimento V-ital Gallinas Postura">
+
+                    <div class="contenido-producto">
+                        <h2>MNA </h2>
+
+                        <p>
+                            Alimento balanceado para gallinas en etapa de postura.
+
+                        </p>
+
+                        <span class="precio">$300.00 MXN</span>
+
+                        <button type="button" class="boton-carrito" data-producto="V-ital Gallinas Postura"
+                            data-precio="440">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+                <article class="tarjeta-producto">
+                    <img src="recursos-graficos/productos/Gallina-recria.png" alt="Alimento V-ital Gallinas Recría">
+
+                    <div class="contenido-producto">
+                        <h2>MNA</h2>
+
+                        <p>
+                            Alimento balanceado para gallinas en etapa de recría.
+
+                        </p>
+
+                        <span class="precio">$215.00 MXN</span>
+
+                        <button type="button" class="boton-carrito" data-producto="V-ital Gallinas Recría"
+                            data-precio="415">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+                <article class="tarjeta-producto">
+                    <img src="recursos-graficos/productos/Gallina-iniciador.png"
+                        alt="Alimento V-ital Gallinas Iniciador">
+
+                    <div class="contenido-producto">
+                        <h2>MNA</h2>
+
+                        <p>
+                            Alimento balanceado para gallinas en etapa inicial.
+
+                        </p>
+
+                        <span class="precio">$235.00 MXN</span>
+
+                        <button type="button" class="boton-carrito" data-producto="V-ital Gallinas Iniciador"
+                            data-precio="405">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+                <article class="tarjeta-producto">
+                    <img src="recursos-graficos/productos/Gallina-mantenimiento.png"
+                        alt="Alimento V-ital Gallinas Mantenimiento">
+
+                    <div class="contenido-producto">
+                        <h2>MNA</h2>
+
+                        <p>
+                            Alimento balanceado para gallinas en etapa de mantenimiento.
+
+                        </p>
+
+                        <span class="precio">$190.00 MXN</span>
+
+                        <button type="button" class="boton-carrito" data-producto="V-ital Gallinas Mantenimiento"
+                            data-precio="430">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+                <article class="tarjeta-producto">
+                    <img src="recursos-graficos/productos/Gallinas-engorda.png" alt="Alimento MNA Gallinas Engorda">
+
+                    <div class="contenido-producto">
+                        <h2>MNA</h2>
+
+                        <p>
+                            Alimento balanceado para gallinas en etapa de engorda.
+
+                        </p>
+
+                        <span class="precio">$205.00 MXN</span>
+
+                        <button type="button" class="boton-carrito" data-producto="V-ital Gallinas Engorda"
+                            data-precio="425">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- =====================================================
+        CATÁLOGO 4: BORREGOS
+    ====================================================== -->
+        <section id="borregos" class="catalogo-productos">
+
+            <div class="productos-grid">
+
+                <article class="tarjeta-producto">
+                    <img src="recursos-graficos/productos/ovino-balanceado.png"
+                        alt="Alimento El Nogal Borregos Crecimiento">
+
+                    <div class="contenido-producto">
+                        <h2>El Nogal</h2>
+
+                        <p>
+                            Alimento balanceado para borregos primeros pasos.
+                            .
+                        </p>
+
+                        <span class="precio">$295.00 MXN</span>
+
+                        <button type="button" class="boton-carrito" data-producto="V-ital Borregos Crecimiento"
+                            data-precio="295">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+                <article class="tarjeta-producto">
+                    <img src="recursos-graficos/productos/Borrego-engorda.png" alt="Alimento V-ital Borregos Engorda">
+
+                    <div class="contenido-producto">
+                        <h2>El Nogal</h2>
+
+                        <p>
+                            Alimento balanceado para borregos en etapa de engorda.
+
+                        </p>
+
+                        <span class="precio">$220.00 MXN</span>
+
+                        <button type="button" class="boton-carrito" data-producto="V-ital Borregos Engorda"
+                            data-precio="520">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+                <article class="tarjeta-producto">
+                    <img src="recursos-graficos/productos/Borrego-Recria.png" alt="Alimento V-ital Borregos Recría">
+
+                    <div class="contenido-producto">
+                        <h2>El Nogal</h2>
+
+                        <p>
+                            Alimento balanceado para borregos en etapa de recría.
+
+                        </p>
+
+                        <span class="precio">$300.00 MXN</span>
+
+                        <button type="button" class="boton-carrito" data-producto="V-ital Borregos Recría"
+                            data-precio="485">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+                <article class="tarjeta-producto">
+                    <img src="recursos-graficos/productos/Borrego-iniciador.png"
+                        alt="Alimento El Nogal Borregos Iniciador">
+
+                    <div class="contenido-producto">
+                        <h2>El Nogal</h2>
+
+                        <p>
+                            Alimento balanceado para corderos en etapa inicial.
+
+                        </p>
+
+                        <span class="precio">$270.00 MXN</span>
+
+                        <button type="button" class="boton-carrito" data-producto="V-ital Borregos Iniciador"
+                            data-precio="270">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+                <article class="tarjeta-producto">
+                    <img src="recursos-graficos/productos/Borrego-mantenimiento.png"
+                        alt="Alimento V-ital Borregos Mantenimiento">
+
+                    <div class="contenido-producto">
+                        <h2>El Nogal</h2>
+
+                        <p>
+                            Alimento balanceado para borregos en mantenimiento.
+
+                        </p>
+
+                        <span class="precio">$300.00 MXN</span>
+
+                        <button type="button" class="boton-carrito" data-producto="V-ital Borregos Mantenimiento"
+                            data-precio="500">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+                <article class="tarjeta-producto">
+                    <img src="recursos-graficos/productos/Borrego-lactancia.png"
+                        alt="Alimento V-ital Borregos Lactancia">
+
+                    <div class="contenido-producto">
+                        <h2>El Nogal</h2>
+
+                        <p>
+                            Alimento balanceado para ovejas en etapa de lactancia.
+
+                        </p>
+
+                        <span class="precio">$210.00 MXN</span>
+
+                        <button type="button" class="boton-carrito" data-producto="V-ital Borregos Lactancia"
+                            data-precio="530">
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+        </section>
         <!-- =====================================================
         ENCABEZADO
     ====================================================== -->
@@ -182,6 +824,7 @@
     <!--Script de js-->
     <script src="build/js/itemsController.js"></script>
     <script src="build/js/items.js"></script>
+    <script src="build/js/carrito.js"></script>
 </body>
 
 </html>

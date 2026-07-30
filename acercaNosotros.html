@@ -45,9 +45,12 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item carrito">
                         <a class="nav-link icon-link" href="carrito.html">
-                            <i class="bi bi-cart3"></i>
+                            <div class="cart-icon-wrapper">
+                                <i class="bi bi-cart3"></i>
+                                <!-- <span class="contador-carrito">0</span> -->
+                            </div>
                             <span>Carrito</span>
                         </a>
                     </li>
@@ -63,9 +66,9 @@
         <nav class="navbar2">
             <ul>
                 <li><a href="index.html">INICIO</a></li>
-                <li><a href="acercaNosotros.html">NOSOTROS</a></li>
+                <li><a href="acercaNosotros.html" class="active">NOSOTROS</a></li>
                 <li><a href="contactanos.html">CONTACTO</a></li>
-                <li><a href="productos.html">PRODUCTO</a></li>
+                <li><a href="productos.html">PRODUCTOS</a></li>
                 <div class="indicator"></div>
             </ul>
         </nav>
@@ -245,8 +248,7 @@
             <div class="col-12 col-lg-5 px-0 order-2 order-lg-2 d-flex justify-content-center align-items-center">
                 <!--Ajusta la imagen al ancho del contenedor y adapta-->
                 <img src="recursos-graficos/acerca-nosotros/vaca-ganadero.jpg"
-                    class="img-fluid img-thumbnail imagen-somos caballo-img"
-                    alt="Imagen de gaandero con la vaca">
+                    class="img-fluid img-thumbnail imagen-somos caballo-img" alt="Imagen de gaandero con la vaca">
             </div>
 
         </div>
@@ -373,8 +375,8 @@
                         alt="Ordeñando la vaca">
                 </div>
                 <div class="carousel-item">
-                    <img src="recursos-graficos/acerca-nosotros/vacas-establo.jpg"
-                        class="d-block w-100" alt="Muchas vacas en el establo con ganadero">
+                    <img src="recursos-graficos/acerca-nosotros/vacas-establo.jpg" class="d-block w-100"
+                        alt="Muchas vacas en el establo con ganadero">
                 </div>
                 <div class="carousel-item">
                     <img src="recursos-graficos/acerca-nosotros/dos-vacas.jpg" class="d-block w-100"
@@ -603,6 +605,8 @@
 
     <!--Script de js-->
     <script src="build/js/acercadeNosotros.js"></script>
+    <script src="build/js/carrito.js"></script>
+    <script src="build/js/carrito.js"></script>
 </body>
 
 </html>

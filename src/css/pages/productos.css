@@ -1,3 +1,65 @@
+/* Contenedor div */
+.marca-group{
+    width: 360px;   /* tamaño de la unión de los dos botones */
+}
+
+/* Botón izq */
+.btn-marca{
+    width: 36%;
+    background-color: var(--color-naranjaFuerte);
+    color: var(--color-textoBlanco); /*letra */
+    border: none;
+    border-radius: 6px 0 0 6px; /*para el contorno circular */
+    font-weight: 500;  /*grosor de letra */
+    transform: translateY(-40px);
+}
+
+.btn-marca:disabled{
+    background-color: var(--color-naranjaFuerte);
+    color: var(--color-textoBlanco);
+    opacity: 1;      
+    cursor: default; 
+}
+
+/* Botón derecho */
+.btn-dropdown{
+    width: 70%;
+    background-color:var(--color-naranjaTenue);
+    border: .1px solid #c5c1c1; /* Para el contorno del boton gris der */
+    border-radius: 0 6px 6px 0;
+    transform: translateY(-40px);
+}
+
+.btn-dropdown::after{ /* Para recorrer la flecha del menú desplegable */
+    margin-left: 180px;
+}
+
+/* AL acercar el mouse al botón der */
+.btn-dropdown:hover{
+    background-color:var(--color-naranjaClaro);
+}
+
+.btn-dropdown.show{ /* Para que se mantenga fijo el color al ir selecionando las marcas */
+    background-color:var(--color-naranjaClaro);
+    border: none;
+}
+
+/* Elimina el borde azul de bootstrap al hacer clic */
+.btn-marca:focus,
+.btn-dropdown:focus{
+    box-shadow: none;
+}
+
+/* Menú desplegable */
+.dropdown-menu{
+    width: 100%;
+    border-radius: 6px;
+}
+
+/* Opciones del menú */
+.dropdown-item:hover{
+    background-color:#DDA15E; /* Se lo puse así porque no reconoce el --color-naranjaClaro */
+}
 /* =========================================================
    ENCABEZADO DE PRODUCTOS
 ========================================================= */
@@ -221,4 +283,275 @@
     .tarjeta-producto {
         padding: 20px;
     }
+}
+
+/*==================================================
+=            SECCIÓN PRODUCTOS - ESPECIE            =
+==================================================*/
+
+
+
+.productos{
+    padding: 2rem 2rem 5rem;
+    background: var(--color-fondo);
+    text-align: center;
+}
+
+.productos h1{
+    margin-bottom: 1rem;
+    color: var(--color-verdeCLaro) !important;
+}
+
+.descripcion-productos{
+    max-width: 750px;
+    margin: 0 auto 4rem;
+    font-family: var(--fuente-cuerpo);
+    font-size: 1.2rem;
+    color: var(--color-textoOscuro);
+    line-height: 1.7;
+}
+/*=============================================
+=                 TITULO                      =
+=============================================*/
+
+
+.titulo-especie h3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 0;
+
+    color: var(--color-naranjaFuerte) !important;
+    font-family: var(--fuente-titulos);
+    font-weight: var(--peso-bold);
+    font-size: 2rem;
+}
+
+.titulo-especie h3::before,
+.titulo-especie h3::after{
+    content: "";
+    display: block;
+    width: 120px;
+    height: 4px;
+
+    background-color: var(--color-naranjaFuerte) !important;
+    border-radius: 50px;
+}
+
+/*=============================================
+=             CONTENEDOR ICONOS               =
+=============================================*/
+
+.contenedor-especies{
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    gap:3rem;
+    flex-wrap:wrap;
+}
+
+/*=============================================
+=                  BOTÓN                      =
+=============================================*/
+
+.especie{
+    background:none;
+    border:none;
+    cursor:pointer;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    transition:.35s ease;
+}
+
+.especie:focus{
+    outline:none;
+}
+
+/*=============================================
+=               IMAGEN CIRCULAR               =
+=============================================*/
+
+.imagen-especie{
+
+    width:170px;
+    height:170px;
+
+    border-radius:50%;
+    overflow:hidden;
+
+    border:4px solid transparent;
+
+    transition:.35s ease;
+}
+
+.imagen-especie img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+    transition:.35s ease;
+}
+
+/*=============================================
+=                   TEXTO                     =
+=============================================*/
+
+.nombre-especie{
+
+    margin-top:1rem;
+
+    font-family:var(--fuente-cuerpo);
+
+    font-size:1.1rem;
+
+    font-weight:600;
+
+    color:var(--color-textoOscuro);
+
+    transition:.35s ease;
+}
+
+/*=============================================
+=                  HOVER                      =
+=============================================*/
+
+.especie:hover .imagen-especie{
+
+    transform:translateY(-8px);
+
+ border-color:var(--color-verdeCLaro);
+box-shadow:
+    0 0 8px rgba(96,108,56,.35),
+    0 0 18px rgba(96,108,56,.25),
+    0 0 30px rgba(96,108,56,.18);
+}
+
+.especie:hover img{
+
+    transform:scale(1.08);
+
+}
+
+.especie:hover .nombre-especie{
+
+    color:var(--color-verdeFuerte);
+
+}
+
+/*=============================================
+=                BOTÓN ACTIVO                 =
+=============================================*/
+
+.especie.activo .imagen-especie{
+
+    border-color:var(--color-verdeCLaro);
+
+    box-shadow:
+        0 0 10px rgba(96,108,56,.30),
+        0 0 30px rgba(96,108,56,.28),
+        0 0 50px rgba(96,108,56,.20);
+
+}
+
+.especie.activo img{
+
+    transform:scale(1.08);
+
+}
+
+.especie.activo .nombre-especie{
+
+    color:var(--color-verdeFuerte);
+
+    font-weight:700;
+
+}
+/*=============================================
+=          ENTRADA CON REBOTE                 =
+=============================================*/
+
+.especie{
+    opacity: 0;
+    animation: reboteEntrada .8s ease-out forwards;
+}
+
+/* Retraso entre cada botón */
+.especie:nth-child(1){
+    animation-delay: .1s;
+}
+
+.especie:nth-child(2){
+    animation-delay: .25s;
+}
+
+.especie:nth-child(3){
+    animation-delay: .4s;
+}
+
+.especie:nth-child(4){
+    animation-delay: .55s;
+}
+
+@keyframes reboteEntrada{
+
+    0%{
+        opacity: 0;
+        transform: translateY(-120px);
+    }
+
+    60%{
+        opacity: 1;
+        transform: translateY(20px);
+    }
+
+    80%{
+        transform: translateY(-10px);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+/*=============================================
+=                 RESPONSIVE                  =
+=============================================*/
+
+@media(max-width:768px){
+
+    .contenedor-especies{
+
+        gap:2rem;
+
+    }
+
+    .imagen-especie{
+
+        width:130px;
+        height:130px;
+
+    }
+
+    .titulo-especie h3{
+
+        font-size:1.5rem;
+
+    }
+
+    .titulo-especie h3::before,
+    .titulo-especie h3::after{
+
+        width:60px;
+
+    }
+
 }

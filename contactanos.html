@@ -50,9 +50,12 @@
                             <span>Mi cuenta</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item carrito">
                         <a class="nav-link icon-link" href="carrito.html">
-                            <i class="bi bi-cart3"></i>
+                            <div class="cart-icon-wrapper">
+                                <i class="bi bi-cart3"></i>
+                                <!-- <span class="contador-carrito">0</span> -->
+                            </div>
                             <span>Carrito</span>
                         </a>
                     </li>
@@ -64,8 +67,8 @@
             <ul>
                 <li><a href="index.html">INICIO</a></li>
                 <li><a href="acercaNosotros.html">NOSOTROS</a></li>
-                <li><a href="contactanos.html">CONTACTO</a></li>
-                <li><a href="productos.html">PRODUCTO</a></li>
+                <li><a href="contactanos.html" class="active">CONTACTO</a></li>
+                <li><a href="productos.html">PRODUCTOS</a></li>
                 <div class="indicator"></div>
             </ul>
         </nav>
@@ -231,8 +234,7 @@
     <footer class="footer-forrajero" data-aos="fade-up">
         <div class="footer-container">
             <div class="footer-brand">
-                <img src="recursos-graficos/footer/forrajero-verde.png" alt="Logo Forrajero"
-                    class="footer-logo">
+                <img src="recursos-graficos/footer/forrajero-verde.png" alt="Logo Forrajero" class="footer-logo">
                 <div class="footer-social">
                     <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
                     <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
@@ -297,7 +299,8 @@
     </script>
 
     <!-- Archivo JavaScript Exclusivo de esta página -->
-        <script src="build/js/contactanos.js"></script>
+    <script src="build/js/contactanos.js"></script>
+    <script src="build/js/carrito.js"></script>
 </body>
 
 </html>
