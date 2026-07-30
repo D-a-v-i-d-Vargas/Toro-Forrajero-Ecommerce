@@ -11,6 +11,7 @@
     border: none;
     border-radius: 6px 0 0 6px; /*para el contorno circular */
     font-weight: 500;  /*grosor de letra */
+    transform: translateY(-40px);
 }
 
 .btn-marca:disabled{
@@ -26,6 +27,7 @@
     background-color:var(--color-naranjaTenue);
     border: .1px solid #c5c1c1; /* Para el contorno del boton gris der */
     border-radius: 0 6px 6px 0;
+    transform: translateY(-40px);
 }
 
 .btn-dropdown::after{ /* Para recorrer la flecha del menú desplegable */

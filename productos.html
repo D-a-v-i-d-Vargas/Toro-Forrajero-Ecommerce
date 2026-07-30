@@ -156,6 +156,49 @@
 
     </section>
 
+    <!-- BOTÓN DE MARCA -->
+        <section>
+
+        <!-- En realidad, será la "unión" de dos botones. Ambos por bootstrap, 
+        solo que uno será con la categoría button group, y el otro con dropdown para hacerlo desplegable. -->
+
+            <div class="btn-group marca-group">
+
+                <!-- Botón izquierdo-->
+                <button type="button" class="btn btn-marca" disabled> <!--Le ponemos disabled para que no sea clileable-->
+                    Marca   <!-- visible -->
+                </button>
+
+                <!-- Botón derecho desplegable -->
+                <button type="button" class="btn btn-dropdown dropdown-toggle dropdown-toggle-split"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+
+                    <span class="visually-hidden">menú desplegable</span> <!-- para que no aparezca el titulo en el botón der.-->
+
+                </button>
+
+                <!-- Menú desplegable -->
+                <ul class="dropdown-menu w-100">
+                    <li>
+                        <a class="dropdown-item" href="#"> <!-- El backend reemplazará el href -->
+                            ADM
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#"> <!-- El backend reemplazará el href -->
+                            El Nogal
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#"> <!-- El backend reemplazará el href -->
+                            Alimentos Arandas
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+
 
 
         <!-- -------------------------------------------------------------------
