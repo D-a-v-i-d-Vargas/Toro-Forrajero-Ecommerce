@@ -101,7 +101,9 @@ Este ecosistema digital fue planeado, diseñado y codificado por un equipo excep
 </table>
 
 ---
-### Comando para ejecutar el código
+
+## Comando para ejecutar el codigo
 👇👇👇
-```npm run dev```
----
+```text
+npm run dev
+```
