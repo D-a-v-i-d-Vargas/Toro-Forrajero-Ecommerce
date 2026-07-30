@@ -341,3 +341,44 @@ nogalBtn.addEventListener('click', () => {
 arandasBtn.addEventListener('click', () => {
 	filtrarMarcas('Alimentos Arandas');
 })
+/* Filtro por especie */
+
+const mapaEspecies = {"bovinos": "Vacas", "porcinos": "Cerdos", "aves": "Aves", "ovinos": "Borregos"}
+
+let especieSeleccionada = null;
+
+function aplicarFiltro(){
+	if(!especieSeleccionada){
+		renderizarHTML(itemsController.items);
+	} else {
+		const productoFiltrado = itemsController.items.filter(item => item.especie === especieSeleccionada);
+		renderizarHTML(productoFiltrado);
+	}
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+	cargarItems();
+	renderizarHTML(itemsController.items);
+});
+
+const botonesEspecie = document.querySelectorAll(".filtro-especies .especie");
+
+botonesEspecie.forEach(boton => {
+	boton.addEventListener("click", () => {
+		const especieData = boton.getAttribute("data-especie");
+		const especieNombre = mapaEspecies[especieData];
+
+		if (boton.classList.contains("activo")) {
+			boton.classList.remove("activo");
+			especieSeleccionada = null;
+		} else {
+			botonesEspecie.forEach(btn => btn.classList.remove("activo"));
+            boton.classList.add("activo");
+            especieSeleccionada = especieNombre;
+		}
+
+		aplicarFiltro();
+	})
+});
+
+/* Filtro por especie */
