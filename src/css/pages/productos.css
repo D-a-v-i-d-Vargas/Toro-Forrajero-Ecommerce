@@ -1,0 +1,60 @@
+/* Contenedor div */
+.marca-group{
+    width: 360px;   /* tamaño de la unión de los dos botones */
+}
+
+/* Botón izq */
+.btn-marca{
+    width: 36%;
+    background-color: var(--color-naranjaFuerte);
+    color: var(--color-textoBlanco); /*letra */
+    border: none;
+    border-radius: 6px 0 0 6px; /*para el contorno circular */
+    font-weight: 500;  /*grosor de letra */
+}
+
+.btn-marca:disabled{
+    background-color: var(--color-naranjaFuerte);
+    color: var(--color-textoBlanco);
+    opacity: 1;      
+    cursor: default; 
+}
+
+/* Botón derecho */
+.btn-dropdown{
+    width: 70%;
+    background-color:var(--color-naranjaTenue);
+    border: .1px solid #c5c1c1; /* Para el contorno del boton gris der */
+    border-radius: 0 6px 6px 0;
+}
+
+.btn-dropdown::after{ /* Para recorrer la flecha del menú desplegable */
+    margin-left: 180px;
+}
+
+/* AL acercar el mouse al botón der */
+.btn-dropdown:hover{
+    background-color:var(--color-naranjaClaro);
+}
+
+.btn-dropdown.show{ /* Para que se mantenga fijo el color al ir selecionando las marcas */
+    background-color:var(--color-naranjaClaro);
+    border: none;
+}
+
+/* Elimina el borde azul de bootstrap al hacer clic */
+.btn-marca:focus,
+.btn-dropdown:focus{
+    box-shadow: none;
+}
+
+/* Menú desplegable */
+.dropdown-menu{
+    width: 100%;
+    border-radius: 6px;
+}
+
+/* Opciones del menú */
+.dropdown-item:hover{
+    background-color:#DDA15E; /* Se lo puse así porque no reconoce el --color-naranjaClaro */
+}
