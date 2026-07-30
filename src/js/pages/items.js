@@ -9,7 +9,9 @@ const baseDatosProductos = [
 		especie: "Vacas",
 		peso: "20 KG",
 		precio: 279.00,
-		marca: "ADM"
+		marca: "ADM",
+		imagen: "recursos-graficos/productos/bovino/bovino-adm-mezcla-nutridor.png",
+		estado: "activo"
 	},
 	{
 		nombreProducto: "Mezcla Ganadera",
@@ -18,7 +20,9 @@ const baseDatosProductos = [
 		especie: "Vacas",
 		peso: "20 KG",
 		precio: 279.00,
-		marca: "ADM"
+		marca: "ADM",
+		imagen: "recursos-graficos/productos/bovino/bovino-adm-mezcla-ganadera-malta.png",
+		estado: "activo"
 	},
 	{
 		nombreProducto: "Pollo Especial",
@@ -27,7 +31,9 @@ const baseDatosProductos = [
 		especie: "Aves",
 		peso: "20 KG",
 		precio: 245.00,
-		marca: "ADM"
+		marca: "ADM",
+		imagen: "recursos-graficos/productos/aves/aves-adm-pollo-especial.png",
+		estado: "activo"
 	},
 	{
 		nombreProducto: "Nutridor Pollos",
@@ -36,7 +42,9 @@ const baseDatosProductos = [
 		especie: "Aves",
 		peso: "20 KG",
 		precio: 245.00,
-		marca: "ADM"
+		marca: "ADM",
+		imagen: "recursos-graficos/productos/aves/aves-adm-pollo-nutridor.png",
+		estado: "activo"
 	},
 	{
 		nombreProducto: "Finalizador® Engorda Cerdos H.L.",
@@ -45,7 +53,9 @@ const baseDatosProductos = [
 		especie: "Cerdos",
 		peso: "20 KG",
 		precio: 286.00,
-		marca: "ADM"
+		marca: "ADM",
+		imagen: "recursos-graficos/productos/porcino/porcino-adm-engorda.png",
+		estado: "activo"
 	},
 	{
 		nombreProducto: "Growpig!® Desarrollo",
@@ -54,7 +64,9 @@ const baseDatosProductos = [
 		especie: "Cerdos",
 		peso: "20 KG",
 		precio: 286.00,
-		marca: "ADM"
+		marca: "ADM",
+		imagen: "recursos-graficos/productos/porcino/porcino-adm-growpig.png",
+		estado: "activo"
 	},
 	{
 		nombreProducto: "Borregos Forte",
@@ -63,7 +75,9 @@ const baseDatosProductos = [
 		especie: "Borregos",
 		peso: "20 KG",
 		precio: 269.00,
-		marca: "ADM"
+		marca: "ADM",
+		imagen: "recursos-graficos/productos/ovino/ovino-adm-borrego-ganador.png",
+		estado: "activo"
 	},
 	{
 		nombreProducto: "Borrego Ganador",
@@ -72,7 +86,9 @@ const baseDatosProductos = [
 		especie: "Borregos",
 		peso: "20 KG",
 		precio: 269.00,
-		marca: "ADM"
+		marca: "ADM",
+		imagen: "recursos-graficos/productos/ovino/ovino-adm-borrego-ganador-2.png",
+		estado: "activo"
 	},
 	//Marca El Nogal
 	{
@@ -82,7 +98,9 @@ const baseDatosProductos = [
 		especie: "Vacas",
 		peso: "40 KG",
 		precio: 410.00,
-		marca: "El Nogal"
+		marca: "El Nogal",
+		imagen: "recursos-graficos/productos/ovino/ovino-nogal-engorda.png",
+		estado: "activo"
 	},
 	{
 		nombreProducto: "Concentrado para Engorda Ganado",
@@ -91,7 +109,9 @@ const baseDatosProductos = [
 		especie: "Vacas",
 		peso: "40 KG",
 		precio: 410.00,
-		marca: "El Nogal"
+		marca: "El Nogal",
+		imagen: "recursos-graficos/productos/ovino/ovino-nogal-preiniciador.png",
+		estado: "activo"
 	},
 	{
 		nombreProducto: "Fortipollo (iniciador)",
@@ -100,7 +120,9 @@ const baseDatosProductos = [
 		especie: "Aves",
 		peso: "40 KG",
 		precio: 438.00,
-		marca: "El Nogal"
+		marca: "El Nogal",
+		imagen: "recursos-graficos/productos/aves/aves-nogal-fortipollo.png",
+		estado: "activo"
 	},
 	{
 		nombreProducto: "Maxipollo (engorda)",
@@ -110,7 +132,7 @@ const baseDatosProductos = [
 		peso: "40 KG",
 		precio: 245.00,
 		marca: "El Nogal",
-		imagen: "recursos-graficos/productos/aves/aves-nogal-maxipolla.png",
+		imagen: "recursos-graficos/productos/aves/aves-nogal-maxipollo.png",
 		estado: "activo"
 	},
 	{
