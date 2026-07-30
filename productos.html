@@ -19,7 +19,9 @@
     <!--Fuentes-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;700&family=Montserrat:wght@400;700&display=swap"
+        rel="stylesheet">
 
     <!--CSS Globales-->
     <link rel="stylesheet" href="build/css/app.css">
@@ -34,7 +36,8 @@
         <nav class="navbar navbar-1">
             <div class="container-fluid px-4">
                 <div class="navbar-brand">
-                    <img src="recursos-graficos/navbar/forrajero-sinfondo.png" alt="Logo sin fondo de Toro Forrajero" class="logo-navbar d-inline-block align-text-top me-2">
+                    <img src="recursos-graficos/navbar/forrajero-sinfondo.png" alt="Logo sin fondo de Toro Forrajero"
+                        class="logo-navbar d-inline-block align-text-top me-2">
                 </div>
                 <ul class="navbar-nav flex-row ms-auto gap-4">
                     <li class="nav-item">
@@ -90,28 +93,11 @@
             3. CATÁLOGOS Y TARJETAS DE PRODUCTOS (GRID)
         -------------------------------------------------------------------- -->
         <section>
-            <div>
-
-                <!-- TARJETA 1: V-ital Ganado -->
-                <div>
-
-                </div>
-
-                <!-- TARJETA 2: V-ital Aves -->
-                <div>
-                </div>
-
-                <!-- TARJETA 3: V-ital Cerdos -->
-                <div>
-                </div>
-        
-                <!-- TARJETA 4: V-ital Caballos -->
-                <div>
-                </div>
-
-                <!-- AQUÍ SE PUEDEN AGREGAR MÁS PRODUCTOS (COLUMNAS/CARDS) -->
-
+            <div class="container my-4">
+                <!-- Solo creas ESTE row contenedor -->
+                <div class="row g-4" id="catalogo-productos"></div>
             </div>
+
         </section>
 
     </main>
@@ -161,7 +147,8 @@
                 <h3>Atención al cliente</h3>
                 <ul>
                     <li><i class="fa-solid fa-phone"></i> <a href="tel:+523119553880">(311) 955-3880</a></li>
-                    <li><i class="fa-solid fa-envelope"></i> <a href="mailto:info@toroforrajero.com">info@toroforrajero.com</a></li>
+                    <li><i class="fa-solid fa-envelope"></i> <a
+                            href="mailto:info@toroforrajero.com">info@toroforrajero.com</a></li>
                     <li><i class="fa-solid fa-location-dot"></i> Cerro Lejos, A dos horas de la Ciudad</li>
                     <li><i class="fa-solid fa-clock"></i> 10:00 a.m. - 7:00 p.m.</li>
                 </ul>
@@ -176,10 +163,13 @@
     </footer>
 
     <!--Bootstrap script-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 
     <!--Script de js-->
-    <script src="build/js/productos.js"></script>
+    <script src="build/js/itemsController.js"></script>
+    <script src="build/js/items.js"></script>
 </body>
 
 </html>
