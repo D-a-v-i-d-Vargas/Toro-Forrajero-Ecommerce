@@ -76,7 +76,7 @@ const baseDatosProductos = [
 		peso: "20 KG",
 		precio: 269.00,
 		marca: "ADM",
-		imagen: "recursos-graficos/productos/ovino/ovino-adm-borrego-ganador.png",
+		imagen: "recursos-graficos/productos/ovino/ovino-adm-borrego-forte.png",
 		estado: "activo"
 	},
 	{
@@ -87,7 +87,7 @@ const baseDatosProductos = [
 		peso: "20 KG",
 		precio: 269.00,
 		marca: "ADM",
-		imagen: "recursos-graficos/productos/ovino/ovino-adm-borrego-ganador-2.png",
+		imagen: "recursos-graficos/productos/ovino/ovino-adm-borrego-ganador.png",
 		estado: "activo"
 	},
 	//Marca El Nogal
@@ -110,7 +110,7 @@ const baseDatosProductos = [
 		peso: "40 KG",
 		precio: 410.00,
 		marca: "El Nogal",
-		imagen: "recursos-graficos/productos/ovino/ovino-nogal-preiniciador.png",
+		imagen: "recursos-graficos/productos/bovino/bovino-nogal-concentrado-engorda.png",
 		estado: "activo"
 	},
 	{
@@ -165,7 +165,7 @@ const baseDatosProductos = [
 		peso: "40 KG",
 		precio: 525.00,
 		marca: "El Nogal",
-		imagen: "recursos-graficos/productos/porcino/porcino-nogal-engorda.png",
+		imagen: "recursos-graficos/productos/ovino/ovino-nogal-preiniciador.png",
 		estado: "activo"
 	},
 	{
@@ -176,7 +176,7 @@ const baseDatosProductos = [
 		peso: "40 KG",
 		precio: 525.00,
 		marca: "El Nogal",
-		imagen: "recursos-graficos/productos/ovino/ovino-borrego-engorda.png",
+		imagen: "recursos-graficos/productos/ovino/ovino-nogal-engorda.png",
 		estado: "activo"
 	},
 	//Marca: Alimentos Arandas
@@ -192,14 +192,14 @@ const baseDatosProductos = [
 		estado: "activo"
 	},
 	{
-		nombreProducto: "Ara H Engorda Ganado 14% Rol",
-		descripcion: "Alimento Balanceado, multiparticula, mezcla de harina y maíz rolado para bovinos de engorda.",
+		nombreProducto: "Ara P Crecimiento Becerra",
+		descripcion: "Alimento balanceado, multipartícula, mezcla de harina y maíz rolado, diseñado para la etapa de desarrollo y crecimiento de becerras.",
 		destacado: false,
 		especie: "Vacas",
 		peso: "25 KG",
 		precio: 750.00,
 		marca: "Alimentos Arandas",
-		imagen: "recursos-graficos/productos/bovino/bovino-aranda-engorda.png",
+		imagen: "recursos-graficos/productos/bovino/bovino-aranda-crecimiento.png",
 		estado: "activo"
 	},
 	{
@@ -236,14 +236,14 @@ const baseDatosProductos = [
 		estado: "activo"
 	},
 	{
-		nombreProducto: "Ara P Fincerdos",
-		descripcion: "Alimento Balanceado, presentación en pellet para Cerdos de 61 kg al mercado.",
+		nombreProducto: "Ara P Destete Cerdos",
+		descripcion: "Alimento balanceado, presentación en pellet, diseñado para lechones en la etapa de destete y transición.",
 		destacado: false,
 		especie: "Cerdos",
 		peso: "25 KG",
 		precio: 750.00,
-		marca: "El Nogal",
-		imagen: "recursos-graficos/productos/porcino/porcino-nogal-crecimiento.png",
+		marca: "Alimentos Arandas",
+		imagen: "recursos-graficos/productos/porcino/porcino-aranda-destete.png",
 		estado: "activo"
 	},
 	{
@@ -253,8 +253,8 @@ const baseDatosProductos = [
 		especie: "Borregos",
 		peso: "25 KG",
 		precio: 750.00,
-		marca: "El Nogal",
-		imagen: "recursos-graficos/productos/ovino/ovino-nogal-preiniciador.png",
+		marca: "Alimentos Arandas",
+		imagen: "recursos-graficos/productos/ovino/ovino-borrego-engorda.png",
 		estado: "activo"
 	},
 	{
@@ -264,8 +264,8 @@ const baseDatosProductos = [
 		especie: "Borregos",
 		peso: "25 KG",
 		precio: 750.00,
-		marca: "El Nogal",
-		imagen: "recursos-graficos/productos/ovino/ovino-nogal-engorda.png",
+		marca: "Alimentos Arandas",
+		imagen: "recursos-graficos/productos/ovino/ovino-borrego-iniciador.png",
 		estado: "activo"
 	},
 ];
