@@ -1,5 +1,5 @@
 //temporal si no se ocupa lo borras
-document.addEventListener("DOMContentLoaded", function () {
+/* document.addEventListener("DOMContentLoaded", function () {
 
     // Seleccionamos todos los botones de categorías.
     const botonesCategorias = document.querySelectorAll(".boton-categoria");
@@ -38,5 +38,5 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-});
+}); */
 //si no hay nada borra todo lo de arriba
