@@ -6,7 +6,7 @@ class ItemsController {
 	}
 
 	// Metodo para añadir elementos a el objeto
-	addItem(nombreProducto, descripcion, destacado, especie, peso, precio, marca) {
+	addItem(nombreProducto, descripcion, destacado, especie, peso, precio, marca, imagen, estado) {
 		const item = {
 			id: this.currentId++,
 			nombreProducto: nombreProducto,
@@ -15,7 +15,9 @@ class ItemsController {
 			especie: especie,
 			peso: peso,
 			precio: precio,
-			marca: marca
+			marca: marca,
+			imagen: imagen,
+			estado: estado
 		};
 
 		// Ingresa el objeto a la lista
