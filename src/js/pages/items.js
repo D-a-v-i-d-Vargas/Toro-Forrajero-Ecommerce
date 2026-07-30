@@ -1,10 +1,61 @@
 const itemsController = new ItemsController(0);
 
 const baseDatosProductos = [
-	{ nombreProducto: "test", descripcion: "descripcion", destacado: "destacado", especie: "especie", peso: "peso", precio: "100", marca: "marca" },
-	{ nombreProducto: "test2", descripcion: "descripcion2", destacado: "destacado2", especie: "especie2", peso: "peso2", precio: "200", marca: "marca2" },
-	{ nombreProducto: "test3", descripcion: "descripcion3", destacado: "destacado3", especie: "especie3", peso: "peso3", precio: "300", marca: "marca3" }
-
+	{
+		nombreProducto: "V-ital Ganado",
+		descripcion: "Alimento balanceado para ganado de carne.",
+		destacado: "falso",
+		especie: "Bovinos",
+		peso: "40 kg",
+		precio: "225.00",
+		marca: "ADM",
+		imagen: "recursos-graficos/productos/aves/aves-adm-pollo-especial.png",
+		estado: "activo"
+	},
+	{
+		nombreProducto: "V-ital Cerdos Crecimiento",
+		descripcion: "Alimento balanceado para cerdos en etapa de crecimiento.",
+		destacado: "falso",
+		especie: "Porcinos",
+		peso: "40 kg",
+		precio: "365.00",
+		marca: "ADM Nutrición Animal",
+		imagen: "recursos-graficos/productos/bovino/bovino-adm-mezcla-nutridor.png",
+		estado: "activo"
+	},
+	{
+		nombreProducto: "El Nogal Borregos 2",
+		descripcion: "Alimento balanceado para borregos primeros pasos.",
+		destacado: "falso",
+		especie: "Ovinos",
+		peso: "40 kg",
+		precio: "295.00",
+		marca: "El Nogal",
+		imagen: "recursos-graficos/productos/porcino/porcino-nogal-engorda.png",
+		estado: "activo"
+	},
+	{
+		nombreProducto: "El Nogal Borregos 3",
+		descripcion: "Alimento balanceado para borregos primeros pasos.",
+		destacado: "falso",
+		especie: "Ovinos",
+		peso: "40 kg",
+		precio: "295.00",
+		marca: "El Nogal",
+		imagen: "recursos-graficos/productos/porcino/porcino-adm-growpig.png",
+		estado: "activo"
+	},
+	{
+		nombreProducto: "El Nogal Borregos 3",
+		descripcion: "Alimento balanceado para borregos primeros pasos.",
+		destacado: "falso",
+		especie: "Ovinos",
+		peso: "40 kg",
+		precio: "295.00",
+		marca: "El Nogal",
+		imagen: "recursos-graficos/productos/bovino/bovino-aranda-engorda.png",
+		estado: "activo"
+	}
 ];
 
 function cargarItems() {
@@ -16,29 +67,41 @@ function cargarItems() {
 			producto.especie,
 			producto.peso,
 			producto.precio,
-			producto.marca
+			producto.marca,
+			producto.imagen,
+			producto.estado
 		);
 	});
 }
+
+
 
 function renderizarHTML(items) {
 	const catalogo = document.getElementById('catalogo-productos');
 	if (!catalogo) return;
 
+	// Inyectamos exactamente la maquetación en HTML que creó tu compañero
 	catalogo.innerHTML = items.map(producto => `
-      <div class="col-12 col-md-6 col-lg-4 mb-4">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title">${producto.nombreProducto}</h5>
-            <p class="card-text">${producto.descripcion}</p>
-            <p class="text-muted"><small>${producto.especie} - ${producto.marca}</small></p>
-            <p><strong>Peso:</strong> ${producto.peso}</p>
-            <p class="fw-bold text-success">$${producto.precio}</p>
-          </div>
-        </div>
-      </div>
+        <article class="tarjeta-producto">
+            <img src="${producto.imagen}" alt="${producto.nombreProducto}">
+
+            <div class="contenido-producto">
+                <h2>${producto.nombreProducto}</h2>
+                <p>${producto.descripcion}</p>
+                <span class="precio">$${producto.precio} MXN</span>
+
+                <button 
+                    type="button" 
+                    class="boton-carrito" 
+                    data-producto="${producto.nombreProducto}" 
+                    data-precio="${producto.precio}">
+                    Agregar al carrito
+                </button>
+            </div>
+        </article>
     `).join('');
 }
+
 
 document.addEventListener("DOMContentLoaded", () => {
 	cargarItems();
