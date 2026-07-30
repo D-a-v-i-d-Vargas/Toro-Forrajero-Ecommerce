@@ -319,3 +319,25 @@ document.addEventListener("DOMContentLoaded", () => {
 	cargarItems();
 	renderizarHTML(itemsController.items);
 });
+
+const filtrarMarcas = (marca) => {
+	const productosVisibles = baseDatosProductos.filter(producto => producto.marca === marca)
+	renderizarHTML(productosVisibles)
+
+}
+
+const admBtn = document.getElementById('adm');
+const nogalBtn = document.getElementById('nogal');
+const arandasBtn = document.getElementById('arandas');
+
+admBtn.addEventListener('click', () => {
+	filtrarMarcas('ADM');
+})
+
+nogalBtn.addEventListener('click', () => {
+	filtrarMarcas('El Nogal');
+})
+
+arandasBtn.addEventListener('click', () => {
+	filtrarMarcas('Alimentos Arandas');
+})
