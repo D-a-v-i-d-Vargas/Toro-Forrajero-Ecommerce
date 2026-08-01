@@ -1,3 +1,36 @@
+// =============================
+// VALIDACIÓN DEL CAMPO MARCA
+// =============================
+
+const marca = document.getElementById("marca");
+const alertaMarca = document.getElementById("alertaMarca");
+
+// Validar cuando el usuario cambie la opción
+marca.addEventListener("change", validarMarca);
+
+// Validar cuando el usuario salga del campo
+marca.addEventListener("blur", validarMarca);
+
+function validarMarca() {
+    const valorMarca = marca.value.trim();
+
+    if (valorMarca === "") {
+        alertaMarca.classList.remove("d-none");
+
+        marca.classList.remove("is-valid");
+        marca.classList.add("is-invalid");
+
+        return false;
+    }
+
+    alertaMarca.classList.add("d-none");
+
+    marca.classList.remove("is-invalid");
+    marca.classList.add("is-valid");
+
+    return true;
+}
+
 //=============================
 // VALIDACIÓN DEL COSTO
 //=============================
