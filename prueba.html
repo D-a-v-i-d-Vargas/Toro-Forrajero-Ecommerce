@@ -4,42 +4,347 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	
+	<title>Toro Forrajero - Productos</title>
+
+	<!--Bootstrap-->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-	<link rel="stylesheet" href="style.css">
 
+	<!--Bootstrap para los iconos -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+	<!--Font Awesome (para los iconos del footer)-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+	<!--Fuentes-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;700&family=Montserrat:wght@400;700&display=swap"
+		rel="stylesheet">
+
+	<!--CSS Globales-->
+	<link rel="stylesheet" href="build/css/app.css">
+	<link rel="stylesheet" href="build/css/productos.css">
 </head>
 
 <body>
+	<!-- ===========================================================================
+        SECCIÓN: ENCABEZADO Y NAVEGACIÓN (HEADER)
+    ============================================================================ -->
+	<header class="sticky-top"">
+        <!-- NAV BAR 1: Logo y Accesos rápidos -->
+        <nav class=" navbar navbar-1">
+		<div class="container-fluid px-4">
+			<div class="navbar-brand">
+				<img src="recursos-graficos/navbar/forrajero-sinfondo.png" alt="Logo sin fondo de Toro Forrajero"
+					class="logo-navbar d-inline-block align-text-top me-2">
+			</div>
+			<ul class="navbar-nav flex-row ms-auto gap-4">
+				<li class="nav-item">
+					<a class="nav-link icon-link" href="cuenta.html">
+						<i class="bi bi-person"></i>
+						<span>Mi cuenta</span>
+					</a>
+				</li>
+				<li class="nav-item carrito">
+					<a class="nav-link icon-link" href="carrito.html">
+						<div class="cart-icon-wrapper">
+							<i class="bi bi-cart3"></i>
+							<!-- <span class="contador-carrito">0</span> -->
+						</div>
+						<span>Carrito</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		</nav>
+
+		<!-- NAV BAR 2: Menú de navegación principal -->
+		<nav class="navbar2">
+			<ul>
+				<li><a href="index.html">INICIO</a></li>
+				<li><a href="acercaNosotros.html">NOSOTROS</a></li>
+				<li><a href="contactanos.html">CONTACTO</a></li>
+				<li><a href="productos.html" class="active">PRODUCTOS</a></li>
+				<div class="indicator"></div>
+			</ul>
+		</nav>
+	</header>
+
+	<!-- ===========================================================================
+        SECCIÓN PRINCIPAL: VISTA DE PRODUCTOS (MAIN)
+    ============================================================================ -->
+	<main class="container my-5">
+
+
+
+		<!-- -------------------------------------------------------------------
+            1. ENCABEZADO DE PÁGINA (Título y Descripción)
+        -------------------------------------------------------------------- -->
+		<section>
+
+		</section>
+
+
+		<!-- -------------------------------------------------------------------
+            2. FILTROS Y CATEGORÍAS (Especie y Marca)
+        -------------------------------------------------------------------- -->
+		<section class="productos">
+
+			<h1>Ver Productos</h1>
+
+			<section class="filtro-especies">
+
+				<div class="titulo-especie">
+					<h3>Especie</h3>
+				</div>
+
+				<div class="contenedor-especies">
+
+					<!-- Bovinos -->
+					<button type="button" class="especie" data-especie="bovinos">
+
+						<div class="imagen-especie">
+							<img src="recursos-graficos/productos/bovino.jpeg" alt="Bovinos">
+						</div>
+
+						<span class="nombre-especie">
+							Bovinos
+						</span>
+
+					</button>
+
+					<!-- Porcinos -->
+					<button type="button" class="especie" data-especie="porcinos">
+
+						<div class="imagen-especie">
+							<img src="recursos-graficos/productos/porcinos.jpeg" alt="Porcinos">
+						</div>
+
+						<span class="nombre-especie">
+							Porcinos
+						</span>
+
+					</button>
+
+					<!-- Aves -->
+					<button type="button" class="especie" data-especie="aves">
+
+						<div class="imagen-especie">
+							<img src="recursos-graficos/productos/aves.jpeg" alt="Aves">
+						</div>
+
+						<span class="nombre-especie">
+							Aves
+						</span>
+
+					</button>
+
+					<!-- Ovinos -->
+					<button type="button" class="especie" data-especie="ovinos">
+
+						<div class="imagen-especie">
+							<img src="recursos-graficos/productos/ovino.png" alt="Ovinos">
+						</div>
+
+						<span class="nombre-especie">
+							Ovinos
+						</span>
+
+					</button>
+
+				</div>
+
+			</section>
+
+		</section>
+
+		<!-- BOTÓN DE MARCA -->
+		<section>
+
+			<!-- En realidad, será la "unión" de dos botones. Ambos por bootstrap, 
+        solo que uno será con la categoría button group, y el otro con dropdown para hacerlo desplegable. -->
+
+			<div class="btn-group marca-group">
+
+				<!-- Botón izquierdo-->
+				<button type="button" class="btn btn-marca" disabled>
+					<!--Le ponemos disabled para que no sea clileable-->
+					Marca <!-- visible -->
+				</button>
+
+				<!-- Botón derecho desplegable -->
+				<button type="button" class="btn btn-dropdown dropdown-toggle dropdown-toggle-split"
+					data-bs-toggle="dropdown" aria-expanded="false">
+
+					<span class="visually-hidden">menú desplegable</span>
+					<!-- para que no aparezca el titulo en el botón der.-->
+
+				</button>
+
+				<!-- Menú desplegable -->
+				<ul class="dropdown-menu w-100">
+					<li>
+						<a class="dropdown-item" id="adm" href="#"> <!-- El backend reemplazará el href -->
+							ADM
+						</a>
+					</li>
+					<li>
+						<a class="dropdown-item" id="nogal" href="#"> <!-- El backend reemplazará el href -->
+							El Nogal
+						</a>
+					</li>
+					<li>
+						<a class="dropdown-item" id="arandas" href="#"> <!-- El backend reemplazará el href -->
+							Alimentos Arandas
+						</a>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+
+
+
+		<!-- -------------------------------------------------------------------
+            3. CATÁLOGOS Y TARJETAS DE PRODUCTOS (GRID)
+        -------------------------------------------------------------------- -->
+		<section class="catalogo-productos activo">
+			<div class="productos-grid" id="catalogo-productos">
+				<!-- Aquí se inyectarán dinámicamente los productos desde JS -->
+			</div>
+		</section>
+
+
+
+		<!-- =====================================================
+        ENCABEZADO
+    ====================================================== -->
+		<section>
+
+
+		</section>
+
+		<!-- =====================================================
+        BOTONES DE CATEGORÍAS
+    ====================================================== -->
+		<!--  <section class="categorias-productos">
+
+        <button
+            type="button"
+            class="boton-categoria activo"
+            data-categoria="ganado"
+        >
+            Ganado
+        </button>
+
+        <button
+            type="button"
+            class="boton-categoria"
+            data-categoria="puercos"
+        >
+            Puercos
+        </button>
+
+        <button
+            type="button"
+            class="boton-categoria"
+            data-categoria="gallinas"
+        >
+            Gallinas
+        </button>
+
+        <button
+            type="button"
+            class="boton-categoria"
+            data-categoria="borregos"
+        >
+            Borregos
+        </button>
+
+    </section> -->
+	</main>
+
+
+
+	<!-- ===========================================================================
+        SECCIÓN: PIE DE PÁGINA (FOOTER)
+    ============================================================================ -->
+	<footer class="footer-forrajero">
+		<div class="footer-container">
+
+			<!-- Logo y redes sociales -->
+			<div class="footer-brand">
+				<img src="recursos-graficos/footer/forrajero-verde.png" alt="Logo Forrajero" class="footer-logo">
+
+				<div class="footer-social">
+					<a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+					<a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+					<a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+					<a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+				</div>
+			</div>
+
+			<!-- Navegación -->
+			<div class="footer-column">
+				<h3>Navegación</h3>
+				<ul>
+					<li><a href="#">Inicio</a></li>
+					<li><a href="#AcercaNosotros">Acerca de Nosotros</a></li>
+					<li><a href="#">Contacto</a></li>
+					<li><a href="#">Login / Registro</a></li>
+				</ul>
+			</div>
+
+			<!-- Productos -->
+			<div class="footer-column">
+				<h3>Productos</h3>
+				<ul>
+					<li><a href="#">Alimento Bovino</a></li>
+					<li><a href="#">Concentrado de equino</a></li>
+					<li><a href="#">Aves de corral</a></li>
+					<li><a href="#">Porcino</a></li>
+				</ul>
+			</div>
+
+			<!-- Atención al cliente -->
+			<div class="footer-column footer-contact">
+				<h3>Atención al cliente</h3>
+				<ul>
+					<li><i class="fa-solid fa-phone"></i> <a href="tel:+523119553880">(311) 955-3880</a></li>
+					<li><i class="fa-solid fa-envelope"></i> <a
+							href="mailto:info@toroforrajero.com">info@toroforrajero.com</a></li>
+					<li><i class="fa-solid fa-location-dot"></i> Cerro Lejos, A dos horas de la Ciudad</li>
+					<li><i class="fa-solid fa-clock"></i> 10:00 a.m. - 7:00 p.m.</li>
+				</ul>
+			</div>
+
+		</div>
+
+		
+
+		
+
+		<!-- Línea inferior -->
+		<div class="footer-bottom">
+			<p>© 2026 Toro Forrajero. Todos los derechos reservados.</p>
+		</div>
+	</footer>
+
 	
 
-	<div class="alerta"></div>
-	<!--Text area es para múltiples líneas de texto-->
-	<!--Permite presioanr enter y escribir párrafos-->
-
-	<section class="form-card">
-		<label for="caja_de_comentarios">Quejas o sugerencias</label>
-	    <br>
-		<textarea id="caja_de_comentarios" placeholder="Por favor, escriba sus comentarios." rows="5" cols="40"></textarea>
-		<p id="contador">0 / 300 caracteres | 0 palabras</p>
-	</section> 
-
-	<script src="script.js"></script>
-	<br>
-	<!--Input es para texto de una sola línea-->
-	<label for="">Correo Electronico</label>
-	<br>
-	<input autocomplete="off" id="correo" type="text" name="">
-	<br>
-	<button id="btn-enviar">Enviar</button>
-
+	<!--Bootstrap script-->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
 		crossorigin="anonymous"></script>
 
-	<script src="script.js"></script>
+
+	<script src="build/js/itemsController.js"></script>
+	<script src="build/js/adminHome.js"></script>
+
+	<script src="build/js/carrito.js"></script>
 </body>
 
 </html>
+

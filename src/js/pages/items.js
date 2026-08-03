@@ -273,6 +273,7 @@ const baseDatosProductos = [
 function cargarItems() {
 	baseDatosProductos.forEach(producto => {
 		itemsController.addItem(
+			producto.id,
 			producto.nombreProducto,
 			producto.descripcion,
 			producto.destacado,
@@ -285,6 +286,9 @@ function cargarItems() {
 		);
 	});
 }
+
+
+
 
 
 
