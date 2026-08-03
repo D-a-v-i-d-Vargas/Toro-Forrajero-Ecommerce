@@ -150,6 +150,7 @@ function eliminarProductoMenu() {
             const nombre = e.target.dataset.producto;
             const productoEncontrado = itemsController.items.find(item => item.nombreProducto === nombre);
             const id = productoEncontrado.id;
+            const imagen = productoEncontrado.imagen;
 
             // 2. Creación de los elementos
             const modal = document.createElement('DIV');
@@ -160,6 +161,7 @@ function eliminarProductoMenu() {
 
             contenidoModal.innerHTML = `
             <h3>¿Deseas eliminar <br><span class="fw-bold">${nombre}</span>?</h3>
+            <img class="admin-img-menu" src="${imagen}" alt="imagne">
             <div class=" d-flex admin-btns ">
             <button type="button" class="btn-cancelar">No</button>
             <button type="button" class="btn-confirmar">Si</button>
