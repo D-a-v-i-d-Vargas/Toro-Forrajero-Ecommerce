@@ -87,10 +87,57 @@
         <!-- -------------------------------------------------------------------
             2. INFORMACIÓN BÁSICA
         -------------------------------------------------------------------- -->
-        <section>
+            <section class="info-basica">
+                <div class="contact-card p-4 p-md-5 border border-3 border-warning-subtle rounded-4 shadow-sm">
+                    <div class="row g-3 mb-3">
+                        <h2 class="mb-4">Información básica</h2>
+                        <div class="col-md-6">
 
-            
-        </section>
+                            <label for="nombre-producto" class="form-label-custom fw-bold text-center w-100">
+                                Nombre del Producto
+                            </label>
+
+                            <!--Entrada del campo de Nombre de producto-->
+                            <input type="text" id="nombre-producto" name="nombre-producto" autocomplete="off"
+                                class="form-control form-control-custom"
+                                placeholder="Ej. Alimento para gallinas ponedoras">
+                        </div>
+
+
+                        <!--Especie-->
+                        <div class="col-md-6">
+
+                            <label for="especie" class="form-label-custom fw-bold text-center w-100">
+                                Especie
+                            </label>
+                            <!--Menú desplegable-->
+                            <select id="especie" name="especie" class="form-select form-control-custom text-center w-100">
+                                <option selected disabled> Selecciona una Categoría</option>
+                                <option value="bovinos"> Bovinos</option>
+                                <option value="bovinos"> Porcinos</option>
+                                <option value="bovinos"> Aves</option>
+                                <option value="bovinos"> Ovinos</option>
+                            </select>
+                        </div>
+
+                        <!-- Marca-->
+                        <div class="col-md-6">
+                            <label for="marca" class="form-label-custom fw-bold text-center w-100">
+                                Marca
+                            </label>
+                            <!--Menú desplegable para marca-->
+                            <select id="marca" name="marca" class="form-select form-control-custom text-center w-100">
+                                <option selected disabled> Selecciona una Marca</option>
+                                <option value="ADM"> ADM </option>
+                                <option value="El-nogal"> EL Nogal</option>
+                                <option value="Alimentos-Arandas">Alimentos Arandas</option>
+                            </select>
+
+                        </div>
+                    </div>
+                </div>
+
+            </section>
 
         <!-- -------------------------------------------------------------------
             3. PRECIO E INVENTARIO
