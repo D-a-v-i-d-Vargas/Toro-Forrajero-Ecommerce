@@ -33,7 +33,7 @@ async function cargarProductos() {
 
     }
     catch (error) {
-        console.error("No se pudo cargar el catálogo:", error);
+        console.error("No se pudo cargar el catálogo )::", error);
 
 
     }
