@@ -10,6 +10,7 @@ const mensajeValidado = {
     mEspecie: "",
     mMarca: "", //Pendiente
     mPeso: "", //Pendiente
+    mCosto: "",
     mPrecio: "", //Pendiente
     mDescripcion: "", //Pendiente
     mDestacado: false //Pendiente
@@ -54,82 +55,49 @@ function validarEspecie(selectEspecie){
 // VALIDACIÓN DEL CAMPO MARCA
 // =============================
 
-/* const marca = document.getElementById("marca");
-const alertaMarca = document.getElementById("alertaMarca");
 
-if (marca && alertaMarca) {
+function validarMarca(selectMarca) {
+    if (!selectMarca)
+        return "No se encontró el campo Marca";
 
-    marca.addEventListener("change", validarMarca);
-    marca.addEventListener("blur", validarMarca);
+    const marca = selectMarca.value.trim();
 
-    function validarMarca() {
+    if (marca === "")
+        return `<span class="alerta-titulo narnaja-text">
+                    La marca debe ser seleccionada.
+                </span>`;
 
-        const valorMarca = marca.value.trim();
-
-        if (valorMarca === "") {
-
-            alertaMarca.classList.remove("d-none");
-
-            marca.classList.remove("is-valid");
-            marca.classList.add("is-invalid");
-
-            return false;
-        }
-
-        alertaMarca.classList.add("d-none");
-
-        marca.classList.remove("is-invalid");
-        marca.classList.add("is-valid");
-
-        return true;
-    }
-} */
+    return undefined;
+}
 
 
 
-
-// =============================
-// VALIDACIÓN DEL COSTO
-// =============================
 // ===============================
 // Validación del campo Costo (MXN)
 // ===============================
 
-const costo = document.getElementById("costo");
-const alertaCosto = document.getElementById("alertaCosto");
+// COSTO ==========================
 
-function validarCosto() {
-    const valor = costo.value.trim();
+function validarCosto(eCosto) {
+    if (!eCosto)
+        return "No se encontró el campo Costo";
 
-    // Campo vacío
-    if (valor === "") {
-        alertaCosto.textContent = "Debes ingresar un costo.";
-        alertaCosto.classList.remove("d-none");
-        costo.classList.add("is-invalid");
-        return false;
-    }
+    const costo = eCosto.value.trim();
 
-    // Debe ser un número mayor a 0
-    if (isNaN(valor) || Number(valor) <= 0) {
-        alertaCosto.textContent = "Debes ingresar un costo válido mayor a $0.00.";
-        alertaCosto.classList.remove("d-none");
-        costo.classList.add("is-invalid");
-        return false;
-    }
+    const alertMensaje =
+        `<span class="alerta-titulo narnaja-text">El costo </span>`;
 
-    // Todo correcto
-    alertaCosto.classList.add("d-none");
-    costo.classList.remove("is-invalid");
-    costo.classList.add("is-valid");
+    if (costo === "")
+        return `${alertMensaje}<span class="narnaja-text">no puede estar vacío.</span>`;
 
-    return true;
+    if (isNaN(Number(costo)))
+        return `${alertMensaje}<span class="narnaja-text">debe ser un número válido.</span>`;
+
+    if (Number(costo) <= 0)
+        return `${alertMensaje}<span class="narnaja-text">debe ser mayor a $0.00.</span>`;
+
+    return undefined;
 }
-
-// Validar al salir del campo
-costo.addEventListener("blur", validarCosto);
-
-// Validar mientras escribe
-costo.addEventListener("input", validarCosto);
 
 
 // Vane
@@ -205,17 +173,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Referencias a los inputs
             const inputNombreProducto = document.getElementById("nombre-producto");
-            const selectEspecie = document.getElementById("especie")
+            const selectEspecie = document.getElementById("especie");
+            const selectMarca = document.getElementById("marca");
+            const eCosto = document.getElementById("costo");
             const ePrecioVenta = document.getElementById("precioVenta"); // Vane - Precio de Venta
             const eExistencia = document.getElementById("existencia"); // Vane - Existencia
             const divAlerta = document.querySelector(".alerta");
             
             
             // Ejecutar validaciones
+            // Ejecutar validaciones
             const errorNombre = validarNombreProducto(inputNombreProducto);
             const errorEspecie = validarEspecie(selectEspecie);
-            const errorPrecioVenta = validarPrecioVenta(ePrecioVenta); 
-            const errorExistencia = validarExistencia(eExistencia); 
+            const errorMarca = validarMarca(selectMarca);
+            const errorCosto = validarCosto(eCosto);
+            const errorPrecioVenta = validarPrecioVenta(ePrecioVenta);
+            const errorExistencia = validarExistencia(eExistencia);
             
 
             //Console.log de prueba
@@ -228,14 +201,21 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(errorEspecie);
             mostrarError("#error-nombre p", errorNombre);
             mostrarError("#error-especie p", errorEspecie);
+            mostrarError("#error-marca p", errorMarca);
+            mostrarError("#error-costo p", errorCosto);
             mostrarError("#error-venta p", errorPrecioVenta); 
             mostrarError("#error-existencia p", errorExistencia); 
 
             //Añadir sus errores a esta línea con más ||
-            const hayErrores = errorNombre || errorEspecie|| errorPrecioVenta || errorExistencia;
+           const hayErrores =
+                            errorNombre ||
+                            errorEspecie ||
+                            errorMarca ||
+                            errorCosto ||
+                            errorPrecioVenta ||
+                            errorExistencia;
 
-            //Añadir sus errores a esta línea con más ||
-            const hayErrores = errorNombre || errorEspecie;
+           
 
             if (hayErrores) {
                 if (divAlerta) {
@@ -251,8 +231,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Si pasa todas las validaciones, llenamos el objeto para que Elías lo use en el JSON!!!
             mensajeValidado.mNombreProducto = inputNombreProducto.value.trim();
-            mensajeValidado.mEspecie = selectEspecie.options[selectEspecie.selectedIndex].text;
-            mensajeValidado.mPrecio = ePrecioVenta.value.trim(); 
+
+            mensajeValidado.mEspecie =
+                selectEspecie.options[selectEspecie.selectedIndex].text;
+
+            mensajeValidado.mMarca =
+                selectMarca.options[selectMarca.selectedIndex].text;
+
+            mensajeValidado.mCosto = eCosto.value.trim();
+
+            mensajeValidado.mPrecio = ePrecioVenta.value.trim();
+
             mensajeValidado.mExistencia = eExistencia.value.trim(); // Vane
             
 
@@ -279,4 +268,4 @@ function mostrarError(selector, mensajeError) {
         elemento.innerHTML = mensajeError || "";
     }
 }
-}
+
