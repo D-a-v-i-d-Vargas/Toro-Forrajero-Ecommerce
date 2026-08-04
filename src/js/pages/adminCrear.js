@@ -36,9 +36,9 @@ function validarNombreProducto(inputNombreProducto){
     const alertMensaje = `<span class="alerta-titulo">El nombre del producto </span>`;
 
     if (nombreProducto === "") 
-        return alertMensaje + "no puede estar vacío.";
+        return alertMensaje + `<span class="alerta-titulo">no puede estar vacío. </span>`;
     if (nombreProducto.length < 3) 
-        return alertMensaje + "debe tener más de 3 caracteres.";
+        return alertMensaje + `<span class="alerta-titulo">debe tener más de 3 caracteres. </span>`;
 
     return undefined;
 }
@@ -46,7 +46,7 @@ function validarNombreProducto(inputNombreProducto){
 //Validación de Especie
 function validarEspecie(selectEspecie){
     if (!selectEspecie) return "No se encontró el selector de motivo."
-    if (selectEspecie.value === "") return `<span class="alerta-titulo">Especie:</span> Debe seleccionar una especie.`;
+    if (selectEspecie.value === "") return `<span class="alerta-titulo">Debe seleccionar una especie.</span>`;
     return undefined;
 }
 
@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
             mostrarError("#error-existencia p", errorExistencia); 
 
             //Añadir sus errores a esta línea con más ||
-           const hayErrores =
+            const hayErrores =
                             errorNombre ||
                             errorEspecie ||
                             errorMarca ||
@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             errorPrecioVenta ||
                             errorExistencia;
 
-           
+            
 
             if (hayErrores) {
                 if (divAlerta) {

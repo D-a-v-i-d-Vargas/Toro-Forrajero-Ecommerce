@@ -107,6 +107,8 @@
 
 
 
+#error-nombre, 
+#error-especie,
 #error-venta,
 #error-existencia {
     color: var(--color-naranjaFuerte);
