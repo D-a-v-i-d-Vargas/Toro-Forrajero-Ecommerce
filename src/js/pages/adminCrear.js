@@ -135,6 +135,46 @@ costo.addEventListener("input", validarCosto);
 // Vane
 
 
+//PRECIO DE VENTA ==========================
+
+function validarPrecioVenta(ePrecioVenta){
+    if (!ePrecioVenta)
+        return "No se encontró el campo Precio de Venta";
+
+    const precioVenta = ePrecioVenta.value.trim();
+    const alertMensaje = `<span class="alerta-titulo narnaja-text">El precio de venta </span>`;
+
+    if (precioVenta === "")
+        return `${alertMensaje} <span class="narnaja-text">no puede estar vacío.</span>`;
+
+    if (Number(precioVenta) <= 0)
+        return `${alertMensaje} <span class="narnaja-text">debe ser mayor a $0.00.</span>`;
+
+    return undefined;
+}
+
+//EXISTENCIA =======================
+function validarExistencia(eExistencia){
+    if (!eExistencia)
+        return "No se encontró el campo Existencia";
+
+    const existencia = eExistencia.value.trim();
+    const alertMensaje = `<span class="alerta-titulo narnaja-text">La existencia </span>`;
+
+    if (existencia === "")
+        return `${alertMensaje} <span class="narnaja-text">no puede estar vacía.</span>`;
+
+    if (Number(existencia) < 0)
+        return `${alertMensaje} <span class="narnaja-text">no puede ser menor que 0.</span>`;
+
+    if (!Number.isInteger(Number(existencia)))
+        return `${alertMensaje} <span class="narnaja-text">debe ser un número entero.</span>`;
+
+    return undefined;
+}
+
+
+
 
 
 //Esther
@@ -166,12 +206,16 @@ document.addEventListener('DOMContentLoaded', () => {
             // Referencias a los inputs
             const inputNombreProducto = document.getElementById("nombre-producto");
             const selectEspecie = document.getElementById("especie")
+            const ePrecioVenta = document.getElementById("precioVenta"); // Vane - Precio de Venta
+            const eExistencia = document.getElementById("existencia"); // Vane - Existencia
             const divAlerta = document.querySelector(".alerta");
             
             
             // Ejecutar validaciones
             const errorNombre = validarNombreProducto(inputNombreProducto);
             const errorEspecie = validarEspecie(selectEspecie);
+            const errorPrecioVenta = validarPrecioVenta(ePrecioVenta); 
+            const errorExistencia = validarExistencia(eExistencia); 
             
 
             //Console.log de prueba
@@ -184,6 +228,11 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(errorEspecie);
             mostrarError("#error-nombre p", errorNombre);
             mostrarError("#error-especie p", errorEspecie);
+            mostrarError("#error-venta p", errorPrecioVenta); 
+            mostrarError("#error-existencia p", errorExistencia); 
+
+            //Añadir sus errores a esta línea con más ||
+            const hayErrores = errorNombre || errorEspecie|| errorPrecioVenta || errorExistencia;
 
             //Añadir sus errores a esta línea con más ||
             const hayErrores = errorNombre || errorEspecie;
@@ -203,6 +252,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Si pasa todas las validaciones, llenamos el objeto para que Elías lo use en el JSON!!!
             mensajeValidado.mNombreProducto = inputNombreProducto.value.trim();
             mensajeValidado.mEspecie = selectEspecie.options[selectEspecie.selectedIndex].text;
+            mensajeValidado.mPrecio = ePrecioVenta.value.trim(); 
+            mensajeValidado.mExistencia = eExistencia.value.trim(); // Vane
             
 
             if (divAlerta) {
@@ -227,4 +278,5 @@ function mostrarError(selector, mensajeError) {
     if (elemento) {
         elemento.innerHTML = mensajeError || "";
     }
+}
 }
