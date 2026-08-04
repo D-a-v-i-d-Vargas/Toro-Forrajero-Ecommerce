@@ -1,17 +1,18 @@
 document.addEventListener('DOMContentLoaded', function () {
     cargarProductos();
+});
 
-})
 const itemsController = new ItemsController(0);
-
-const API_URL = 'http://localhost:3000/productos'
+const API_URL = 'http://localhost:3000/productos';
 
 async function cargarProductos() {
-
     try {
         const res = await fetch(API_URL);
-        if (!res.ok) throw new Error("Error la optener Productos");
+        if (!res.ok) throw new Error("Error al obtener Productos");
         const productos = await res.json();
+
+        // Limpiamos los items por si acaso se vuelve a llamar la función
+        itemsController.items = [];
 
         productos.forEach(producto => {
             itemsController.addItem(
@@ -25,28 +26,21 @@ async function cargarProductos() {
                 producto.marca,
                 producto.imagen,
                 producto.estado
-            )
-
+            );
         });
+
         renderizarHTML(itemsController.items);
         eliminarProductoMenu();
 
+    } catch (error) {
+        console.error("No se pudo cargar el catálogo ):", error);
     }
-    catch (error) {
-        console.error("No se pudo cargar el catálogo )::", error);
-
-
-    }
-
-
 }
-
 
 function renderizarHTML(items) {
     const catalogo = document.getElementById('catalogo-productos');
     if (!catalogo) return;
 
-    // Inyectamos exactamente la maquetación en HTML que creó tu compañero
     catalogo.innerHTML = items.map(producto => `
         <article class="tarjeta-producto">
             <img src="${producto.imagen}" alt="${producto.nombreProducto}">
@@ -55,6 +49,7 @@ function renderizarHTML(items) {
                 <h2>${producto.nombreProducto}</h2>
                 <p>${producto.descripcion}</p>
                 <span class="precio">$${producto.precio} MXN</span>
+                <span class="precio">Marca: ${producto.marca}</span>
                 <span class="visibilidad">
                 Visibilidad: <span class="visibilidad--${producto.estado === 'activo' ? 'activo' : 'inactivo'}">${producto.estado}</span>
                 </span>
@@ -79,32 +74,36 @@ function renderizarHTML(items) {
     `).join('');
 }
 
-
+/* ====================================================
+   FILTRO POR MARCA (CORREGIDO)
+   ==================================================== */
 const filtrarMarcas = (marca) => {
-    const productosVisibles = baseDatosProductos.filter(producto => producto.marca === marca)
-    renderizarHTML(productosVisibles)
-
-}
+    const productosVisibles = itemsController.items.filter(producto => producto.marca === marca);
+    
+    renderizarHTML(productosVisibles);
+        eliminarProductoMenu();
+};
 
 const admBtn = document.getElementById('adm');
 const nogalBtn = document.getElementById('nogal');
 const arandasBtn = document.getElementById('arandas');
 
-admBtn.addEventListener('click', () => {
-    filtrarMarcas('ADM');
-})
+if (admBtn) {
+    admBtn.addEventListener('click', () => filtrarMarcas('ADM'));
+}
 
-nogalBtn.addEventListener('click', () => {
-    filtrarMarcas('El Nogal');
-})
+if (nogalBtn) {
+    nogalBtn.addEventListener('click', () => filtrarMarcas('El Nogal'));
+}
 
-arandasBtn.addEventListener('click', () => {
-    filtrarMarcas('Alimentos Arandas');
-})
-/* Filtro por especie */
+if (arandasBtn) {
+    arandasBtn.addEventListener('click', () => filtrarMarcas('Alimentos Arandas'));
+}
 
-const mapaEspecies = { "bovinos": "Vacas", "porcinos": "Cerdos", "aves": "Aves", "ovinos": "Borregos" }
-
+/* ====================================================
+   FILTRO POR ESPECIE (CORREGIDO)
+   ==================================================== */
+const mapaEspecies = { "bovinos": "Vacas", "porcinos": "Cerdos", "aves": "Aves", "ovinos": "Borregos" };
 let especieSeleccionada = null;
 
 function aplicarFiltro() {
@@ -114,12 +113,9 @@ function aplicarFiltro() {
         const productoFiltrado = itemsController.items.filter(item => item.especie === especieSeleccionada);
         renderizarHTML(productoFiltrado);
     }
+    // Re-activamos los botones de eliminar al cambiar de filtro
+    eliminarProductoMenu();
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-    cargarItems();
-    renderizarHTML(itemsController.items);
-});
 
 const botonesEspecie = document.querySelectorAll(".filtro-especies .especie");
 
@@ -138,21 +134,25 @@ botonesEspecie.forEach(boton => {
         }
 
         aplicarFiltro();
-    })
+    });
 });
 
+/* ====================================================
+   MODAL DE ELIMINACIÓN
+   ==================================================== */
 function eliminarProductoMenu() {
     const btns = document.querySelectorAll('.boton-eliminar');
 
     btns.forEach(btn => {
         btn.addEventListener('click', function (e) {
-            // 1. Obtenemos el nombre del producto
             const nombre = e.target.dataset.producto;
             const productoEncontrado = itemsController.items.find(item => item.nombreProducto === nombre);
+
+            if (!productoEncontrado) return;
+
             const id = productoEncontrado.id;
             const imagen = productoEncontrado.imagen;
 
-            // 2. Creación de los elementos
             const modal = document.createElement('DIV');
             modal.classList.add('modal-overlay');
 
@@ -160,45 +160,37 @@ function eliminarProductoMenu() {
             contenidoModal.classList.add('contenido-modal');
 
             contenidoModal.innerHTML = `
-            <h3>¿Deseas eliminar <br><span class="fw-bold">${nombre}</span>?</h3>
-            <img class="admin-img-menu" src="${imagen}" alt="imagne">
-            <div class=" d-flex admin-btns ">
-            <button type="button" class="btn-cancelar">No</button>
-            <button type="button" class="btn-confirmar">Si</button>
-                
-            </div>
-        `;
+                <h3>¿Deseas eliminar <br><span class="fw-bold">${nombre}</span>?</h3>
+                <img class="admin-img-menu" src="${imagen}" alt="imagen del producto">
+                <div class="d-flex admin-btns">
+                    <button type="button" class="btn-cancelar">No</button>
+                    <button type="button" class="btn-confirmar">Sí</button>
+                </div>
+            `;
 
-
-            // 4. Armamos la jerarquía del DOM
             modal.appendChild(contenidoModal);
 
-            // 5. Cierre del modal solo si cloqueas el fondo (overlay)
             modal.addEventListener('click', function (evento) {
                 if (evento.target === modal) {
                     cerrarModal();
                 }
             });
 
-            // 6. Asignar funcionalidad al botón "Cancelar" que acabamos de crear
             const btnCancelar = contenidoModal.querySelector('.btn-cancelar');
             btnCancelar.addEventListener('click', cerrarModal);
 
-            // 7. Mostrar en pantalla
             const body = document.querySelector('body');
             body.classList.add('overflow-hiden');
             body.appendChild(modal);
-            eliminarProducto(id, contenidoModal)
-            // Animación de entrada
+
+            eliminarProducto(id, contenidoModal);
+
             setTimeout(() => {
                 modal.classList.add('is-visible');
             }, 10);
         });
-
     });
-
 }
-
 
 function eliminarProducto(id, contenedorModal) {
     const btn = contenedorModal.querySelector('.btn-confirmar');
@@ -216,15 +208,15 @@ async function deleteProduct(productId) {
         });
 
         if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
+            throw new Error(`HTTP error! Status: response.status`);
         }
 
         // 1. Quitamos el producto del array en memoria
         itemsController.items = itemsController.items.filter(item => item.id !== productId);
 
-        // 2. Volvemos a pintar el catálogo sin ese producto
+        // 2. Volvemos a pintar el catálogo
         renderizarHTML(itemsController.items);
-        eliminarProductoMenu(); // porque renderizarHTML recreó los botones, hay que re-enlazar eventos
+        eliminarProductoMenu();
 
         // 3. Cerramos el modal
         cerrarModal();
@@ -235,12 +227,9 @@ async function deleteProduct(productId) {
     }
 }
 
-
-
 function cerrarModal() {
     const modal = document.querySelector('.modal-overlay');
     const body = document.querySelector('body');
-
 
     if (modal) {
         modal.classList.remove('is-visible');
@@ -250,8 +239,4 @@ function cerrarModal() {
             modal.remove();
         }, 300);
     }
-
 }
-
-
-
