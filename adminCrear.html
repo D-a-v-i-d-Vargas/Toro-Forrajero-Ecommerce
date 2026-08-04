@@ -80,7 +80,7 @@
         <!-- -------------------------------------------------------------------
             1. NUEVO PRODUCTO
         -------------------------------------------------------------------- -->
-        <section class="container my-5"></section>
+        <section class="container my-5">
             <div class="row align-items-center">
                 <div class="col-md-8">
                     <h1 class="display-3 fw-bold text-center">
@@ -161,7 +161,6 @@
                 <div class="row g-3 mb-3">
                     <h2 class="mb-4">Precio e inventario</h2>
                     <!-- Costo -->
-                   <!-- Costo -->
                 <div class="col-md-6">
                     <label for="costo" class="form-label-custom fw-bold text-center w-100">
                         Costo(MXN)
@@ -215,8 +214,35 @@
         <!-- -------------------------------------------------------------------
             4. DESCRIPCIÓN
         -------------------------------------------------------------------- -->
-        <section class="descripcion">
+        <!-- IMPORTANTE OJO -->
+        <!--Dudas o prguntas  Avisame antes de modificarlo;) -->
+        <!-- Drescipcción hecho por el Deivid ;)   -->
+        <section class="descripcion container">
+            <div class="contact-card p-4 p-md-5 mt-5 border border-3 border-warning-subtle rounded-4 shadow-sm">
+                <h2 class="mb-4">Descripción</h2>
+                
+                <div class="row g-4 align-items-stretch">
+                    <!-- Subir Imagen -->
+                    <div class="col-md-4">
+                        <p class="fw-bold mb-2">Imagen Principal</p>
+                        <label for="imagen-principal" class="d-flex flex-column align-items-center justify-content-center bg-white border border-light-subtle rounded-4 p-4 text-center h-100 shadow-sm" style="cursor: pointer; min-height: 200px;">
+                            <i class="bi bi-images mb-3" style="font-size: 2.5rem; color: #333;"></i>
+                            <span class="fw-bold mb-1">Subir Imagen Principal</span>
+                            <span class="text-muted small">JPG, PNG, WEBP. Max. 50MB</span>
+                            <input type="file" id="imagen-principal" class="d-none" accept=".jpg, .jpeg, .png, .webp">
+                        </label>
+                    </div>
 
+                    <!-- Área de Descripción -->
+                    <div class="col-md-8 d-flex flex-column">
+                        <label for="descripcion-producto" class="fw-bold mb-2">Descripción:</label>
+                        <textarea id="descripcion-producto" name="descripcion-producto" 
+                            class="form-control bg-white border border-light-subtle rounded-4 p-3 shadow-sm flex-grow-1" 
+                            placeholder="Agrega una descripción del producto" 
+                            style="resize: none; min-height: 200px;"></textarea>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- -------------------------------------------------------------------
