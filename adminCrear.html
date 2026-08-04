@@ -237,9 +237,16 @@
                                 <i class="bi bi-images mb-3" style="font-size: 2.5rem; color: #333;"></i>
                                 <span class="fw-bold mb-1">Subir Imagen Principal</span>
                                 <span class="text-muted small">JPG, PNG, WEBP. Max. 50MB</span>
+<<<<<<< HEAD
                                 <input type="file" id="imagen-principal" class="d-none"
                                     accept=".jpg, .jpeg, .png, .webp">
+=======
+                                <input type="file" id="imagen-principal" accept=".jpg, .jpeg, .png, .webp">
+                                
+>>>>>>> develop
                             </label>
+                            <!-- Contenedor para inyectar errores de imagen -->
+                            <div id="error-imagen" class="narnaja-text small mt-1 text-center"></div>
                         </div>
 
                         <!-- Área de Descripción -->
@@ -249,6 +256,8 @@
                                 class="form-control bg-white border border-light-subtle rounded-4 p-3 shadow-sm flex-grow-1"
                                 placeholder="Agrega una descripción del producto"
                                 style="resize: none; min-height: 200px;"></textarea>
+                                <p id="contador" class="mt-2 text-center small">0 de 300 caracteres | 0 palabras</p>
+                                <div id="error-mensaje" class="narnaja-text small mt-1 text-center">
                         </div>
                     </div>
                 </div>

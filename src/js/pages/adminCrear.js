@@ -4,168 +4,180 @@
  *
  ******************************************************************************/
 
-// Objeto que acumulará los datos si todo sale bien, hay que llenarlo!!
+// Objeto que acumulará los datos
 const mensajeValidado = {
     mNombreProducto: "",
     mEspecie: "",
-    mMarca: "", //Pendiente
-    mPeso: "", //Pendiente
+    mMarca: "",
+    mPeso: "",
     mCosto: "",
-    mPrecio: "", //Pendiente
-    mDescripcion: "", //Pendiente
-    mDestacado: false, //Pendiente
-    mEstado: false //Pendiente
+    mPrecio: "",
+    mDescripcion: "",
+    mDestacado: false,
+    mEstado: "inactivo",
+    mImagen: ""
 };
 
 function reiniciarMensajeValidado() {
-    for (let key in mensajeValidado) {
-        mensajeValidado[key] = "";
-    }
+    mensajeValidado.mNombreProducto = "";
+    mensajeValidado.mEspecie = "";
+    mensajeValidado.mMarca = "";
+    mensajeValidado.mPeso = "";
+    mensajeValidado.mCosto = "";
+    mensajeValidado.mPrecio = "";
+    mensajeValidado.mDescripcion = "";
+    mensajeValidado.mDestacado = false;
+    mensajeValidado.mEstado = "inactivo";
+    mensajeValidado.mImagen = "";
 }
 
 //=============================================================================
 //                              Validaciones
 //=============================================================================
 
-// Diana
-//Validación del Nombre del producto
 function validarNombreProducto(inputNombreProducto) {
-    if (!inputNombreProducto)
-        return "No se encontró el campo Nombre Producto"
+    if (!inputNombreProducto) return "No se encontró el campo Nombre Producto";
 
     const nombreProducto = inputNombreProducto.value.trim();
     const alertMensaje = `<span class="alerta-titulo">El nombre del producto </span>`;
 
-    if (nombreProducto === "")
-        return alertMensaje + `<span class="alerta-titulo">no puede estar vacío. </span>`;
-    if (nombreProducto.length < 3)
-        return alertMensaje + `<span class="alerta-titulo">debe tener más de 3 caracteres. </span>`;
+    if (nombreProducto === "") return alertMensaje + `<span class="alerta-titulo">no puede estar vacío. </span>`;
+    if (nombreProducto.length < 3) return alertMensaje + `<span class="alerta-titulo">debe tener más de 3 caracteres. </span>`;
 
     return undefined;
 }
 
-//Validación de Especie
 function validarEspecie(selectEspecie) {
-    if (!selectEspecie) return "No se encontró el selector de motivo."
-    if (selectEspecie.value === "") return `<span class="alerta-titulo">Debe seleccionar una especie.</span>`;
+    if (!selectEspecie) return "No se encontró el selector de especie.";
+    if (selectEspecie.value === "" || selectEspecie.selectedIndex === 0) {
+        return `<span class="alerta-titulo">Debe seleccionar una especie.</span>`;
+    }
     return undefined;
 }
-
-// Oscar
-// =============================
-// VALIDACIÓN DEL CAMPO MARCA
-// =============================
-
 
 function validarMarca(selectMarca) {
-    if (!selectMarca)
-        return "No se encontró el campo Marca";
-
-    const marca = selectMarca.value.trim();
-
-    if (marca === "")
-        return `<span class="alerta-titulo narnaja-text">
-                    La marca debe ser seleccionada.
-                </span>`;
-
+    if (!selectMarca) return "No se encontró el campo Marca";
+    if (selectMarca.value.trim() === "" || selectMarca.selectedIndex === 0) {
+        return `<span class="alerta-titulo narnaja-text">La marca debe ser seleccionada.</span>`;
+    }
     return undefined;
 }
-
-
-
-// ===============================
-// Validación del campo Costo (MXN)
-// ===============================
-
-// COSTO ==========================
 
 function validarCosto(eCosto) {
-    if (!eCosto)
-        return "No se encontró el campo Costo";
+    if (!eCosto) return "No se encontró el campo Costo";
 
     const costo = eCosto.value.trim();
+    const alertMensaje = `<span class="alerta-titulo narnaja-text">El costo </span>`;
 
-    const alertMensaje =
-        `<span class="alerta-titulo narnaja-text">El costo </span>`;
-
-    if (costo === "")
-        return `${alertMensaje}<span class="narnaja-text">no puede estar vacío.</span>`;
-
-    if (isNaN(Number(costo)))
-        return `${alertMensaje}<span class="narnaja-text">debe ser un número válido.</span>`;
-
-    if (Number(costo) <= 0)
-        return `${alertMensaje}<span class="narnaja-text">debe ser mayor a $0.00.</span>`;
+    if (costo === "") return `${alertMensaje}<span class="narnaja-text">no puede estar vacío.</span>`;
+    if (isNaN(Number(costo))) return `${alertMensaje}<span class="narnaja-text">debe ser un número válido.</span>`;
+    if (Number(costo) <= 0) return `${alertMensaje}<span class="narnaja-text">debe ser mayor a $0.00.</span>`;
 
     return undefined;
 }
 
-
-// Vane
-
-
-//PRECIO DE VENTA ==========================
-
 function validarPrecioVenta(ePrecioVenta) {
-    if (!ePrecioVenta)
-        return "No se encontró el campo Precio de Venta";
+    if (!ePrecioVenta) return "No se encontró el campo Precio de Venta";
 
     const precioVenta = ePrecioVenta.value.trim();
     const alertMensaje = `<span class="alerta-titulo narnaja-text">El precio de venta </span>`;
 
-    if (precioVenta === "")
-        return `${alertMensaje} <span class="narnaja-text">no puede estar vacío.</span>`;
-
-    if (Number(precioVenta) <= 0)
-        return `${alertMensaje} <span class="narnaja-text">debe ser mayor a $0.00.</span>`;
+    if (precioVenta === "") return `${alertMensaje} <span class="narnaja-text">no puede estar vacío.</span>`;
+    if (isNaN(Number(precioVenta))) return `${alertMensaje} <span class="narnaja-text">debe ser un número válido.</span>`;
+    if (Number(precioVenta) <= 0) return `${alertMensaje} <span class="narnaja-text">debe ser mayor a $0.00.</span>`;
 
     return undefined;
 }
 
-//EXISTENCIA =======================
 function validarExistencia(eExistencia) {
-    if (!eExistencia)
-        return "No se encontró el campo Existencia";
+    if (!eExistencia) return "No se encontró el campo Existencia";
 
     const existencia = eExistencia.value.trim();
     const alertMensaje = `<span class="alerta-titulo narnaja-text">La existencia </span>`;
 
-    if (existencia === "")
-        return `${alertMensaje} <span class="narnaja-text">no puede estar vacía.</span>`;
-
-    if (Number(existencia) < 0)
-        return `${alertMensaje} <span class="narnaja-text">no puede ser menor que 0.</span>`;
-
-    if (!Number.isInteger(Number(existencia)))
-        return `${alertMensaje} <span class="narnaja-text">debe ser un número entero.</span>`;
+    if (existencia === "") return `${alertMensaje} <span class="narnaja-text">no puede estar vacía.</span>`;
+    if (Number(existencia) < 0) return `${alertMensaje} <span class="narnaja-text">no puede ser menor que 0.</span>`;
+    if (!Number.isInteger(Number(existencia))) return `${alertMensaje} <span class="narnaja-text">debe ser un número entero.</span>`;
 
     return undefined;
 }
 
+// CORRECCIÓN EN VALIDACIÓN DE IMAGEN
+function validarImagen(inputImagen) {
+    if (!inputImagen) return "No se encuentra el campo de la imagen";
 
+    const archivos = inputImagen.files;
+    const alertMensaje = `<span class="alerta-titulo narnaja-text">Imagen principal:</span>`;
 
+    // Verifica que existan archivos seleccionados
+    if (!archivos || archivos.length === 0) {
+        return `${alertMensaje} <span class="narnaja-text">Debes seleccionar una imagen.</span>`;
+    }
 
+    const archivo = archivos[0];
+    const tiposPermitidos = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+    const maxTamanoBytes = 50 * 1024 * 1024; // 50MB
 
-//Esther
+    if (!tiposPermitidos.includes(archivo.type.toLowerCase())) {
+        return `${alertMensaje} <span class="narnaja-text">Formato no válido. Solo JPG, PNG y WEBP.</span>`;
+    }
 
+    if (archivo.size > maxTamanoBytes) {
+        return `${alertMensaje} <span class="narnaja-text">El archivo supera el tamaño máximo permitido (50MB).</span>`;
+    }
+
+    return undefined;
+}
+
+function validarMensaje(inputMensaje) {
+    if (!inputMensaje) return "No se encontró la caja de comentarios.";
+    const texto = inputMensaje.value.trim();
+
+    if (texto.length === 0) {
+        return `<span class="alerta-titulo narnaja-text">La descripción no puede estar vacía.</span>`;
+    }
+    if (texto.length > 300) {
+        return `<span class="alerta-titulo narnaja-text">Has excedido el límite de 300 caracteres.</span>`;
+    }
+    return undefined;
+}
 
 /* -----------------------------------------------------------------------------
-   INTERACTIVIDAD DE LOS TOGGLES (CAMBIO DE TEXTO VISUAL)
+   INTERACTIVIDAD Y CONTADORES
 ----------------------------------------------------------------------------- */
+function actualizarContador() {
+    const COMENTARIO = document.getElementById("descripcion-producto");
+    const CONTADOR = document.getElementById("contador");
+    const longitud_maxima = 300;
+
+    if (!COMENTARIO || !CONTADOR) return;
+
+    let texto = COMENTARIO.value;
+    let texto_sin_espacios = texto.trim();
+    let longitud = texto.length;
+    let numero_de_palabras = texto_sin_espacios.length > 0 ? texto_sin_espacios.split(/\s+/).length : 0;
+
+    let mensaje = `${longitud} de ${longitud_maxima} caracteres | ${numero_de_palabras} palabras`;
+
+    if (longitud > 0 && texto_sin_espacios.length === 0) {
+        mensaje = "¡El texto no puede contener solo espacios en blanco!";
+    } else if (longitud > longitud_maxima) {
+        mensaje = `¡Has excedido el límite! (${longitud} / ${longitud_maxima})`;
+    }
+
+    CONTADOR.textContent = mensaje;
+    CONTADOR.style.color = (longitud > longitud_maxima || (longitud > 0 && texto_sin_espacios.length === 0)) ? "red" : "black";
+}
+
 function visibilidadProducto() {
     const checkVisibilidad = document.querySelector('.toggle-switch input[type="checkbox"]');
     const mensajeVisibilidad = document.querySelector('.estado-texto');
-
     if (!checkVisibilidad || !mensajeVisibilidad) return;
 
+    mensajeVisibilidad.textContent = checkVisibilidad.checked ? "activo" : "inactivo";
+
     checkVisibilidad.addEventListener('change', function (e) {
-        if (e.target.checked) {
-            mensajeVisibilidad.textContent = "activo";
-            mensajeValidado.mEstado = "activo";
-        } else {
-            mensajeVisibilidad.textContent = "inactivo";
-            mensajeValidado.mEstado = "inactivo";
-        }
+        mensajeVisibilidad.textContent = e.target.checked ? "activo" : "inactivo";
     });
 }
 
@@ -175,95 +187,78 @@ function productoDestacado() {
 
     if (!checkDestacado || !mensajeDestacado) return;
 
+    mensajeDestacado.textContent = checkDestacado.checked ? "SÍ" : "NO";
+
     checkDestacado.addEventListener('change', function (e) {
-        if (e.target.checked) {
-            mensajeDestacado.textContent = "SÍ";
-            mensajeValidado.mDestacado = true;
-        } else {
-            mensajeDestacado.textContent = "NO";
-            mensajeValidado.mDestacado = false;
-        }
+        mensajeDestacado.textContent = e.target.checked ? "SÍ" : "NO";
     });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    visibilidadProducto();
-    productoDestacado();
-});
-
 /* -----------------------------------------------------------------------------
-                VALIDACIÓN MAESTRA Y ENVÍO DEL FORMULARIO
+   INICIALIZACIÓN Y MANEJO DEL FORMULARIO (Único Listener)
 ----------------------------------------------------------------------------- */
 document.addEventListener('DOMContentLoaded', () => {
-    //Console.log de prueba
-    console.log("AdminCrear cargado");
-    // Se usa con el ID del formulario en el HTML
+    visibilidadProducto();
+    productoDestacado();
+
     const formulario = document.querySelector("#formulario-adminCrear");
-    //console.log de prueba
-    console.log(formulario);
+    const COMENTARIO = document.getElementById("descripcion-producto");
+
+    if (COMENTARIO) {
+        COMENTARIO.addEventListener("input", actualizarContador);
+        actualizarContador();
+    }
 
     if (formulario) {
         formulario.addEventListener('submit', async function (e) {
-            e.preventDefault(); // Evita que la página se recargue
-
-            //Console.log de prueba
-            console.log("Entró al submit");
+            e.preventDefault();
 
             reiniciarMensajeValidado();
 
-            // Referencias a los inputs
+            // Referencias del DOM
             const inputNombreProducto = document.getElementById("nombre-producto");
             const selectEspecie = document.getElementById("especie");
             const selectMarca = document.getElementById("marca");
             const eCosto = document.getElementById("costo");
-            const ePrecioVenta = document.getElementById("precioVenta"); // Vane - Precio de Venta
-            const eExistencia = document.getElementById("existencia"); // Vane - Existencia
+            const ePrecioVenta = document.getElementById("precioVenta");
+            const eExistencia = document.getElementById("existencia");
             const divAlerta = document.querySelector(".alerta");
-
-
-            // Ejecutar validaciones
-            // Ejecutar validaciones
-
+            const inputImagen = document.getElementById("imagen-principal");
+            const inputDescripcion = document.getElementById("descripcion-producto");
             const checkVisibilidad = document.querySelector('.toggle-switch input[type="checkbox"]');
             const checkDestacado = document.getElementById('check-destacado');
 
+            // Ejecutar validaciones
             const errorNombre = validarNombreProducto(inputNombreProducto);
             const errorEspecie = validarEspecie(selectEspecie);
             const errorMarca = validarMarca(selectMarca);
             const errorCosto = validarCosto(eCosto);
             const errorPrecioVenta = validarPrecioVenta(ePrecioVenta);
             const errorExistencia = validarExistencia(eExistencia);
+            const errorImagen = validarImagen(inputImagen);
+            const errorDescripcion = validarMensaje(inputDescripcion);
 
-
-            //Console.log de prueba
-            console.log(inputNombreProducto);
-            console.log(selectEspecie);
-
-            // Mostrar u ocultar errores en el DOM
-            //Console.log de prueba
-            console.log(errorNombre);
-            console.log(errorEspecie);
+            // Mostrar u ocultar errores
             mostrarError("#error-nombre p", errorNombre);
             mostrarError("#error-especie p", errorEspecie);
             mostrarError("#error-marca p", errorMarca);
             mostrarError("#error-costo p", errorCosto);
             mostrarError("#error-venta p", errorPrecioVenta);
             mostrarError("#error-existencia p", errorExistencia);
+            mostrarError("#error-imagen", errorImagen);
+            mostrarError("#error-mensaje p", errorDescripcion);
 
-            //Añadir sus errores a esta línea con más ||
             const hayErrores =
                 errorNombre ||
                 errorEspecie ||
                 errorMarca ||
                 errorCosto ||
                 errorPrecioVenta ||
-                errorExistencia;
-
-
+                errorExistencia ||
+                errorImagen ||
+                errorDescripcion;
 
             if (hayErrores) {
-
-
                 if (divAlerta) {
                     divAlerta.innerHTML = `
                     <div class="alert bg-naranjaFuerte alert-dismissible fade show" role="alert">
@@ -271,27 +266,29 @@ document.addEventListener('DOMContentLoaded', () => {
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>`;
                 }
-
-
-                console.warn("Envío bloqueado por errores.");
+                console.warn("Envío bloqueado por errores de validación.");
                 return;
             }
 
-
-            // Si pasa todas las validaciones, llenamos el objeto para que Elías lo use en el JSON!!!
+            // Asignar valores
             mensajeValidado.mNombreProducto = inputNombreProducto.value.trim();
-            mensajeValidado.mEspecie =
-                selectEspecie.options[selectEspecie.selectedIndex].text;
-            mensajeValidado.mMarca =
-                selectMarca.options[selectMarca.selectedIndex].text;
+            mensajeValidado.mEspecie = selectEspecie.options[selectEspecie.selectedIndex].text;
+            mensajeValidado.mMarca = selectMarca.options[selectMarca.selectedIndex].text;
             mensajeValidado.mCosto = eCosto.value.trim();
             mensajeValidado.mPrecio = ePrecioVenta.value.trim();
-            mensajeValidado.mExistencia = eExistencia.value.trim(); // Vane
+            mensajeValidado.mExistencia = eExistencia.value.trim();
+            mensajeValidado.mDescripcion = inputDescripcion.value.trim();
 
-            mensajeValidado.mEstado = checkVisibilidad && checkVisibilidad.checked ? "Activo" : "Inactivo";
+            // RUTA DE LA IMAGEN: Nos aseguramos de agregar el ./ relativo si es necesario
+            const nombreArchivo = inputImagen.files[0].name;
+            mensajeValidado.mImagen = `/recursos-graficos/productos/${nombreArchivo}`;
+
+            mensajeValidado.mEstado = checkVisibilidad && checkVisibilidad.checked ? "activo" : "inactivo";
             mensajeValidado.mDestacado = checkDestacado ? checkDestacado.checked : false;
 
+            // Enviar datos a JSON-Server
             await enviarDatos();
+
             if (divAlerta) {
                 divAlerta.innerHTML = `
                 <div class="alert bg-success text-white alert-dismissible fade show" role="alert">
@@ -300,14 +297,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>`;
             }
 
-            console.log("¡ÉXITO TOTAL! Objeto listo:", mensajeValidado);
-
-            console.log(mensajeValidado); //vemos que sí esté el mensaje completo
-
+            formulario.reset();
+            actualizarContador();
+            console.log("¡ÉXITO TOTAL! Objeto enviado:", mensajeValidado);
         });
     }
 });
-
 
 function mostrarError(selector, mensajeError) {
     const elemento = document.querySelector(selector);
@@ -316,6 +311,9 @@ function mostrarError(selector, mensajeError) {
     }
 }
 
+/* -----------------------------------------------------------------------------
+   PETICIÓN API / JSON-SERVER
+----------------------------------------------------------------------------- */
 const API_URL = 'http://localhost:3000/productos';
 
 async function enviarDatos() {
@@ -323,6 +321,7 @@ async function enviarDatos() {
         const resActual = await fetch(API_URL);
         const productosActuales = await resActual.json();
 
+        // Generar ID numérico consecutivo seguro
         const ultimoId = productosActuales.reduce((max, p) => Number(p.id) > max ? Number(p.id) : max, 0);
         const nuevoId = ultimoId + 1;
 
@@ -330,18 +329,17 @@ async function enviarDatos() {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                id: nuevoId,
+                id: String(nuevoId), // Se asigna como string o number según tu JSON
                 nombreProducto: mensajeValidado.mNombreProducto,
                 descripcion: mensajeValidado.mDescripcion || "",
                 destacado: mensajeValidado.mDestacado,
                 especie: mensajeValidado.mEspecie,
                 costo: Number(mensajeValidado.mCosto) || 0,
-                 precio: Number(mensajeValidado.mPrecio) || 0,
+                precio: Number(mensajeValidado.mPrecio) || 0,
                 marca: mensajeValidado.mMarca,
                 imagen: mensajeValidado.mImagen || "",
                 existencia: Number(mensajeValidado.mExistencia) || 0,
-                estado: mensajeValidado.mEstado,
-
+                estado: mensajeValidado.mEstado
             })
         });
 
@@ -350,7 +348,7 @@ async function enviarDatos() {
         }
 
         const resultado = await response.json();
-        console.log("Respuesta servidor con ID al inicio:", resultado);
+        console.log("Producto guardado exitosamente en JSON-Server:", resultado);
     } catch (error) {
         console.error('Fallo al conectar con la API:', error);
     }
