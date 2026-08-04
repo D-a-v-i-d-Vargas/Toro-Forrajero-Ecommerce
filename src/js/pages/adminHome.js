@@ -11,7 +11,6 @@ async function cargarProductos() {
         if (!res.ok) throw new Error("Error al obtener Productos");
         const productos = await res.json();
 
-        // Limpiamos los items por si acaso se vuelve a llamar la función
         itemsController.items = [];
 
         productos.forEach(producto => {
@@ -51,21 +50,22 @@ function renderizarHTML(items) {
                 <span class="precio">$${producto.precio} MXN</span>
                 <span class="precio">Marca: ${producto.marca}</span>
                 <span class="visibilidad">
-                Visibilidad: <span class="visibilidad--${producto.estado === 'activo' ? 'activo' : 'inactivo'}">${producto.estado}</span>
+                Visibilidad: <span class="visibilidad--${String(producto.estado).toLowerCase() === 'activo' ? 'activo' : 'inactivo'}">${producto.estado}</span>
                 </span>
                 <div class="d-flex admin-btns">
                     <button 
                         type="button" 
                         class="boton-carrito" 
-                        data-producto="${producto.nombreProducto}" 
-                        data-precio="${producto.precio}">
+                        data-id="${producto.id}"
+                        data-producto="${producto.nombreProducto}">
                         Editar
                     </button>
+                    <!--  Asignamos data-id explícitamente para no depender solo del nombre -->
                     <button 
                         type="button" 
                         class="boton-eliminar" 
-                        data-producto="${producto.nombreProducto}" 
-                        data-precio="${producto.precio}">
+                        data-id="${producto.id}"
+                        data-producto="${producto.nombreProducto}">
                         Eliminar
                     </button>
                 </div>
@@ -75,82 +75,27 @@ function renderizarHTML(items) {
 }
 
 /* ====================================================
-   FILTRO POR MARCA (CORREGIDO)
-   ==================================================== */
-const filtrarMarcas = (marca) => {
-    const productosVisibles = itemsController.items.filter(producto => producto.marca === marca);
-    
-    renderizarHTML(productosVisibles);
-        eliminarProductoMenu();
-};
-
-const admBtn = document.getElementById('adm');
-const nogalBtn = document.getElementById('nogal');
-const arandasBtn = document.getElementById('arandas');
-
-if (admBtn) {
-    admBtn.addEventListener('click', () => filtrarMarcas('ADM'));
-}
-
-if (nogalBtn) {
-    nogalBtn.addEventListener('click', () => filtrarMarcas('El Nogal'));
-}
-
-if (arandasBtn) {
-    arandasBtn.addEventListener('click', () => filtrarMarcas('Alimentos Arandas'));
-}
-
-/* ====================================================
-   FILTRO POR ESPECIE (CORREGIDO)
-   ==================================================== */
-const mapaEspecies = { "bovinos": "Vacas", "porcinos": "Cerdos", "aves": "Aves", "ovinos": "Borregos" };
-let especieSeleccionada = null;
-
-function aplicarFiltro() {
-    if (!especieSeleccionada) {
-        renderizarHTML(itemsController.items);
-    } else {
-        const productoFiltrado = itemsController.items.filter(item => item.especie === especieSeleccionada);
-        renderizarHTML(productoFiltrado);
-    }
-    // Re-activamos los botones de eliminar al cambiar de filtro
-    eliminarProductoMenu();
-}
-
-const botonesEspecie = document.querySelectorAll(".filtro-especies .especie");
-
-botonesEspecie.forEach(boton => {
-    boton.addEventListener("click", () => {
-        const especieData = boton.getAttribute("data-especie");
-        const especieNombre = mapaEspecies[especieData];
-
-        if (boton.classList.contains("activo")) {
-            boton.classList.remove("activo");
-            especieSeleccionada = null;
-        } else {
-            botonesEspecie.forEach(btn => btn.classList.remove("activo"));
-            boton.classList.add("activo");
-            especieSeleccionada = especieNombre;
-        }
-
-        aplicarFiltro();
-    });
-});
-
-/* ====================================================
-   MODAL DE ELIMINACIÓN
+   MODAL Y PROCESO DE ELIMINACIÓN
    ==================================================== */
 function eliminarProductoMenu() {
     const btns = document.querySelectorAll('.boton-eliminar');
 
     btns.forEach(btn => {
         btn.addEventListener('click', function (e) {
-            const nombre = e.target.dataset.producto;
-            const productoEncontrado = itemsController.items.find(item => item.nombreProducto === nombre);
+            // Read attributes
+            const idBtn = e.target.dataset.id;
+            const nombreBtn = e.target.dataset.producto;
 
-            if (!productoEncontrado) return;
+            // Buscamos por ID (mencionando String/Number para coincidencia exacta)
+            const productoEncontrado = itemsController.items.find(item => String(item.id) === String(idBtn));
+
+            if (!productoEncontrado) {
+                console.warn("Producto no encontrado en el controlador local.");
+                return;
+            }
 
             const id = productoEncontrado.id;
+            const nombre = productoEncontrado.nombreProducto;
             const imagen = productoEncontrado.imagen;
 
             const modal = document.createElement('DIV');
@@ -183,7 +128,11 @@ function eliminarProductoMenu() {
             body.classList.add('overflow-hiden');
             body.appendChild(modal);
 
-            eliminarProducto(id, contenidoModal);
+            // Asignamos la acción al botón Confirmar
+            const btnConfirmar = contenidoModal.querySelector('.btn-confirmar');
+            btnConfirmar.addEventListener('click', function () {
+                deleteProduct(id);
+            });
 
             setTimeout(() => {
                 modal.classList.add('is-visible');
@@ -192,38 +141,32 @@ function eliminarProductoMenu() {
     });
 }
 
-function eliminarProducto(id, contenedorModal) {
-    const btn = contenedorModal.querySelector('.btn-confirmar');
-    if (btn) {
-        btn.addEventListener('click', function () {
-            deleteProduct(id);
-        });
-    }
-}
-
 async function deleteProduct(productId) {
     try {
+        // Petición DELETE a la API pasando el ID directo
         const response = await fetch(`${API_URL}/${productId}`, {
             method: 'DELETE'
         });
 
         if (!response.ok) {
-            throw new Error(`HTTP error! Status: response.status`);
+            throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
-        // 1. Quitamos el producto del array en memoria
-        itemsController.items = itemsController.items.filter(item => item.id !== productId);
+        //  1. Filtramos en memoria comparando como String para evitar discrepancias int vs string
+        itemsController.items = itemsController.items.filter(item => String(item.id) !== String(productId));
 
-        // 2. Volvemos a pintar el catálogo
+        // 2. Volvemos a pintar el catálogo con la lista actualizada
         renderizarHTML(itemsController.items);
+        
+        // 3. Re-enganchamos los eventos de los botones eliminar
         eliminarProductoMenu();
 
-        // 3. Cerramos el modal
+        // 4. Cerramos el modal
         cerrarModal();
 
-        console.log('Producto eliminado correctamente');
+        console.log(`Producto con ID ${productId} eliminado correctamente.`);
     } catch (error) {
-        console.error('Error al eliminar:', error);
+        console.error('Error al eliminar el producto:', error);
     }
 }
 
