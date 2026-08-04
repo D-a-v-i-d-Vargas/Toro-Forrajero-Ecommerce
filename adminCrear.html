@@ -101,199 +101,206 @@
         <!-- -------------------------------------------------------------------
             2. INFORMACIÓN BÁSICA
         -------------------------------------------------------------------- -->
-            <section class="info-basica container">
-                <div class="contact-card p-4 p-md-5 border border-3 border-warning-subtle rounded-4 shadow-sm">
-                    <div class="row g-3 mb-3">
-                        <h2 class="mb-4">Información básica</h2>
-                        <div class="col-md-6">
+            <form id="formulario-adminCrear" novalidate>
+                <section class="info-basica container">
+                    <div class="contact-card p-4 p-md-5 border border-3 border-warning-subtle rounded-4 shadow-sm">
+                        <div class="row g-3 mb-3">
+                            <h2 class="mb-4">Información básica</h2>
+                            <div class="col-md-6">
 
-                            <label for="nombre-producto" class="form-label-custom fw-bold text-center w-100">
-                                Nombre del Producto
-                            </label>
-
-                            <!--Entrada del campo de Nombre de producto-->
-                            <input type="text" id="nombre-producto" name="nombre-producto" autocomplete="off"
-                                class="form-control form-control-custom"
-                                placeholder="Ej. Alimento para gallinas ponedoras">
-                        </div>
-
-
-                        <!--Especie-->
-                        <div class="col-md-6">
-
-                            <label for="especie" class="form-label-custom fw-bold text-center w-100">
-                                Especie
-                            </label>
-                            <!--Menú desplegable-->
-                            <select id="especie" name="especie" class="form-select form-control-custom text-center w-100">
-                                <option selected disabled> Selecciona una Categoría</option>
-                                <option value="bovinos"> Bovinos</option>
-                                <option value="bovinos"> Porcinos</option>
-                                <option value="bovinos"> Aves</option>
-                                <option value="bovinos"> Ovinos</option>
-                            </select>
-                        </div>
-
-                        <!-- Marca-->
-                        <div class="col-md-6">
-                            <label for="marca" class="form-label-custom fw-bold text-center w-100">
-                                Marca
-                            </label>
-                            <!--Menú desplegable para marca-->
-                            <select id="marca" name="marca" class="form-select form-control-custom text-center w-100">
-                                <option selected disabled> Selecciona una Marca</option>
-                                <option value="ADM"> ADM </option>
-                                <option value="El-nogal"> EL Nogal</option>
-                                <option value="Alimentos-Arandas">Alimentos Arandas</option>
-                            </select>
-
-                        </div>
-                    </div>
-                </div>
-
-            </section>
-
-        <!-- -------------------------------------------------------------------
-            3. PRECIO E INVENTARIO
-        -------------------------------------------------------------------- -->
-        <section class="precio container">
-            <div class="contact-card p-4 p-md-5 mt-5 border border-3 border-warning-subtle rounded-4 shadow-sm">
-                <div class="row g-3 mb-3">
-                    <h2 class="mb-4">Precio e inventario</h2>
-                    <!-- Costo -->
-                <div class="col-md-6">
-                    <label for="costo" class="form-label-custom fw-bold text-center w-100">
-                        Costo(MXN)
-                    </label>
-
-                    <input
-                        type="number"
-                        step="0.01"
-                        min="0"
-                        id="costo"
-                        name="costo"
-                        autocomplete="off"
-                        class="form-control form-control-custom w-100"
-                        placeholder="$ 0.00">
-
-                    <!-- Alerta Bootstrap -->
-                    <div id="alertaCosto"
-                        class="alert alert-danger mt-2 d-none"
-                        role="alert">
-                        Debes ingresar un costo válido mayor a $0.00.
-                    </div>
-                </div>
-
-                    <!--Venta-->
-                    <div class="col-md-6">
-                        <label for="precioVenta" class="form-label-custom fw-bold text-center w-100">Precio de
-                            venta(MXN)</label>
-                        <input type="number" step="0.01" min="0" id="precioVenta" name="precioVenta" autocomplete="off"
-                            class="form-control form-control-custom w-100" placeholder="$ 0.00">
-                        <div id="error-venta" class="narnaja-text small mt-1 text-center">
-                            <p></p>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="row g-3 mb-3">
-                    <!-- Existencia -->
-                    <div class="col-md-6">
-                        <label for="existencia" class="form-label-custom fw-bold text-center w-100">Existencia</label>
-                        <input type="number" step="1" min="0" id="existencia" name="existencia" autocomplete="off"
-                            class="form-control form-control-custom w-100" placeholder="0">
-                        <div id="error-existencia" class="narnaja-text small mt-1 text-center">
-                            <p></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- -------------------------------------------------------------------
-            4. DESCRIPCIÓN
-        -------------------------------------------------------------------- -->
-        <!-- IMPORTANTE OJO -->
-        <!--Dudas o prguntas  Avisame antes de modificarlo;) -->
-        <!-- Drescipcción hecho por el Deivid ;)   -->
-        <section class="descripcion container">
-            <div class="contact-card p-4 p-md-5 mt-5 border border-3 border-warning-subtle rounded-4 shadow-sm">
-                <h2 class="mb-4">Descripción</h2>
-                
-                <div class="row g-4 align-items-stretch">
-                    <!-- Subir Imagen -->
-                    <div class="col-md-4">
-                        <p class="fw-bold mb-2">Imagen Principal</p>
-                        <label for="imagen-principal" class="d-flex flex-column align-items-center justify-content-center bg-white border border-light-subtle rounded-4 p-4 text-center h-100 shadow-sm" style="cursor: pointer; min-height: 200px;">
-                            <i class="bi bi-images mb-3" style="font-size: 2.5rem; color: #333;"></i>
-                            <span class="fw-bold mb-1">Subir Imagen Principal</span>
-                            <span class="text-muted small">JPG, PNG, WEBP. Max. 50MB</span>
-                            <input type="file" id="imagen-principal" class="d-none" accept=".jpg, .jpeg, .png, .webp">
-                        </label>
-                    </div>
-
-                    <!-- Área de Descripción -->
-                    <div class="col-md-8 d-flex flex-column">
-                        <label for="descripcion-producto" class="fw-bold mb-2">Descripción:</label>
-                        <textarea id="descripcion-producto" name="descripcion-producto" 
-                            class="form-control bg-white border border-light-subtle rounded-4 p-3 shadow-sm flex-grow-1" 
-                            placeholder="Agrega una descripción del producto" 
-                            style="resize: none; min-height: 200px;"></textarea>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- -------------------------------------------------------------------
-            5. VISIBILIDAD
-        -------------------------------------------------------------------- -->
-        <section class="container p-4">
-            <section class="contact-card p-4 p-md-5 mt-5 border border-3 border-warning-subtle rounded-4 shadow-sm">
-                
-                <div class="contact-card p-5 p-md-5">
-                    <h2 class="titulo-seccion mb-4">Visibilidad</h2>
-        
-                    <div class="row g-4">
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <p class="visibilidad-texto mb-2">Visibilidad del producto</p>
-                            <div class="d-flex align-items-center gap-2 mb-2 boton-visibilidad">
-                                <label class="toggle-switch">
-                                    <input type="checkbox">
-                                    <div class="toggle-switch-background">
-                                        <div class="toggle-switch-handle"></div>
-                                    </div>
+                                <label for="nombre-producto" class="form-label-custom fw-bold text-center w-100">
+                                    Nombre del Producto
                                 </label>
-                                <span class="estado-texto">Activo</span>
+
+                                <!--Entrada del campo de Nombre de producto-->
+                                <input type="text" id="nombre-producto" name="nombre-producto" autocomplete="off"
+                                    class="form-control form-control-custom"
+                                    placeholder="Ej. Alimento para gallinas ponedoras">
+                                <div id="error-nombre" class="naranja-text small mt-1">
+                                    <p></p>
+                                </div>
                             </div>
-                            <p class="visibilidad-subtexto">Los productos no serán visibles para los clientes</p>
-                        </div>
-        
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <p class="visibilidad-texto mb-2">Destacado</p>
-                            <div class="d-flex align-items-center gap-2 mb-2 boton-visibilidad">
-                                <label class="toggle-switch">
-                                    <input type="checkbox">
-                                    <div class="toggle-switch-background">
-                                        <div class="toggle-switch-handle"></div>
-                                    </div>
+
+
+                            <!--Especie-->
+                            <div class="col-md-6">
+
+                                <label for="especie" class="form-label-custom fw-bold text-center w-100">
+                                    Especie
                                 </label>
-                                <span class="estado-texto">NO</span>
+                                <!--Menú desplegable-->
+                                <select id="especie" name="especie" class="form-select form-control-custom text-center w-100">
+                                    <option value="" selected disabled> Selecciona una Categoría</option>
+                                    <option value="bovinos"> Bovinos</option>
+                                    <option value="porcinos"> Porcinos</option>
+                                    <option value="aves"> Aves</option>
+                                    <option value="ovinos"> Ovinos</option>
+                                </select>
+                                <div id="error-especie" class="naranja-text small mt-1">
+                                    <p></p>
+                                </div>
                             </div>
-                            <p class="visibilidad-subtexto">Mostrar en la sección de productos destacados</p>
+
+                            <!-- Marca-->
+                            <div class="col-md-6">
+                                <label for="marca" class="form-label-custom fw-bold text-center w-100">
+                                    Marca
+                                </label>
+                                <!--Menú desplegable para marca-->
+                                <select id="marca" name="marca" class="form-select form-control-custom text-center w-100">
+                                    <option selected disabled> Selecciona una Marca</option>
+                                    <option value="ADM"> ADM </option>
+                                    <option value="El-nogal"> EL Nogal</option>
+                                    <option value="Alimentos-Arandas">Alimentos Arandas</option>
+                                </select>
+
+                            </div>
                         </div>
                     </div>
+
                 </section>
-        
-        
-            </div>
-        </section>
-        
-        <div class="d-flex justify-content-end gap-3 mt-4">
-            <button type="button" class="btn btn-custom-cancel">Cancelar</button>
-            <button type="button" class="btn btn-custom-save">Guardar Producto</button>
-        </div>
 
+            <!-- -------------------------------------------------------------------
+                3. PRECIO E INVENTARIO
+            -------------------------------------------------------------------- -->
+            <section class="precio container">
+                <div class="contact-card p-4 p-md-5 mt-5 border border-3 border-warning-subtle rounded-4 shadow-sm">
+                    <div class="row g-3 mb-3">
+                        <h2 class="mb-4">Precio e inventario</h2>
+                        <!-- Costo -->
+                    <div class="col-md-6">
+                        <label for="costo" class="form-label-custom fw-bold text-center w-100">
+                            Costo(MXN)
+                        </label>
+
+                        <input
+                            type="number"
+                            step="0.01"
+                            min="0"
+                            id="costo"
+                            name="costo"
+                            autocomplete="off"
+                            class="form-control form-control-custom w-100"
+                            placeholder="$ 0.00">
+
+                        <!-- Alerta Bootstrap -->
+                        <div id="alertaCosto"
+                            class="alert alert-danger mt-2 d-none"
+                            role="alert">
+                            Debes ingresar un costo válido mayor a $0.00.
+                        </div>
+                    </div>
+
+                        <!--Venta-->
+                        <div class="col-md-6">
+                            <label for="precioVenta" class="form-label-custom fw-bold text-center w-100">Precio de
+                                venta(MXN)</label>
+                            <input type="number" step="0.01" min="0" id="precioVenta" name="precioVenta" autocomplete="off"
+                                class="form-control form-control-custom w-100" placeholder="$ 0.00">
+                            <div id="error-venta" class="narnaja-text small mt-1 text-center">
+                                <p></p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <!-- Existencia -->
+                        <div class="col-md-6">
+                            <label for="existencia" class="form-label-custom fw-bold text-center w-100">Existencia</label>
+                            <input type="number" step="1" min="0" id="existencia" name="existencia" autocomplete="off"
+                                class="form-control form-control-custom w-100" placeholder="0">
+                            <div id="error-existencia" class="narnaja-text small mt-1 text-center">
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- -------------------------------------------------------------------
+                4. DESCRIPCIÓN
+            -------------------------------------------------------------------- -->
+            <!-- IMPORTANTE OJO -->
+            <!--Dudas o prguntas  Avisame antes de modificarlo;) -->
+            <!-- Drescipcción hecho por el Deivid ;)   -->
+            <section class="descripcion container">
+                <div class="contact-card p-4 p-md-5 mt-5 border border-3 border-warning-subtle rounded-4 shadow-sm">
+                    <h2 class="mb-4">Descripción</h2>
+                    
+                    <div class="row g-4 align-items-stretch">
+                        <!-- Subir Imagen -->
+                        <div class="col-md-4">
+                            <p class="fw-bold mb-2">Imagen Principal</p>
+                            <label for="imagen-principal" class="d-flex flex-column align-items-center justify-content-center bg-white border border-light-subtle rounded-4 p-4 text-center h-100 shadow-sm" style="cursor: pointer; min-height: 200px;">
+                                <i class="bi bi-images mb-3" style="font-size: 2.5rem; color: #333;"></i>
+                                <span class="fw-bold mb-1">Subir Imagen Principal</span>
+                                <span class="text-muted small">JPG, PNG, WEBP. Max. 50MB</span>
+                                <input type="file" id="imagen-principal" class="d-none" accept=".jpg, .jpeg, .png, .webp">
+                            </label>
+                        </div>
+
+                        <!-- Área de Descripción -->
+                        <div class="col-md-8 d-flex flex-column">
+                            <label for="descripcion-producto" class="fw-bold mb-2">Descripción:</label>
+                            <textarea id="descripcion-producto" name="descripcion-producto" 
+                                class="form-control bg-white border border-light-subtle rounded-4 p-3 shadow-sm flex-grow-1" 
+                                placeholder="Agrega una descripción del producto" 
+                                style="resize: none; min-height: 200px;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- -------------------------------------------------------------------
+                5. VISIBILIDAD
+            -------------------------------------------------------------------- -->
+            <section class="container p-4">
+                <section class="contact-card p-4 p-md-5 mt-5 border border-3 border-warning-subtle rounded-4 shadow-sm">
+                    
+                    <div class="contact-card p-5 p-md-5">
+                        <h2 class="titulo-seccion mb-4">Visibilidad</h2>
+            
+                        <div class="row g-4">
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <p class="visibilidad-texto mb-2">Visibilidad del producto</p>
+                                <div class="d-flex align-items-center gap-2 mb-2 boton-visibilidad">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox">
+                                        <div class="toggle-switch-background">
+                                            <div class="toggle-switch-handle"></div>
+                                        </div>
+                                    </label>
+                                    <span class="estado-texto">Activo</span>
+                                </div>
+                                <p class="visibilidad-subtexto">Los productos no serán visibles para los clientes</p>
+                            </div>
+            
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <p class="visibilidad-texto mb-2">Destacado</p>
+                                <div class="d-flex align-items-center gap-2 mb-2 boton-visibilidad">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox">
+                                        <div class="toggle-switch-background">
+                                            <div class="toggle-switch-handle"></div>
+                                        </div>
+                                    </label>
+                                    <span class="estado-texto">NO</span>
+                                </div>
+                                <p class="visibilidad-subtexto">Mostrar en la sección de productos destacados</p>
+                            </div>
+                        </div>
+                    </section>
+            
+            
+                </div>
+            </section>
+            
+            <div class="d-flex justify-content-end gap-3 mt-4">
+                <button type="button" class="btn btn-custom-cancel">Cancelar</button>
+                <button type="submit" class="btn btn-custom-save">Guardar Producto</button>
+            </div>
+        </form>
 
     </main>
 
