@@ -320,65 +320,148 @@ document.addEventListener("DOMContentLoaded", () => {
 	renderizarHTML(itemsController.items);
 });
 
-const filtrarMarcas = (marca) => {
-	const productosVisibles = baseDatosProductos.filter(producto => producto.marca === marca)
-	renderizarHTML(productosVisibles)
 
-}
+//función para mostrar productos visibles por filtro de marca
 
-const admBtn = document.getElementById('adm');
-const nogalBtn = document.getElementById('nogal');
-const arandasBtn = document.getElementById('arandas');
+// const filtrarMarcas = (marca) => {
+// 	const productosVisibles = baseDatosProductos.filter(producto => producto.marca === marca)
+// 	renderizarHTML(productosVisibles)
+// }
 
-admBtn.addEventListener('click', () => {
-	filtrarMarcas('ADM');
-})
+// const admBtn = document.getElementById('adm');
+// const nogalBtn = document.getElementById('nogal');
+// const arandasBtn = document.getElementById('arandas');
 
-nogalBtn.addEventListener('click', () => {
-	filtrarMarcas('El Nogal');
-})
+// admBtn.addEventListener('click', () => {
+// 	filtrarMarcas('ADM');
+// })
 
-arandasBtn.addEventListener('click', () => {
-	filtrarMarcas('Alimentos Arandas');
-})
+// nogalBtn.addEventListener('click', () => {
+// 	filtrarMarcas('El Nogal');
+// })
+
+// arandasBtn.addEventListener('click', () => {
+// 	filtrarMarcas('Alimentos Arandas');
+// })
+
+
 /* Filtro por especie */
 
-const mapaEspecies = {"bovinos": "Vacas", "porcinos": "Cerdos", "aves": "Aves", "ovinos": "Borregos"}
+// const mapaEspecies = {"bovinos": "Vacas", "porcinos": "Cerdos", "aves": "Aves", "ovinos": "Borregos"}
 
+// let especieSeleccionada = null;
+
+// function aplicarFiltro(){
+// 	if(!especieSeleccionada){
+// 		renderizarHTML(itemsController.items);
+// 	} else {
+// 		const productoFiltrado = itemsController.items.filter(item => item.especie === especieSeleccionada);
+// 		renderizarHTML(productoFiltrado);
+// 	}
+// }
+
+// document.addEventListener("DOMContentLoaded", () => {
+// 	cargarItems();
+// 	renderizarHTML(itemsController.items);
+// });
+
+// const botonesEspecie = document.querySelectorAll(".filtro-especies .especie");
+
+// botonesEspecie.forEach(boton => {
+// 	boton.addEventListener("click", () => {
+// 		const especieData = boton.getAttribute("data-especie");
+// 		const especieNombre = mapaEspecies[especieData];
+
+// 		if (boton.classList.contains("activo")) {
+// 			boton.classList.remove("activo");
+// 			especieSeleccionada = null;
+// 		} else {
+// 			botonesEspecie.forEach(btn => btn.classList.remove("activo"));
+//             boton.classList.add("activo");
+//             especieSeleccionada = especieNombre;
+// 		}
+
+// 		aplicarFiltro();
+// 	})
+// });
+
+/* Filtro por especie */
+
+
+
+
+
+//FILTRANDO POR ESPECIE Y MARCA
+
+let marcaSeleccionada = null;
 let especieSeleccionada = null;
 
-function aplicarFiltro(){
-	if(!especieSeleccionada){
-		renderizarHTML(itemsController.items);
-	} else {
-		const productoFiltrado = itemsController.items.filter(item => item.especie === especieSeleccionada);
-		renderizarHTML(productoFiltrado);
-	}
+const mapaEspecies = {
+    "bovinos": "Vacas",
+    "porcinos": "Cerdos",
+    "aves": "Aves",
+    "ovinos": "Borregos"
+};
+
+// FILTRO POR ESPECIE Y MARCA
+function aplicarFiltros() {
+    
+    const productosFiltrados = itemsController.items.filter(producto => {
+        const cumpleMarca = marcaSeleccionada ? producto.marca === marcaSeleccionada : true;
+        const cumpleEspecie = especieSeleccionada ? producto.especie === especieSeleccionada : true;
+
+        return cumpleMarca && cumpleEspecie;
+    });
+    renderizarHTML(productosFiltrados);
 }
 
+// BTN MARCA
+const botonesMarca = [
+    { id: 'adm', marca: 'ADM' },
+    { id: 'nogal', marca: 'El Nogal' },
+    { id: 'arandas', marca: 'Alimentos Arandas' }
+];
+
+botonesMarca.forEach(({ id, marca }) => {
+    const btn = document.getElementById(id);
+    if (!btn) return;
+	//para marcar o desmarcar un btn
+    btn.addEventListener('click', () => {
+        if (marcaSeleccionada === marca) {
+            marcaSeleccionada = null;
+            btn.classList.remove('activo');
+        } else {
+            // Desmarca otros botones de marca cuando se selecciona uno
+            botonesMarca.forEach(b => document.getElementById(b.id)?.classList.remove('activo'));
+            marcaSeleccionada = marca;
+            btn.classList.add('activo');
+        }
+        aplicarFiltros();
+    });
+});
+
+// BTN ESPECIE
 document.addEventListener("DOMContentLoaded", () => {
-	cargarItems();
-	renderizarHTML(itemsController.items);
+    cargarItems();
+    renderizarHTML(itemsController.items);
+
+    const botonesEspecie = document.querySelectorAll(".filtro-especies .especie");
+
+    botonesEspecie.forEach(boton => {
+        boton.addEventListener("click", () => {
+            const especieData = boton.getAttribute("data-especie");
+            const especieNombre = mapaEspecies[especieData];
+
+            if (boton.classList.contains("activo")) {
+                boton.classList.remove("activo");
+                especieSeleccionada = null;
+            } else {
+                botonesEspecie.forEach(btn => btn.classList.remove("activo"));
+                boton.classList.add("activo");
+                especieSeleccionada = especieNombre;
+            }
+
+            aplicarFiltros();
+        });
+    });
 });
-
-const botonesEspecie = document.querySelectorAll(".filtro-especies .especie");
-
-botonesEspecie.forEach(boton => {
-	boton.addEventListener("click", () => {
-		const especieData = boton.getAttribute("data-especie");
-		const especieNombre = mapaEspecies[especieData];
-
-		if (boton.classList.contains("activo")) {
-			boton.classList.remove("activo");
-			especieSeleccionada = null;
-		} else {
-			botonesEspecie.forEach(btn => btn.classList.remove("activo"));
-            boton.classList.add("activo");
-            especieSeleccionada = especieNombre;
-		}
-
-		aplicarFiltro();
-	})
-});
-
-/* Filtro por especie */
