@@ -1,16 +1,10 @@
-.visibilidad{
-	grid-column: 2 span;
-	font-weight: bolder;
-}
-
-.seccion-visibilidad{
-	grid-column: 1span;
-}
-
 .visibilidad-subtexto{
 	color: #585858;
-	font-size: .70rem;
+	font-size: 1rem;
 }
+
+/*Codigo para el switch de la sección de visibilidad de producto
+*/
 
 .toggle-switch {
   position: relative;
