@@ -233,6 +233,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             //Añadir sus errores a esta línea con más ||
             const hayErrores = errorNombre || errorEspecie|| errorPrecioVenta || errorExistencia;
+
+            //Añadir sus errores a esta línea con más ||
+            const hayErrores = errorNombre || errorEspecie;
+
             if (hayErrores) {
                 if (divAlerta) {
                     divAlerta.innerHTML = `
@@ -274,4 +278,5 @@ function mostrarError(selector, mensajeError) {
     if (elemento) {
         elemento.innerHTML = mensajeError || "";
     }
+}
 }
