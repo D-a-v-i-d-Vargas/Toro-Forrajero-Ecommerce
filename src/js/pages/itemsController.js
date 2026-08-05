@@ -2,13 +2,12 @@
 class ItemsController {
 	constructor(currentId = 0) {
 		this.items = [];
-		this.currentId = currentId;
 	}
 
 	// Metodo para añadir elementos a el objeto
-	addItem(nombreProducto, descripcion, destacado, especie, peso, precio, marca, imagen, estado) {
+	addItem(id, nombreProducto, descripcion, destacado, especie, peso, precio, marca, imagen, estado) {
 		const item = {
-			id: this.currentId++,
+			id: id,
 			nombreProducto: nombreProducto,
 			descripcion: descripcion,
 			destacado: destacado,
@@ -24,4 +23,7 @@ class ItemsController {
 		this.items.push(item);
 	}
 }
+
+
+
 
