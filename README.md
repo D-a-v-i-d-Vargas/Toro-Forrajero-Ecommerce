@@ -102,8 +102,16 @@ Este ecosistema digital fue planeado, diseñado y codificado por un equipo excep
 
 ---
 
+## Comando Instalar Dependencias
+```text
+npm install gulp
+```
+```text
+npm install json-server@0.17.4
+```
+
 ## Comando para ejecutar el codigo
-👇👇👇
 ```text
 npm run dev
 ```
+
