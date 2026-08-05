@@ -29,50 +29,43 @@
 
 <body>
     <!--Header, barras de nav, herro---------------------------------------------------------------->
-    <header>
-        <!-- ===========================================================================
-            SECCIÓN: NAV BAR 1 
-        ============================================================================ -->
-        <nav class="navbar navbar-1">
-            <div class="container-fluid px-4">
-
-                <div class="navbar-brand">
-                    <img src="recursos-graficos/navbar/forrajero-sinfondo.png" alt="Logo sin fondo de Toro Forrajero"
-                        class="logo-navbar d-inline-block align-text-top me-2">
-                </div>
-                <ul class="navbar-nav flex-row ms-auto gap-4">
-                    <li class="nav-item">
-                        <a class="nav-link icon-link" href="cuenta.html">
-                            <i class="bi bi-person"> </i>
-                            <span>Mi cuenta</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link icon-link" href="carrito.html">
-                            <i class="bi bi-cart3"></i>
-                            <span>Carrito</span>
-                        </a>
-                    </li>
-                </ul>
+    <header class="sticky-top"">
+        <!-- NAV BAR 1: Logo y Accesos rápidos -->
+        <nav class=" navbar navbar-1">
+        <div class="container-fluid px-4">
+            <div class="navbar-brand">
+                <img src="recursos-graficos/navbar/forrajero-sinfondo.png" alt="Logo sin fondo de Toro Forrajero"
+                    class="logo-navbar d-inline-block align-text-top me-2">
             </div>
+            <ul class="navbar-nav flex-row ms-auto gap-4">
+                <li class="nav-item">
+                    <a class="nav-link icon-link" href="cuenta.html">
+                        <i class="bi bi-person"></i>
+                        <span>Admin</span>
+                    </a>
+                </li>
 
+            </ul>
+        </div>
         </nav>
 
-        <!-- ===========================================================================
-            SECCIÓN: NAV BAR 2 
-        ============================================================================ -->
-
+        <!-- NAV BAR 2: Menú de navegación principal -->
         <nav class="navbar2">
             <ul>
                 <li><a href="index.html">INICIO</a></li>
                 <li><a href="acercaNosotros.html">NOSOTROS</a></li>
                 <li><a href="contactanos.html">CONTACTO</a></li>
-                <li><a href="productos.html">PRODUCTOS</a></li>
-                <div class="indicator"></div>
+                <li><a href="productos.html" class="active">PRODUCTOS</a></li>
+
             </ul>
         </nav>
+        <nav class="navbar3">
 
+            <li><a  href="adminHome.html">Ver Productos</a></li>
+            <li><a class="navbar3-section" href="adminCrear.html">Nuevo Productos</a></li>
+
+
+        </nav>
     </header>
 
     <main class="container my-5">
@@ -237,16 +230,14 @@
                                 <i class="bi bi-images mb-3" style="font-size: 2.5rem; color: #333;"></i>
                                 <span class="fw-bold mb-1">Subir Imagen Principal</span>
                                 <span class="text-muted small">JPG, PNG, WEBP. Max. 50MB</span>
-<<<<<<< HEAD
+
+                                <!-- Único input oculto activado mediante el for="imagen-principal" del label -->
                                 <input type="file" id="imagen-principal" class="d-none"
                                     accept=".jpg, .jpeg, .png, .webp">
-=======
-                                <input type="file" id="imagen-principal" accept=".jpg, .jpeg, .png, .webp">
-                                
->>>>>>> develop
                             </label>
+
                             <!-- Contenedor para inyectar errores de imagen -->
-                            <div id="error-imagen" class="narnaja-text small mt-1 text-center"></div>
+                            <div id="error-imagen" class="naranja-text small mt-1 text-center"></div>
                         </div>
 
                         <!-- Área de Descripción -->
@@ -256,11 +247,11 @@
                                 class="form-control bg-white border border-light-subtle rounded-4 p-3 shadow-sm flex-grow-1"
                                 placeholder="Agrega una descripción del producto"
                                 style="resize: none; min-height: 200px;"></textarea>
-                                <p id="contador" class="mt-2 text-center small">0 de 300 caracteres | 0 palabras</p>
-                                <div id="error-mensaje" class="narnaja-text small mt-1 text-center">
+                            <p id="contador" class="mt-2 text-center small">0 de 300 caracteres | 0 palabras</p>
+                            <div id="error-mensaje" class="narnaja-text small mt-1 text-center">
+                            </div>
                         </div>
                     </div>
-                </div>
             </section>
 
             <!-- -------------------------------------------------------------------

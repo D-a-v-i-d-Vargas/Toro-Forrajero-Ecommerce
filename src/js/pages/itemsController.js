@@ -4,26 +4,23 @@ class ItemsController {
 		this.items = [];
 	}
 
-	// Metodo para añadir elementos a el objeto
-	addItem(id, nombreProducto, descripcion, destacado, especie, peso, precio, marca, imagen, estado) {
+	// Método corregido con el orden exacto del llamado:
+	addItem(id, nombreProducto, descripcion, destacado, especie, costo, precio, marca, imagen, estado, existencia) {
 		const item = {
 			id: id,
 			nombreProducto: nombreProducto,
 			descripcion: descripcion,
 			destacado: destacado,
 			especie: especie,
-			peso: peso,
+			costo: costo,
 			precio: precio,
 			marca: marca,
 			imagen: imagen,
-			estado: estado
+			estado: estado,
+			existencia: existencia
 		};
 
-		// Ingresa el objeto a la lista
 		this.items.push(item);
 	}
+
 }
-
-
-
-

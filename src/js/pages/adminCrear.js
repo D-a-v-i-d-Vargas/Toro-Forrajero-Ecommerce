@@ -1,7 +1,5 @@
 /*******************************************************************************
- *
  * PÁGINA: Admin Crear producto
- *
  ******************************************************************************/
 
 // Objeto que acumulará los datos
@@ -13,9 +11,8 @@ const mensajeValidado = {
     mCosto: "",
     mPrecio: "",
     mDescripcion: "",
-    mDestacado: false,
-    mEstado: "inactivo",
-    mImagen: ""
+    mDestacado: "",
+    mEstado: ""
 };
 
 function reiniciarMensajeValidado() {
@@ -26,7 +23,7 @@ function reiniciarMensajeValidado() {
     mensajeValidado.mCosto = "";
     mensajeValidado.mPrecio = "";
     mensajeValidado.mDescripcion = "";
-    mensajeValidado.mDestacado = false;
+    mensajeValidado.mDestacado = "";
     mensajeValidado.mEstado = "inactivo";
     mensajeValidado.mImagen = "";
 }
@@ -35,37 +32,36 @@ function reiniciarMensajeValidado() {
 //                              Validaciones
 //=============================================================================
 
+// Diana - Validación del Nombre del producto
 function validarNombreProducto(inputNombreProducto) {
     if (!inputNombreProducto) return "No se encontró el campo Nombre Producto";
-
     const nombreProducto = inputNombreProducto.value.trim();
     const alertMensaje = `<span class="alerta-titulo">El nombre del producto </span>`;
-
     if (nombreProducto === "") return alertMensaje + `<span class="alerta-titulo">no puede estar vacío. </span>`;
     if (nombreProducto.length < 3) return alertMensaje + `<span class="alerta-titulo">debe tener más de 3 caracteres. </span>`;
-
     return undefined;
 }
 
+// Validación de Especie
 function validarEspecie(selectEspecie) {
-    if (!selectEspecie) return "No se encontró el selector de especie.";
-    if (selectEspecie.value === "" || selectEspecie.selectedIndex === 0) {
-        return `<span class="alerta-titulo">Debe seleccionar una especie.</span>`;
-    }
+    if (!selectEspecie) return "No se encontró el selector de motivo.";
+    if (selectEspecie.value === "") return `<span class="alerta-titulo">Debe seleccionar una especie.</span>`;
     return undefined;
 }
 
+// Oscar - VALIDACIÓN DEL CAMPO MARCA
 function validarMarca(selectMarca) {
     if (!selectMarca) return "No se encontró el campo Marca";
-    if (selectMarca.value.trim() === "" || selectMarca.selectedIndex === 0) {
+    const marca = selectMarca.value.trim();
+    if (marca === "") {
         return `<span class="alerta-titulo narnaja-text">La marca debe ser seleccionada.</span>`;
     }
     return undefined;
 }
 
+// Validación del campo Costo (MXN)
 function validarCosto(eCosto) {
     if (!eCosto) return "No se encontró el campo Costo";
-
     const costo = eCosto.value.trim();
     const alertMensaje = `<span class="alerta-titulo narnaja-text">El costo </span>`;
 
@@ -76,40 +72,55 @@ function validarCosto(eCosto) {
     return undefined;
 }
 
+// Vane - PRECIO DE VENTA
 function validarPrecioVenta(ePrecioVenta) {
     if (!ePrecioVenta) return "No se encontró el campo Precio de Venta";
-
     const precioVenta = ePrecioVenta.value.trim();
     const alertMensaje = `<span class="alerta-titulo narnaja-text">El precio de venta </span>`;
 
     if (precioVenta === "") return `${alertMensaje} <span class="narnaja-text">no puede estar vacío.</span>`;
-    if (isNaN(Number(precioVenta))) return `${alertMensaje} <span class="narnaja-text">debe ser un número válido.</span>`;
     if (Number(precioVenta) <= 0) return `${alertMensaje} <span class="narnaja-text">debe ser mayor a $0.00.</span>`;
-
     return undefined;
 }
 
+// EXISTENCIA
 function validarExistencia(eExistencia) {
     if (!eExistencia) return "No se encontró el campo Existencia";
-
     const existencia = eExistencia.value.trim();
     const alertMensaje = `<span class="alerta-titulo narnaja-text">La existencia </span>`;
 
     if (existencia === "") return `${alertMensaje} <span class="narnaja-text">no puede estar vacía.</span>`;
     if (Number(existencia) < 0) return `${alertMensaje} <span class="narnaja-text">no puede ser menor que 0.</span>`;
     if (!Number.isInteger(Number(existencia))) return `${alertMensaje} <span class="narnaja-text">debe ser un número entero.</span>`;
-
     return undefined;
 }
 
-// CORRECCIÓN EN VALIDACIÓN DE IMAGEN
+/* -----------------------------------------------------------------------------
+   INTERACTIVIDAD DE LOS TOGGLES (CAMBIO DE TEXTO VISUAL)
+----------------------------------------------------------------------------- */
+function visibilidadProducto() {
+    const checkVisibilidad = document.querySelector('.toggle-switch input[type="checkbox"]');
+    const mensajeVisibilidad = document.querySelector('.estado-texto');
+
+    if (!checkVisibilidad || !mensajeVisibilidad) return;
+    checkVisibilidad.addEventListener('change', function (e) {
+        if (e.target.checked) {
+            mensajeVisibilidad.textContent = "activo";
+            mensajeValidado.mEstado = "activo";
+        } else {
+            mensajeVisibilidad.textContent = "inactivo";
+            mensajeValidado.mEstado = "inactivo";
+        }
+    });
+}
+
+// Esther - IMAGEN
 function validarImagen(inputImagen) {
     if (!inputImagen) return "No se encuentra el campo de la imagen";
 
     const archivos = inputImagen.files;
     const alertMensaje = `<span class="alerta-titulo narnaja-text">Imagen principal:</span>`;
 
-    // Verifica que existan archivos seleccionados
     if (!archivos || archivos.length === 0) {
         return `${alertMensaje} <span class="narnaja-text">Debes seleccionar una imagen.</span>`;
     }
@@ -129,6 +140,34 @@ function validarImagen(inputImagen) {
     return undefined;
 }
 
+/**
+ * Convierte un archivo de imagen en una cadena de texto en formato Data URL (Base64).
+ * 
+ * ¿Por qué se utiliza una Promise?
+ * La lectura de archivos mediante 'FileReader' en JavaScript es una operación asíncrona.
+ * Retornar una Promise permite pausar la ejecución mediante 'await' en el flujo principal
+ * hasta que el archivo se haya leído por completo, evitando guardar datos incompletos en el JSON.
+ * 
+ * @param {File} imagen - Objeto 'File' obtenido desde el input de tipo file.
+ * @returns {Promise<string>} Una Promesa que se resuelve devolviendo el string en Base64.
+ */
+function obtenerBase64(imagen) {
+    return new Promise((resolve, reject) => {
+        // Instanciamos el lector de archivos de la API nativa de JavaScript
+        const reader = new FileReader();
+
+        // Leemos el archivo binario y lo transformamos a una cadena Data URL (base64)
+        reader.readAsDataURL(imagen);
+
+        // Evento que se dispara cuando la lectura finaliza exitosamente
+        reader.onload = () => resolve(reader.result);
+
+        // Evento que se dispara si ocurre un problema al procesar el archivo
+        reader.onerror = error => reject(error);
+    });
+}
+
+// DESCRIPCIÓN 
 function validarMensaje(inputMensaje) {
     if (!inputMensaje) return "No se encontró la caja de comentarios.";
     const texto = inputMensaje.value.trim();
@@ -142,9 +181,10 @@ function validarMensaje(inputMensaje) {
     return undefined;
 }
 
-/* -----------------------------------------------------------------------------
-   INTERACTIVIDAD Y CONTADORES
------------------------------------------------------------------------------ */
+const COMENTARIO = document.getElementById("descripcion-producto");
+const CONTADOR = document.getElementById("contador");
+const longitud_maxima = 300;
+
 function actualizarContador() {
     const COMENTARIO = document.getElementById("descripcion-producto");
     const CONTADOR = document.getElementById("contador");
@@ -169,35 +209,29 @@ function actualizarContador() {
     CONTADOR.style.color = (longitud > longitud_maxima || (longitud > 0 && texto_sin_espacios.length === 0)) ? "red" : "black";
 }
 
-function visibilidadProducto() {
-    const checkVisibilidad = document.querySelector('.toggle-switch input[type="checkbox"]');
-    const mensajeVisibilidad = document.querySelector('.estado-texto');
-    if (!checkVisibilidad || !mensajeVisibilidad) return;
-
-    mensajeVisibilidad.textContent = checkVisibilidad.checked ? "activo" : "inactivo";
-
-    checkVisibilidad.addEventListener('change', function (e) {
-        mensajeVisibilidad.textContent = e.target.checked ? "activo" : "inactivo";
-    });
-}
-
 function productoDestacado() {
     const checkDestacado = document.getElementById('check-destacado');
     const mensajeDestacado = document.getElementById('texto-destacado');
-
     if (!checkDestacado || !mensajeDestacado) return;
 
     mensajeDestacado.textContent = checkDestacado.checked ? "SÍ" : "NO";
 
     checkDestacado.addEventListener('change', function (e) {
-        mensajeDestacado.textContent = e.target.checked ? "SÍ" : "NO";
+        if (e.target.checked) {
+            mensajeDestacado.textContent = "SÍ";
+            mensajeValidado.mDestacado = "activo";
+        } else {
+            mensajeDestacado.textContent = "NO";
+            mensajeValidado.mDestacado = "inactivo";
+        }
     });
 }
 
 /* -----------------------------------------------------------------------------
-   INICIALIZACIÓN Y MANEJO DEL FORMULARIO (Único Listener)
+   VALIDACIÓN MAESTRA Y ENVÍO DEL FORMULARIO
 ----------------------------------------------------------------------------- */
 document.addEventListener('DOMContentLoaded', () => {
+    // 1. Inicializar interactividad de los toggles y contadores una sola vez
     visibilidadProducto();
     productoDestacado();
 
@@ -209,10 +243,12 @@ document.addEventListener('DOMContentLoaded', () => {
         actualizarContador();
     }
 
+    // 2. Evento Submit del formulario
     if (formulario) {
         formulario.addEventListener('submit', async function (e) {
             e.preventDefault();
 
+            // Limpiamos el objeto temporal antes de validar
             reiniciarMensajeValidado();
 
             // Referencias del DOM
@@ -225,6 +261,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const divAlerta = document.querySelector(".alerta");
             const inputImagen = document.getElementById("imagen-principal");
             const inputDescripcion = document.getElementById("descripcion-producto");
+
+            // Referencias a los toggles/checkboxes
             const checkVisibilidad = document.querySelector('.toggle-switch input[type="checkbox"]');
             const checkDestacado = document.getElementById('check-destacado');
 
@@ -238,7 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const errorImagen = validarImagen(inputImagen);
             const errorDescripcion = validarMensaje(inputDescripcion);
 
-            // Mostrar u ocultar errores
+            // Mostrar u ocultar mensajes de error en el DOM
             mostrarError("#error-nombre p", errorNombre);
             mostrarError("#error-especie p", errorEspecie);
             mostrarError("#error-marca p", errorMarca);
@@ -270,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Asignar valores
+            // Lectura y asignación de datos validados
             mensajeValidado.mNombreProducto = inputNombreProducto.value.trim();
             mensajeValidado.mEspecie = selectEspecie.options[selectEspecie.selectedIndex].text;
             mensajeValidado.mMarca = selectMarca.options[selectMarca.selectedIndex].text;
@@ -279,14 +317,23 @@ document.addEventListener('DOMContentLoaded', () => {
             mensajeValidado.mExistencia = eExistencia.value.trim();
             mensajeValidado.mDescripcion = inputDescripcion.value.trim();
 
-            // RUTA DE LA IMAGEN: Nos aseguramos de agregar el ./ relativo si es necesario
-            const nombreArchivo = inputImagen.files[0].name;
-            mensajeValidado.mImagen = `/recursos-graficos/productos/${nombreArchivo}`;
+            // CAPTURA DIRECTA DE ESTADO Y DESTACADO (Evita que queden vacíos)
+            mensajeValidado.mEstado = (checkVisibilidad && checkVisibilidad.checked) ? "activo" : "inactivo";
+            mensajeValidado.mDestacado = checkDestacado && checkDestacado.checked ? "activo" : "inactivo";
+            // Procesamiento de la Imagen
+            const archivoImagen = inputImagen.files[0];
+            if (archivoImagen) {
+                try {
+                    mensajeValidado.mImagen = await obtenerBase64(archivoImagen);
+                } catch (error) {
+                    console.error("Error al convertir la imagen a Base64:", error);
+                    mensajeValidado.mImagen = "recursos-graficos/productos/placeholder.png";
+                }
+            } else {
+                mensajeValidado.mImagen = "recursos-graficos/productos/placeholder.png";
+            }
 
-            mensajeValidado.mEstado = checkVisibilidad && checkVisibilidad.checked ? "activo" : "inactivo";
-            mensajeValidado.mDestacado = checkDestacado ? checkDestacado.checked : false;
-
-            // Enviar datos a JSON-Server
+            // Envío de datos al JSON-Server
             await enviarDatos();
 
             if (divAlerta) {
@@ -297,7 +344,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>`;
             }
 
+            // Resetear el formulario tras el envío exitoso
             formulario.reset();
+
+            // Reestablecer los textos visuales de los toggles tras el reset
+            const mensajeVisibilidad = document.querySelector('.estado-texto');
+            const mensajeDestacado = document.getElementById('texto-destacado');
+            if (mensajeVisibilidad) mensajeVisibilidad.textContent = "inactivo";
+            if (mensajeDestacado) mensajeDestacado.textContent = "NO";
+
             actualizarContador();
             console.log("¡ÉXITO TOTAL! Objeto enviado:", mensajeValidado);
         });
@@ -321,7 +376,7 @@ async function enviarDatos() {
         const resActual = await fetch(API_URL);
         const productosActuales = await resActual.json();
 
-        // Generar ID numérico consecutivo seguro
+        // Calculamos el ID incremental correctamente
         const ultimoId = productosActuales.reduce((max, p) => Number(p.id) > max ? Number(p.id) : max, 0);
         const nuevoId = ultimoId + 1;
 

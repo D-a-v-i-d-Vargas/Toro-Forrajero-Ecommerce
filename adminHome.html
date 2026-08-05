@@ -156,7 +156,7 @@
                 </div>
 
             </section>
-            
+
 
         </section>
 
@@ -304,6 +304,36 @@
         </button>
 
     </section> -->
+
+        <article class="tarjeta-producto">
+            <img src="recursos-graficos/productos/Puerco-iniciador.png" alt="${producto.nombreProducto}">
+
+            <div class="contenido-producto">
+                <h2 class="text-center">Ara P Borrego Engorda 25 KG</h2>
+                <p class="admin-home-descripcion">Alimento en pellet para Borregos de engorda de producciones intensivas.</p>
+                <div class="datos-admin-home ">
+                    <p>Marca: <span> nombreMarca </span> </p>
+                    <p>Especie: <span> nombreMarca </span> </p>
+                    <p>Existencia: <span> nombreMarca </span> </p>
+                    <p>Costo: <span> nombreMarca </span> </p>
+                    <p>Precio: <span> nombreMarca </span> </p>
+                    <p>Visibilidad: <span> nombreMarca </span> </p>
+                    <p>Destacado: <span> nombreMarca </span> </p>
+                </div>
+                <div class="d-flex admin-btns">
+                    <button type="button" class="boton-carrito" data-id="${producto.id}"
+                        data-producto="${producto.nombreProducto}">
+                        Editar
+                    </button>
+                    <!--  Asignamos data-id explícitamente para no depender solo del nombre -->
+                    <button type="button" class="boton-eliminar" data-id="${producto.id}"
+                        data-producto="${producto.nombreProducto}">
+                        Eliminar
+                    </button>
+                </div>
+            </div>
+        </article>
+
     </main>
 
 
@@ -361,6 +391,9 @@
             </div>
 
         </div>
+
+
+
 
 
 
