@@ -59,8 +59,52 @@ function validarMarca(selectMarca) {
     return undefined;
 }
 
+
+// Restringe el input para que solo acepte dígitos y máximo un punto decimal
+function restringirSoloNumeros(inputElement) {
+    if (!inputElement) return;
+
+    inputElement.addEventListener('keydown', function (e) {
+        // 1. Teclas de navegación y control permitidas
+        const teclasPermitidas = [
+            'Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Enter'
+        ];
+
+        // Permitir controles del sistema (como Ctrl+C, Ctrl+V, Tab, etc.)
+        if (teclasPermitidas.includes(e.key) || e.ctrlKey || e.metaKey) {
+            return;
+        }
+
+        // 2. BLOQUEO DEL SEGUNDO PUNTO:
+        if (e.key === '.') {
+            // Si el valor actual del input ya contiene un punto, bloqueamos la tecla
+            if (e.target.value.includes('.')) {
+                e.preventDefault();
+            }
+            return;
+        }
+
+        // 3. Bloquear cualquier tecla que NO sea un número del 0 al 9
+        if (!/^[0-9]$/.test(e.key)) {
+            e.preventDefault();
+        }
+    });
+}
+document.addEventListener('DOMContentLoaded', () => {
+    const eCosto = document.getElementById("costo");
+    const ePrecio = document.getElementById("precioVenta");
+    const eExsistencia = document.getElementById("existencia");
+
+    restringirSoloNumeros(eCosto);
+    restringirSoloNumeros(ePrecio);
+    restringirSoloNumeros(eExsistencia);
+
+    // ... el resto de tu código
+});
+
 // Validación del campo Costo (MXN)
 function validarCosto(eCosto) {
+
     if (!eCosto) return "No se encontró el campo Costo";
     const costo = eCosto.value.trim();
     const alertMensaje = `<span class="alerta-titulo narnaja-text">El costo </span>`;

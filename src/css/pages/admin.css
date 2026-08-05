@@ -180,3 +180,28 @@
     min-width: 75px;
     text-align: center;
 }
+
+.align-items-stretch{
+  padding-bottom: 4rem;
+}
+
+#imagen-principal{
+  padding: 5px;
+
+}
+
+/* Estado Normal */
+.imagen-box {
+  /* Definimos el borde punteado desde el inicio pero transparente */
+  border: 5px dashed transparent !important;
+  
+  /* Transición: animamos la propiedad 'border-color' */
+  /* Duración: 0.4s (puedes ajustar el tiempo a tu gusto) */
+  transition: border-color 0.4s ease-in-out;
+}
+
+/* Estado Hover */
+.imagen-box:hover {
+  /* Solo le cambiamos el color al hacer hover */
+  border-color: var(--color-naranjaFuerte) !important;
+}

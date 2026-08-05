@@ -61,7 +61,7 @@
         </nav>
         <nav class="navbar3">
 
-            <li><a  href="adminHome.html">Ver Productos</a></li>
+            <li><a href="adminHome.html">Ver Productos</a></li>
             <li><a class="navbar3-section" href="adminCrear.html">Nuevo Productos</a></li>
 
 
@@ -73,7 +73,7 @@
         <!-- -------------------------------------------------------------------
             1. NUEVO PRODUCTO
         -------------------------------------------------------------------- -->
-        <section class="container my-5">
+        <section class="container my-5 fade-up">
             <div class="row align-items-center">
                 <div class="col-md-8">
                     <h1 class="display-3 fw-bold text-center">
@@ -96,7 +96,7 @@
             2. INFORMACIÓN BÁSICA
         -------------------------------------------------------------------- -->
         <form id="formulario-adminCrear" novalidate>
-            <section class="info-basica container">
+            <section class="info-basica container fade-up">
                 <div class="contact-card p-4 p-md-5 border border-3 border-warning-subtle rounded-4 shadow-sm">
                     <div class="row g-3 mb-3">
                         <h2 class="mb-4">Información básica</h2>
@@ -161,7 +161,7 @@
             <!-- -------------------------------------------------------------------
                 3. PRECIO E INVENTARIO
             -------------------------------------------------------------------- -->
-            <section class="precio container">
+            <section class="precio container fade-up">
                 <div class="contact-card p-4 p-md-5 mt-5 border border-3 border-warning-subtle rounded-4 shadow-sm">
                     <div class="row g-3 mb-3">
                         <h2 class="mb-4">Precio e inventario</h2>
@@ -173,7 +173,7 @@
                                 Costo(MXN)
                             </label>
 
-                            <input type="number" step="0.01" min="0" id="costo" name="costo" autocomplete="off"
+                            <input type="text" inputmode="decimal" step="0.01" min="0" id="costo" name="costo" autocomplete="off"
                                 class="form-control form-control-custom w-100" placeholder="$ 0.00">
 
                             <div id="error-costo" class="narnaja-text small mt-1 text-center">
@@ -186,7 +186,7 @@
                         <div class="col-md-6">
                             <label for="precioVenta" class="form-label-custom fw-bold text-center w-100">Precio de
                                 venta(MXN)</label>
-                            <input type="number" step="0.01" min="0" id="precioVenta" name="precioVenta"
+                            <input type="text" inputmode="decimal" step="0.01" min="0" id="precioVenta" name="precioVenta"
                                 autocomplete="off" class="form-control form-control-custom w-100" placeholder="$ 0.00">
                             <div id="error-venta" class="narnaja-text small mt-1 text-center">
                                 <p></p>
@@ -200,7 +200,7 @@
                         <div class="col-md-6">
                             <label for="existencia"
                                 class="form-label-custom fw-bold text-center w-100">Existencia</label>
-                            <input type="number" step="1" min="0" id="existencia" name="existencia" autocomplete="off"
+                            <input type="text" inputmode="decimal" step="1" min="0" id="existencia" name="existencia" autocomplete="off"
                                 class="form-control form-control-custom w-100" placeholder="0">
                             <div id="error-existencia" class="narnaja-text small mt-1 text-center">
                                 <p></p>
@@ -213,10 +213,7 @@
             <!-- -------------------------------------------------------------------
                 4. DESCRIPCIÓN
             -------------------------------------------------------------------- -->
-            <!-- IMPORTANTE OJO -->
-            <!--Dudas o prguntas  Avisame antes de modificarlo;) -->
-            <!-- Drescipcción hecho por el Deivid ;)   -->
-            <section class="descripcion container">
+            <section class="descripcion container fade-up">
                 <div class="contact-card p-4 p-md-5 mt-5 border border-3 border-warning-subtle rounded-4 shadow-sm">
                     <h2 class="mb-4">Descripción</h2>
 
@@ -225,16 +222,20 @@
                         <div class="col-md-4">
                             <p class="fw-bold mb-2">Imagen Principal</p>
                             <label for="imagen-principal"
-                                class="d-flex flex-column align-items-center justify-content-center bg-white border border-light-subtle rounded-4 p-4 text-center h-100 shadow-sm"
+                                class="imagen-box d-flex flex-column align-items-center justify-content-center bg-white border border-light-subtle rounded-4 p-4 text-center h-100 shadow-sm"
                                 style="cursor: pointer; min-height: 200px;">
                                 <i class="bi bi-images mb-3" style="font-size: 2.5rem; color: #333;"></i>
                                 <span class="fw-bold mb-1">Subir Imagen Principal</span>
                                 <span class="text-muted small">JPG, PNG, WEBP. Max. 50MB</span>
 
-                                <!-- Único input oculto activado mediante el for="imagen-principal" del label -->
-                                <input type="file" id="imagen-principal" class="d-none"
-                                    accept=".jpg, .jpeg, .png, .webp">
+                                <!-- ========================================================
+                                INPUT DE IMAGEN VISIBLE Y CENTRADO CON BOOTSTRAP 
+                                ======================================================== -->
+
+
                             </label>
+                            <input type="file" id="imagen-principal" class="form-control form-control-sm mt-3 w-100"
+                                accept=".jpg, .jpeg, .png, .webp">
 
                             <!-- Contenedor para inyectar errores de imagen -->
                             <div id="error-imagen" class="naranja-text small mt-1 text-center"></div>
@@ -251,13 +252,15 @@
                             <div id="error-mensaje" class="narnaja-text small mt-1 text-center">
                             </div>
                         </div>
+
+                        
                     </div>
             </section>
 
             <!-- -------------------------------------------------------------------
                 5. VISIBILIDAD
             -------------------------------------------------------------------- -->
-            <section class="container">
+            <section class="container fade-up">
                 <section class="contact-card p-md-5 mt-5 border border-3 border-warning-subtle rounded-4 shadow-sm">
                     <h2 class="mb-5">Visibilidad</h2>
                     <div class="contact-card">
@@ -296,7 +299,7 @@
                 </div>
             </section>
 
-            <div class="d-flex justify-content-end gap-3 mt-4">
+            <div class="d-flex justify-content-end gap-3 mt-4 fade-up">
                 <button type="button" class="btn btn-custom-cancel">Cancelar</button>
                 <button type="submit" class="btn btn-custom-save">Guardar Producto</button>
             </div>
