@@ -128,7 +128,8 @@
   font-size: 1.2rem;
 }
 
-.datos-admin-home p , .datos-extra p{
+.datos-admin-home p,
+.datos-extra p {
   color: black;
   line-height: 15px;
 }
@@ -150,14 +151,14 @@
   margin: 5px;
 }
 
-.estado-activo{
+.estado-activo {
   background-color: rgba(0, 128, 0, 0.514);
   padding: 5px 10px;
   border-radius: 5px;
   font-weight: 900;
 }
 
-.estado-inactivo{
+.estado-inactivo {
   background-color: rgba(255, 0, 0, 0.514);
   padding: 5px 10px;
   border-radius: 5px;
@@ -165,27 +166,30 @@
 }
 
 .dato-fila {
-    display: flex;
-    align-items: center;
-    gap: 8px; /* Espacio uniforme entre icono, texto y badge */
-    margin-bottom: 6px; /* Ajusta el espacio vertical entre filas */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* Espacio uniforme entre icono, texto y badge */
+  margin-bottom: 6px;
+  /* Ajusta el espacio vertical entre filas */
 }
 
 .etiqueta-texto {
-    min-width: 90px; /* Ajusta este valor si tu fuente es más grande o pequeña */
-    display: inline-block;
+  min-width: 90px;
+  /* Ajusta este valor si tu fuente es más grande o pequeña */
+  display: inline-block;
 }
 
 .visibilidad-estilo {
-    min-width: 75px;
-    text-align: center;
+  min-width: 75px;
+  text-align: center;
 }
 
-.align-items-stretch{
+.align-items-stretch {
   padding-bottom: 4rem;
 }
 
-#imagen-principal{
+#imagen-principal {
   padding: 5px;
 
 }
@@ -194,7 +198,7 @@
 .imagen-box {
   /* Definimos el borde punteado desde el inicio pero transparente */
   border: 5px dashed transparent !important;
-  
+
   /* Transición: animamos la propiedad 'border-color' */
   /* Duración: 0.4s (puedes ajustar el tiempo a tu gusto) */
   transition: border-color 0.4s ease-in-out;
@@ -204,4 +208,51 @@
 .imagen-box:hover {
   /* Solo le cambiamos el color al hacer hover */
   border-color: var(--color-naranjaFuerte) !important;
+}
+
+
+
+.animacion-carga {
+  z-index: 1000;
+  width: 10rem;
+  transform-origin: center;
+  animation: rotate4 2s linear infinite;
+}
+
+circle {
+  fill: none;
+  stroke: hsl(36, 80%, 52%);
+  stroke-width: 5;
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  animation: dash4 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate4 {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash4 {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 90, 200;
+    stroke-dashoffset: -35px;
+  }
+
+  100% {
+    stroke-dashoffset: -125px;
+  }
+}
+
+.cargar-producto-p{
+  color: var(--color-naranjaFuerte);
+  font-size: 1.5rem;
+  font-weight: 900;
 }

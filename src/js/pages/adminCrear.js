@@ -416,6 +416,7 @@ function mostrarError(selector, mensajeError) {
 const API_URL = 'http://localhost:3000/productos';
 
 async function enviarDatos() {
+    mostrarModal()
     try {
         const resActual = await fetch(API_URL);
         const productosActuales = await resActual.json();
@@ -451,4 +452,48 @@ async function enviarDatos() {
     } catch (error) {
         console.error('Fallo al conectar con la API:', error);
     }
+
+    cerrarModal();
+}
+
+
+function mostrarModal() {
+    const modal = document.createElement('DIV');
+    const carga = document.createElement('DIV');
+    carga.innerHTML=  `
+        <img class="animacion-carga" src="recursos-graficos/logo/logo-carga.png" alt="">
+        
+<p class="cargar-producto-p"> Creando Producto...</p>`
+    modal.classList.add('modal-overlay');
+
+
+    // modal.addEventListener('click', function () {
+    //     cerrarModal()
+    // })
+
+    const body = document.querySelector('body');
+    body.classList.add('overflow-hiden');
+    body.appendChild(modal);
+    modal.appendChild(carga);
+
+    setTimeout(() => {
+        modal.classList.add('is-visible');
+    }, 10);
+
+}
+
+function cerrarModal() {
+    const modal = document.querySelector('.modal-overlay');
+    const body = document.querySelector('body');
+
+
+    if (modal) {
+        modal.classList.remove('is-visible');
+        body.classList.remove('overflow-hiden');
+
+        setTimeout(() => {
+            modal.remove();
+        }, 300);
+    }
+
 }
