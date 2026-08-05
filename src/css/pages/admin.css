@@ -164,7 +164,6 @@
   font-weight: 900;
 }
 
-/* Convertimos cada <p> en un contenedor flex alinear icono + texto + badge */
 .dato-fila {
     display: flex;
     align-items: center;
@@ -172,13 +171,11 @@
     margin-bottom: 6px; /* Ajusta el espacio vertical entre filas */
 }
 
-/* Fijamos un ancho mínimo para el texto de la izquierda */
 .etiqueta-texto {
     min-width: 90px; /* Ajusta este valor si tu fuente es más grande o pequeña */
     display: inline-block;
 }
 
-/* Opcional: Centrar el texto dentro del badge para que todos midan lo mismo */
 .visibilidad-estilo {
     min-width: 75px;
     text-align: center;
