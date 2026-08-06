@@ -17,3 +17,27 @@
     color: #f3f3f3 !important;
     opacity: 1 !important;
 }
+
+
+/* --- Estilo de botón 'INICIAR SESIÓN' --- */
+.boton-inicio{
+    padding: 1rem 8.5rem;
+    background-color: var(--color-verdeFuerte);
+    border: none;
+    color: white;
+    font-weight: 500; /* semi bold, si es bold subir a 600 */
+    text-align: center;
+    font-size: 1.1rem; /* Aumenta tamaño de letra */
+    letter-spacing: 1.5px; /* Para separar las letras */
+}
+
+/* --- Estilo de '¿Olvidaste tu contraseña? ' --- */
+.mt-separacion{
+    margin-top: 3.5rem; /* Separación entre botón de inicio de sesión y el enlace de olvidaste tu contraseña*/
+    margin-right: -60px; /* Lo mueve aún más a la derecha */
+
+}
+.olvidaste-password{
+     font-style: italic; /* Para ponerlas en cursiva */
+     font-size: 1rem;
+}
