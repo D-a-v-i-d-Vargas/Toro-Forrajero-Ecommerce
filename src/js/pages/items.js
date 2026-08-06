@@ -80,90 +80,63 @@ function renderizarHTML(items) {
     `).join('');
 }
 
-
-document.addEventListener("DOMContentLoaded", () => {
-	cargarProductos();
-	renderizarHTML(itemsController.items);
-});
-
-
-
-
-
-
-//FILTRANDO POR ESPECIE Y MARCA
-
-let marcaSeleccionada = null;
-let especieSeleccionada = null;
-
-const mapaEspecies = {
-    "bovinos": "Vacas",
-    "porcinos": "Cerdos",
-    "aves": "Aves",
-    "ovinos": "Borregos"
+/* ====================================================
+   FILTRO POR MARCA
+   ==================================================== */
+const filtrarMarcas = (marca) => {
+	const productosVisibles = itemsController.items.filter(producto => producto.marca === marca);
+	actualizarCatalogoYEventos(productosVisibles);
 };
 
-// FILTRO POR ESPECIE Y MARCA
-function aplicarFiltros() {
-    
-    const productosFiltrados = itemsController.items.filter(producto => {
-        const cumpleMarca = marcaSeleccionada ? producto.marca === marcaSeleccionada : true;
-        const cumpleEspecie = especieSeleccionada ? producto.especie === especieSeleccionada : true;
+const admBtn = document.getElementById('adm');
+const nogalBtn = document.getElementById('nogal');
+const arandasBtn = document.getElementById('arandas');
 
-        return cumpleMarca && cumpleEspecie;
-    });
-    renderizarHTML(productosFiltrados);
+if (admBtn) {
+	admBtn.addEventListener('click', () => filtrarMarcas('ADM'));
 }
 
-// BTN MARCA
-const botonesMarca = [
-    { id: 'adm', marca: 'ADM' },
-    { id: 'nogal', marca: 'El Nogal' },
-    { id: 'arandas', marca: 'Alimentos Arandas' }
-];
+if (nogalBtn) {
+	nogalBtn.addEventListener('click', () => filtrarMarcas('El Nogal'));
+}
 
-botonesMarca.forEach(({ id, marca }) => {
-    const btn = document.getElementById(id);
-    if (!btn) return;
-	//para marcar o desmarcar un btn
-    btn.addEventListener('click', () => {
-        if (marcaSeleccionada === marca) {
-            marcaSeleccionada = null;
-            btn.classList.remove('activo');
-        } else {
-            // Desmarca otros botones de marca cuando se selecciona uno
-            botonesMarca.forEach(b => document.getElementById(b.id)?.classList.remove('activo'));
-            marcaSeleccionada = marca;
-            btn.classList.add('activo');
-        }
-        aplicarFiltros();
-    });
-});
+if (arandasBtn) {
+	arandasBtn.addEventListener('click', () => filtrarMarcas('Alimentos Arandas'));
+}
 
-// BTN ESPECIE
-document.addEventListener("DOMContentLoaded", () => {
-    cargarProductos();
-    renderizarHTML(itemsController.items);
+/* ====================================================
+   FILTRO POR ESPECIE
+   ==================================================== */
+const mapaEspecies = { "bovinos": "Vacas", "porcinos": "Cerdos", "aves": "Aves", "ovinos": "Borregos" };
+let especieSeleccionada = null;
 
-    const botonesEspecie = document.querySelectorAll(".filtro-especies .especie");
+function aplicarFiltro() {
+	if (!especieSeleccionada) {
+		actualizarCatalogoYEventos(itemsController.items);
+	} else {
+		const productoFiltrado = itemsController.items.filter(item => item.especie === especieSeleccionada);
+		actualizarCatalogoYEventos(productoFiltrado);
+	}
+}
 
-    botonesEspecie.forEach(boton => {
-        boton.addEventListener("click", () => {
-            const especieData = boton.getAttribute("data-especie");
-            const especieNombre = mapaEspecies[especieData];
+const botonesEspecie = document.querySelectorAll(".filtro-especies .especie");
 
-            if (boton.classList.contains("activo")) {
-                boton.classList.remove("activo");
-                especieSeleccionada = null;
-            } else {
-                botonesEspecie.forEach(btn => btn.classList.remove("activo"));
-                boton.classList.add("activo");
-                especieSeleccionada = especieNombre;
-            }
+botonesEspecie.forEach(boton => {
+	boton.addEventListener("click", () => {
+		const especieData = boton.getAttribute("data-especie");
+		const especieNombre = mapaEspecies[especieData];
 
-            aplicarFiltros();
-        });
-    });
+		if (boton.classList.contains("activo")) {
+			boton.classList.remove("activo");
+			especieSeleccionada = null;
+		} else {
+			botonesEspecie.forEach(btn => btn.classList.remove("activo"));
+			boton.classList.add("activo");
+			especieSeleccionada = especieNombre;
+		}
+
+		aplicarFiltro();
+	});
 });
 
 /* ====================================================

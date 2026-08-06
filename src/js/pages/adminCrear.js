@@ -461,9 +461,9 @@ function mostrarModal() {
     const modal = document.createElement('DIV');
     const carga = document.createElement('DIV');
     carga.innerHTML=  `
-        <img class="animacion-carga" src="recursos-graficos/logo/logo-carga.png" alt="">
-        
-<p class="cargar-producto-p"> Creando Producto...</p>`
+        <div class="contenedor-loader">
+  <img class="animacion-carga" src="recursos-graficos/formulario-contactanos/Forrajero-naranja.png" alt="Cargando">
+</div>`
     modal.classList.add('modal-overlay');
 
 
@@ -497,3 +497,5 @@ function cerrarModal() {
     }
 
 }
+
+
