@@ -1,16 +1,17 @@
-//validacion nombre apellido
+/////////////////////////////////////
+//VALIDACION nombre apellido
 
 
-
-//validacion telefono e interes
-
-
-
-//validacion email ,estado
+////////////////////////////////
+//VALIDACION telefono e interes
 
 
+///////////////////////////////
+//VALIDACION email ,estado
 
-//validaciones campo contraseña / confirma contraseña
+
+/////////////////////////////////////////////
+//VALIDACION CONTRASEÑA /CONFIRMA CONTRASEÑA
 const formularioRegistro = document.querySelector("#formulario-registro");
 const password = document.querySelector("#password");
 const confirmarPassword = document.querySelector("#confirmarPassword");
