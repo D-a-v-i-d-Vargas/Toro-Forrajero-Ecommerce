@@ -1,0 +1,19 @@
+
+.email-login input{
+    padding: 0.7rem 3rem;
+    background-color: var(--color-naranjaFuerte);
+    border: none;
+    color: white !important;
+    font-weight: 600;
+    text-align: center;
+}
+
+.email-login span, .campo-obligatorio span{
+    color: red;
+    font-size: 1.5rem;
+}
+
+.email-login input::placeholder {
+    color: #f3f3f3 !important;
+    opacity: 1 !important;
+}
