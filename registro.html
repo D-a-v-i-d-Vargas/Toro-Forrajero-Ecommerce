@@ -118,6 +118,26 @@
             background-color: #1a2614;
             color: white;
         }
+
+        .mensaje-error {
+    color: #bc6c25;
+    font-size: 1rem;
+    text-align: center;
+    margin-top: 0.4rem;
+}
+
+.mensaje-error strong {
+    font-weight: 700;
+}
+
+.campo-error {
+    border: 2px solid #bc6c25;
+}
+
+.campo-correcto {
+    border: 2px solid #606c38;
+}
+
     </style>
 </head>
 
@@ -179,25 +199,42 @@
 
                         <!-- -->
                         <!-- Fila 5: Contraseña -->
+                        
                         <div class="col-12">
                             <label for="password" class="form-label">Contraseña</label>
+
                             <input
                                 type="password"
                                 class="form-control"
                                 id="password"
                                 placeholder="Ingresa tu contraseña"
                                 autocomplete="new-password">
+
+                            <!-- Mensaje de validación -->
+                            <div id="errorPassword" class="mensaje-error d-none">
+                                <strong>Contraseña no válida:</strong>
+                                Debes ingresar al menos 8 caracteres.
+                            </div>
                         </div>
 
-                        <!-- Fila 6: Confirmar Contraseña -->
+                       <!-- Fila 6: Confirmar contraseña -->
                         <div class="col-12">
-                            <label for="confirmarPassword" class="form-label">Confirmar contraseña</label>
+                            <label for="confirmarPassword" class="form-label">
+                                Confirmar contraseña
+                            </label>
+
                             <input
                                 type="password"
                                 class="form-control"
                                 id="confirmarPassword"
                                 placeholder="Confirma tu contraseña"
                                 autocomplete="new-password">
+
+                            <!-- Mensaje de validación -->
+                            <div id="errorConfirmarPassword" class="mensaje-error d-none">
+                                <strong>Las contraseñas no coinciden:</strong>
+                                Debes ingresar la misma contraseña.
+                            </div>
                         </div>
 
 
