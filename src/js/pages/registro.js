@@ -14,13 +14,13 @@ const usuarioValidado = {   //const mensajeValidado
 };
 
 function reiniciarUsuarioValidado() {
-	usuarioValidado.mNombre: "",
-		usuarioValidado.mApellido: "",
-			usuarioValidado.mTelefono: "",
-				usuarioValidado.mAreaInteres: "",
-					usuarioValidado.mCorreo: "",
-						usuarioValidado.mContraseña: "",
-							usuarioValidado.mEstado: "",
+	usuarioValidado.mNombre = "",
+		usuarioValidado.mApellido = "",
+		usuarioValidado.mTelefono = "",
+		usuarioValidado.mAreaInteres = "",
+		usuarioValidado.mCorreo = "",
+		usuarioValidado.mContraseña = "",
+		usuarioValidado.mEstado = "",
 }
 
 /////////////////////////////////////
@@ -165,10 +165,10 @@ document.addEventListener('DOMContentLoaded', () => {
 			usuarioValidado.mNombre = inputNombre.value.trim();
 			usuarioValidado.mApellido = inputApellido.value.trim();
 			usuarioValidado.mTelefono = inputTelefono.value.replace(/[\s-]/g, "");
-			usuarioValidado.mAreaInteres = selectAreaInteres.options[selectMotivo.selectedIndex].text;//PENDIENTE
+			usuarioValidado.mAreaInteres = selectAreaInteres.options[selectAreaInteres.selectedIndex].text;//PENDIENTE
 			usuarioValidado.mCorreo = inputCorreo.value.trim();
 			usuarioValidado.mContraseña = inputContraseña.value.trim();
-			usuarioValidado.mEstado = selectMotivo.options[selectMotivo.selectedIndex].text;//PENDIENTE
+			usuarioValidado.mEstado = selectEstado.options[selectEstado.selectedIndex].text;//PENDIENTE
 
 
 			if (divAlerta) {
