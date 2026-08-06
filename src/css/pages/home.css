@@ -280,7 +280,7 @@
 
 
 #productos-destacados{
-    padding: 100px;
+    padding: 60px 20px;
 }
 
 #productos-destacados h2{
@@ -289,7 +289,9 @@
 
 .card-productos{
     border: 2px solid var(--color-naranjaFuerte);
-    transition: all .3s ease;
+    border-radius: 8px;
+    padding: 25px 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card-productos:hover{
@@ -301,6 +303,21 @@
 .card-body-productos{
     display: flex;
     flex-direction: column;
+    padding: 15px 5px 0 0;
+}
+
+.card-img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 220px; /* Controla la altura uniforme de la imagen */
+    padding: 10px;
+}
+
+.imagen-producto {
+    max-height: 100%;
+    width: auto;
+    object-fit: contain;
 }
 
 .precio {
@@ -309,16 +326,158 @@
 }
 
 .boton-productos{
-    display: block;
-    align-self: flex-end;
     background-color: var(--color-naranjaFuerte);
     color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
     width: 70%;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    align-self: center;
+    margin-top: 20px;
+    transition: background-color 0.2s ease;
 }
 
 .boton-productos:hover{
     background-color: var(--color-verdeCLaro);
     color: white;
     transform: scale(1.05);
+}
+
+
+/* =========================================================
+   GRID DE PRODUCTOS
+========================================================= */
+
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+
+/* =========================================================
+   TARJETAS DE PRODUCTOS
+========================================================= */
+
+.tarjeta-producto {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 100%;
+    padding: 25px;
+
+    background-color: #fffdf2;
+    border: 1px solid #d49a53;
+    border-radius: 10px;
+
+    font-family: "Montserrat", sans-serif;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.tarjeta-producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(40, 54, 24, 0.15);
+}
+
+.tarjeta-producto img {
+    display: block;
+    width: 100%;
+    max-width: 190px;
+    height: 230px;
+
+    margin: 0 auto 20px;
+
+    object-fit: contain;
+}
+
+.contenido-producto {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.contenido-producto h2 {
+    color: #111111;
+    font-family: "Geologica", sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.contenido-producto p {
+    color: #777777;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.precio {
+    display: block;
+    color: #111111;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-top: auto;
+    margin-bottom: 20px;
+}
+
+.boton-carrito {
+    align-self: center;
+    padding: 12px 25px;
+
+    background-color: #bc5f08;
+    color: #ffffff;
+
+    border: none;
+    border-radius: 7px;
+
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.boton-carrito:hover {
+    background-color: #934805;
+    transform: scale(1.03);
+}
+
+
+/* =========================================================
+   DISEÑO RESPONSIVO
+========================================================= */
+
+@media screen and (max-width: 992px) {
+    .productos-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .productos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .categorias-productos {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .boton-categoria {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .productos-encabezado h1 {
+        font-size: 2rem;
+    }
+
+    .tarjeta-producto {
+        padding: 20px;
+    }
 }

@@ -265,6 +265,36 @@ body {
 	white-space: nowrap
 }
 
+.navbar3 {
+	background: var(--color-verdeFuerte);
+	padding: 1rem;
+	position: relative;
+	display: flex !important;
+	justify-content: center;
+	gap: 2rem;
+	list-style: none
+}
+
+.navbar3 li a {
+	color: var(--color-fondo)
+}
+
+.navbar3 li a,
+.navbar3 li a:hover {
+	text-decoration: none;
+	font-weight: 700;
+	font-size: 1rem;
+	white-space: nowrap
+}
+
+.navbar3 li a:hover {
+	color: var(--color-naranjaFuerte)
+}
+
+.navbar3-section {
+	color: var(--color-naranjaFuerte) !important
+}
+
 .indicator {
 	position: absolute;
 	width: 150px;

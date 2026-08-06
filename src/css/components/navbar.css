@@ -95,6 +95,37 @@
 	white-space: nowrap;
 }
 
+.navbar3 {
+	background: var(--color-verdeFuerte);
+	padding: 1rem;
+	position: relative;
+	display: flex !important;
+	justify-content: center;
+	gap: 2rem;
+	  list-style: none;
+	
+}
+
+.navbar3 li a {
+	text-decoration: none;
+	color: var(--color-fondo);
+	font-weight: bold;
+	font-size: 1rem;
+	white-space: nowrap;
+}
+.navbar3 li a:hover {
+	text-decoration: none;
+	color: var(--color-naranjaFuerte);
+	font-weight: bold;
+	font-size: 1rem;
+	white-space: nowrap;
+}
+
+.navbar3-section{
+	color: var(--color-naranjaFuerte) !important;
+}
+
+
 /* circilito que se mueve detrás del texto al hacer hover */
 .indicator {
 	position: absolute;

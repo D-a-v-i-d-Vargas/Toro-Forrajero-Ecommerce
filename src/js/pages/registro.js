@@ -1,57 +1,59 @@
-let mensajeValidado = {
-	mNombre: "",
-	mApellido: "",
-	mTelefono: "",
-	mAreaInteres: "",
-	mCorreo: "",
-	mEstado: "",
-	mContrasena: "",
-	mConfirmarContrasena: ""
-};
+/////////////////////////////////////
+//VALIDACION nombre apellido
 
-function reiniciarMensajeValidado() {
-	for (let key in mensajeValidado) {
-		mensajeValidado[key] = "";
+
+////////////////////////////////
+//VALIDACION telefono e interes
+
+
+///////////////////////////////
+//VALIDACION email ,estado
+
+
+/////////////////////////////////////////////
+//VALIDACION CONTRASEÑA /CONFIRMA CONTRASEÑA
+const formularioRegistro = document.querySelector("#formulario-registro");
+const password = document.querySelector("#password");
+const confirmarPassword = document.querySelector("#confirmarPassword");
+
+const errorPassword = document.querySelector("#errorPassword");
+const errorConfirmarPassword = document.querySelector(
+	"#errorConfirmarPassword"
+);
+
+formularioRegistro.addEventListener("submit", function (event) {
+	let formularioValido = true;
+
+	// Limpiar validaciones anteriores
+	password.classList.remove("campo-error", "campo-correcto");
+	confirmarPassword.classList.remove("campo-error", "campo-correcto");
+
+	errorPassword.classList.add("d-none");
+	errorConfirmarPassword.classList.add("d-none");
+
+	// Validación 1: contraseña obligatoria y mínimo 8 caracteres
+	if (password.value.trim().length < 8) {
+		errorPassword.classList.remove("d-none");
+		password.classList.add("campo-error");
+		formularioValido = false;
+	} else {
+		password.classList.add("campo-correcto");
 	}
-}
 
-// Función auxiliar para inyectar los errores en el HTML
-function mostrarError(selector, mensajeError) {
-	const elemento = document.querySelector(selector);
-	if (elemento) {
-		elemento.innerHTML = mensajeError || "";
-	}
-}
-
-//Función que revisa el campo de teléfono
-function validarTelefono(inputTelefono) {
-	if (!inputTelefono) return "Campo teléfono no encontrado";
-	const telefono = inputTelefono.value.replace(/[\s-]/g, "");
-	const alertMensaje = `<span class="alerta-titulo">Teléfono No válido:</span>`;
-
-	if (telefono === "") {
-		console.log("Campo vacío de teléfono")
-		return `${alertMensaje} Debes llenar el campo`;
-	}
-	if (!/^\d{10}$/.test(telefono)) {
-		console.log("El número no tiene 10 dígitos");
-		return `${alertMensaje} El teléfono debe tener exactamente 10 dígitos`;
+	// Validación 2: confirmar contraseña
+	if (
+		confirmarPassword.value.trim() === "" ||
+		confirmarPassword.value !== password.value
+	) {
+		errorConfirmarPassword.classList.remove("d-none");
+		confirmarPassword.classList.add("campo-error");
+		formularioValido = false;
+	} else {
+		confirmarPassword.classList.add("campo-correcto");
 	}
 
-	return undefined;
-}
-
-//Función que revisa que se haya seleccionado el área de interés
-function validarMotivo(selectMotivo) {
-	if (!selectMotivo) {
-		console.log("No se encontró el selector de motivo");
-		return "No se encontró el selector de motivo.";
+	// Evita enviar el formulario cuando existen errores
+	if (!formularioValido) {
+		event.preventDefault();
 	}
-	if (selectMotivo.value === "") {
-		console.log("No se seleccionó el motivo");
-		return `<span class="alerta-titulo">Motivo de contacto:</span> Debes seleccionar un motivo.`;
-	}
-	return undefined;
-}
-
-
+});

@@ -1,0 +1,258 @@
+.visibilidad-subtexto {
+  color: #585858;
+  font-size: 1rem;
+}
+
+/*Codigo para el switch de la sección de visibilidad de producto
+*/
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.toggle-switch input[type="checkbox"] {
+  display: none;
+}
+
+.toggle-switch-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ddd;
+  border-radius: 20px;
+  box-shadow: inset 0 0 0 2px #ccc;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.toggle-switch-handle {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+.toggle-switch::before {
+  content: "";
+  position: absolute;
+  top: -25px;
+  right: -35px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #aaa;
+  text-shadow: 1px 1px #fff;
+  transition: color 0.3s ease-in-out;
+}
+
+.toggle-switch input[type="checkbox"]:checked+.toggle-switch-handle {
+  transform: translateX(45px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2), 0 0 0 3px #606C38;
+}
+
+.toggle-switch input[type="checkbox"]:checked+.toggle-switch-background {
+  background-color: #606C38;
+  ;
+  box-shadow: inset 0 0 0 2px #606C38;
+}
+
+.toggle-switch input[type="checkbox"]:checked+.toggle-switch:before {
+  content: "On";
+  color: #606C38;
+  right: -15px;
+}
+
+.toggle-switch input[type="checkbox"]:checked+.toggle-switch-background .toggle-switch-handle {
+  transform: translateX(40px);
+}
+
+.btn-custom-cancel {
+  background-color: #DDA15E;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.btn-custom-save {
+  background-color: #556B38;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.btn-custom-cancel:hover {
+  background-color: #BC6C25;
+  color: white;
+}
+
+.btn-custom-save:hover {
+  background-color: #283618;
+  color: white;
+}
+
+
+
+
+#error-nombre,
+#error-especie,
+#error-venta,
+#error-existencia {
+  color: var(--color-naranjaFuerte);
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.alerta-titulo {
+  font-weight: 900;
+}
+
+
+.datos-admin-home,
+.datos-admin-home {
+  font-size: 1.2rem;
+}
+
+.datos-admin-home p,
+.datos-extra p {
+  color: black;
+  line-height: 15px;
+}
+
+.grid-productos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.datos-columna p {
+  margin-bottom: 0.5rem;
+  color: black;
+}
+
+.admin-home-descripcion {
+  text-align: justify;
+  margin: 5px;
+}
+
+.estado-activo {
+  background-color: rgba(0, 128, 0, 0.514);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: 900;
+}
+
+.estado-inactivo {
+  background-color: rgba(255, 0, 0, 0.514);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: 900;
+}
+
+.dato-fila {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* Espacio uniforme entre icono, texto y badge */
+  margin-bottom: 6px;
+  /* Ajusta el espacio vertical entre filas */
+}
+
+.etiqueta-texto {
+  min-width: 90px;
+  /* Ajusta este valor si tu fuente es más grande o pequeña */
+  display: inline-block;
+}
+
+.visibilidad-estilo {
+  min-width: 75px;
+  text-align: center;
+}
+
+.align-items-stretch {
+  padding-bottom: 4rem;
+}
+
+#imagen-principal {
+  padding: 5px;
+
+}
+
+/* Estado Normal */
+.imagen-box {
+  /* Definimos el borde punteado desde el inicio pero transparente */
+  border: 5px dashed transparent !important;
+
+  /* Transición: animamos la propiedad 'border-color' */
+  /* Duración: 0.4s (puedes ajustar el tiempo a tu gusto) */
+  transition: border-color 0.4s ease-in-out;
+}
+
+/* Estado Hover */
+.imagen-box:hover {
+  /* Solo le cambiamos el color al hacer hover */
+  border-color: var(--color-naranjaFuerte) !important;
+}
+
+
+
+.animacion-carga {
+  z-index: 1000;
+  width: 10rem;
+  transform-origin: center;
+  animation: rotate4 2s linear infinite;
+}
+
+circle {
+  fill: none;
+  stroke: hsl(36, 80%, 52%);
+  stroke-width: 5;
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  animation: dash4 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate4 {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash4 {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 90, 200;
+    stroke-dashoffset: -35px;
+  }
+
+  100% {
+    stroke-dashoffset: -125px;
+  }
+}
+
+.cargar-producto-p{
+  color: var(--color-naranjaFuerte);
+  font-size: 1.5rem;
+  font-weight: 900;
+}
