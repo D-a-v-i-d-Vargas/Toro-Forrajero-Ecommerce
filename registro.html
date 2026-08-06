@@ -4,16 +4,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Nuevos Usuarios - Forrajero</title>
+    <title>Registro de Usuarios - Toro Forrajero</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    
+
+    <!-- Bootstrap Icons CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Font Awesome (Iconos del Footer) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- AOS CSS (Animaciones) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <!-- Tu CSS Personalizado -->
     <link rel="stylesheet" href="build/css/app.css">
 
-	    <header>
+    <style>
+        body {
+            background-color: #fdf9e6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #2c3422;
+        }
+
+        .brand-title {
+            color: #4a5c39;
+            font-weight: 800;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .registro-card {
+            background-color: #fef5e7;
+            border: 2px solid #d48243;
+            border-radius: 25px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-label {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #1a1a1a;
+            margin-bottom: 0.3rem;
+        }
+
+        .form-control,
+        .form-select {
+            border: 1px solid #e0d8c3;
+            border-radius: 8px;
+            padding: 0.6rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .form-control::placeholder {
+            color: #a3a3a3;
+        }
+
+        .btn-unirme {
+            background-color: #2d4023;
+            color: white;
+            font-weight: 600;
+            border-radius: 8px;
+            padding: 0.7rem 3rem;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-unirme:hover {
+            background-color: #1a2614;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER / NAVBAR -->
+    <!-- Header y Navegación -->
+    <header>
         <nav class="navbar navbar-1">
             <div class="container-fluid px-4">
                 <div class="navbar-brand">
@@ -51,11 +122,11 @@
         </nav>
     </header>
 
+
     <!-- Encabezado de Página -->
     <section>
         <div class="container w-100 text-center" style="margin-top:80px">
             <div class="row justify-content-center mb-0">
-                <!-- Se agregó el atributo data-aos="fade-up" para animar el logo de abajo hacia arriba -->
                 <div class="col-12 d-flex justify-content-center" data-aos="fade-up">
                     <img class="page-header__logo" src="recursos-graficos/formulario-contactanos/forrajero-naranja.png"
                         alt="Logo Naranja">
@@ -64,82 +135,23 @@
         </div>
     </section>
 
-    <style>
-        body {
-            background-color: #fdf9e6;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #2c3422;
-        }
-        
-        .brand-title {
-            color: #4a5c39; 
-            font-weight: 800;
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .registro-card {
-            background-color: #fef5e7; /* Fondo sutilmente más cálido para la tarjeta */
-            border: 2px solid #d48243; /* Borde naranja/café */
-            border-radius: 25px; /* Bordes muy redondeados */
-            padding: 3rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-
-        .form-label {
-            font-weight: 700;
-            font-size: 0.95rem;
-            color: #1a1a1a;
-            margin-bottom: 0.3rem;
-        }
-
-        .form-control, .form-select {
-            border: 1px solid #e0d8c3;
-            border-radius: 8px;
-            padding: 0.6rem 1rem;
-            font-size: 0.9rem;
-        }
-
-        .form-control::placeholder {
-            color: #a3a3a3;
-        }
-
-        .btn-unirme {
-            background-color: #2d4023; /* Verde oscuro del botón */
-            color: white;
-            font-weight: 600;
-            border-radius: 8px;
-            padding: 0.7rem 3rem;
-            border: none;
-            transition: all 0.3s ease;
-        }
-
-        .btn-unirme:hover {
-            background-color: #1a2614;
-            color: white;
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="alerta"></div>
-
     <!-- Contenedor Principal Centrado -->
-    <div class="container d-flex flex-column align-items-center justify-content-center min-vh-100 py-5">
-        
+    <main class="container d-flex flex-column align-items-center justify-content-center min-vh-100 py-5">
+
         <!-- Sección de Logo y Título -->
         <div class="text-center mb-4">
             <img src="recursos-graficos/navbar/forrajero-sinfondo.png" alt="Logo Forrajero" width="120" class="mb-2">
             <h1 class="brand-title">Registro de nuevos usuarios</h1>
         </div>
 
+        <div class="alerta"></div>
+
         <!-- Tarjeta del Formulario -->
         <div class="col-12 col-md-10 col-lg-8 col-xl-7">
             <div class="registro-card">
                 <form id="formulario-registro">
                     <div class="row g-4">
-                        
+
                         <!-- Fila 1: Nombre y Apellido -->
                         <div class="col-md-6">
                             <label for="nombre" class="form-label">Nombre</label>
@@ -154,16 +166,31 @@
                         <div class="col-md-6">
                             <label for="telefono" class="form-label">Teléfono/Celular</label>
                             <input type="tel" class="form-control" id="telefono" placeholder="(+52)">
+                            <div id="registro_error-telefono" class="text-danger small mt-1 text-center">
+                                <p></p>
+                            </div>
                         </div>
+
                         <div class="col-md-6">
-                            <label for="area_interes" class="form-label">Área de interés</label>
-                            <input type="text" class="form-control" id="area_interes" placeholder="Sector">
+                            <label for="motivo" class="form-label fw-bold mb-2">Área de interés</label>
+                            <select name="motivo" id="motivo" class="form-select" autocomplete="off">
+                                <option value="" disabled selected>Selecciona un área de interés</option>
+                                <option value="estado-pedido">Productos para ovino</option>
+                                <option value="producto-danado">Productos para bovino</option>
+                                <option value="devoluciones-cambios">Productos para porcino</option>
+                                <option value="consultas-producto">Productos para Aves</option>
+                            </select>
+                            <div id="registro_error-motivo" class="text-danger small mt-1 text-center">
+                                <p></p>
+                            </div>
                         </div>
+
 
                         <!-- Fila 3: Correo electrónico (Ancho completo) -->
                         <div class="col-12">
                             <label for="correo" class="form-label">Correo electrónico</label>
-                            <input type="email" class="form-control" id="correo" placeholder="correoelectronico@dominioficticiodejane.net" autocomplete="off">
+                            <input type="email" class="form-control" id="correo"
+                                placeholder="correoelectronico@dominioficticiodejane.net" autocomplete="off">
                         </div>
 
                         <!-- Fila 4: Estado (Ancho completo) -->
@@ -179,25 +206,34 @@
 
                         <!-- -->
                         <!-- Fila 5: Contraseña -->
+
                         <div class="col-12">
                             <label for="password" class="form-label">Contraseña</label>
-                            <input
-                                type="password"
-                                class="form-control"
-                                id="password"
-                                placeholder="Ingresa tu contraseña"
-                                autocomplete="new-password">
+
+                            <input type="password" class="form-control" id="password"
+                                placeholder="Ingresa tu contraseña" autocomplete="new-password">
+
+                            <!-- Mensaje de validación -->
+                            <div id="errorPassword" class="mensaje-error d-none">
+                                <strong>Contraseña no válida:</strong>
+                                Debes ingresar al menos 8 caracteres.
+                            </div>
                         </div>
 
-                        <!-- Fila 6: Confirmar Contraseña -->
+                        <!-- Fila 6: Confirmar contraseña -->
                         <div class="col-12">
-                            <label for="confirmarPassword" class="form-label">Confirmar contraseña</label>
-                            <input
-                                type="password"
-                                class="form-control"
-                                id="confirmarPassword"
-                                placeholder="Confirma tu contraseña"
-                                autocomplete="new-password">
+                            <label for="confirmarPassword" class="form-label">
+                                Confirmar contraseña
+                            </label>
+
+                            <input type="password" class="form-control" id="confirmarPassword"
+                                placeholder="Confirma tu contraseña" autocomplete="new-password">
+
+                            <!-- Mensaje de validación -->
+                            <div id="errorConfirmarPassword" class="mensaje-error d-none">
+                                <strong>Las contraseñas no coinciden:</strong>
+                                Debes ingresar la misma contraseña.
+                            </div>
                         </div>
 
 
@@ -210,9 +246,9 @@
                 </form>
             </div>
         </div>
-    </div>
+    </main>
 
-	<!-- FOOTER -->
+    <!-- FOOTER -->
     <!-- Se agregó el atributo data-aos para animar el footer al hacer scroll hacia abajo -->
     <footer class="footer-forrajero" data-aos="fade-up">
         <div class="footer-container">
@@ -283,10 +319,7 @@
 
     <!-- Scripts Proporcionados -->
     <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
     <script src="build/js/registro.js"></script>
-
 </body>
+
 </html>
