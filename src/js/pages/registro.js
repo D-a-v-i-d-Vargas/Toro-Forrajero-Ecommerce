@@ -14,14 +14,14 @@ const usuarioValidado = {   //const mensajeValidado
 };
 
 function reiniciarUsuarioValidado() {
-	usuarioValidado.mNombre = "",
-		usuarioValidado.mApellido = "",
-		usuarioValidado.mTelefono = "",
-		usuarioValidado.mAreaInteres = "",
-		usuarioValidado.mCorreo = "",
-		usuarioValidado.mContraseña = "",
-		usuarioValidado.mEstado = "",
-}
+	usuarioValidado.mNombre = "";
+	usuarioValidado.mApellido = "";
+	usuarioValidado.mTelefono = "";
+	usuarioValidado.mAreaInteres = "";
+	usuarioValidado.mCorreo = "";
+	usuarioValidado.mContraseña = "";
+	usuarioValidado.mEstado = "";
+};
 
 /////////////////////////////////////
 //VALIDACION nombre apellido
@@ -43,8 +43,8 @@ function validarTelefono(inputTelefono) {
 
 //Función que revisa que se haya seleccionado el área de interés
 function validarMotivo(selectMotivo) {
-	if (!selectMotivo) return "No se encontró el selector de motivo.";
-	if (selectMotivo.value === "") return `<span class="alerta-titulo">Motivo de contacto:</span> Debes seleccionar un motivo.`;
+	if (!selectMotivo) return "No se encontró el selector de área de interés.";
+	if (selectMotivo.value === "") return `<span class="alerta-titulo">Área de interés:</span> Debes seleccionar un área de interés.`;
 	return undefined;
 }
 
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			const errorNombre = validarNombre(inputNombre);
 			const errorApellido = validarApellido(inputApellido);
 			const errorTelefono = validarTelefono(inputTelefono);
-			const errorAreaInteres = validarAreaInteres(selectAreaInteres);
+			const errorAreaInteres = validarMotivo(selectAreaInteres);
 			const errorCorreo = validarCorreo(inputCorreo);
 			const errorContraseña = validarContraseña(inputContraseña);
 			const errorEstado = validarEstado(selectEstado);
