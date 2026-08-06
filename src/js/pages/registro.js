@@ -1,10 +1,52 @@
+/*******************************************************************************
+ * PÁGINA: Registro de nuevos usuarios
+ ******************************************************************************/
+
+// Objeto que acumulará los datos
+const usuarioValidado = {   //const mensajeValidado
+	mNombre: "",
+	mApellido: "",
+	mTelefono: "",
+	mAreaInteres: "",
+	mCorreo: "",
+	mContraseña: "",
+	mEstado: "",
+};
+
+function reiniciarUsuarioValidado() {
+	usuarioValidado.mNombre: "",
+		usuarioValidado.mApellido: "",
+			usuarioValidado.mTelefono: "",
+				usuarioValidado.mAreaInteres: "",
+					usuarioValidado.mCorreo: "",
+						usuarioValidado.mContraseña: "",
+							usuarioValidado.mEstado: "",
+}
+
 /////////////////////////////////////
 //VALIDACION nombre apellido
 
 
 ////////////////////////////////
 //VALIDACION telefono e interes
+//Función que revisa el campo de teléfono
+function validarTelefono(inputTelefono) {
+	if (!inputTelefono) return "Campo teléfono no encontrado";
+	const telefono = inputTelefono.value.replace(/[\s-]/g, "");
+	const alertMensaje = `<span class="alerta-titulo">Teléfono No válido:</span>`;
 
+	if (telefono === "") return `${alertMensaje} Debes llenar el campo`;
+	if (!/^\d{10}$/.test(telefono)) return `${alertMensaje} El teléfono debe tener exactamente 10 dígitos`;
+
+	return undefined;
+}
+
+//Función que revisa que se haya seleccionado el área de interés
+function validarMotivo(selectMotivo) {
+	if (!selectMotivo) return "No se encontró el selector de motivo.";
+	if (selectMotivo.value === "") return `<span class="alerta-titulo">Motivo de contacto:</span> Debes seleccionar un motivo.`;
+	return undefined;
+}
 
 ///////////////////////////////
 //VALIDACION email ,estado
@@ -57,3 +99,98 @@ formularioRegistro.addEventListener("submit", function (event) {
 		event.preventDefault();
 	}
 });
+
+
+
+
+/* -----------------------------------------------------------------------------
+	VALIDACIÓN MAESTRA Y ENVÍO DEL FORMULARIO
+----------------------------------------------------------------------------- */
+document.addEventListener('DOMContentLoaded', () => {
+	// ID del formulario en el HTML
+	const formulario = document.querySelector("#formulario-registro")
+
+	if (formulario) {
+		formulario.addEventListener('submit', function (e) {
+			e.preventDefault(); // Evita que la página se recargue
+
+			reiniciarUsuarioValidado();
+
+			// Referencias a los inputs
+			const inputNombre = document.getElementById("nombre");
+			const inputApellido = document.getElementById("apellido");
+			const inputTelefono = document.getElementById("telefono");
+			const selectAreaInteres = document.getElementById("motivo");
+			const inputCorreo = document.getElementById("correo");
+			const inputContraseña = document.getElementById("password");
+			const selectEstado = document.getElementById("estado");
+			const divAlerta = document.querySelector(".alerta");
+
+
+			// Ejecutar validaciones
+			const errorNombre = validarNombre(inputNombre);
+			const errorApellido = validarApellido(inputApellido);
+			const errorTelefono = validarTelefono(inputTelefono);
+			const errorAreaInteres = validarAreaInteres(selectAreaInteres);
+			const errorCorreo = validarCorreo(inputCorreo);
+			const errorContraseña = validarContraseña(inputContraseña);
+			const errorEstado = validarEstado(selectEstado);
+
+
+
+			// Mostrar u ocultar errores en el DOM
+			mostrarError("#error-nombre p", errorNombre);
+			mostrarError("#error-apellido p", errorApellido);
+			mostrarError("#registro_error-telefono p", errorTelefono);
+			mostrarError("#registro_error-motivo p", errorAreaInteres);
+			mostrarError("#error-correo p", errorCorreo);
+			mostrarError("#error-contraseña p", errorContraseña);
+			mostrarError("#error-estado p", errorEstado);
+
+			const hayErrores = errorNombre || errorApellido || errorTelefono || errorAreaInteres || errorCorreo || errorContraseña || errorEstado;
+
+			if (hayErrores) {
+				if (divAlerta) {
+					divAlerta.innerHTML = `
+                    <div class="alert bg-naranjaFuerte alert-dismissible fade show" role="alert">
+                        <span class="alerta-titulo">Parece que hay un detalle:</span> Revisa los campos resaltados para poder continuar.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>`;
+				}
+				console.warn("Envío bloqueado por errores.");
+				return;
+			}
+
+			// Si pasa todas las validaciones, construimos el objeto
+			usuarioValidado.mNombre = inputNombre.value.trim();
+			usuarioValidado.mApellido = inputApellido.value.trim();
+			usuarioValidado.mTelefono = inputTelefono.value.replace(/[\s-]/g, "");
+			usuarioValidado.mAreaInteres = selectAreaInteres.options[selectMotivo.selectedIndex].text;//PENDIENTE
+			usuarioValidado.mCorreo = inputCorreo.value.trim();
+			usuarioValidado.mContraseña = inputContraseña.value.trim();
+			usuarioValidado.mEstado = selectMotivo.options[selectMotivo.selectedIndex].text;//PENDIENTE
+
+
+			if (divAlerta) {
+				divAlerta.innerHTML = `
+                <div class="alert bg-success text-white alert-dismissible fade show" role="alert">
+                    Datos registrados <span class="alerta-titulo">Correctamente</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>`;
+			}
+
+			console.log("¡ÉXITO TOTAL! Objeto listo:", usuarioValidado);
+
+			console.log(usuarioValidado); //vemos que sí esté el mensaje completo
+
+		});
+	}
+});
+
+// Función auxiliar para inyectar los errores en el HTML
+function mostrarError(selector, mensajeError) {
+	const elemento = document.querySelector(selector);
+	if (elemento) {
+		elemento.innerHTML = mensajeError || "";
+	}
+}
