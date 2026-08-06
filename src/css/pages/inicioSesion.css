@@ -1,4 +1,30 @@
+/*Título de página e imagen*/
+.login-encabezado {
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    margin-bottom: 0;
+}
 
+.login-encabezado h1 {
+    color: #283618;
+    font-family: "Geologica", sans-serif;
+    /* font-size: 2.5rem; */
+    /* font-weight: 700; */
+    margin-bottom: 20px;
+}
+
+.login-encabezado p {
+    color: #000000;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.65rem;
+    margin-top: 4rem;
+    margin-bottom: 0;
+    margin-left: 1.09rem;
+}
+
+/*Inputs Email y Contraseña*/
 .email-login input{
     padding: 0.7rem 3rem;
     background-color: var(--color-naranjaFuerte);
