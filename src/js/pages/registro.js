@@ -25,28 +25,32 @@ function reiniciarUsuarioValidado() {
 
 /////////////////////////////////////
 //VALIDACION nombre apellido
+
 function validarNombre(inputNombre) {
-	if (!inputNombre) return "Campo nombre no encontrado";
-	const nombre = inputNombre.value.trim();
-	const alertMensaje = `<span class="alerta-titulo">Nombre no válido:</span>`;
+    if (!inputNombre) return "No se encontró el campo nombre";
+    const nombre = inputNombre.value.trim();
+    const alertMensaje = `<span class="alerta-titulo">El Nombre </span>`;
 
-	if (nombre === "") return `${alertMensaje} Debes llenar el campo`;
-	if (!/^[A-Za-zÀ-ÖØ-öø-ÿ\s]{2,}$/.test(nombre)) return `${alertMensaje} Ingresa solo letras (mínimo 2 caracteres)`;
-
-	return undefined;
+    if (nombre === "") return alertMensaje + " no puede estar vacío.";
+    if (/\d/.test(nombre)) return alertMensaje + " no puede contener números.";
+    if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(nombre)) return alertMensaje + " solo puede contener letras y espacios.";
+    if (nombre.length < 3) return alertMensaje + " debe tener al menos 3 caracteres.";
+    
+    return undefined;
 }
 
 function validarApellido(inputApellido) {
-	if (!inputApellido) return "Campo apellido no encontrado";
-	const apellido = inputApellido.value.trim();
-	const alertMensaje = `<span class="alerta-titulo">Apellido no válido:</span>`;
+    if (!inputApellido) return "No se encontró el campo apeliido";
+    const apeliido = inputApellido.value.trim();
+    const alertMensaje = `<span class="alerta-titulo">El Apellido </span>`;
 
-	if (apellido === "") return `${alertMensaje} Debes llenar el campo`;
-	if (!/^[A-Za-zÀ-ÖØ-öø-ÿ\s]{2,}$/.test(apellido)) return `${alertMensaje} Ingresa solo letras (mínimo 2 caracteres)`;
-
-	return undefined;
+    if (apellido === "") return alertMensaje + " no puede estar vacío.";
+    if (/\d/.test(apellido)) return alertMensaje + " no puede contener números.";
+    if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(apellido)) return alertMensaje + " solo puede contener letras y espacios.";
+    if (apellido.length < 3) return alertMensaje + " debe tener al menos 3 caracteres.";
+    
+    return undefined;
 }
-
 
 ////////////////////////////////
 //VALIDACION telefono e interes
