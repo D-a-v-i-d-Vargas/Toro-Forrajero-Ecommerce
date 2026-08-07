@@ -74,9 +74,24 @@
     <!-- ===================================================================================
                         1. BIENVENIDA, IMAGEN TORO, TEXTO
     ======================================================================================== -->
+<section class="container my-5 fade-up">
+            <div class="row align-items-center">
+                <div class="col-md-7 login-encabezado d-flex flex-column justify-content-center">
+                    <h1 class="display-1 fw-bold text-center">
+                        BIENVENIDO
+                    </h1>
+                    <p class="text-center">
+                        Ingresa tus credenciales para continuar
+                    </p>
+                </div>
+                <!---Imagen de toro -->
 
-
-
+                <div class="col-md-4 text-end">
+                    <img src="recursos-graficos/nuevo-producto/forrajero-verdnaranj.png" alt="Logo de Inicio de Sesión"
+                        class="img-fluid" style="max-width:350px;">
+                </div>
+            </div>
+    </section>
 
     <!-- ===================================================================================
                             2. CAMPOS DE EMAIL Y CONTRASEÑA
@@ -84,24 +99,34 @@
     <section class="m-auto">
         <div class="email-login d-flex flex-column p-3">
             <input  class="rounded-3" type="email" placeholder="ejemplo@correo.com" autocomplete="off">
-            <label class="text-center" for="">ingrese su correo electrónico<span>*</span></label>
+            <label class="text-center" for="">Ingrese su correo electrónico<span>*</span></label>
         </div>
         <div class="email-login d-flex flex-column p-3">
             <input class="rounded-3" type="password" autocomplete="off" placeholder="contaseña">
-            <label class="text-center" for="">ingrese su contraseña <span>*</span></label>
+            <label class="text-center" for="">Ingrese su contraseña <span>*</span></label>
         </div>
         <p class="campo-obligatorio"><span>*</span>Campo obligatorio</p>
     </section>
 
-    
-
-
-
     <!-- ===================================================================================
                 3. BOTÓN 'INICIAR SESIÓN' Y 'OLVIDASTE TU CONTRASEÑA'
     ======================================================================================== -->
+    <!-- Observación: Tomar en cuenta en validaciones, la etiqueta de <form> dependiendo de cómo se
+        extraerán los datos de este formulario. -->
+        
+    <section class="m-auto">
 
+        <!-- Botón Iniciar sesión -->
+        <div>
+            <button type="button" class="boton-inicio rounded-3"> INICIAR SESIÓN </button>
+        </div>
 
+        <!-- Sección ¿Olvidaste tu contrasña? -->
+        <div class="text-end mt-separacion">
+          <a href="#" class="olvidaste-password text-dark"> ¿Olvidaste tu contraseña? </a>
+        </div>
+
+    </section>
 
 
     <!-- ===================================================================================

@@ -1,4 +1,30 @@
+/*Título de página e imagen*/
+.login-encabezado {
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    margin-bottom: 0;
+}
 
+.login-encabezado h1 {
+    color: #283618;
+    font-family: "Geologica", sans-serif;
+    /* font-size: 2.5rem; */
+    /* font-weight: 700; */
+    margin-bottom: 20px;
+}
+
+.login-encabezado p {
+    color: #000000;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.65rem;
+    margin-top: 4rem;
+    margin-bottom: 0;
+    margin-left: 1.09rem;
+}
+
+/*Inputs Email y Contraseña*/
 .email-login input{
     padding: 0.7rem 3rem;
     background-color: var(--color-naranjaFuerte);
@@ -16,4 +42,28 @@
 .email-login input::placeholder {
     color: #f3f3f3 !important;
     opacity: 1 !important;
+}
+
+
+/* --- Estilo de botón 'INICIAR SESIÓN' --- */
+.boton-inicio{
+    padding: 1rem 8.5rem;
+    background-color: var(--color-verdeFuerte);
+    border: none;
+    color: white;
+    font-weight: 500; /* semi bold, si es bold subir a 600 */
+    text-align: center;
+    font-size: 1.1rem; /* Aumenta tamaño de letra */
+    letter-spacing: 1.5px; /* Para separar las letras */
+}
+
+/* --- Estilo de '¿Olvidaste tu contraseña? ' --- */
+.mt-separacion{
+    margin-top: 3.5rem; /* Separación entre botón de inicio de sesión y el enlace de olvidaste tu contraseña*/
+    margin-right: -60px; /* Lo mueve aún más a la derecha */
+
+}
+.olvidaste-password{
+     font-style: italic; /* Para ponerlas en cursiva */
+     font-size: 1rem;
 }
