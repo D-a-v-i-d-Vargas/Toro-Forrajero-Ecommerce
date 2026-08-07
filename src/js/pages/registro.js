@@ -25,6 +25,27 @@ function reiniciarUsuarioValidado() {
 
 /////////////////////////////////////
 //VALIDACION nombre apellido
+function validarNombre(inputNombre) {
+	if (!inputNombre) return "Campo nombre no encontrado";
+	const nombre = inputNombre.value.trim();
+	const alertMensaje = `<span class="alerta-titulo">Nombre no válido:</span>`;
+
+	if (nombre === "") return `${alertMensaje} Debes llenar el campo`;
+	if (!/^[A-Za-zÀ-ÖØ-öø-ÿ\s]{2,}$/.test(nombre)) return `${alertMensaje} Ingresa solo letras (mínimo 2 caracteres)`;
+
+	return undefined;
+}
+
+function validarApellido(inputApellido) {
+	if (!inputApellido) return "Campo apellido no encontrado";
+	const apellido = inputApellido.value.trim();
+	const alertMensaje = `<span class="alerta-titulo">Apellido no válido:</span>`;
+
+	if (apellido === "") return `${alertMensaje} Debes llenar el campo`;
+	if (!/^[A-Za-zÀ-ÖØ-öø-ÿ\s]{2,}$/.test(apellido)) return `${alertMensaje} Ingresa solo letras (mínimo 2 caracteres)`;
+
+	return undefined;
+}
 
 
 ////////////////////////////////
@@ -50,6 +71,47 @@ function validarMotivo(selectMotivo) {
 
 ///////////////////////////////
 //VALIDACION email ,estado
+function validarCorreo(inputCorreo) {
+    if (!inputCorreo) return "Campo correo no encontrado";
+
+    const correo = inputCorreo.value.trim();
+    const alertMensaje = `<span class="alerta-titulo">Correo no válido:</span>`;
+
+    if (correo === "") {
+        return `${alertMensaje} Debes llenar el campo.`;
+    }
+
+    if (!correo.includes("@")) {
+        return `${alertMensaje} Por favor incluye un símbolo @ en el correo electrónico.`;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) {
+        return `${alertMensaje} Ingresa un correo electrónico válido.`;
+    }
+
+    return undefined;
+}
+
+
+
+function validarEstado(selectEstado) {
+	if (!selectEstado) return "No se encontró el selector de estado.";
+	if (selectEstado.value === "") return `<span class="alerta-titulo">Estado:</span> Debes seleccionar un Estado.`;
+	return undefined;
+}
+
+function validarContraseña(inputContraseña) {
+	if (!inputContraseña) return "Campo contraseña no encontrado";
+	const contraseña = inputContraseña.value.trim();
+	const alertMensaje = `<span class="alerta-titulo">Contraseña no válida:</span>`;
+
+	if (contraseña === "") return `${alertMensaje} Debes llenar el campo`;
+	if (contraseña.length < 8) return `${alertMensaje} Debe tener al menos 8 caracteres`;
+
+	return undefined;
+}
+
+
 
 
 /////////////////////////////////////////////
