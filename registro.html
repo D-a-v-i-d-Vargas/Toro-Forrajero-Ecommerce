@@ -149,7 +149,7 @@
         <!-- Tarjeta del Formulario -->
         <div class="col-12 col-md-10 col-lg-8 col-xl-7">
             <div class="registro-card">
-                <form id="formulario-registro">
+                <form id="formulario-registro" novalidate>
                     <div class="row g-4">
 
                         <!-- Fila 1: Nombre y Apellido -->
@@ -166,7 +166,7 @@
                         <div class="col-md-6">
                             <label for="telefono" class="form-label">Teléfono/Celular</label>
                             <input type="tel" class="form-control" id="telefono" placeholder="(+52)">
-                            <div id="registro_error-telefono" class="text-danger small mt-1 text-center">
+                            <div id="registro_error-telefono" class="narnaja-text small mt-1 text-center">
                                 <p></p>
                             </div>
                         </div>
@@ -180,7 +180,7 @@
                                 <option value="devoluciones-cambios">Productos para porcino</option>
                                 <option value="consultas-producto">Productos para Aves</option>
                             </select>
-                            <div id="registro_error-motivo" class="text-danger small mt-1 text-center">
+                            <div id="registro_error-motivo" class="narnaja-text small mt-1 text-center">
                                 <p></p>
                             </div>
                         </div>
@@ -191,19 +191,26 @@
                             <label for="correo" class="form-label">Correo electrónico</label>
                             <input type="email" class="form-control" id="correo"
                                 placeholder="correoelectronico@dominioficticiodejane.net" autocomplete="off">
+                                 <div id="error-correo" class="narnaja-text small mt-1 text-center">
+                                         <p></p>
+                                     </div>
                         </div>
 
                         <!-- Fila 4: Estado (Ancho completo) -->
                         <div class="col-12">
                             <label for="estado" class="form-label">Estado</label>
                             <select class="form-select" id="estado">
-                                <option selected>Estado</option>
+                                <option  value = "" selected>Estado</option>
                                 <option value="activo">Activo</option>
                                 <option value="inactivo">Inactivo</option>
                                 <option value="pendiente">Pendiente</option>
                             </select>
+                            <div id="error-estado" class="narnaja-text small mt-1 text-center">
+                             <p></p>
+                            </div>
                         </div>
 
+</div>
                         <!-- -->
                         <!-- Fila 5: Contraseña -->
 
@@ -214,7 +221,7 @@
                                 placeholder="Ingresa tu contraseña" autocomplete="new-password">
 
                             <!-- Mensaje de validación -->
-                            <div id="errorPassword" class="mensaje-error d-none">
+                            <div id="errorPassword" class="mensaje-error narnaja-text small mt-1 text-center d-none">
                                 <strong>Contraseña no válida:</strong>
                                 Debes ingresar al menos 8 caracteres.
                             </div>
@@ -230,7 +237,7 @@
                                 placeholder="Confirma tu contraseña" autocomplete="new-password">
 
                             <!-- Mensaje de validación -->
-                            <div id="errorConfirmarPassword" class="mensaje-error d-none">
+                            <div id="errorConfirmarPassword" class="mensaje-error  narnaja-text small mt-1 text-center  d-none">
                                 <strong>Las contraseñas no coinciden:</strong>
                                 Debes ingresar la misma contraseña.
                             </div>
@@ -318,7 +325,6 @@
     </script>
 
     <!-- Scripts Proporcionados -->
-    <script src="script.js"></script>
     <script src="build/js/registro.js"></script>
 </body>
 
