@@ -312,5 +312,27 @@
       "existencia": 20,
       "estado": "activo"
     }
+  ],
+  "usuarios": [
+    {
+      "id": "1",
+      "nombre": "jane",
+      "apellido": "smitherton",
+      "telefono": 5534459862,
+      "areaInteres": "Productos para ovino",
+      "correo": "k_montserratls@hotmail.com",
+      "contraseña": "asdfghjk",
+      "estado": "Activo"
+    },
+    {
+      "id": "2",
+      "nombre": "Oscar",
+      "apellido": "Miranda",
+      "telefono": 5532569845,
+      "areaInteres": "Productos para ovino",
+      "correo": "k_montserratls@hotmail.com",
+      "contraseña": "contraseña",
+      "estado": "Inactivo"
+    }
   ]
 }

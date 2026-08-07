@@ -39,9 +39,9 @@ function validarNombre(inputNombre) {
     return undefined;
 }
 
-function validarApellido(inputApellido) {
-    if (!inputApellido) return "No se encontró el campo apeliido";
-    const apeliido = inputApellido.value.trim();
+function validarApellido(inputApellido) { 
+    if (!inputApellido) return "No se encontró el campo apellido";
+    const apellido = inputApellido.value.trim();
     const alertMensaje = `<span class="alerta-titulo">El Apellido </span>`;
 
     if (apellido === "") return alertMensaje + " no puede estar vacío.";
@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const formulario = document.querySelector("#formulario-registro")
 
 	if (formulario) {
-		formulario.addEventListener('submit', function (e) {
+		formulario.addEventListener('submit', async function (e) {
 			e.preventDefault(); // Evita que la página se recargue
 
 			reiniciarUsuarioValidado();
@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			mostrarError("#registro_error-telefono p", errorTelefono);
 			mostrarError("#registro_error-motivo p", errorAreaInteres);
 			mostrarError("#error-correo p", errorCorreo);
-			mostrarError("#error-contraseña p", errorContraseña);
+			mostrarError("#errorPassword p", errorContraseña);
 			mostrarError("#error-estado p", errorEstado);
 
 			const hayErrores = errorNombre || errorApellido || errorTelefono || errorAreaInteres || errorCorreo || errorContraseña || errorEstado;
@@ -236,6 +236,8 @@ document.addEventListener('DOMContentLoaded', () => {
 			usuarioValidado.mContraseña = inputContraseña.value.trim();
 			usuarioValidado.mEstado = selectEstado.options[selectEstado.selectedIndex].text;//PENDIENTE
 
+			// Envío de datos al JSON-Server
+			await enviarDatos();
 
 			if (divAlerta) {
 				divAlerta.innerHTML = `
@@ -259,4 +261,53 @@ function mostrarError(selector, mensajeError) {
 	if (elemento) {
 		elemento.innerHTML = mensajeError || "";
 	}
+}
+
+
+
+
+
+/* -----------------------------------------------------------------------------
+   PETICIÓN API / JSON-SERVER
+----------------------------------------------------------------------------- */
+const API_URL = 'http://localhost:3000/usuarios';
+
+async function enviarDatos() {
+	console.log("Entré a enviarDatos");
+    
+    try {
+        const resActual = await fetch(API_URL);
+        const usuariosActuales = await resActual.json();
+
+        // Calculamos el ID incremental correctamente
+        const ultimoId = usuariosActuales.reduce((max, p) => Number(p.id) > max ? Number(p.id) : max, 0);
+        const nuevoId = ultimoId + 1;
+
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                id: String(nuevoId), // Se asigna como string o number según tu JSON
+                nombre: usuarioValidado.mNombre,
+                apellido: usuarioValidado.mApellido,
+                telefono: Number(usuarioValidado.mTelefono),
+                areaInteres: usuarioValidado.mAreaInteres,
+                correo: usuarioValidado.mCorreo,
+                contraseña: usuarioValidado.mContraseña,
+                estado: usuarioValidado.mEstado,
+            })
+        });
+
+
+
+        if (!response.ok) {
+            throw new Error(`Error status: ${response.status}`);
+        }
+
+        const resultado = await response.json();
+        console.log("Usuario guardado exitosamente en JSON-Server:", resultado);
+    } catch (error) {
+        console.error('Fallo al conectar con la API:', error);
+    }
+
 }
