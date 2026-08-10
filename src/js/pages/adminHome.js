@@ -125,91 +125,10 @@ function renderizarHTML(items) {
             </div>
         </article>
     `).join('');
+
     obtenerInfomacion();
+
 }
-
-/* ====================================================
-   ESTADO GLOBAL Y LÓGICA UNIFICADA DE FILTROS
-   ==================================================== */
-const mapaEspecies = { "bovinos": "Vacas", "porcinos": "Cerdos", "aves": "Aves", "ovinos": "Borregos" };
-
-let filtroMarca = null;
-let filtroEspecie = null;
-
-// Función auxiliar para renderizar y reacondicionar la UI
-function actualizarCatalogoYEventos(listaProductos) {
-    renderizarHTML(listaProductos);
-    eliminarProductoMenu();
-    estiloVisibilidad();
-}
-
-// Función central de filtrado (combina Marca + Especie)
-function aplicarFiltros() {
-    let productosFiltrados = itemsController.items;
-
-    if (filtroMarca) {
-        productosFiltrados = productosFiltrados.filter(item => item.marca === filtroMarca);
-    }
-
-    if (filtroEspecie) {
-        productosFiltrados = productosFiltrados.filter(item => item.especie === filtroEspecie);
-    }
-
-    actualizarCatalogoYEventos(productosFiltrados);
-}
-
-/* ====================================================
-   LISTENERS: FILTRO POR MARCA
-   ==================================================== */
-const botonesMarca = [
-    { btn: document.getElementById('adm'), marca: 'ADM' },
-    { btn: document.getElementById('nogal'), marca: 'El Nogal' },
-    { btn: document.getElementById('arandas'), marca: 'Alimentos Arandas' }
-];
-
-botonesMarca.forEach(({ btn, marca }) => {
-    if (!btn) return;
-
-    btn.addEventListener('click', () => {
-        // Toggle: si ya estaba activa esa marca, la quitamos
-        if (filtroMarca === marca) {
-            filtroMarca = null;
-            btn.classList.remove('activo');
-        } else {
-            // Desactivamos otros botones de marca
-            botonesMarca.forEach(b => b.btn?.classList.remove('activo'));
-            filtroMarca = marca;
-            btn.classList.add('activo');
-        }
-
-        aplicarFiltros();
-    });
-});
-
-/* ====================================================
-   LISTENERS: FILTRO POR ESPECIE
-   ==================================================== */
-const botonesEspecie = document.querySelectorAll(".filtro-especies .especie");
-
-botonesEspecie.forEach(boton => {
-    boton.addEventListener("click", () => {
-        const especieData = boton.getAttribute("data-especie");
-        const especieNombre = mapaEspecies[especieData];
-
-        // Toggle: si ya estaba activa, la quitamos
-        if (boton.classList.contains("activo")) {
-            boton.classList.remove("activo");
-            filtroEspecie = null;
-        } else {
-            botonesEspecie.forEach(btn => btn.classList.remove("activo"));
-            boton.classList.add("activo");
-            filtroEspecie = especieNombre;
-        }
-
-        aplicarFiltros();
-    });
-});
-
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -283,7 +202,6 @@ function eliminarProductoMenu() {
 }
 
 async function deleteProduct(productId) {
-    mostrarModalElimnarProducto();
     try {
         // Petición DELETE a la API pasando el ID directo
         const response = await fetch(`${API_URL}/${productId}`, {
@@ -310,8 +228,6 @@ async function deleteProduct(productId) {
     } catch (error) {
         console.error('Error al eliminar el producto:', error);
     }
-
-    cerrarModal();
 }
 
 function cerrarModal() {
@@ -330,28 +246,21 @@ function cerrarModal() {
 
 
 
+// adminHome.js
+import { cargarProducto } from './adminEditar.js'; // Solo importamos hacia este lado
 
-function mostrarModalElimnarProducto() {
-    const modal = document.createElement('DIV');
-    const carga = document.createElement('DIV');
-    carga.innerHTML = `        <div class="contenedor-loader">
-  <img class="animacion-carga" src="recursos-graficos/formulario-contactanos/Forrajero-naranja.png" alt="Cargando">
-</div>`
-    modal.classList.add('modal-overlay');
+export function obtenerInfomacion() {
+    const btnsEditar = document.querySelectorAll('.editar');
+    
+    btnsEditar.forEach(btn => {
+        btn.addEventListener('click', function () {
+            const id = btn.dataset.id;
 
-
-    // modal.addEventListener('click', function () {
-    //     cerrarModal()
-    // })
-
-    const body = document.querySelector('body');
-    body.classList.add('overflow-hiden');
-    body.appendChild(modal);
-    modal.appendChild(carga);
-
-    setTimeout(() => {
-        modal.classList.add('is-visible');
-    }, 10);
-
+            // Guardamos en localStorage por si acaso
+            localStorage.setItem('idProductoEditar', id);
+            
+            // Pasamos el ID directamente a la función de editar
+            cargarProducto(id); 
+        });
+    });
 }
-
