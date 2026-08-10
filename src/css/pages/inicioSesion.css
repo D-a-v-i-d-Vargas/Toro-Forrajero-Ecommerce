@@ -64,6 +64,32 @@
 
 }
 .olvidaste-password{
+    font-style: italic; /* Para ponerlas en cursiva */
+    font-size: 1rem;
      font-style: italic; /* Para ponerlas en cursiva */
      font-size: 1rem;
+}
+
+/* estilo para letra de alertas correo*/
+
+/* ==========================================
+   VALIDACIÓN CORREO
+========================================== */
+
+
+.alerta-login {
+    color: #BC6C25;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 8px;
+}
+
+
+/* Resalta el título de la validación */
+.alerta-login .alerta-titulo {
+    color: #BC6C25;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
 }
