@@ -102,8 +102,12 @@
             <label class="text-center" for="">Ingrese su correo electrónico<span>*</span></label>
         </div>
         <div class="email-login d-flex flex-column p-3">
-            <input class="rounded-3" type="password" autocomplete="off" placeholder="contaseña">
+            <input id="password" class="rounded-3" type="password" autocomplete="off" placeholder="contaseña">
             <label class="text-center" for="">Ingrese su contraseña <span>*</span></label>
+            <div id="errorPassword" class="mensaje-error narnaja-text small mt-1 text-center d-none">
+                <strong>Contraseña no válida:</strong>
+                Debes ingresar al menos 8 caracteres.
+            </div>
         </div>
         <p class="campo-obligatorio"><span>*</span>Campo obligatorio</p>
     </section>
@@ -118,7 +122,7 @@
 
         <!-- Botón Iniciar sesión -->
         <div>
-            <button type="button" class="boton-inicio rounded-3"> INICIAR SESIÓN </button>
+            <button type="button" id="btn-iniciar-sesion" class="boton-inicio rounded-3"> INICIAR SESIÓN </button>
         </div>
 
         <!-- Sección ¿Olvidaste tu contrasña? -->
