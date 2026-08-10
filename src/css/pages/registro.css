@@ -1,0 +1,7 @@
+#registro_error-motivo,
+#registro_error-telefono {
+	color: var(--color-naranjaFuerte);
+	font-family: var(--fuente-cuerpo);
+	font-size: .875rem;
+	margin-top: .25rem;
+}

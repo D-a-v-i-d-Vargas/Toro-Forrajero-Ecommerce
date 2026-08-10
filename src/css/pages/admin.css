@@ -255,3 +255,6 @@ circle {
     stroke-dashoffset: -125px;
   }
 }
+.editar{
+  text-decoration: none;
+}

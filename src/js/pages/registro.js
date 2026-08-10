@@ -1,0 +1,313 @@
+/*******************************************************************************
+ * PÁGINA: Registro de nuevos usuarios
+ ******************************************************************************/
+
+// Objeto que acumulará los datos
+const usuarioValidado = {   //const mensajeValidado
+	mNombre: "",
+	mApellido: "",
+	mTelefono: "",
+	mAreaInteres: "",
+	mCorreo: "",
+	mContraseña: "",
+	mEstado: "",
+};
+
+function reiniciarUsuarioValidado() {
+	usuarioValidado.mNombre = "";
+	usuarioValidado.mApellido = "";
+	usuarioValidado.mTelefono = "";
+	usuarioValidado.mAreaInteres = "";
+	usuarioValidado.mCorreo = "";
+	usuarioValidado.mContraseña = "";
+	usuarioValidado.mEstado = "";
+};
+
+/////////////////////////////////////
+//VALIDACION nombre apellido
+
+function validarNombre(inputNombre) {
+    if (!inputNombre) return "No se encontró el campo nombre";
+    const nombre = inputNombre.value.trim();
+    const alertMensaje = `<span class="alerta-titulo">El Nombre </span>`;
+
+    if (nombre === "") return alertMensaje + " no puede estar vacío.";
+    if (/\d/.test(nombre)) return alertMensaje + " no puede contener números.";
+    if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(nombre)) return alertMensaje + " solo puede contener letras y espacios.";
+    if (nombre.length < 3) return alertMensaje + " debe tener al menos 3 caracteres.";
+    
+    return undefined;
+}
+
+function validarApellido(inputApellido) { 
+    if (!inputApellido) return "No se encontró el campo apellido";
+    const apellido = inputApellido.value.trim();
+    const alertMensaje = `<span class="alerta-titulo">El Apellido </span>`;
+
+    if (apellido === "") return alertMensaje + " no puede estar vacío.";
+    if (/\d/.test(apellido)) return alertMensaje + " no puede contener números.";
+    if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(apellido)) return alertMensaje + " solo puede contener letras y espacios.";
+    if (apellido.length < 3) return alertMensaje + " debe tener al menos 3 caracteres.";
+    
+    return undefined;
+}
+
+////////////////////////////////
+//VALIDACION telefono e interes
+//Función que revisa el campo de teléfono
+function validarTelefono(inputTelefono) {
+	if (!inputTelefono) return "Campo teléfono no encontrado";
+	const telefono = inputTelefono.value.replace(/[\s-]/g, "");
+	const alertMensaje = `<span class="alerta-titulo">Teléfono No válido:</span>`;
+
+	if (telefono === "") return `${alertMensaje} Debes llenar el campo`;
+	if (!/^\d{10}$/.test(telefono)) return `${alertMensaje} El teléfono debe tener exactamente 10 dígitos`;
+
+	return undefined;
+}
+
+//Función que revisa que se haya seleccionado el área de interés
+function validarMotivo(selectMotivo) {
+	if (!selectMotivo) return "No se encontró el selector de área de interés.";
+	if (selectMotivo.value === "") return `<span class="alerta-titulo">Área de interés:</span> Debes seleccionar un área de interés.`;
+	return undefined;
+}
+
+///////////////////////////////
+//VALIDACION email ,estado
+function validarCorreo(inputCorreo) {
+    if (!inputCorreo) return "Campo correo no encontrado";
+
+    const correo = inputCorreo.value.trim();
+    const alertMensaje = `<span class="alerta-titulo">Correo no válido:</span>`;
+
+    if (correo === "") {
+        return `${alertMensaje} Debes llenar el campo.`;
+    }
+
+    if (!correo.includes("@")) {
+        return `${alertMensaje} Por favor incluye un símbolo @ en el correo electrónico.`;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) {
+        return `${alertMensaje} Ingresa un correo electrónico válido.`;
+    }
+
+    return undefined;
+}
+
+
+
+function validarEstado(selectEstado) {
+	if (!selectEstado) return "No se encontró el selector de estado.";
+	if (selectEstado.value === "") return `<span class="alerta-titulo">Estado:</span> Debes seleccionar un Estado.`;
+	return undefined;
+}
+
+function validarContraseña(inputContraseña) {
+	if (!inputContraseña) return "Campo contraseña no encontrado";
+	const contraseña = inputContraseña.value.trim();
+	const alertMensaje = `<span class="alerta-titulo">Contraseña no válida:</span>`;
+
+	if (contraseña === "") return `${alertMensaje} Debes llenar el campo`;
+	if (contraseña.length < 8) return `${alertMensaje} Debe tener al menos 8 caracteres`;
+
+	return undefined;
+}
+
+
+
+
+/////////////////////////////////////////////
+//VALIDACION CONTRASEÑA /CONFIRMA CONTRASEÑA
+const formularioRegistro = document.querySelector("#formulario-registro");
+const password = document.querySelector("#password");
+const confirmarPassword = document.querySelector("#confirmarPassword");
+
+const errorPassword = document.querySelector("#errorPassword");
+const errorConfirmarPassword = document.querySelector(
+	"#errorConfirmarPassword"
+);
+
+formularioRegistro.addEventListener("submit", function (event) {
+	let formularioValido = true;
+
+	// Limpiar validaciones anteriores
+	password.classList.remove("campo-error", "campo-correcto");
+	confirmarPassword.classList.remove("campo-error", "campo-correcto");
+
+	errorPassword.classList.add("d-none");
+	errorConfirmarPassword.classList.add("d-none");
+
+	// Validación 1: contraseña obligatoria y mínimo 8 caracteres
+	if (password.value.trim().length < 8) {
+		errorPassword.classList.remove("d-none");
+		password.classList.add("campo-error");
+		formularioValido = false;
+	} else {
+		password.classList.add("campo-correcto");
+	}
+
+	// Validación 2: confirmar contraseña
+	if (
+		confirmarPassword.value.trim() === "" ||
+		confirmarPassword.value !== password.value
+	) {
+		errorConfirmarPassword.classList.remove("d-none");
+		confirmarPassword.classList.add("campo-error");
+		formularioValido = false;
+	} else {
+		confirmarPassword.classList.add("campo-correcto");
+	}
+
+	// Evita enviar el formulario cuando existen errores
+	if (!formularioValido) {
+		event.preventDefault();
+	}
+});
+
+
+
+
+/* -----------------------------------------------------------------------------
+	VALIDACIÓN MAESTRA Y ENVÍO DEL FORMULARIO
+----------------------------------------------------------------------------- */
+document.addEventListener('DOMContentLoaded', () => {
+	// ID del formulario en el HTML
+	const formulario = document.querySelector("#formulario-registro")
+
+	if (formulario) {
+		formulario.addEventListener('submit', async function (e) {
+			e.preventDefault(); // Evita que la página se recargue
+
+			reiniciarUsuarioValidado();
+
+			// Referencias a los inputs
+			const inputNombre = document.getElementById("nombre");
+			const inputApellido = document.getElementById("apellido");
+			const inputTelefono = document.getElementById("telefono");
+			const selectAreaInteres = document.getElementById("motivo");
+			const inputCorreo = document.getElementById("correo");
+			const inputContraseña = document.getElementById("password");
+			const selectEstado = document.getElementById("estado");
+			const divAlerta = document.querySelector(".alerta");
+
+
+			// Ejecutar validaciones
+			const errorNombre = validarNombre(inputNombre);
+			const errorApellido = validarApellido(inputApellido);
+			const errorTelefono = validarTelefono(inputTelefono);
+			const errorAreaInteres = validarMotivo(selectAreaInteres);
+			const errorCorreo = validarCorreo(inputCorreo);
+			const errorContraseña = validarContraseña(inputContraseña);
+			const errorEstado = validarEstado(selectEstado);
+
+
+
+			// Mostrar u ocultar errores en el DOM
+			mostrarError("#error-nombre p", errorNombre);
+			mostrarError("#error-apellido p", errorApellido);
+			mostrarError("#registro_error-telefono p", errorTelefono);
+			mostrarError("#registro_error-motivo p", errorAreaInteres);
+			mostrarError("#error-correo p", errorCorreo);
+			mostrarError("#errorPassword p", errorContraseña);
+			mostrarError("#error-estado p", errorEstado);
+
+			const hayErrores = errorNombre || errorApellido || errorTelefono || errorAreaInteres || errorCorreo || errorContraseña || errorEstado;
+
+			if (hayErrores) {
+				if (divAlerta) {
+					divAlerta.innerHTML = `
+                    <div class="alert bg-naranjaFuerte alert-dismissible fade show" role="alert">
+                        <span class="alerta-titulo">Parece que hay un detalle:</span> Revisa los campos resaltados para poder continuar.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>`;
+				}
+				console.warn("Envío bloqueado por errores.");
+				return;
+			}
+
+			// Si pasa todas las validaciones, construimos el objeto
+			usuarioValidado.mNombre = inputNombre.value.trim();
+			usuarioValidado.mApellido = inputApellido.value.trim();
+			usuarioValidado.mTelefono = inputTelefono.value.replace(/[\s-]/g, "");
+			usuarioValidado.mAreaInteres = selectAreaInteres.options[selectAreaInteres.selectedIndex].text;//PENDIENTE
+			usuarioValidado.mCorreo = inputCorreo.value.trim();
+			usuarioValidado.mContraseña = inputContraseña.value.trim();
+			usuarioValidado.mEstado = selectEstado.options[selectEstado.selectedIndex].text;//PENDIENTE
+
+			// Envío de datos al JSON-Server
+			await enviarDatos();
+
+			if (divAlerta) {
+				divAlerta.innerHTML = `
+                <div class="alert bg-success text-white alert-dismissible fade show" role="alert">
+                    Datos registrados <span class="alerta-titulo">Correctamente</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>`;
+			}
+
+			console.log("¡ÉXITO TOTAL! Objeto listo:", usuarioValidado);
+
+			console.log(usuarioValidado); //vemos que sí esté el mensaje completo
+
+		});
+	}
+});
+
+// Función auxiliar para inyectar los errores en el HTML
+function mostrarError(selector, mensajeError) {
+	const elemento = document.querySelector(selector);
+	if (elemento) {
+		elemento.innerHTML = mensajeError || "";
+	}
+}
+
+
+
+
+
+/* -----------------------------------------------------------------------------
+   PETICIÓN API / JSON-SERVER
+----------------------------------------------------------------------------- */
+const API_URL = 'http://localhost:3000/usuarios';
+
+async function enviarDatos() {
+	console.log("Entré a enviarDatos");
+    
+    try {
+        const resActual = await fetch(API_URL);
+        const usuariosActuales = await resActual.json();
+
+        // Calculamos el ID incremental correctamente
+        const ultimoId = usuariosActuales.reduce((max, p) => Number(p.id) > max ? Number(p.id) : max, 0);
+        const nuevoId = ultimoId + 1;
+
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                id: String(nuevoId), // Se asigna como string o number según tu JSON
+                nombre: usuarioValidado.mNombre,
+                apellido: usuarioValidado.mApellido,
+                telefono: Number(usuarioValidado.mTelefono),
+                areaInteres: usuarioValidado.mAreaInteres,
+                correo: usuarioValidado.mCorreo,
+                contraseña: usuarioValidado.mContraseña,
+                estado: usuarioValidado.mEstado,
+            })
+        });
+
+
+
+        if (!response.ok) {
+            throw new Error(`Error status: ${response.status}`);
+        }
+
+        const resultado = await response.json();
+        console.log("Usuario guardado exitosamente en JSON-Server:", resultado);
+    } catch (error) {
+        console.error('Fallo al conectar con la API:', error);
+    }
+
+}
