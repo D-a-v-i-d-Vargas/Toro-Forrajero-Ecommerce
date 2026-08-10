@@ -1,3 +1,65 @@
+.form-label-custom {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 16px;
+  color: #212529;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
+/* Para el form control
+*/
+.form-control-custom {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 16px;
+  /* Gris característico de Bootstrap para controles de formulario */
+  color: #495057 !important;
+  background-color: #ffffff !important;
+
+  /* Borde estándar de Bootstrap (gris claro) */
+  border: 1px solid #dee2e6 !important;
+  border-radius: 50rem !important;
+  /* Forma redondeada/capsular estilo pill */
+
+  padding: 6px 12px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* Color gris de Bootstrap (text-muted / secondary) para placeholders */
+.form-control-custom::placeholder {
+  color: #6c757d !important;
+  opacity: 1;
+}
+
+/* Estilo para los selects desplegables */
+select.form-control-custom {
+  padding-right: 36px;
+  /* Espacio para la flecha del select */
+  color: #495057 !important;
+}
+
+/* Estado Focus con el resplandor característico de Bootstrap */
+.form-control-custom:focus {
+  color: #212529 !important;
+  background-color: #fff !important;
+  border-color: #86b7fe !important;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25) !important;
+}
+
+/* Aplicar el mismo estilo de la cápsula al área de texto */
+textarea.form-control-custom {
+  border-radius: 1rem !important;
+  /* Esquinas suavemente redondeadas */
+  resize: none;
+}
+
+/* Forzar que la cápsula de imagen herede la fuente y color */
+.capsula-archivo {
+  font-family: 'Montserrat', sans-serif !important;
+  color: #495057 !important;
+}
+
+
 .visibilidad-subtexto {
   color: #585858;
   font-size: 1rem;
@@ -251,8 +313,18 @@ circle {
   }
 }
 
-.cargar-producto-p{
+.cargar-producto-p {
   color: var(--color-naranjaFuerte);
   font-size: 1.5rem;
   font-weight: 900;
+}
+
+/* Estilos de la cápsula donde sale el nombre del archivo y los iconos */
+.capsula-archivo {
+  border-color: #e0e0e0 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.capsula-archivo button:hover {
+  opacity: 0.7;
 }
