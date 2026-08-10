@@ -123,7 +123,7 @@
 
         <!-- Sección ¿Olvidaste tu contrasña? -->
         <div class="text-end mt-separacion">
-          <a href="#" class="olvidaste-password text-dark"> ¿Olvidaste tu contraseña? </a>
+            <a href="#" class="olvidaste-password text-dark"> ¿Olvidaste tu contraseña? </a>
         </div>
 
     </section>
@@ -133,9 +133,15 @@
                             4. BOTÓN 'NO TIENES UNA CUENTA'
     ======================================================================================== -->
 
-
-
-
+<!-- NOTA DE DESARROLLO: 
+        - Se integró contenedor flexbox para mantener alineación responsiva entre el texto y el ancla.
+        - TODO: Validar con el equipo de Backend que la ruta 'registro.html' sea correcta para el flujo de autenticación final. -->
+    <section class="m-auto mt-5 mb-5 pb-4 text-center fade-up">
+        <div class="d-flex justify-content-center align-items-baseline gap-2">
+            <p class="fw-bold fs-5 mb-0" style="color: #1a1a1a;">¿No tienes una cuenta?</p>
+            <a href="registro.html" class="text-dark text-decoration-underline fs-5" style="transition: color 0.3s ease;" onmouseover="this.style.color='#556B38'" onmouseout="this.style.color='#212529'">Da click para crear cuenta</a>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer-forrajero">
