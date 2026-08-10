@@ -343,6 +343,16 @@
       "correo": "karen@gmail.com",
       "contraseña": "contraseña",
       "estado": "Activo"
+    },
+    {
+      "id": "4",
+      "nombre": "ana",
+      "apellido": "perez",
+      "telefono": 5512090708,
+      "areaInteres": "Productos para bovino",
+      "correo": "ana@gmail.com",
+      "contraseña": "12345678Ana",
+      "estado": "Activo"
     }
   ]
 }

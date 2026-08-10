@@ -283,7 +283,7 @@ async function enviarDatos() {
         const nuevoId = ultimoId + 1;
 
 		const nuevoUsuario ={
-                id: String(nuevoId), // Se asigna como string o number según tu JSON
+                id: String(nuevoId), // Se asigna como string o number según el JSON
                 nombre: usuarioValidado.mNombre,
                 apellido: usuarioValidado.mApellido,
                 telefono: Number(usuarioValidado.mTelefono),
@@ -312,8 +312,14 @@ async function enviarDatos() {
 
 		//Guardar nuevoUsuario en LocalStorage
 
+		//obtener el usuario que ya esta en localStorage
+		const usuariosLocalStorage = JSON.parse(localStorage.getItem('usuarios')) || [];
+		//Agregar el nuevo usuario al array
+		usuariosLocalStorage.push(nuevoUsuario);
+		//Guardar el arreglo
+		localStorage.setItem('usuarios', JSON.stringify(usuariosLocalStorage));
 
-
+		console.log("Usuario guardado exitosamente en LocalStorage:", nuevoUsuario);
 
 
 
