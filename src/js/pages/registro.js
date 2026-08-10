@@ -25,28 +25,32 @@ function reiniciarUsuarioValidado() {
 
 /////////////////////////////////////
 //VALIDACION nombre apellido
+
 function validarNombre(inputNombre) {
-	if (!inputNombre) return "Campo nombre no encontrado";
-	const nombre = inputNombre.value.trim();
-	const alertMensaje = `<span class="alerta-titulo">Nombre no válido:</span>`;
+    if (!inputNombre) return "No se encontró el campo nombre";
+    const nombre = inputNombre.value.trim();
+    const alertMensaje = `<span class="alerta-titulo">El Nombre </span>`;
 
-	if (nombre === "") return `${alertMensaje} Debes llenar el campo`;
-	if (!/^[A-Za-zÀ-ÖØ-öø-ÿ\s]{2,}$/.test(nombre)) return `${alertMensaje} Ingresa solo letras (mínimo 2 caracteres)`;
-
-	return undefined;
+    if (nombre === "") return alertMensaje + " no puede estar vacío.";
+    if (/\d/.test(nombre)) return alertMensaje + " no puede contener números.";
+    if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(nombre)) return alertMensaje + " solo puede contener letras y espacios.";
+    if (nombre.length < 3) return alertMensaje + " debe tener al menos 3 caracteres.";
+    
+    return undefined;
 }
 
-function validarApellido(inputApellido) {
-	if (!inputApellido) return "Campo apellido no encontrado";
-	const apellido = inputApellido.value.trim();
-	const alertMensaje = `<span class="alerta-titulo">Apellido no válido:</span>`;
+function validarApellido(inputApellido) { 
+    if (!inputApellido) return "No se encontró el campo apellido";
+    const apellido = inputApellido.value.trim();
+    const alertMensaje = `<span class="alerta-titulo">El Apellido </span>`;
 
-	if (apellido === "") return `${alertMensaje} Debes llenar el campo`;
-	if (!/^[A-Za-zÀ-ÖØ-öø-ÿ\s]{2,}$/.test(apellido)) return `${alertMensaje} Ingresa solo letras (mínimo 2 caracteres)`;
-
-	return undefined;
+    if (apellido === "") return alertMensaje + " no puede estar vacío.";
+    if (/\d/.test(apellido)) return alertMensaje + " no puede contener números.";
+    if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(apellido)) return alertMensaje + " solo puede contener letras y espacios.";
+    if (apellido.length < 3) return alertMensaje + " debe tener al menos 3 caracteres.";
+    
+    return undefined;
 }
-
 
 ////////////////////////////////
 //VALIDACION telefono e interes
@@ -173,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const formulario = document.querySelector("#formulario-registro")
 
 	if (formulario) {
-		formulario.addEventListener('submit', function (e) {
+		formulario.addEventListener('submit', async function (e) {
 			e.preventDefault(); // Evita que la página se recargue
 
 			reiniciarUsuarioValidado();
@@ -206,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			mostrarError("#registro_error-telefono p", errorTelefono);
 			mostrarError("#registro_error-motivo p", errorAreaInteres);
 			mostrarError("#error-correo p", errorCorreo);
-			mostrarError("#error-contraseña p", errorContraseña);
+			mostrarError("#errorPassword p", errorContraseña);
 			mostrarError("#error-estado p", errorEstado);
 
 			const hayErrores = errorNombre || errorApellido || errorTelefono || errorAreaInteres || errorCorreo || errorContraseña || errorEstado;
@@ -232,6 +236,8 @@ document.addEventListener('DOMContentLoaded', () => {
 			usuarioValidado.mContraseña = inputContraseña.value.trim();
 			usuarioValidado.mEstado = selectEstado.options[selectEstado.selectedIndex].text;//PENDIENTE
 
+			// Envío de datos al JSON-Server
+			await enviarDatos();
 
 			if (divAlerta) {
 				divAlerta.innerHTML = `
@@ -255,4 +261,66 @@ function mostrarError(selector, mensajeError) {
 	if (elemento) {
 		elemento.innerHTML = mensajeError || "";
 	}
+}
+
+
+
+
+
+/* -----------------------------------------------------------------------------
+   PETICIÓN API / JSON-SERVER
+----------------------------------------------------------------------------- */
+const API_URL = 'http://localhost:3000/usuarios';
+
+async function enviarDatos() {
+    
+    try {
+        const resActual = await fetch(API_URL);
+        const usuariosActuales = await resActual.json();
+
+        // Calculamos el ID incremental correctamente
+        const ultimoId = usuariosActuales.reduce((max, p) => Number(p.id) > max ? Number(p.id) : max, 0);
+        const nuevoId = ultimoId + 1;
+
+		const nuevoUsuario ={
+                id: String(nuevoId), // Se asigna como string o number según tu JSON
+                nombre: usuarioValidado.mNombre,
+                apellido: usuarioValidado.mApellido,
+                telefono: Number(usuarioValidado.mTelefono),
+                areaInteres: usuarioValidado.mAreaInteres,
+                correo: usuarioValidado.mCorreo,
+                contraseña: usuarioValidado.mContraseña,
+                estado: usuarioValidado.mEstado,
+		};
+
+		//Guardamos nuevoUsuario en la db.json
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(nuevoUsuario)
+        });
+
+
+
+        if (!response.ok) {
+            throw new Error(`Error status: ${response.status}`);
+        }
+
+        const resultado = await response.json();
+        console.log("Usuario guardado exitosamente en JSON-Server:", resultado);
+
+
+		//Guardar nuevoUsuario en LocalStorage
+
+
+
+
+
+
+
+
+    } catch (error) {
+        console.error('Fallo al guardar el usuario', error);
+    }
+
 }
