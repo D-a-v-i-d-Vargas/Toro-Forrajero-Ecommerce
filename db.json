@@ -333,6 +333,16 @@
       "correo": "k_montserratls@hotmail.com",
       "contraseña": "contraseña",
       "estado": "Inactivo"
+    },
+    {
+      "id": "3",
+      "nombre": "karen",
+      "apellido": "luna",
+      "telefono": 1234567891,
+      "areaInteres": "Productos para ovino",
+      "correo": "karen@gmail.com",
+      "contraseña": "contraseña",
+      "estado": "Activo"
     }
   ]
 }

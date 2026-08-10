@@ -273,7 +273,6 @@ function mostrarError(selector, mensajeError) {
 const API_URL = 'http://localhost:3000/usuarios';
 
 async function enviarDatos() {
-	console.log("Entré a enviarDatos");
     
     try {
         const resActual = await fetch(API_URL);
@@ -283,10 +282,7 @@ async function enviarDatos() {
         const ultimoId = usuariosActuales.reduce((max, p) => Number(p.id) > max ? Number(p.id) : max, 0);
         const nuevoId = ultimoId + 1;
 
-        const response = await fetch(API_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
+		const nuevoUsuario ={
                 id: String(nuevoId), // Se asigna como string o number según tu JSON
                 nombre: usuarioValidado.mNombre,
                 apellido: usuarioValidado.mApellido,
@@ -295,7 +291,13 @@ async function enviarDatos() {
                 correo: usuarioValidado.mCorreo,
                 contraseña: usuarioValidado.mContraseña,
                 estado: usuarioValidado.mEstado,
-            })
+		};
+
+		//Guardamos nuevoUsuario en la db.json
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(nuevoUsuario)
         });
 
 
@@ -306,8 +308,19 @@ async function enviarDatos() {
 
         const resultado = await response.json();
         console.log("Usuario guardado exitosamente en JSON-Server:", resultado);
+
+
+		//Guardar nuevoUsuario en LocalStorage
+
+
+
+
+
+
+
+
     } catch (error) {
-        console.error('Fallo al conectar con la API:', error);
+        console.error('Fallo al guardar el usuario', error);
     }
 
 }
