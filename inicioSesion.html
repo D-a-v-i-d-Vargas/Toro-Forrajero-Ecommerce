@@ -38,7 +38,7 @@
                 </div>
                 <ul class="navbar-nav flex-row ms-auto gap-4">
                     <li class="nav-item">
-                        <a class="nav-link icon-link" href="cuenta.html">
+                        <a class="nav-link icon-link" href="inicioSesion.html">
                             <i class="bi bi-person"> </i>
                             <span>Mi cuenta</span>
                         </a>
@@ -65,7 +65,7 @@
                 <li><a href="acercaNosotros.html">NOSOTROS</a></li>
                 <li><a href="contactanos.html">CONTACTO</a></li>
                 <li><a href="productos.html">PRODUCTO</a></li>
-                <div class="indicator"></div>
+
             </ul>
         </nav>
 
@@ -97,13 +97,32 @@
                             2. CAMPOS DE EMAIL Y CONTRASEÑA
     ======================================================================================== -->
     <section class="m-auto">
-        <div class="email-login d-flex flex-column p-3">
-            <input  class="rounded-3" type="email" placeholder="ejemplo@correo.com" autocomplete="off">
-            <label class="text-center" for="">Ingrese su correo electrónico<span>*</span></label>
+            <div class="email-login d-flex flex-column p-3">
+
+            <input
+                id="correoLogin"
+                class="rounded-3"
+                type="email"
+                placeholder="ejemplo@correo.com"
+                autocomplete="off">
+
+            <label class="text-center" for="correoLogin">
+                Ingrese su correo electrónico<span>*</span>
+            </label>
+
+            <!-- Mensaje de validación -->
+            <div id="alertaCorreoLogin" class="alerta-login d-none"></div>
+
         </div>
+
+        <!---->
         <div class="email-login d-flex flex-column p-3">
-            <input class="rounded-3" type="password" autocomplete="off" placeholder="contaseña">
-            <label class="text-center" for="">Ingrese su contraseña <span>*</span></label>
+            <input id="password" class="rounded-3" type="password" autocomplete="off" placeholder="contraseña">
+            <label class="text-center" for="">Ingrese su contraseña <span> *</span></label>
+            <div id="errorPassword" class="mensaje-error narnaja-text mt-1 text-center d-none">
+                <strong>Contraseña no válida:</strong>
+                Debes ingresar al menos 8 caracteres.
+            </div>
         </div>
         <p class="campo-obligatorio"><span>*</span>Campo obligatorio</p>
     </section>
@@ -117,9 +136,12 @@
     <section class="m-auto">
 
         <!-- Botón Iniciar sesión -->
-        <div>
-            <button type="button" class="boton-inicio rounded-3"> INICIAR SESIÓN </button>
-        </div>
+            <button
+                id="btnIniciarSesion"
+                type="button"
+                class="boton-inicio rounded-3">
+                INICIAR SESIÓN
+            </button>
 
         <!-- Sección ¿Olvidaste tu contrasña? -->
         <div class="text-end mt-separacion">
