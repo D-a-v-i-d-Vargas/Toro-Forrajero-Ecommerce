@@ -5,3 +5,13 @@
 	font-size: .875rem;
 	margin-top: .25rem;
 }
+
+/* Color gris cuando la opción seleccionada es la deshabilitada (placeholder) */
+.select-placeholder:has(option:disabled:checked) {
+	color: #6c757d !important;
+}
+
+/* Color negro cuando se elige cualquier otra opción válida */
+.select-placeholder {
+	color: #212529 !important;
+}
