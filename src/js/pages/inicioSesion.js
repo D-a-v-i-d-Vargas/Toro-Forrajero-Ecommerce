@@ -74,3 +74,59 @@ function validarPassword() { //creamos nuestra funcion para validar la contrase�
         return true;
     }
 }
+
+// ==========================================
+// OBTENER USUARIOS
+// ==========================================
+
+const API_URL = "http://localhost:3000/usuarios";
+
+async function obtenerUsuarios() {
+    const usuariosLocalStorage =
+        JSON.parse(localStorage.getItem("usuarios")) || [];
+
+    if (usuariosLocalStorage.length > 0) {
+        console.log(
+            "Usuarios obtenidos desde LocalStorage:",
+            usuariosLocalStorage
+        );
+        return usuariosLocalStorage;
+    }
+
+    try {
+        const respuesta = await fetch(API_URL);
+        if (!respuesta.ok) {
+            throw new Error(`Error HTTP: ${respuesta.status}`);
+        }
+        const usuariosJSON = await respuesta.json();
+        localStorage.setItem(
+            "usuarios",
+            JSON.stringify(usuariosJSON)
+        );
+        console.log(
+            "Usuarios obtenidos desde JSON Server:",
+            usuariosJSON
+        );
+        return usuariosJSON;
+    } catch (error) {
+        console.error(
+            "No se pudieron obtener los usuarios:",
+            error
+        );
+        return [];
+    }
+}
+
+// ==========================================
+// AUTENTICACIÓN
+// ==========================================
+
+async function autenticarUsuario(correo, contraseña) {
+    const usuarios = await obtenerUsuarios();
+    const usuarioEncontrado = usuarios.find(
+        usuario =>
+            usuario.correo === correo &&
+            usuario.contraseña === contraseña
+    );
+    return usuarioEncontrado || null;
+}
