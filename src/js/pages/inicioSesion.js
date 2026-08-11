@@ -130,3 +130,40 @@ async function autenticarUsuario(correo, contraseña) {
     );
     return usuarioEncontrado || null;
 }
+
+// ==========================================
+// MANEJADOR DE EVENTO PARA INICIAR SESIÓN
+// ==========================================
+btnIniciarSesion.addEventListener("click", async function (e) {
+    e.preventDefault(); // Evita recargar si el botón está dentro de un <form>
+
+    // Validar el formato del correo
+    const correoEsValido = validarCorreo();
+    if (!correoEsValido) return;
+
+    const correo = correoLogin.value.trim();
+    const contraseña = password ? password.value.trim() : "";
+
+    if (contraseña === "") {
+        alertaCorreoLogin.innerHTML =
+            '<span class="alerta-titulo">Contraseña requerida:</span> Ingresa tu contraseña';
+        alertaCorreoLogin.classList.remove("d-none");
+        return;
+    }
+
+    // Proceso de autenticación
+    const usuarioAutenticado = await autenticarUsuario(correo, contraseña);
+
+    if (!usuarioAutenticado) {
+        alertaCorreoLogin.innerHTML =
+            '<span class="alerta-titulo">Error de acceso:</span> Correo o contraseña incorrectos';
+        alertaCorreoLogin.classList.remove("d-none");
+        return;
+    }
+
+    // Login exitoso: Guardar la sesión activa
+    localStorage.setItem("usuarioActivo", JSON.stringify(usuarioAutenticado));
+
+    // Redireccionar a productos
+    window.location.href = "productos.html";
+});
