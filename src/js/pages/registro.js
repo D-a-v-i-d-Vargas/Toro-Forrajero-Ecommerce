@@ -273,7 +273,6 @@ function mostrarError(selector, mensajeError) {
 const API_URL = 'http://localhost:3000/usuarios';
 
 async function enviarDatos() {
-	console.log("Entré a enviarDatos");
     
     try {
         const resActual = await fetch(API_URL);
@@ -283,11 +282,8 @@ async function enviarDatos() {
         const ultimoId = usuariosActuales.reduce((max, p) => Number(p.id) > max ? Number(p.id) : max, 0);
         const nuevoId = ultimoId + 1;
 
-        const response = await fetch(API_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                id: String(nuevoId), // Se asigna como string o number según tu JSON
+		const nuevoUsuario ={
+                id: String(nuevoId), // Se asigna como string o number según el JSON
                 nombre: usuarioValidado.mNombre,
                 apellido: usuarioValidado.mApellido,
                 telefono: Number(usuarioValidado.mTelefono),
@@ -295,7 +291,13 @@ async function enviarDatos() {
                 correo: usuarioValidado.mCorreo,
                 contraseña: usuarioValidado.mContraseña,
                 estado: usuarioValidado.mEstado,
-            })
+		};
+
+		//Guardamos nuevoUsuario en la db.json
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(nuevoUsuario)
         });
 
 
@@ -306,8 +308,25 @@ async function enviarDatos() {
 
         const resultado = await response.json();
         console.log("Usuario guardado exitosamente en JSON-Server:", resultado);
+
+
+		//Guardar nuevoUsuario en LocalStorage
+
+		//obtener el usuario que ya esta en localStorage
+		const usuariosLocalStorage = JSON.parse(localStorage.getItem('usuarios')) || [];
+		//Agregar el nuevo usuario al array
+		usuariosLocalStorage.push(nuevoUsuario);
+		//Guardar el arreglo
+		localStorage.setItem('usuarios', JSON.stringify(usuariosLocalStorage));
+
+		console.log("Usuario guardado exitosamente en LocalStorage:", nuevoUsuario);
+
+
+
+
+
     } catch (error) {
-        console.error('Fallo al conectar con la API:', error);
+        console.error('Fallo al guardar el usuario', error);
     }
 
 }

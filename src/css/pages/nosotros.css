@@ -6,7 +6,7 @@
 
 
 /* -----------------------------------------------------------------------------
-   SECCION: HERRO
+   		SECCION: HERRO
 ----------------------------------------------------------------------------- */
 
 /* --- Elemento: Herro --- */
@@ -57,7 +57,7 @@
 }
 
 /* -----------------------------------------------------------------------------
-   SECCION: QUIÉNES SOMOS
+    SECCION: QUIÉNES SOMOS
 ----------------------------------------------------------------------------- */
 
 /* --- Elemento: Texto dentro del carrusel-- */
@@ -302,17 +302,15 @@
 }
 
 /* -----------------------------------------------------------------------------
-   SECCION: UNA CULTURA QUE NOS DISTINGUE
+	SECCION: UNA CULTURA QUE NOS DISTINGUE
 ----------------------------------------------------------------------------- */
 /* --- Elemento: Separador con subtema-- */
 
 /* ==================================================
-                    IMPORTANTE
-    Todo lo que esta debajo de este comentario es necesario
-    para que funcione correctamente toda el area de 
-            "UNA CULTURA QUE NOS DISTINGUE"
-    por favor NO TOCAR nada si hay alguna duda puedes 
-    preguntarme. Atte: David Vargas El Deivid ;)
+    ATENCIÓN: El siguiente bloque de código es crítico para el correcto 
+    funcionamiento y estructura de esta área. 
+    
+    Por favor, no realizar modificaciones sin revisión previa con todo el equipo.
     ================================================== *
 
 /* ==================================================
@@ -437,17 +435,8 @@
 	/* Sube a su posición original */
 }
 
-/* ==================================================
-    Listo ya termino todo lo necesario para que la parte
-            "UNA CULTURA QUE NOS DISTINGUE"
-    Debajo de este comentario pueden agregar lo que 
-    ustedes necesiten para su codigo. 
-    
-    Made by el Deivid ;)
-   ================================================== */
-
 /* -----------------------------------------------------------------------------
-  SECCION: CARRUSEL
+		SECCION: CARRUSEL
 ----------------------------------------------------------------------------- */
 
 /* --- Elemento: Carrusel -- */
@@ -465,10 +454,8 @@
 }
 
 /* -----------------------------------------------------------------------------
-  SECCION: QUIÉNES LO HACEN POSIBLE
+		SECCION: QUIÉNES LO HACEN POSIBLE
 ----------------------------------------------------------------------------- */
-
-
 
 .nosotros-h2 {
 	color: var(--color-fondo);
@@ -636,9 +623,6 @@
 	padding: 8px;
 	box-shadow: 0 5px 15px rgba(0, 0, 0, .15);
 }
-
-
-
 
 .modal-overlay .card-integrante {
 

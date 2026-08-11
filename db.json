@@ -1,30 +1,30 @@
 {
   "productos": [
     {
-      "id": 1,
       "nombreProducto": "Mezcla Nutridor 25kg",
-      "descripcion": "Alimento balanceado de alta tecnología para vacas altas productoras. Elaborado con ingredientes de alta calidad.",
-      "destacado": "activo",
-      "especie": "Vacas",
+      "especie": "ovinos",
+      "marca": "El-nogal",
       "costo": 200,
-      "precio": 279,
-      "marca": "ADM",
-      "imagen": "recursos-graficos/productos/bovino/bovino-adm-mezcla-nutridor.png",
+      "precio": 300,
       "existencia": 20,
-      "estado": "activo"
+      "descripcion": "Alimento balanceado de alta tecnología para vacas altas productoras. Elaborado con ingredientes de alta calidad.",
+      "imagen": "http://127.0.0.1:5502/recursos-graficos/productos/bovino/bovino-adm-mezcla-nutridor.png",
+      "estado": "activo",
+      "destacado": "activo",
+      "id": 1
     },
     {
-      "id": 2,
       "nombreProducto": "Mezcla Ganadera 25kg",
-      "descripcion": "Alimento balanceado de alta tecnología para la engorda de bovinos. Elaborado con ingredientes de alta calidad.",
-      "destacado": "inactivo",
-      "especie": "Vacas",
+      "especie": "",
+      "marca": "ADM",
       "costo": 200,
       "precio": 279,
-      "marca": "ADM",
-      "imagen": "recursos-graficos/productos/bovino/bovino-adm-mezcla-ganadera-malta.png",
       "existencia": 20,
-      "estado": "activo"
+      "descripcion": "Alimento balanceado de alta tecnología para la engorda de bovinos. Elaborado con ingredientes de alta calidad.",
+      "imagen": "http://127.0.0.1:5502/recursos-graficos/productos/bovino/bovino-adm-mezcla-ganadera-malta.png",
+      "estado": "activo",
+      "destacado": "activo",
+      "id": 2
     },
     {
       "id": 3,
@@ -333,6 +333,26 @@
       "correo": "k_montserratls@hotmail.com",
       "contraseña": "contraseña",
       "estado": "Inactivo"
+    },
+    {
+      "id": "3",
+      "nombre": "karen",
+      "apellido": "luna",
+      "telefono": 1234567891,
+      "areaInteres": "Productos para ovino",
+      "correo": "karen@gmail.com",
+      "contraseña": "contraseña",
+      "estado": "Activo"
+    },
+    {
+      "id": "4",
+      "nombre": "ana",
+      "apellido": "perez",
+      "telefono": 5512090708,
+      "areaInteres": "Productos para bovino",
+      "correo": "ana@gmail.com",
+      "contraseña": "12345678Ana",
+      "estado": "Activo"
     }
   ]
 }

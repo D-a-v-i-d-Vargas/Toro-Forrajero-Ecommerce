@@ -454,6 +454,7 @@ async function enviarDatos() {
     }
 
     cerrarModal();
+    window.location.href = 'adminHome.html';
 }
 
 
