@@ -18,80 +18,31 @@
 
     <!-- AOS CSS (Animaciones) -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
+    <!-- Fuentes de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;700&family=Montserrat:wght@400;700&display=swap"
+        rel="stylesheet">
     <!-- Tu CSS Personalizado -->
     <link rel="stylesheet" href="build/css/app.css">
 
-    <style>
-        body {
-            background-color: #fdf9e6;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #2c3422;
-        }
-
-        .brand-title {
-            color: #4a5c39;
-            font-weight: 800;
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .registro-card {
-            background-color: #fef5e7;
-            border: 2px solid #d48243;
-            border-radius: 25px;
-            padding: 3rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        }
-
-        .form-label {
-            font-weight: 700;
-            font-size: 0.95rem;
-            color: #1a1a1a;
-            margin-bottom: 0.3rem;
-        }
-
-        .form-control,
-        .form-select {
-            border: 1px solid #e0d8c3;
-            border-radius: 8px;
-            padding: 0.6rem 1rem;
-            font-size: 0.9rem;
-        }
-
-        .form-control::placeholder {
-            color: #a3a3a3;
-        }
-
-        .btn-unirme {
-            background-color: #2d4023;
-            color: white;
-            font-weight: 600;
-            border-radius: 8px;
-            padding: 0.7rem 3rem;
-            border: none;
-            transition: all 0.3s ease;
-        }
-
-        .btn-unirme:hover {
-            background-color: #1a2614;
-            color: white;
-        }
-    </style>
 </head>
 
 <body>
-
-    <!-- HEADER / NAVBAR -->
+    <!-- ===========================================================================
+        SECCIÓN: ENCABEZADO Y NAVEGACIÓN (HEADER)
+    ============================================================================ -->
     <!-- Header y Navegación -->
     <header>
-        <nav class="navbar navbar-1">
+        <!-- NAV BAR 1: Logo y Accesos rápidos -->
+        <nav class="navbar navbar-1 py-2">
             <div class="container-fluid px-4">
                 <div class="navbar-brand">
                     <img src="recursos-graficos/navbar/forrajero-sinfondo.png" alt="Logo sin fondo de Toro Forrajero"
                         class="logo-navbar d-inline-block align-text-top me-2">
                 </div>
-                <ul class="navbar-nav flex-row ms-auto gap-4">
+                <ul class="navbar-nav flex-row align-items-center ms-auto gap-4">
                     <li class="nav-item">
                         <a class="nav-link icon-link" href="cuenta.html">
                             <i class="bi bi-person"></i>
@@ -111,11 +62,12 @@
             </div>
         </nav>
 
+        <!-- NAV BAR 2: Menú de navegación principal -->
         <nav class="navbar2">
             <ul>
                 <li><a href="index.html">INICIO</a></li>
                 <li><a href="acercaNosotros.html">NOSOTROS</a></li>
-                <li><a href="contactanos.html" class="active">CONTACTO</a></li>
+                <li><a href="contactanos.html">CONTACTO</a></li>
                 <li><a href="productos.html">PRODUCTOS</a></li>
                 <div class="indicator"></div>
             </ul>
@@ -123,45 +75,49 @@
     </header>
 
 
-    <!-- Encabezado de Página -->
-    <section>
-        <div class="container w-100 text-center" style="margin-top:80px">
-            <div class="row justify-content-center mb-0">
-                <div class="col-12 d-flex justify-content-center" data-aos="fade-up">
-                    <img class="page-header__logo" src="recursos-graficos/formulario-contactanos/forrajero-naranja.png"
-                        alt="Logo Naranja">
+    <!-- Contenedor Principal Centrado -->
+    <main class="container d-flex flex-column align-items-center justify-content-center py-5">
+
+        <!-- Encabezado de Página -->
+        <section class="pt-3 pt-md-4">
+            <div class="container w-100 text-center">
+                <div class="row justify-content-center mb-0">
+                    <div class="col-12 d-flex justify-content-center" data-aos="fade-up">
+                        <img class="page-header__logo"
+                            src="recursos-graficos/formulario-contactanos/forrajero-naranja.png" alt="Logo Naranja">
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-12" data-aos="fade-up" data-aos-delay="200">
+                        <h1 class="page-header__title">Registro</h1>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contenedor Principal Centrado -->
-    <main class="container d-flex flex-column align-items-center justify-content-center min-vh-100 py-5">
 
-        <!-- Sección de Logo y Título -->
-        <div class="text-center mb-4">
-            <img src="recursos-graficos/navbar/forrajero-sinfondo.png" alt="Logo Forrajero" width="120" class="mb-2">
-            <h1 class="brand-title">Registro de nuevos usuarios</h1>
-        </div>
-
-        <div class="alerta"></div>
 
         <!-- Tarjeta del Formulario -->
-        <div class="col-12 col-md-10 col-lg-8 col-xl-7">
-            <div class="registro-card">
+        <div class="col-12 col-md-10 col-lg-8 col-xl-7 px-2 px-sm-3">
+
+            <!--Alerta-->
+            <div class="alerta"></div>
+
+            <div class="contact-card p-3 p-sm-4 p-md-5 mt-2 border border-3 border-warning-subtle rounded-4 shadow-sm"
+                data-aos="fade-up" data-aos-delay="400">
                 <form id="formulario-registro" novalidate>
                     <div class="row g-4">
 
                         <!-- Fila 1: Nombre y Apellido -->
                         <div class="col-md-6">
-                            <label for="nombre" class="form-label">Nombre</label>
+                            <label for="nombre" class="form-label-custom fw-bold text-left w-100">Nombre</label>
                             <input type="text" class="form-control" id="nombre" placeholder="Juan">
                             <div id="error-nombre" class="narnaja-text small mt-1 text-center">
                                 <p></p>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="apellido" class="form-label">Apellido</label>
+                            <label for="apellido" class="form-label-custom fw-bold text-left w-100">Apellido</label>
                             <input type="text" class="form-control" id="apellido" placeholder="Ramírez">
                             <div id="error-apellido" class="narnaja-text small mt-1 text-center">
                                 <p></p>
@@ -170,7 +126,8 @@
 
                         <!-- Fila 2: Teléfono y Área de interés -->
                         <div class="col-md-6">
-                            <label for="telefono" class="form-label">Teléfono/Celular</label>
+                            <label for="telefono"
+                                class="form-label-custom fw-bold text-left w-100">Teléfono/Celular</label>
                             <input type="tel" class="form-control" id="telefono" placeholder="(+52)">
                             <div id="registro_error-telefono" class="narnaja-text small mt-1 text-center">
                                 <p></p>
@@ -194,34 +151,35 @@
 
                         <!-- Fila 3: Correo electrónico (Ancho completo) -->
                         <div class="col-12">
-                            <label for="correo" class="form-label">Correo electrónico</label>
+                            <label for="correo" class="form-label-custom fw-bold text-left w-100">Correo
+                                electrónico</label>
                             <input type="email" class="form-control" id="correo"
                                 placeholder="correoelectronico@dominioficticiodejane.net" autocomplete="off">
-                                 <div id="error-correo" class="narnaja-text small mt-1 text-center">
-                                         <p></p>
-                                     </div>
+                            <div id="error-correo" class="narnaja-text small mt-1 text-center">
+                                <p></p>
+                            </div>
                         </div>
 
                         <!-- Fila 4: Estado (Ancho completo) -->
                         <div class="col-12">
-                            <label for="estado" class="form-label">Estado</label>
-                            <select class="form-select" id="estado">
-                                <option  value = "" selected>Estado</option>
+                            <label for="estado" class="form-label-custom fw-bold text-left w-100">Estado</label>
+                            <select class="form-select select-placeholder" id="estado">
+                                <option value="" disabled selected>Estado</option>
                                 <option value="activo">Activo</option>
                                 <option value="inactivo">Inactivo</option>
                                 <option value="pendiente">Pendiente</option>
                             </select>
                             <div id="error-estado" class="narnaja-text small mt-1 text-center">
-                             <p></p>
+                                <p></p>
                             </div>
                         </div>
 
-</div>
+
                         <!-- -->
                         <!-- Fila 5: Contraseña -->
 
-                        <div class="col-12">
-                            <label for="password" class="form-label">Contraseña</label>
+                        <div class="col-12 mb-2">
+                            <label for="password" class="form-label-custom fw-bold text-left w-100">Contraseña</label>
 
                             <input type="password" class="form-control" id="password"
                                 placeholder="Ingresa tu contraseña" autocomplete="new-password">
@@ -234,8 +192,8 @@
                         </div>
 
                         <!-- Fila 6: Confirmar contraseña -->
-                        <div class="col-12">
-                            <label for="confirmarPassword" class="form-label">
+                        <div class="col-12 my-4">
+                            <label for="confirmarPassword" class="form-label-custom fw-bold text-left w-100">
                                 Confirmar contraseña
                             </label>
 
@@ -243,20 +201,20 @@
                                 placeholder="Confirma tu contraseña" autocomplete="new-password">
 
                             <!-- Mensaje de validación -->
-                            <div id="errorConfirmarPassword" class="mensaje-error  narnaja-text small mt-1 text-center  d-none">
+                            <div id="errorConfirmarPassword"
+                                class="mensaje-error  narnaja-text small mt-1 text-center  d-none">
                                 <strong>Las contraseñas no coinciden:</strong>
                                 Debes ingresar la misma contraseña.
                             </div>
                         </div>
-
-
-                        <!-- Fila 7: Botón -->
-                        <div class="col-12 mt-4">
-                            <button type="submit" id="btn-enviar" class="btn btn-unirme">Unirme</button>
+                        <!-- Botón Enviar -->
+                        <div class="col-12 d-flex justify-content-left mt-4">
+                            <button class="btn btn-primary px-5 py-2" type="submit">Unirme</button>
                         </div>
 
                     </div>
                 </form>
+
             </div>
         </div>
     </main>

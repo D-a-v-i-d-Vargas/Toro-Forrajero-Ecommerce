@@ -273,7 +273,7 @@ function mostrarError(selector, mensajeError) {
 const API_URL = 'http://localhost:3000/usuarios';
 
 async function enviarDatos() {
-    
+    console.log("enviarDatos() ejecutado");
     try {
         const resActual = await fetch(API_URL);
         const usuariosActuales = await resActual.json();
