@@ -353,6 +353,16 @@
       "correo": "ana@gmail.com",
       "contraseña": "12345678Ana",
       "estado": "Activo"
+    },
+    {
+      "id": "5",
+      "nombre": "vanessa",
+      "apellido": "estrada",
+      "telefono": 5512007989,
+      "areaInteres": "Productos para ovino",
+      "correo": "van@gmail.com",
+      "contraseña": "12345678V",
+      "estado": "Activo"
     }
   ]
 }
