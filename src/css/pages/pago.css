@@ -1,0 +1,78 @@
+.checkout-title {
+    color: var(--color-verdeFuerte);
+    font-weight: 700;
+}
+
+.checkout-subtitle {
+    color: var(--color-naranjaFuerte);
+    font-weight: 600;
+}
+
+.checkout-subtitle strong {
+    font-weight: 800;
+}
+
+/* Barra "Resumen del pedido" */
+.order-summary-bar {
+    background-color: var(--color-naranjaClaro);
+    border-radius: 10px;
+    color: var(--color-verdeFuerte);
+    font-weight: 700;
+}
+
+.order-summary-bar summary {
+    cursor: pointer;
+    list-style: none;
+}
+
+.order-summary-bar summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Botones de método de entrega */
+.delivery-method-btn {
+    background-color: var(--color-verdeFuerte);
+    color: var(--color-naranjaClaro);
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    padding: 1rem;
+    transition: opacity .2s ease;
+}
+
+.delivery-method-btn:hover,
+.delivery-method-btn:focus {
+    color: var(--color-naranjaClaro);
+    opacity: .9;
+}
+
+.delivery-method-btn.active {
+    box-shadow: 0 0 0 3px var(--color-naranjaClaro);
+}
+
+/* Inputs de dirección con borde naranja */
+.address-input {
+    background-color: var(--color-naranjaTenue);
+    border: 1px solid var(--color-naranjaClaro);
+    border-radius: 8px;
+    color: var(--color-verdeFuerte);
+}
+
+.address-input::placeholder {
+    color: #8a8a72;
+    text-align: right;
+}
+
+.address-input:focus {
+    border-color: var(--color-verdeFuerte);
+    box-shadow: 0 0 0 3px rgba(221, 161, 94, .4);
+}
+
+.checkout-section-label {
+    color: var(--color-verdeFuerte);
+    font-weight: 700;
+}
+
+body {
+    background-color: var(--color-fondo);
+}
