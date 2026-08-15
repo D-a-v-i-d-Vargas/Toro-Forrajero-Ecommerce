@@ -27,6 +27,8 @@
 	<link rel="stylesheet" href="build/css/app.css">
 	<link rel="stylesheet" href="build/css/productos.css">
 	<link rel="stylesheet" href="build/css/pago.css">
+	<!-- Estilos del bloque de pago (tarjeta / pago exprés) -->
+	<link rel="stylesheet" href="src/css/pages/pago.css">
 </head>
 
 <body>
@@ -219,6 +221,199 @@
 
 			</div>
 		</section>
+		<section class="pago-container">
+
+				<!-- Opciones superiores -->
+				<div class="opciones-pago mb-4">
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" id="guardarInfo">
+						<label class="form-check-label" for="guardarInfo">
+							Guardar mi información para la próxima vez
+						</label>
+					</div>
+
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" id="ofertasCorreo">
+						<label class="form-check-label" for="ofertasCorreo">
+							Enviarme novedades y ofertas por correo electrónico
+						</label>
+					</div>
+				</div>
+
+
+				<!-- Tarjeta -->
+				<div class="tarjeta-pago">
+
+					<div class="tarjeta-pago-header">
+						Tarjeta de Crédito o Débito
+					</div>
+
+					<div class="tarjeta-pago-body">
+
+						<!-- Logos -->
+						<div class="logos-tarjeta mb-4">
+							<span class="logo-visa">VISA</span>
+							<span class="logo-mastercard">●●</span>
+							<span class="logo-amex">AMEX</span>
+						</div>
+
+						<form id="formularioPago">
+
+							<div class="row g-3">
+
+								<!-- Nombre -->
+								<div class="col-md-6">
+									<label for="nombreTitular" class="form-label">
+										Nombre del titular
+									</label>
+
+									<input
+										type="text"
+										class="form-control"
+										id="nombreTitular"
+										required>
+								</div>
+
+
+								<!-- Número tarjeta -->
+								<div class="col-md-6">
+									<label for="numeroTarjeta" class="form-label">
+										Número de Tarjeta
+									</label>
+
+									<input
+										type="text"
+										class="form-control"
+										id="numeroTarjeta"
+										placeholder="0000 0000 0000 0000"
+										maxlength="19"
+										required>
+								</div>
+
+
+								<!-- Fecha expiración -->
+								<div class="col-md-5">
+
+									<label class="form-label">
+										Fecha de expiración
+									</label>
+
+									<div class="row g-2">
+
+										<div class="col-6">
+											<select class="form-select" id="mesExpiracion" required>
+												<option value="" selected disabled>Mes</option>
+												<option value="01">01</option>
+												<option value="02">02</option>
+												<option value="03">03</option>
+												<option value="04">04</option>
+												<option value="05">05</option>
+												<option value="06">06</option>
+												<option value="07">07</option>
+												<option value="08">08</option>
+												<option value="09">09</option>
+												<option value="10">10</option>
+												<option value="11">11</option>
+												<option value="12">12</option>
+											</select>
+										</div>
+
+										<div class="col-6">
+											<select class="form-select" id="anioExpiracion" required>
+												<option value="" selected disabled>Año</option>
+												<option value="2026">2026</option>
+												<option value="2027">2027</option>
+												<option value="2028">2028</option>
+												<option value="2029">2029</option>
+												<option value="2030">2030</option>
+												<option value="2031">2031</option>
+											</select>
+										</div>
+
+									</div>
+
+								</div>
+
+
+								<!-- CVV -->
+								<div class="col-md-3">
+									<label for="cvv" class="form-label">
+										Código de Seguridad
+									</label>
+
+									<input
+										type="password"
+										class="form-control"
+										id="cvv"
+										placeholder="3 dígitos"
+										maxlength="3"
+										required>
+								</div>
+
+
+								<!-- Botón -->
+								<div class="col-md-4 d-flex align-items-end">
+									<button
+										type="submit"
+										class="btn-finalizar w-100">
+
+										Finalizar compra
+									</button>
+								</div>
+
+							</div>
+
+						</form>
+
+					</div>
+
+				</div>
+
+
+				<!-- Separador -->
+				<div class="separador-pago">
+					<span></span>
+					<p>O</p>
+					<span></span>
+				</div>
+
+
+				<!-- Pago exprés -->
+				<div class="pago-expres">
+
+					<p class="titulo-expres">
+						Pago exprés
+					</p>
+
+					<div class="row g-3 justify-content-center">
+
+						<div class="col-md-4">
+							<button type="button" class="btn btn-paypal w-100">
+								PayPal
+							</button>
+						</div>
+
+						<div class="col-md-4">
+							<button type="button" class="btn btn-google w-100">
+								G Pay
+							</button>
+						</div>
+
+						<div class="col-md-4">
+							<button type="button" class="btn btn-mercado w-100">
+								mercado pago
+							</button>
+						</div>
+
+					</div>
+
+					<p class="texto-expres">
+						* Rápido y total seguridad en cada clic.
+					</p>
+
+				</div>
+
+			</section>
 	</main>
 
 	<!-- ===========================================================================
@@ -290,6 +485,8 @@
 	<script src="build/js/adminHome.js"></script>
 
 	<script src="build/js/pago.js"></script>
+	<script src="build/js/carrito.js"></script>
+	<script src="build/js/prueba.js"></script>
 
 </body>
 
