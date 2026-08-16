@@ -103,7 +103,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `toro_forrajero_db`.`Pedido` (
   `id_pedido` INT NOT NULL AUTO_INCREMENT,
   `fecha_pedido` DATETIME NOT NULL,
-  `fecha_venta` DATETIME NOT NULL,
+  `fecha_entrega` DATETIME NOT NULL,
   `monto_total` DECIMAL(12,2) NOT NULL,
   `status` VARCHAR(20) NOT NULL,
   `id_usuario` INT NOT NULL,
