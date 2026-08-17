@@ -1,9 +1,8 @@
 -- ================================================
--- 		Inserts para la Tabla Direccion
+-- 		Inserts para la Tabla direccion
 -- ================================================
 
-# Observación: Para el campo de <id_usuario> se pusieron IDs provicionales, para ir avanzando en el proyecto;
-# se cambiaran hasta que la tabla usuario esté creada.
+# Observación: id_usuario verificado contra la tabla usuario ya creada (10 clientes, IDs 1-10).
 
 INSERT INTO Direccion (calle, num_exterior, num_interior, codigo_postal, ciudad, estado, telefono, correo_electronico, id_usuario) 
 VALUES ('Av. Reforma', '450', NULL, 6600, 'Ciudad de México', 'Ciudad de México', '5511223344', 'ana@gmail.com', 1),
