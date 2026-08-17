@@ -18,6 +18,8 @@ INSERT INTO metodo_pago (num_tarjeta, fecha_expiracion, id_usuario) VALUES
 	(HEX(AES_ENCRYPT('5321894726103847', 'mi_clave_secreta')), '07/28', 9),
 	(HEX(AES_ENCRYPT('4820193847562910', 'mi_clave_secreta')), '10/26', 10);
 
+
+
 -- =================================================================================================
 -- Consultas de verificación
 -- =================================================================================================
