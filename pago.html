@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Toro Forrajero - Productos</title>
+	<title>Toro Forrajero - Pago</title>
 
 	<!--Bootstrap-->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -26,38 +26,43 @@
 	<!--CSS Globales-->
 	<link rel="stylesheet" href="build/css/app.css">
 	<link rel="stylesheet" href="build/css/productos.css">
+	<link rel="stylesheet" href="build/css/pago.css">
+	<!-- Estilos del bloque de pago (tarjeta / pago exprés) -->
+	<link rel="stylesheet" href="src/css/pages/pago.css">
 </head>
 
 <body>
 	<!-- ===========================================================================
         SECCIÓN: ENCABEZADO Y NAVEGACIÓN (HEADER)
     ============================================================================ -->
-	<header class="sticky-top"">
-        <!-- NAV BAR 1: Logo y Accesos rápidos -->
-        <nav class=" navbar navbar-1">
-		<div class="container-fluid px-4">
-			<div class="navbar-brand">
-				<img src="recursos-graficos/navbar/forrajero-sinfondo.png" alt="Logo sin fondo de Toro Forrajero"
-					class="logo-navbar d-inline-block align-text-top me-2">
+	<header class="sticky-top">
+		<!-- NAV BAR 1: Logo y Accesos rápidos -->
+		<nav class="navbar navbar-1">
+			<div class="container-fluid px-4">
+				<div class="navbar-brand">
+					<img src="recursos-graficos/navbar/forrajero-sinfondo.png" alt="Logo sin fondo de Toro Forrajero"
+						class="logo-navbar d-inline-block align-text-top me-2">
+				</div>
+				<ul class="navbar-nav flex-row ms-auto gap-4">
+					<li class="nav-item">
+						<a class="nav-link icon-link" href="cuenta.html"
+							style="display:flex; flex-direction:column; align-items:center; gap:2px; font-size:13px;">
+							<i class="bi bi-person" style="font-size:18px;"></i>
+							<span>Mi cuenta</span>
+						</a>
+					</li>
+					<li class="nav-item carrito">
+						<a class="nav-link icon-link" href="carrito.html"
+							style="display:flex; flex-direction:column; align-items:center; gap:2px; font-size:13px;">
+							<div class="cart-icon-wrapper">
+								<i class="bi bi-cart3" style="font-size:18px;"></i>
+								<!-- <span class="contador-carrito">0</span> -->
+							</div>
+							<span>Carrito</span>
+						</a>
+					</li>
+				</ul>
 			</div>
-			<ul class="navbar-nav flex-row ms-auto gap-4">
-				<li class="nav-item">
-					<a class="nav-link icon-link" href="cuenta.html">
-						<i class="bi bi-person"></i>
-						<span>Mi cuenta</span>
-					</a>
-				</li>
-				<li class="nav-item carrito">
-					<a class="nav-link icon-link" href="carrito.html">
-						<div class="cart-icon-wrapper">
-							<i class="bi bi-cart3"></i>
-							<!-- <span class="contador-carrito">0</span> -->
-						</div>
-						<span>Carrito</span>
-					</a>
-				</li>
-			</ul>
-		</div>
 		</nav>
 
 		<!-- NAV BAR 2: Menú de navegación principal -->
@@ -73,13 +78,343 @@
 	</header>
 
 	<!-- ===========================================================================
-        SECCIÓN PRINCIPAL: VISTA DE PRODUCTOS (MAIN)
+        SECCIÓN PRINCIPAL: FINALIZAR COMPRA (MAIN)
     ============================================================================ -->
 	<main class="container my-5">
+		<!-- SECCIÓN: FINALIZAR COMPRA -->
+		<section id="finalizar-compra">
+			<div class="container py-4" style="max-width: 900px;">
 
+				<h1 class="checkout-title" data-aos="fade-up">Finaliza tu compra</h1>
+				<p class="checkout-subtitle mb-4" data-aos="fade-up" data-aos-delay="100">
+					Del campo a tu comedero: todo lo que necesitan en la puerta de tu hogar <strong>en menos de 20
+						días.</strong>
+				</p>
+
+				<!-- Resumen del pedido -->
+				<details class="order-summary-bar px-4 py-3 mb-4" data-aos="fade-up" data-aos-delay="150">
+					<summary class="d-flex justify-content-between align-items-center">
+						<span><i class="bi bi-chevron-down me-2"></i>Resumen del pedido</span>
+						<span id="total-pedido">$12,090.00 MXN</span>
+					</summary>
+					<div class="pt-3">
+						<!-- Aquí puede ir el detalle de productos del carrito -->
+						<p class="mb-0 small">xxxxxxxxxxxxxxxxxxx...</p>
+					</div>
+				</details>
+
+				<form id="formulario-checkout" novalidate>
+
+					<!-- Método de entrega -->
+					<div class="mb-4" data-aos="fade-up" data-aos-delay="200">
+						<p class="checkout-section-label mb-2">Método de entrega:</p>
+						<div class="row g-3">
+							<div class="col-md-6">
+								<button type="button"
+									class="delivery-method-btn active w-100 d-flex align-items-center justify-content-center gap-2"
+									data-metodo="domicilio">
+									<i class="bi bi-box-seam fs-5"></i>
+									Envío a domicilio
+								</button>
+							</div>
+							<div class="col-md-6">
+								<button type="button"
+									class="delivery-method-btn w-100 d-flex align-items-center justify-content-center gap-2"
+									data-metodo="tienda">
+									<i class="bi bi-geo-alt-fill fs-5"></i>
+									Retiro en tienda
+								</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- Dirección de entrega -->
+					<div class="mb-3" id="bloque-direccion" data-aos="fade-up" data-aos-delay="250">
+						<p class="checkout-section-label mb-2">Dirección de entrega:</p>
+
+						<div class="row g-3 mb-3">
+							<div class="col-md-6">
+								<select id="estado" name="estado" class="form-select address-input py-2">
+									<option value="" disabled selected>Estado</option>
+									<option value="cdmx">Ciudad de México</option>
+									<option value="jalisco">Jalisco</option>
+									<option value="nuevo-leon">Nuevo León</option>
+									<option value="slp">San Luis Potosi</option>
+								</select>
+							</div>
+							<div class="col-md-6">
+								<input type="text" id="ciudad" name="ciudad" autocomplete="off"
+									class="form-control address-input py-2 text-end" placeholder="Ciudad de México">
+							</div>
+						</div>
+
+						<div class="mb-3">
+							<input type="text" id="direccion" name="direccion" autocomplete="off"
+								class="form-control address-input py-2 text-end" placeholder="Dirección">
+						</div>
+
+						<div class="row g-3 mb-3">
+							<div class="col-6 col-md-3">
+								<input type="text" id="numero-exterior" name="numero_exterior" autocomplete="off"
+									class="form-control address-input py-2 text-center" placeholder="No. Exterior">
+							</div>
+							<div class="col-6 col-md-3">
+								<input type="text" id="numero-interior" name="numero_interior" autocomplete="off"
+									class="form-control address-input py-2 text-center" placeholder="No. Interior">
+							</div>
+							<div class="col-6 col-md-3">
+								<input type="text" id="codigo-postal" name="codigo_postal" maxlength="5"
+									autocomplete="off" class="form-control address-input py-2 text-center"
+									placeholder="Código Postal">
+							</div>
+							<div class="col-6 col-md-3">
+								<input type="text" id="ciudad-2" name="ciudad_2" autocomplete="off"
+									class="form-control address-input py-2 text-end" placeholder="Ciudad">
+							</div>
+						</div>
+
+						<div class="mb-3">
+							<input type="tel" id="telefono" name="telefono" maxlength="10" pattern="[0-9]{10}"
+								autocomplete="off" class="form-control address-input py-2 text-end"
+								placeholder="Teléfono">
+						</div>
+
+						<div class="mb-4">
+							<input type="email" id="correo" name="correo" autocomplete="off"
+								class="form-control address-input py-2 text-end" placeholder="Correo electronico">
+						</div>
+					</div>
+
+					<div class="d-grid gap-2 col-10 mx-auto mb-4">
+						<button class="btn btn-primary" type="submit">Continuar</button>
+					</div>
+
+				</form>
+
+				<!-- Retiro en tienda (se muestra al elegir "Retiro en tienda") -->
+				<div class="mb-3" id="bloque-retiro-tienda" style="display: none;">
+					<p class="checkout-section-label mb-2">Retiro en tienda:</p>
+
+					<div class="mb-3" style="border-radius: 8px; overflow: hidden; border: 1px solid var(--color-naranjaClaro);">
+						<iframe
+							src="https://maps.google.com/maps?q=Cerro+Lejos&output=embed"
+							width="100%"
+							height="220"
+							style="border:0; display:block;"
+							allowfullscreen=""
+							loading="lazy"
+							referrerpolicy="no-referrer-when-downgrade">
+						</iframe>
+					</div>
+
+					<div class="address-input p-3">
+						<p class="mb-2">
+							<i class="bi bi-geo-alt-fill me-2"></i>
+							Cerro Lejos, a dos horas de la ciudad
+						</p>
+						<p class="mb-0">
+							<i class="bi bi-clock me-2"></i>
+							10:00 a.m. - 7:00 p.m.
+						</p>
+					</div>
+				</div>
+
+			</div>
+		</section>
+		<section class="pago-container">
+
+				<!-- Opciones superiores -->
+				<div class="opciones-pago mb-4">
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" id="guardarInfo">
+						<label class="form-check-label" for="guardarInfo">
+							Guardar mi información para la próxima vez
+						</label>
+					</div>
+
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" id="ofertasCorreo">
+						<label class="form-check-label" for="ofertasCorreo">
+							Enviarme novedades y ofertas por correo electrónico
+						</label>
+					</div>
+				</div>
+
+
+				<!-- Tarjeta -->
+				<div class="tarjeta-pago">
+
+					<div class="tarjeta-pago-header">
+						Tarjeta de Crédito o Débito
+					</div>
+
+					<div class="tarjeta-pago-body">
+
+						<!-- Logos -->
+						<div class="logos-tarjeta mb-4">
+							<span class="logo-visa">VISA</span>
+							<span class="logo-mastercard">●●</span>
+							<span class="logo-amex">AMEX</span>
+						</div>
+
+						<form id="formularioPago">
+
+							<div class="row g-3">
+
+								<!-- Nombre -->
+								<div class="col-md-6">
+									<label for="nombreTitular" class="form-label">
+										Nombre del titular
+									</label>
+
+									<input
+										type="text"
+										class="form-control"
+										id="nombreTitular"
+										required>
+								</div>
+
+
+								<!-- Número tarjeta -->
+								<div class="col-md-6">
+									<label for="numeroTarjeta" class="form-label">
+										Número de Tarjeta
+									</label>
+
+									<input
+										type="text"
+										class="form-control"
+										id="numeroTarjeta"
+										placeholder="0000 0000 0000 0000"
+										maxlength="19"
+										required>
+								</div>
+
+
+								<!-- Fecha expiración -->
+								<div class="col-md-5">
+
+									<label class="form-label">
+										Fecha de expiración
+									</label>
+
+									<div class="row g-2">
+
+										<div class="col-6">
+											<select class="form-select" id="mesExpiracion" required>
+												<option value="" selected disabled>Mes</option>
+												<option value="01">01</option>
+												<option value="02">02</option>
+												<option value="03">03</option>
+												<option value="04">04</option>
+												<option value="05">05</option>
+												<option value="06">06</option>
+												<option value="07">07</option>
+												<option value="08">08</option>
+												<option value="09">09</option>
+												<option value="10">10</option>
+												<option value="11">11</option>
+												<option value="12">12</option>
+											</select>
+										</div>
+
+										<div class="col-6">
+											<select class="form-select" id="anioExpiracion" required>
+												<option value="" selected disabled>Año</option>
+												<option value="2026">2026</option>
+												<option value="2027">2027</option>
+												<option value="2028">2028</option>
+												<option value="2029">2029</option>
+												<option value="2030">2030</option>
+												<option value="2031">2031</option>
+											</select>
+										</div>
+
+									</div>
+
+								</div>
+
+
+								<!-- CVV -->
+								<div class="col-md-3">
+									<label for="cvv" class="form-label">
+										Código de Seguridad
+									</label>
+
+									<input
+										type="password"
+										class="form-control"
+										id="cvv"
+										placeholder="3 dígitos"
+										maxlength="3"
+										required>
+								</div>
+
+
+								<!-- Botón -->
+								<div class="col-md-4 d-flex align-items-end">
+									<button
+										type="submit"
+										class="btn-finalizar w-100">
+
+										Finalizar compra
+									</button>
+								</div>
+
+							</div>
+
+						</form>
+
+					</div>
+
+				</div>
+
+
+				<!-- Separador -->
+				<div class="separador-pago">
+					<span></span>
+					<p>O</p>
+					<span></span>
+				</div>
+
+
+				<!-- Pago exprés -->
+				<div class="pago-expres">
+
+					<p class="titulo-expres">
+						Pago exprés
+					</p>
+
+					<div class="row g-3 justify-content-center">
+
+						<div class="col-md-4">
+							<button type="button" class="btn btn-paypal w-100">
+								PayPal
+							</button>
+						</div>
+
+						<div class="col-md-4">
+							<button type="button" class="btn btn-google w-100">
+								G Pay
+							</button>
+						</div>
+
+						<div class="col-md-4">
+							<button type="button" class="btn btn-mercado w-100">
+								mercado pago
+							</button>
+						</div>
+
+					</div>
+
+					<p class="texto-expres">
+						* Rápido y total seguridad en cada clic.
+					</p>
+
+				</div>
+
+			</section>
 	</main>
-
-
 
 	<!-- ===========================================================================
         SECCIÓN: PIE DE PÁGINA (FOOTER)
@@ -135,28 +470,24 @@
 
 		</div>
 
-
-
-
-
 		<!-- Línea inferior -->
 		<div class="footer-bottom">
 			<p>© 2026 Toro Forrajero. Todos los derechos reservados.</p>
 		</div>
 	</footer>
 
-
 	<!--Bootstrap script-->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
 		crossorigin="anonymous"></script>
 
-
 	<script src="build/js/itemsController.js"></script>
 	<script src="build/js/adminHome.js"></script>
 
+	<script src="build/js/pago.js"></script>
 	<script src="build/js/carrito.js"></script>
 	<script src="build/js/prueba.js"></script>
+
 </body>
 
 </html>
