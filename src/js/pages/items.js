@@ -48,8 +48,7 @@ async function cargarProductos() {
 function actualizarCatalogoYEventos(items) {
 	renderizarHTML(items);
 
-	contadorCarrito();
-	productosLocalStorage();
+    actualizarBadgeNavegacion();
 }
 
 function renderizarHTML(items) {
@@ -80,153 +79,150 @@ function renderizarHTML(items) {
     `).join('');
 }
 
-/* ====================================================
-   FILTRO POR MARCA
-   ==================================================== */
-const filtrarMarcas = (marca) => {
-	const productosVisibles = itemsController.items.filter(producto => producto.marca === marca);
-	actualizarCatalogoYEventos(productosVisibles);
-};
-
-const admBtn = document.getElementById('adm');
-const nogalBtn = document.getElementById('nogal');
-const arandasBtn = document.getElementById('arandas');
-
-if (admBtn) {
-	admBtn.addEventListener('click', () => filtrarMarcas('ADM'));
-}
-
-if (nogalBtn) {
-	nogalBtn.addEventListener('click', () => filtrarMarcas('El Nogal'));
-}
-
-if (arandasBtn) {
-	arandasBtn.addEventListener('click', () => filtrarMarcas('Alimentos Arandas'));
-}
-
-/* ====================================================
-   FILTRO POR ESPECIE
-   ==================================================== */
-const mapaEspecies = { "bovinos": "Vacas", "porcinos": "Cerdos", "aves": "Aves", "ovinos": "Borregos" };
-let especieSeleccionada = null;
-
-function aplicarFiltro() {
-	if (!especieSeleccionada) {
-		actualizarCatalogoYEventos(itemsController.items);
-	} else {
-		const productoFiltrado = itemsController.items.filter(item => item.especie === especieSeleccionada);
-		actualizarCatalogoYEventos(productoFiltrado);
-	}
-}
-
-const botonesEspecie = document.querySelectorAll(".filtro-especies .especie");
-
-botonesEspecie.forEach(boton => {
-	boton.addEventListener("click", () => {
-		const especieData = boton.getAttribute("data-especie");
-		const especieNombre = mapaEspecies[especieData];
-
-		if (boton.classList.contains("activo")) {
-			boton.classList.remove("activo");
-			especieSeleccionada = null;
-		} else {
-			botonesEspecie.forEach(btn => btn.classList.remove("activo"));
-			boton.classList.add("activo");
-			especieSeleccionada = especieNombre;
-		}
-
-		aplicarFiltro();
-	});
+document.addEventListener("DOMContentLoaded", () => {
+	cargarProductos();
+	renderizarHTML(itemsController.items);
 });
 
-/* ====================================================
-   FUNCIONALIDADES DEL CARRITO (PERSISTENCIA Y BADGE)
-   ==================================================== */
+//FILTRANDO POR ESPECIE Y MARCA
 
-/**
- * * Gestiona la insignia y el contador visual del carrito en el Navbar.
- * * Mantiene la cifra sincronizada a traves del almacenamiento local (localStorage).
- */
-function contadorCarrito() {
-	// ! Referencias al DOM necesarias para montar la interfaz
-	const btns = document.querySelectorAll('.boton-carrito');
-	const divcarrito = document.querySelector('.cart-icon-wrapper');
+let marcaSeleccionada = null;
+let especieSeleccionada = null;
 
-	// ? Si la pagina actual no tiene el icono del carrito en el Navbar, se interrumpe la ejecucion
-	if (!divcarrito) return;
+const mapaEspecies = {
+    "bovinos": "Vacas",
+    "porcinos": "Cerdos",
+    "aves": "Aves",
+    "ovinos": "Borregos"
+};
 
-	// * Obtencion o reutilización del elemento contenedor para la cifra del contador
-	let carrito = divcarrito.querySelector('.contador-carrito');
-	if (!carrito) {
-		carrito = document.createElement('P');
-		carrito.classList.add('contador-carrito');
-	}
+// FILTRO POR ESPECIE Y MARCA
+function aplicarFiltros() {
+    
+    const productosFiltrados = itemsController.items.filter(producto => {
+        const cumpleMarca = marcaSeleccionada ? producto.marca === marcaSeleccionada : true;
+        const cumpleEspecie = especieSeleccionada ? producto.especie === especieSeleccionada : true;
 
-	// * Obtencion del estado previo persistido (Default: 0)
-	let contador = parseInt(localStorage.getItem('contadorCarrito')) || 0;
-
-	// ? Inicializacion de la vista al cargar el documento si existen items previos
-	if (contador > 0) {
-		if (contador >= 100) {
-			carrito.innerHTML = `<span class="carrito-mas">+</span>99`;
-		} else {
-			carrito.textContent = contador;
-		}
-		if (!divcarrito.contains(carrito)) {
-			divcarrito.append(carrito);
-		}
-	}
-
-	// * Escuchador de eventos para los botones de añadir al carrito
-	btns.forEach(btn => {
-		btn.addEventListener('click', function () {
-			// * Incremento del estado en memoria y sincronizacion con localStorage
-			contador++;
-			localStorage.setItem('contadorCarrito', contador);
-
-			// * Formateo dinamico según la cifra de articulos acumulada
-			if (contador >= 100) {
-				carrito.innerHTML = `<span class="carrito-mas">+</span>99`;
-			} else {
-				carrito.textContent = contador;
-			}
-
-			// ? Insercion del badge en el DOM unicamente en la primera adicion
-			if (!divcarrito.contains(carrito)) {
-				divcarrito.append(carrito);
-			}
-		});
-	});
+        return cumpleMarca && cumpleEspecie;
+    });
+    renderizarHTML(productosFiltrados);
 }
 
-/**
- * * Captura el producto seleccionado mediante interaccion con la tarjeta del DOM
- * * y actualiza la coleccion persitiendola en formato JSON en el localStorage.
- */
-function productosLocalStorage() {
-	const btns = document.querySelectorAll('.boton-carrito');
+// BTN MARCA
+const botonesMarca = [
+    { id: 'adm', marca: 'ADM' },
+    { id: 'nogal', marca: 'El Nogal' },
+    { id: 'arandas', marca: 'Alimentos Arandas' }
+];
 
-	// * Lectura inicial e instanciacion del arreglo persistido en storage
-	const carritoProductos = JSON.parse(localStorage.getItem('carrito')) || [];
+botonesMarca.forEach(({ id, marca }) => {
+    const btn = document.getElementById(id);
+    if (!btn) return;
+	//para marcar o desmarcar un btn
+    btn.addEventListener('click', () => {
+        if (marcaSeleccionada === marca) {
+            marcaSeleccionada = null;
+            btn.classList.remove('activo');
+        } else {
+            // Desmarca otros botones de marca cuando se selecciona uno
+            botonesMarca.forEach(b => document.getElementById(b.id)?.classList.remove('activo'));
+            marcaSeleccionada = marca;
+            btn.classList.add('activo');
+        }
+        aplicarFiltros();
+    });
+});
 
-	btns.forEach(btn => {
-		btn.addEventListener('click', function () {
-			// * Navegacion en el DOM para extraer la clave de busqueda del producto
-			const tarjeta = btn.closest('.tarjeta-producto');
-			const tituloH2 = tarjeta.querySelector('h2');
+// BTN ESPECIE
+document.addEventListener("DOMContentLoaded", () => {
+    cargarProductos();
+    renderizarHTML(itemsController.items);
 
-			// ! Busqueda en la colección utilizando itemsController.items
-			const productoSeleccionado = itemsController.items.find(
-				producto => producto.nombreProducto === tituloH2.textContent
-			);
+    const botonesEspecie = document.querySelectorAll(".filtro-especies .especie");
 
-			// ? Si se valida la existencia del registro, se procede a guardar
-			if (productoSeleccionado) {
-				carritoProductos.push(productoSeleccionado);
+    botonesEspecie.forEach(boton => {
+        boton.addEventListener("click", () => {
+            const especieData = boton.getAttribute("data-especie");
+            const especieNombre = mapaEspecies[especieData];
 
-				// * Serializacion y escritura final en localStorage
-				localStorage.setItem('carrito', JSON.stringify(carritoProductos));
-			}
-		});
-	});
+            if (boton.classList.contains("activo")) {
+                boton.classList.remove("activo");
+                especieSeleccionada = null;
+            } else {
+                botonesEspecie.forEach(btn => btn.classList.remove("activo"));
+                boton.classList.add("activo");
+                especieSeleccionada = especieNombre;
+            }
+
+            aplicarFiltros();
+        });
+    });
+});
+
+
+
+/* ====================================================
+    NUEVO MOTOR DEL CARRITO (DELEGACIÓN DE EVENTOS)
+   ==================================================== */
+
+// 1. Vigilante global para los clics en cualquier botón de carrito
+document.addEventListener('click', function(e) {
+    // Si el elemento clickeado tiene la clase 'boton-carrito'
+    if (e.target.classList.contains('boton-carrito')) {
+        const btn = e.target;
+        const nombreExacto = btn.getAttribute('data-producto');
+        
+        // Buscar el producto en nuestro catálogo
+        const productoSeleccionado = itemsController.items.find(
+            producto => String(producto.nombreProducto).trim() === String(nombreExacto).trim()
+        );
+
+        if (productoSeleccionado) {
+            // --- A) GUARDAR EL PRODUCTO EN LOCALSTORAGE ---
+            let carritoProductos = [];
+            try {
+                carritoProductos = JSON.parse(localStorage.getItem('carrito')) || [];
+            } catch(error) {
+                carritoProductos = []; // Si había un error previo en la memoria, empezamos de cero
+            }
+            
+            carritoProductos.push(productoSeleccionado);
+            localStorage.setItem('carrito', JSON.stringify(carritoProductos));
+
+            // --- B) ACTUALIZAR EL NÚMERO DEL CONTADOR ---
+            let contador = parseInt(localStorage.getItem('contadorCarrito')) || 0;
+            contador++;
+            localStorage.setItem('contadorCarrito', contador);
+
+            // --- C) REFLEJAR EL CAMBIO EN LA INTERFAZ ---
+            actualizarBadgeNavegacion(contador);
+        }
+    }
+});
+
+// 2. Función dedicada exclusivamente a pintar el número en el Navbar
+function actualizarBadgeNavegacion(forzarContador = null) {
+    const divcarrito = document.querySelector('.cart-icon-wrapper');
+    if (!divcarrito) return; // Si no hay carrito en esta página, no hacemos nada
+
+    let carrito = divcarrito.querySelector('.contador-carrito');
+    if (!carrito) {
+        carrito = document.createElement('P');
+        carrito.classList.add('contador-carrito');
+        divcarrito.append(carrito);
+    }
+
+    // Tomamos el contador forzado (si venimos de un clic) o leemos la memoria
+    let contador = forzarContador !== null ? forzarContador : (parseInt(localStorage.getItem('contadorCarrito')) || 0);
+
+    if (contador > 0) {
+        carrito.style.display = 'block';
+        if (contador >= 100) {
+            carrito.innerHTML = `<span class="carrito-mas">+</span>99`;
+        } else {
+            carrito.textContent = contador;
+        }
+    } else {
+        carrito.style.display = 'none';
+    }
 }

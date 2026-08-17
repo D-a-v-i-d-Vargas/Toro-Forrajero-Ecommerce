@@ -1,4 +1,4 @@
--- MySQL Workbench Forward Engineering Corregido
+-- MySQL Workbench Forward Engineering Corregido (Nombres en minúsculas)
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
@@ -14,16 +14,16 @@ USE `toro_forrajero_db` ;
 -- Limpieza de tablas previas si existen
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `toro_forrajero_db`.`detalle_pedido` ;
-DROP TABLE IF EXISTS `toro_forrajero_db`.`Pedido` ;
-DROP TABLE IF EXISTS `toro_forrajero_db`.`Direccion` ;
+DROP TABLE IF EXISTS `toro_forrajero_db`.`pedido` ;
+DROP TABLE IF EXISTS `toro_forrajero_db`.`direccion` ;
 DROP TABLE IF EXISTS `toro_forrajero_db`.`metodo_pago` ;
-DROP TABLE IF EXISTS `toro_forrajero_db`.`Productos` ;
-DROP TABLE IF EXISTS `toro_forrajero_db`.`Usuario` ;
+DROP TABLE IF EXISTS `toro_forrajero_db`.`productos` ;
+DROP TABLE IF EXISTS `toro_forrajero_db`.`usuario` ;
 
 -- -----------------------------------------------------
--- Table `toro_forrajero_db`.`Usuario`
+-- Table `toro_forrajero_db`.`usuario`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `toro_forrajero_db`.`Usuario` (
+CREATE TABLE IF NOT EXISTS `toro_forrajero_db`.`usuario` (
   `id_usuario` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(30) NOT NULL,
   `apellido` VARCHAR(40) NOT NULL,
@@ -38,9 +38,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `toro_forrajero_db`.`Productos`
+-- Table `toro_forrajero_db`.`productos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `toro_forrajero_db`.`Productos` (
+CREATE TABLE IF NOT EXISTS `toro_forrajero_db`.`productos` (
   `id_Producto` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(50) NOT NULL,
   `marca` VARCHAR(30) NOT NULL,
@@ -60,23 +60,23 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `toro_forrajero_db`.`metodo_pago` (
   `id_metodo_pago` INT NOT NULL AUTO_INCREMENT,
-  `num_tarjeta` VARCHAR(45) NOT NULL,
+  `num_tarjeta` VARCHAR(100) NOT NULL,
   `fecha_expiracion` VARCHAR(7) NOT NULL,
   `id_usuario` INT NOT NULL,
   PRIMARY KEY (`id_metodo_pago`, `id_usuario`),
-  INDEX `fk_metodo_pago_Usuario1_idx` (`id_usuario` ASC) VISIBLE,
-  CONSTRAINT `fk_metodo_pago_Usuario1`
+  INDEX `fk_metodo_pago_usuario1_idx` (`id_usuario` ASC) VISIBLE,
+  CONSTRAINT `fk_metodo_pago_usuario1`
     FOREIGN KEY (`id_usuario`)
-    REFERENCES `toro_forrajero_db`.`Usuario` (`id_usuario`)
+    REFERENCES `toro_forrajero_db`.`usuario` (`id_usuario`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `toro_forrajero_db`.`Direccion`
+-- Table `toro_forrajero_db`.`direccion`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `toro_forrajero_db`.`Direccion` (
+CREATE TABLE IF NOT EXISTS `toro_forrajero_db`.`direccion` (
   `id_direccion` INT NOT NULL AUTO_INCREMENT,
   `estado` VARCHAR(45) NOT NULL,
   `calle` VARCHAR(45) NOT NULL,
@@ -88,19 +88,19 @@ CREATE TABLE IF NOT EXISTS `toro_forrajero_db`.`Direccion` (
   `correo_electronico` VARCHAR(50) NOT NULL,
   `id_usuario` INT NOT NULL,
   PRIMARY KEY (`id_direccion`, `id_usuario`),
-  INDEX `fk_Direccion_Usuario1_idx` (`id_usuario` ASC) VISIBLE,
-  CONSTRAINT `fk_Direccion_Usuario1`
+  INDEX `fk_direccion_usuario1_idx` (`id_usuario` ASC) VISIBLE,
+  CONSTRAINT `fk_direccion_usuario1`
     FOREIGN KEY (`id_usuario`)
-    REFERENCES `toro_forrajero_db`.`Usuario` (`id_usuario`)
+    REFERENCES `toro_forrajero_db`.`usuario` (`id_usuario`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `toro_forrajero_db`.`Pedido`
+-- Table `toro_forrajero_db`.`pedido`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `toro_forrajero_db`.`Pedido` (
+CREATE TABLE IF NOT EXISTS `toro_forrajero_db`.`pedido` (
   `id_pedido` INT NOT NULL AUTO_INCREMENT,
   `fecha_pedido` DATETIME NOT NULL,
   `fecha_entrega` DATETIME NOT NULL,
@@ -110,22 +110,22 @@ CREATE TABLE IF NOT EXISTS `toro_forrajero_db`.`Pedido` (
   `id_metodo_pago` INT NOT NULL,
   `id_direccion` INT NOT NULL,
   PRIMARY KEY (`id_pedido`, `id_usuario`, `id_metodo_pago`),
-  INDEX `fk_Pedido_Usuario_idx` (`id_usuario` ASC) VISIBLE,
-  INDEX `fk_Pedido_metodo_pago1_idx` (`id_metodo_pago` ASC) VISIBLE,
-  INDEX `fk_Pedido_Direccion1_idx` (`id_direccion` ASC) VISIBLE,
-  CONSTRAINT `fk_Pedido_Usuario`
+  INDEX `fk_pedido_usuario_idx` (`id_usuario` ASC) VISIBLE,
+  INDEX `fk_pedido_metodo_pago1_idx` (`id_metodo_pago` ASC) VISIBLE,
+  INDEX `fk_pedido_direccion1_idx` (`id_direccion` ASC) VISIBLE,
+  CONSTRAINT `fk_pedido_usuario`
     FOREIGN KEY (`id_usuario`)
-    REFERENCES `toro_forrajero_db`.`Usuario` (`id_usuario`)
+    REFERENCES `toro_forrajero_db`.`usuario` (`id_usuario`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Pedido_metodo_pago1`
+  CONSTRAINT `fk_pedido_metodo_pago1`
     FOREIGN KEY (`id_metodo_pago`)
     REFERENCES `toro_forrajero_db`.`metodo_pago` (`id_metodo_pago`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Pedido_Direccion1`
+  CONSTRAINT `fk_pedido_direccion1`
     FOREIGN KEY (`id_direccion`)
-    REFERENCES `toro_forrajero_db`.`Direccion` (`id_direccion`)
+    REFERENCES `toro_forrajero_db`.`direccion` (`id_direccion`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -141,16 +141,16 @@ CREATE TABLE IF NOT EXISTS `toro_forrajero_db`.`detalle_pedido` (
   `precio_unitario` DECIMAL(12,2) NOT NULL,
   `subtotal` DECIMAL(12,2) NOT NULL,
   PRIMARY KEY (`id_pedido`, `id_Producto`),
-  INDEX `fk_detalle_pedido_Productos1_idx` (`id_Producto` ASC) VISIBLE,
-  INDEX `fk_detalle_pedido_Pedido1_idx` (`id_pedido` ASC) VISIBLE,
-  CONSTRAINT `fk_detalle_pedido_Pedido1`
+  INDEX `fk_detalle_pedido_productos1_idx` (`id_Producto` ASC) VISIBLE,
+  INDEX `fk_detalle_pedido_pedido1_idx` (`id_pedido` ASC) VISIBLE,
+  CONSTRAINT `fk_detalle_pedido_pedido1`
     FOREIGN KEY (`id_pedido`)
-    REFERENCES `toro_forrajero_db`.`Pedido` (`id_pedido`)
+    REFERENCES `toro_forrajero_db`.`pedido` (`id_pedido`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_detalle_pedido_Productos1`
+  CONSTRAINT `fk_detalle_pedido_productos1`
     FOREIGN KEY (`id_Producto`)
-    REFERENCES `toro_forrajero_db`.`Productos` (`id_Producto`)
+    REFERENCES `toro_forrajero_db`.`productos` (`id_Producto`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -159,3 +159,5 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+SELECT * FROM direccion;
