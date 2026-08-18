@@ -1,5 +1,7 @@
 /* FINAL DE LA COMPRA PARTE 1 */
 
+
+
 .checkout-title {
     color: var(--color-verdeFuerte);
     font-weight: 700;
@@ -276,4 +278,13 @@ body {
 		padding: 20px;
 	}
 
+}
+
+/**/
+.mensaje-error {
+    display: block;
+    color: var(--color-naranjaFuerte) !important;
+    font-size: 14px;
+    margin-top: 5px;
+    text-align: center;
 }

@@ -263,15 +263,16 @@
 
 								<!-- Nombre -->
 								<div class="col-md-6">
-									<label for="nombreTitular" class="form-label">
-										Nombre del titular
-									</label>
+								<label for="nombreTitular" class="form-label">
+									Nombre del titular
+								</label>
 
-									<input
-										type="text"
-										class="form-control"
-										id="nombreTitular"
-										required>
+								<input
+									type="text"
+									class="form-control"
+									id="nombreTitular">
+
+								<small class="mensaje-error" id="errorNombre"></small>
 								</div>
 
 
@@ -285,9 +286,9 @@
 										type="text"
 										class="form-control"
 										id="numeroTarjeta"
-										placeholder="0000 0000 0000 0000"
-										maxlength="19"
-										required>
+										placeholder="0000 0000 0000 0000">
+
+									<small class="mensaje-error" id="errorTarjeta"></small>
 								</div>
 
 
@@ -300,10 +301,10 @@
 
 									<div class="row g-2">
 
-										<div class="col-6">
-											<select class="form-select" id="mesExpiracion" required>
-												<option value="" selected disabled>Mes</option>
-												<option value="01">01</option>
+							<div class="col-6">
+								<select class="form-select" id="mesExpiracion" required>
+									<option value="" selected disabled>Mes</option>
+									<option value="01">01</option>
 												<option value="02">02</option>
 												<option value="03">03</option>
 												<option value="04">04</option>
@@ -332,11 +333,13 @@
 
 									</div>
 
+									<small class="mensaje-error" id="errorFecha"></small>
 								</div>
 
 
 								<!-- CVV -->
 								<div class="col-md-3">
+
 									<label for="cvv" class="form-label">
 										Código de Seguridad
 									</label>
@@ -345,9 +348,10 @@
 										type="password"
 										class="form-control"
 										id="cvv"
-										placeholder="3 dígitos"
-										maxlength="3"
-										required>
+										placeholder="3 dígitos">
+
+									<small class="mensaje-error" id="errorCvv"></small>
+
 								</div>
 
 
