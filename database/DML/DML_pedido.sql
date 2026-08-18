@@ -1,7 +1,7 @@
 -- ================================================
 -- 		Inserts para la Tabla Pedido
 -- ================================================
-INSERT INTO Pedido(fecha_pedido, fecha_entrega, monto_total, status, id_usuario, id_metodo_pago, id_direccion) VALUES
+INSERT INTO pedido(fecha_pedido, fecha_entrega, monto_total, status, id_usuario, id_metodo_pago, id_direccion) VALUES
 ('2026-08-10 18:45:00', '2026-08-11 18:45:00', 1289.00, 'Entregado', 1, 2, 1),
 ('2026-08-15 18:45:00', '2026-08-16 18:45:00', 1430.00, 'Enviado', 2, 1, 2),
 ('2026-08-14 18:45:00', '2026-08-17 18:45:00', 2153.00, 'Enviado', 3, 2, 3),

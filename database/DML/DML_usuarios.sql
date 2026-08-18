@@ -1,7 +1,7 @@
 -- ========================================================
 -- 		Inserts para la Tabla Usuarios (10 clientes)
 -- ========================================================
-INSERT INTO Usuario (nombre, apellido, telefono, area_interes, correo, estado, contrasena) VALUES 
+INSERT INTO usuario (nombre, apellido, telefono, area_interes, correo, estado, contrasena) VALUES 
 ('Mateo', 'Hernández', '5512345678', 'Bovino', 'mateo.hernandez@gmail.com', 'Veracruz', 'H3rn4nd3z!2026'),
 ('Sofía', 'García', '5698765432', 'Porcino', 'sofia.garcia@hotmail.com', 'Jalisco', 'S0f14G4rc14#'),
 ('Santiago', 'López', '5545678901', 'Bovino', 'santiago.lopez@outlook.com', 'Chihuahua', 'S4nt14g0L!99'),
@@ -15,6 +15,6 @@ INSERT INTO Usuario (nombre, apellido, telefono, area_interes, correo, estado, c
 -- =================================================================================================
 -- 		Inserts para la Tabla Usuarios (2 Admin) | Apartir del id_11 para que no tenga pedidos
 -- =================================================================================================
-INSERT INTO Usuario (nombre, apellido, telefono, area_interes, correo, estado, contrasena, rol) VALUES 
+INSERT INTO usuario (nombre, apellido, telefono, area_interes, correo, estado, contrasena, rol) VALUES 
 ('Admin', 'General', '5599887766', 'Bovino', 'soporte_toro_forrajero@outlook.com', 'CDMX', 'Admin1234*', 'admin'),
 ('Soporte', 'Sistema', '5500000000', 'Bovino', 'soporte_toro_forrajero@proton.me', 'CDMX', 'AdminPass123!', 'admin');

@@ -63,14 +63,12 @@ CREATE TABLE IF NOT EXISTS `toro_forrajero_db`.`metodo_pago` (
   `num_tarjeta` VARCHAR(100) NOT NULL,
   `fecha_expiracion` VARCHAR(7) NOT NULL,
   `id_usuario` INT NOT NULL,
-  PRIMARY KEY (`id_metodo_pago`, `id_usuario`),
+  PRIMARY KEY (`id_metodo_pago`), -- <--- Único campo como PK
   INDEX `fk_metodo_pago_usuario1_idx` (`id_usuario` ASC) VISIBLE,
   CONSTRAINT `fk_metodo_pago_usuario1`
     FOREIGN KEY (`id_usuario`)
     REFERENCES `toro_forrajero_db`.`usuario` (`id_usuario`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+) ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -87,14 +85,12 @@ CREATE TABLE IF NOT EXISTS `toro_forrajero_db`.`direccion` (
   `telefono` VARCHAR(10) NOT NULL,
   `correo_electronico` VARCHAR(50) NOT NULL,
   `id_usuario` INT NOT NULL,
-  PRIMARY KEY (`id_direccion`, `id_usuario`),
+  PRIMARY KEY (`id_direccion`), 
   INDEX `fk_direccion_usuario1_idx` (`id_usuario` ASC) VISIBLE,
   CONSTRAINT `fk_direccion_usuario1`
     FOREIGN KEY (`id_usuario`)
     REFERENCES `toro_forrajero_db`.`usuario` (`id_usuario`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+) ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -108,27 +104,22 @@ CREATE TABLE IF NOT EXISTS `toro_forrajero_db`.`pedido` (
   `status` VARCHAR(20) NOT NULL,
   `id_usuario` INT NOT NULL,
   `id_metodo_pago` INT NOT NULL,
-  `id_direccion` INT NOT NULL,
-  PRIMARY KEY (`id_pedido`, `id_usuario`, `id_metodo_pago`),
-  INDEX `fk_pedido_usuario_idx` (`id_usuario` ASC) VISIBLE,
-  INDEX `fk_pedido_metodo_pago1_idx` (`id_metodo_pago` ASC) VISIBLE,
-  INDEX `fk_pedido_direccion1_idx` (`id_direccion` ASC) VISIBLE,
+  `id_direccion` INT NOT NULL, 
+  
+  PRIMARY KEY (`id_pedido`),
+  
   CONSTRAINT `fk_pedido_usuario`
     FOREIGN KEY (`id_usuario`)
-    REFERENCES `toro_forrajero_db`.`usuario` (`id_usuario`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_pedido_metodo_pago1`
+    REFERENCES `toro_forrajero_db`.`usuario` (`id_usuario`),
+    
+  CONSTRAINT `fk_pedido_metodo_pago`
     FOREIGN KEY (`id_metodo_pago`)
-    REFERENCES `toro_forrajero_db`.`metodo_pago` (`id_metodo_pago`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_pedido_direccion1`
+    REFERENCES `toro_forrajero_db`.`metodo_pago` (`id_metodo_pago`),
+    
+  CONSTRAINT `fk_pedido_direccion`
     FOREIGN KEY (`id_direccion`)
     REFERENCES `toro_forrajero_db`.`direccion` (`id_direccion`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+) ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
