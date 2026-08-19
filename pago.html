@@ -35,35 +35,33 @@
 	<!-- ===========================================================================
         SECCIÓN: ENCABEZADO Y NAVEGACIÓN (HEADER)
     ============================================================================ -->
-	<header class="sticky-top">
-		<!-- NAV BAR 1: Logo y Accesos rápidos -->
-		<nav class="navbar navbar-1">
-			<div class="container-fluid px-4">
-				<div class="navbar-brand">
-					<img src="recursos-graficos/navbar/forrajero-sinfondo.png" alt="Logo sin fondo de Toro Forrajero"
-						class="logo-navbar d-inline-block align-text-top me-2">
-				</div>
-				<ul class="navbar-nav flex-row ms-auto gap-4">
-					<li class="nav-item">
-						<a class="nav-link icon-link" href="cuenta.html"
-							style="display:flex; flex-direction:column; align-items:center; gap:2px; font-size:13px;">
-							<i class="bi bi-person" style="font-size:18px;"></i>
-							<span>Mi cuenta</span>
-						</a>
-					</li>
-					<li class="nav-item carrito">
-						<a class="nav-link icon-link" href="carrito.html"
-							style="display:flex; flex-direction:column; align-items:center; gap:2px; font-size:13px;">
-							<div class="cart-icon-wrapper">
-								<i class="bi bi-cart3" style="font-size:18px;"></i>
-								<!-- <span class="contador-carrito">0</span> -->
-							</div>
-							<span>Carrito</span>
-						</a>
-					</li>
-				</ul>
-			</div>
-		</nav>
+	<!-- Header y Navegación -->
+    <header>
+        <nav class="navbar navbar-1">
+            <div class="container-fluid px-4">
+                <div class="navbar-brand">
+                    <img src="recursos-graficos/navbar/forrajero-sinfondo.png" alt="Logo sin fondo de Toro Forrajero"
+                        class="logo-navbar d-inline-block align-text-top me-2">
+                </div>
+                <ul class="navbar-nav flex-row ms-auto gap-4">
+                    <li class="nav-item">
+                        <a class="nav-link icon-link" href="inicioSesion.html">
+                            <i class="bi bi-person"></i>
+                            <span>Mi cuenta</span>
+                        </a>
+                    </li>
+                    <li class="nav-item carrito">
+                        <a class="nav-link icon-link" href="carrito.html">
+                            <div class="cart-icon-wrapper">
+                                <i class="bi bi-cart3"></i>
+                                <!-- <span class="contador-carrito">0</span> -->
+                            </div>
+                            <span>Carrito</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
 		<!-- NAV BAR 2: Menú de navegación principal -->
 		<nav class="navbar2">
@@ -124,6 +122,75 @@
 									<i class="bi bi-geo-alt-fill fs-5"></i>
 									Retiro en tienda
 								</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- Retiro en tienda (se muestra al elegir "Retiro en tienda") -->
+					<div class="mb-3" id="bloque-retiro-tienda" style="display: none;">
+
+						<div class="retiro-tienda-card">
+
+							<!-- Encabezado -->
+							<div class="retiro-tienda-header">
+								<i class="bi bi-geo-alt-fill retiro-tienda-header-icon"></i>
+								<div>
+									<p class="retiro-tienda-title">Retira tu pedido en nuestra sucursal</p>
+									<p class="retiro-tienda-subtitle">Tu pedido estará listo para recoger aquí.</p>
+								</div>
+							</div>
+
+							<!-- Mapa + información -->
+							<div class="row g-3 align-items-stretch">
+
+								<!-- Mapa -->
+								<div class="col-md-7">
+									<div class="retiro-tienda-mapa">
+										<iframe
+											src="https://maps.google.com/maps?q=Cerro+Lejos&output=embed"
+											width="100%"
+											height="100%"
+											style="border:0; display:block; min-height: 220px;"
+											allowfullscreen=""
+											loading="lazy"
+											referrerpolicy="no-referrer-when-downgrade">
+										</iframe>
+									</div>
+								</div>
+
+								<!-- Panel de información para retiro en tienda -->
+								<div class="col-md-5">
+									<div class="retiro-tienda-info h-100">
+
+										<div class="retiro-info-item">
+											<div class="retiro-info-icon">
+												<i class="bi bi-geo-alt-fill"></i>
+											</div>
+											<div>
+												<p class="retiro-info-title">Dirección</p>
+												<p class="retiro-info-text">
+													Cerro de la Estrella
+												</p>
+											</div>
+										</div>
+
+										<hr class="retiro-info-divider">
+
+										<div class="retiro-info-item">
+											<div class="retiro-info-icon">
+												<i class="bi bi-clock-fill"></i>
+											</div>
+											<div>
+												<p class="retiro-info-title">Horario de atención</p>
+												<p class="retiro-info-text">
+													10:00 a.m. - 7:00 p.m.
+												</p>
+											</div>
+										</div>
+
+									</div>
+								</div>
+
 							</div>
 						</div>
 					</div>
@@ -246,35 +313,8 @@
 						<button class="btn btn-primary" type="submit">Continuar</button>
 					</div>
 
-				</form>
-
-				<!-- Retiro en tienda (se muestra al elegir "Retiro en tienda") -->
-				<div class="mb-3" id="bloque-retiro-tienda" style="display: none;">
-					<p class="checkout-section-label mb-2">Retiro en tienda:</p>
-
-					<div class="mb-3" style="border-radius: 8px; overflow: hidden; border: 1px solid var(--color-naranjaClaro);">
-						<iframe
-							src="https://maps.google.com/maps?q=Cerro+Lejos&output=embed"
-							width="100%"
-							height="220"
-							style="border:0; display:block;"
-							allowfullscreen=""
-							loading="lazy"
-							referrerpolicy="no-referrer-when-downgrade">
-						</iframe>
 					</div>
-
-					<div class="address-input p-3">
-						<p class="mb-2">
-							<i class="bi bi-geo-alt-fill me-2"></i>
-							Cerro de la Estrella
-						</p>
-						<p class="mb-0">
-							<i class="bi bi-clock me-2"></i>
-							10:00 a.m. - 7:00 p.m.
-						</p>
-					</div>
-				</div>
+					</form>
 			</div>
 		</section>
 
