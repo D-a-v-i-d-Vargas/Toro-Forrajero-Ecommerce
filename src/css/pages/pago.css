@@ -1,6 +1,9 @@
 /* FINAL DE LA COMPRA PARTE 1 */
 
 
+#detalle-pedido {
+    padding-left: 36px;
+}
 
 .checkout-title {
     color: var(--color-verdeFuerte);

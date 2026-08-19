@@ -95,11 +95,11 @@
 				<details class="order-summary-bar px-4 py-3 mb-4" data-aos="fade-up" data-aos-delay="150">
 					<summary class="d-flex justify-content-between align-items-center">
 						<span><i class="bi bi-chevron-down me-2"></i>Resumen del pedido</span>
-						<span id="total-pedido">$12,090.00 MXN</span>
+						   <span id="total-pedido">$0.00 MXN</span>
 					</summary>
 					<div class="pt-3">
 						<!-- Aquí puede ir el detalle de productos del carrito -->
-						<p class="mb-0 small">xxxxxxxxxxxxxxxxxxx...</p>
+						<div id="detalle-pedido"></div>
 					</div>
 				</details>
 
@@ -136,54 +136,111 @@
 							<div class="col-md-6">
 								<select id="estado" name="estado" class="form-select address-input py-2">
 									<option value="" disabled selected>Estado</option>
+									 <option value="ags">Aguascalientes</option>
+									<option value="bc">Baja California</option>
+									<option value="bcs">Baja California Sur</option>
+									<option value="camp">Campeche</option>
+									<option value="chis">Chiapas</option>
+									<option value="chih">Chihuahua</option>
 									<option value="cdmx">Ciudad de México</option>
-									<option value="jalisco">Jalisco</option>
-									<option value="nuevo-leon">Nuevo León</option>
-									<option value="slp">San Luis Potosi</option>
+									<option value="coah">Coahuila</option>
+									<option value="col">Colima</option>
+									<option value="dgo">Durango</option>
+									<option value="gto">Guanajuato</option>
+									<option value="gro">Guerrero</option>
+									<option value="hgo">Hidalgo</option>
+									<option value="jal">Jalisco</option>
+									<option value="mex">Estado de México</option>
+									<option value="mich">Michoacán</option>
+									<option value="mor">Morelos</option>
+									<option value="nay">Nayarit</option>
+									<option value="nl">Nuevo León</option>
+									<option value="oax">Oaxaca</option>
+									<option value="pue">Puebla</option>
+									<option value="qro">Querétaro</option>
+									<option value="qroo">Quintana Roo</option>
+									<option value="slp">San Luis Potosí</option>
+									<option value="sin">Sinaloa</option>
+									<option value="son">Sonora</option>
+									<option value="tab">Tabasco</option>
+									<option value="tamps">Tamaulipas</option>
+									<option value="tlax">Tlaxcala</option>
+									<option value="ver">Veracruz</option>
+									<option value="yuc">Yucatán</option>
+									<option value="zac">Zacatecas</option>
 								</select>
+								<div id="error-estado" class="narnaja-text small mt-1 text-center"><p></p></div>
 							</div>
 							<div class="col-md-6">
 								<input type="text" id="ciudad" name="ciudad" autocomplete="off"
-									class="form-control address-input py-2 text-end" placeholder="Ciudad de México">
+									class="form-control address-input py-2 text-end" placeholder="Ciudad">
+									<div id="error-ciudad" class="narnaja-text small mt-1 text-center"><p></p></div>
 							</div>
 						</div>
 
 						<div class="mb-3">
 							<input type="text" id="direccion" name="direccion" autocomplete="off"
 								class="form-control address-input py-2 text-end" placeholder="Dirección">
+								<div id="error-direccion" class="narnaja-text small mt-1 text-center"><p></p></div>
 						</div>
 
 						<div class="row g-3 mb-3">
-							<div class="col-6 col-md-3">
-								<input type="text" id="numero-exterior" name="numero_exterior" autocomplete="off"
-									class="form-control address-input py-2 text-center" placeholder="No. Exterior">
-							</div>
-							<div class="col-6 col-md-3">
-								<input type="text" id="numero-interior" name="numero_interior" autocomplete="off"
-									class="form-control address-input py-2 text-center" placeholder="No. Interior">
-							</div>
-							<div class="col-6 col-md-3">
-								<input type="text" id="codigo-postal" name="codigo_postal" maxlength="5"
-									autocomplete="off" class="form-control address-input py-2 text-center"
-									placeholder="Código Postal">
-							</div>
-							<div class="col-6 col-md-3">
-								<input type="text" id="ciudad-2" name="ciudad_2" autocomplete="off"
-									class="form-control address-input py-2 text-end" placeholder="Ciudad">
-							</div>
-						</div>
+   						 <div class="col-6 col-md-3">
+        					<input type="text" id="numero-exterior" name="numero_exterior" autocomplete="off"
+            					class="form-control address-input py-2 text-center" placeholder="No. Exterior">
+
+       					 <div id="error-numero-exterior" class="narnaja-text mt-1 text-center">
+           				 <p></p>
+       					 </div>
+    					</div>
+
+   						 <div class="col-6 col-md-3">
+       					 <input type="text" id="numero-interior" name="numero_interior" autocomplete="off"
+          				  class="form-control address-input py-2 text-center" placeholder="No. Interior">
+
+        				<div id="error-numero-interior" class="narnaja-text small mt-1 text-center">
+            			<p></p>
+       					 </div>
+   					 </div>
+
+   				 		<div class="col-6 col-md-3">
+       			 			<input type="text" id="codigo-postal" name="codigo_postal" maxlength="5"
+            					autocomplete="off" class="form-control address-input py-2 text-center"
+           						 placeholder="Código Postal">
+
+        				<div id="error-codigo-postal" class="narnaja-text small mt-1 text-center">
+            			<p></p>
+       				 </div>
+   					 </div>
+
+   						 <div class="col-6 col-md-3">
+        				<input type="text" id="ciudad-2" name="ciudad_2" autocomplete="off"
+           				 class="form-control address-input py-2 text-end" placeholder="Ciudad">
+
+        				<div id="error-ciudad-2" class="narnaja-text small mt-1 text-center">
+          			  <p></p>
+       				 </div>
+   					 </div>
+					</div>
 
 						<div class="mb-3">
-							<input type="tel" id="telefono" name="telefono" maxlength="10" pattern="[0-9]{10}"
-								autocomplete="off" class="form-control address-input py-2 text-end"
-								placeholder="Teléfono">
-						</div>
+   						 <input type="tel" id="telefono" name="telefono" maxlength="10" pattern="[0-9]{10}"
+        					autocomplete="off" class="form-control address-input py-2 text-end"
+        					placeholder="Teléfono">
 
-						<div class="mb-4">
-							<input type="email" id="correo" name="correo" autocomplete="off"
-								class="form-control address-input py-2 text-end" placeholder="Correo electronico">
-						</div>
+    				<div id="error-telefono" class="narnaja-text small mt-1 text-center">
+       				 <p></p>
+    					</div>
 					</div>
+
+					<div class="mb-4">
+   						 <input type="email" id="correo" name="correo" autocomplete="off"
+        			class="form-control address-input py-2 text-end" placeholder="Correo electronico">
+
+   					 <div id="error-correo" class="narnaja-text small mt-1 text-center">
+       					 <p></p>
+    					</div>
+						</div>
 
 					<div class="d-grid gap-2 col-10 mx-auto mb-4">
 						<button class="btn btn-primary" type="submit">Continuar</button>
@@ -210,7 +267,7 @@
 					<div class="address-input p-3">
 						<p class="mb-2">
 							<i class="bi bi-geo-alt-fill me-2"></i>
-							Cerro Lejos, a dos horas de la ciudad
+							Cerro de la Estrella
 						</p>
 						<p class="mb-0">
 							<i class="bi bi-clock me-2"></i>
@@ -218,10 +275,12 @@
 						</p>
 					</div>
 				</div>
-
 			</div>
 		</section>
-		<section class="pago-container">
+
+
+
+					<section class="pago-container">
 
 				<!-- Opciones superiores -->
 				<div class="opciones-pago mb-4">
