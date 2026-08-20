@@ -159,14 +159,43 @@
                             </div>
                         </div>
 
-                        <!-- Fila 4: Estado (Ancho completo) -->
+                        <!-- Fila 4: Estado -->
                         <div class="col-12">
                             <label for="estado" class="form-label-custom fw-bold text-left w-100">Estado</label>
                             <select class="form-select select-placeholder" id="estado">
                                 <option value="" disabled selected>Estado</option>
-                                <option value="activo">Activo</option>
-                                <option value="inactivo">Inactivo</option>
-                                <option value="pendiente">Pendiente</option>
+                                <option value="Aguascalientes">Aguascalientes</option>
+                                <option value="Baja California">Baja California</option>
+                                <option value="Baja California Sur">Baja California Sur</option>
+                                <option value="Campeche">Campeche</option>
+                                <option value="Chiapas">Chiapas</option>
+                                <option value="Chihuahua">Chihuahua</option>
+                                <option value="Ciudad de México">Ciudad de México</option>
+                                <option value="Coahuila">Coahuila</option>
+                                <option value="Colima">Colima</option>
+                                <option value="Durango">Durango</option>
+                                <option value="Estado de México">Estado de México</option>
+                                <option value="Guanajuato">Guanajuato</option>
+                                <option value="Guerrero">Guerrero</option>
+                                <option value="Hidalgo">Hidalgo</option>
+                                <option value="Jalisco">Jalisco</option>
+                                <option value="Michoacán">Michoacán</option>
+                                <option value="Morelos">Morelos</option>
+                                <option value="Nayarit">Nayarit</option>
+                                <option value="Nuevo León">Nuevo León</option>
+                                <option value="Oaxaca">Oaxaca</option>
+                                <option value="Puebla">Puebla</option>
+                                <option value="Querétaro">Querétaro</option>
+                                <option value="Quintana Roo">Quintana Roo</option>
+                                <option value="San Luis Potosí">San Luis Potosí</option>
+                                <option value="Sinaloa">Sinaloa</option>
+                                <option value="Sonora">Sonora</option>
+                                <option value="Tabasco">Tabasco</option>
+                                <option value="Tamaulipas">Tamaulipas</option>
+                                <option value="Tlaxcala">Tlaxcala</option>
+                                <option value="Veracruz">Veracruz</option>
+                                <option value="Yucatán">Yucatán</option>
+                                <option value="Zacatecas">Zacatecas</option>
                             </select>
                             <div id="error-estado" class="narnaja-text small mt-1 text-center">
                                 <p></p>
@@ -184,9 +213,8 @@
                                 placeholder="Ingresa tu contraseña" autocomplete="new-password">
 
                             <!-- Mensaje de validación -->
-                            <div id="errorPassword" class="mensaje-error narnaja-text small mt-1 text-center d-none">
-                                <strong>Contraseña no válida:</strong>
-                                Debes ingresar al menos 8 caracteres.
+                            <div id="errorPassword" class="narnaja-text small mt-1 text-center">
+                                <p></p>
                             </div>
                         </div>
 
@@ -200,15 +228,13 @@
                                 placeholder="Confirma tu contraseña" autocomplete="new-password">
 
                             <!-- Mensaje de validación -->
-                            <div id="errorConfirmarPassword"
-                                class="mensaje-error  narnaja-text small mt-1 text-center  d-none">
-                                <strong>Las contraseñas no coinciden:</strong>
-                                Debes ingresar la misma contraseña.
+                            <div id="errorConfirmarPassword" class="narnaja-text small mt-1 text-center">
+                                <p></p>
                             </div>
                         </div>
                         <!-- Botón Enviar -->
                         <div class="col-12 d-flex justify-content-left mt-4">
-                            <button class="btn btn-primary px-5 py-2" type="submit">Unirme</button>
+                            <button id="btnUnirme" class="btn btn-primary px-5 py-2" type="submit">Unirme</button>
                         </div>
 
                     </div>
