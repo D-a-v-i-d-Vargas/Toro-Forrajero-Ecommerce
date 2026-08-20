@@ -74,6 +74,143 @@
     object-fit: contain;
 }
 
+
+
+/* ==========================================================
+    GRID DE PRODUCTOS
+========================================================== */
+
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+
+/* =========================================================
+   TARJETAS DE PRODUCTOS
+========================================================= */
+
+.tarjeta-producto {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 100%;
+    padding: 25px;
+    padding-bottom: 0;
+
+    background-color: #fffdf2;
+    border: 1px solid #d49a53;
+    border-radius: 10px;
+
+    font-family: "Montserrat", sans-serif;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.tarjeta-producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(40, 54, 24, 0.15);
+}
+
+.tarjeta-producto img {
+    display: block;
+    width: 100%;
+    max-width: 190px;
+    height: 230px;
+
+    margin: 0 auto 20px;
+
+    object-fit: contain;
+}
+
+.contenido-producto {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.contenido-producto h2 {
+    color: #111111;
+    font-family: "Geologica", sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.contenido-producto p {
+    color: #777777;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.precio {
+    display: block;
+    color: #111111;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-top: auto;
+}
+
+
+.boton-carrito {
+    align-self: center;
+    padding: 0px 25px;
+
+    background-color: #bc5f08;
+    color: #ffffff;
+
+    border: none;
+    border-radius: 7px;
+
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.boton-carrito:hover {
+    background-color: #934805;
+    transform: scale(1.03);
+}
+
+
+/* =========================================================
+   DISEÑO RESPONSIVO
+========================================================= */
+
+@media screen and (max-width: 992px) {
+    .productos-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .productos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .categorias-productos {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .boton-categoria {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .productos-encabezado h1 {
+        font-size: 2rem;
+    }
+
+    .tarjeta-producto {
+        padding: 20px;
+    }
+}
+
 /* ==========================================================
     BENEFICIOS
 ========================================================== */
