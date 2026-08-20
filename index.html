@@ -22,6 +22,7 @@
 		rel="stylesheet">
 
 	<link rel="stylesheet" href="build/css/app.css">
+	<script type="module" src="build/js/adminAuth.js"></script>
 </head>
 
 <body>
@@ -45,15 +46,15 @@
 						</a>
 					</li>
 
-                    <li class="nav-item carrito">
-                        <a class="nav-link icon-link" href="carrito.html">
-                            <div class="cart-icon-wrapper">
-                                <i class="bi bi-cart3"></i>
-                                <!-- <span class="contador-carrito">0</span> -->
-                            </div>
-                            <span>Carrito</span>
-                        </a>
-                    </li>
+					<li class="nav-item carrito">
+						<a class="nav-link icon-link" href="carrito.html">
+							<div class="cart-icon-wrapper">
+								<i class="bi bi-cart3"></i>
+								<!-- <span class="contador-carrito">0</span> -->
+							</div>
+							<span>Carrito</span>
+						</a>
+					</li>
 				</ul>
 			</div>
 
@@ -68,7 +69,7 @@
 				<li><a href="index.html">INICIO</a></li>
 				<li><a href="acercaNosotros.html">NOSOTROS</a></li>
 				<li><a href="contactanos.html">CONTACTO</a></li>
-				<li><a href="productos.html">PRODUCTOS</a></li>
+				<li><a href="productos.html" id="linkProductos">PRODUCTOS</a></li>
 				<div class="indicator"></div>
 			</ul>
 		</nav>
@@ -79,86 +80,86 @@
             SECCIÓN: HERO - CALIDAD
         ============================================================================ -->
 	<section id="home-calidad">
-    <div class="home-hero-content">
+		<div class="home-hero-content">
 
-        <div class="home-hero-text">
+			<div class="home-hero-text">
 
-            <h1 id="hero-title">
-                Calidad que <br>
-                se ve, resultados <br>
-                que se notan.
-            </h1>
+				<h1 id="hero-title">
+					Calidad que <br>
+					se ve, resultados <br>
+					que se notan.
+				</h1>
 
-            <p>
-                Forrajes y granos seleccionados para
-                el bienestar y rendimiento de tus animales.
-            </p>
+				<p>
+					Forrajes y granos seleccionados para
+					el bienestar y rendimiento de tus animales.
+				</p>
 
-            <a href="#" class="btn-hero">
-                Comprar ahora →
-            </a>
+				<a href="#" class="btn-hero">
+					Comprar ahora →
+				</a>
 
-        </div>
+			</div>
 
-        <div class="home-hero-image">
-            <img src="recursos-graficos/navbar/trigo.png" alt="Productos">
-        </div>
+			<div class="home-hero-image">
+				<img src="recursos-graficos/navbar/trigo.png" alt="Productos">
+			</div>
 
-    </div>
-</section>
+		</div>
+	</section>
 
 	<!-- ===========================================================================
             SECCIÓN: DIVISOR VERDE ...
         ============================================================================ -->
 
-		
-		<section class="beneficios">
 
-			<div class="beneficio">
-				<div class="icono-circulo">
-					<i class="bi bi-tree"></i>
-				</div>
+	<section class="beneficios">
 
-				<p>
-					Productos<br>
-					naturales
-				</p>
+		<div class="beneficio">
+			<div class="icono-circulo">
+				<i class="bi bi-tree"></i>
 			</div>
 
-			<div class="beneficio">
-				<div class="icono-circulo">
-					<i class="bi bi-patch-check"></i>
-				</div>
+			<p>
+				Productos<br>
+				naturales
+			</p>
+		</div>
 
-				<p>
-					Calidad<br>
-					garantizada
-				</p>
+		<div class="beneficio">
+			<div class="icono-circulo">
+				<i class="bi bi-patch-check"></i>
 			</div>
 
-			<div class="beneficio">
-				<div class="icono-sin-circulo">
-					<i class="bi bi-headset"></i>
-				</div>
+			<p>
+				Calidad<br>
+				garantizada
+			</p>
+		</div>
 
-				<p>
-					Atención<br>
-					personalizada
-				</p>
+		<div class="beneficio">
+			<div class="icono-sin-circulo">
+				<i class="bi bi-headset"></i>
 			</div>
 
-			<div class="beneficio">
-				<div class="icono-camion">
-					<i class="bi bi-truck"></i>
-				</div>
+			<p>
+				Atención<br>
+				personalizada
+			</p>
+		</div>
 
-				<p>
-					Envíos a todo<br>
-					México
-				</p>
+		<div class="beneficio">
+			<div class="icono-camion">
+				<i class="bi bi-truck"></i>
 			</div>
 
-		</section>
+			<p>
+				Envíos a todo<br>
+				México
+			</p>
+		</div>
+
+	</section>
 
 	<section id="divisor-verde">
 
@@ -169,47 +170,50 @@
         ============================================================================ -->
 	<section id="productos-destacados">
 		<h2>Productos destacados</h2>
-	
+
 		<div class="productos-grid">
 			<div class="tarjeta-producto">
 				<img src="recursos-graficos/productos/ovino/ovino-adm-borrego-forte.png">
-	
+
 				<div class="contenido-producto">
 					<h2>Borregos Forte</h2>
-					<p>Alimento balanceado de alta tecnología para ovinos en etapa de engorda y finalización. Elaborado con
+					<p>Alimento balanceado de alta tecnología para ovinos en etapa de engorda y finalización. Elaborado
+						con
 						ingredientes de alta calidad.</p>
 					<span class="precio">$269.00 MXN</span>
-	
+
 					<button type="button" class="boton-carrito">
 						Agregar al carrito
 					</button>
 				</div>
 			</div>
-	
+
 			<div class="tarjeta-producto">
 				<img src="recursos-graficos/productos/aves/aves-adm-pollo-especial.png">
-	
+
 				<div class="contenido-producto">
 					<h2>Pollo Especial</h2>
-					<p>Alimento balanceado de alta tecnología para pollitos de engorda. Elaborado con ingredientes de alta
+					<p>Alimento balanceado de alta tecnología para pollitos de engorda. Elaborado con ingredientes de
+						alta
 						calidad.</p>
 					<span class="precio">$245.00 MXN</span>
-	
+
 					<button type="button" class="boton-carrito">
 						Agregar al carrito
 					</button>
 				</div>
 			</div>
-	
+
 			<div class="tarjeta-producto">
 				<img src="recursos-graficos/productos/bovino/bovino-adm-mezcla-nutridor.png">
-	
+
 				<div class="contenido-producto">
 					<h2>Mezcla Nutridor</h2>
-					<p>Alimento balanceado de alta tecnología para vacas altas productoras. Elaborado con ingredientes de
+					<p>Alimento balanceado de alta tecnología para vacas altas productoras. Elaborado con ingredientes
+						de
 						alta calidad.</p>
 					<span class="precio">$279.00 MXN</span>
-	
+
 					<button type="button" class="boton-carrito">
 						Agregar al carrito
 					</button>
@@ -223,12 +227,14 @@
 	<div class="container-fluid px-0">
 		<section id="mejor-alimentacion" class="position-relative overflow-hidden text-white">
 			<div class="row align-items-center h-100 position-relative z-1">
-			
+
 				<!-- Columna Izquierda: Ícono + Texto + Botón -->
 				<div class="col-12 col-md-7 col-lg-6 d-flex align-items-center gap-3">
 					<!-- Ícono de Hoja/Brote -->
 					<div class="flex-shrink-0">
-						<svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="mejor-alimentacion__icon">
+						<svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+							stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+							class="mejor-alimentacion__icon">
 							<path d="M12 22V12" />
 							<path d="M12 12C12 7 7 4 2 5c0 5 3 10 10 10" />
 							<path d="M12 12C12 7 17 4 22 5c0 5-3 10-10 10" />
@@ -248,7 +254,8 @@
 			</div>
 
 			<!-- Imagen de las vacas esquina inferior derecha -->
-			<img src="./recursos-graficos/home/vacas-comiendo.png" alt="vacas-comiendo" class="position-absolute bottom-0 end-0 pe-none img-fluid mejor-alimentacion__img">
+			<img src="./recursos-graficos/home/vacas-comiendo.png" alt="vacas-comiendo"
+				class="position-absolute bottom-0 end-0 pe-none img-fluid mejor-alimentacion__img">
 		</section>
 	</div>
 
@@ -256,58 +263,61 @@
             SECCIÓN: RESEÑAS
         ============================================================================ -->
 	<section id="resenas">
-    <!--Cards de reseñas. Idea - poner un widget con reseñas directas de google con herramientas como Elfsight (necesitamos una página en google) o EmbedSocial-->
-    <div class="container-xl">
-		<div>
+		<!--Cards de reseñas. Idea - poner un widget con reseñas directas de google con herramientas como Elfsight (necesitamos una página en google) o EmbedSocial-->
+		<div class="container-xl">
+			<div>
 				<h2 class="titulo-reseñas">Reseñas</h2>
-		</div>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col">
-                <div class="card reseña">
-                    <div class="card-body">
-                        <h4 class="card-title texto-verde-oscuro">"Un servicio magnífico"</h4>
-                        <h5>★★★★★</h5>
-                        <div class="review-author">
-                            <img class="foto-circulo" src="recursos-graficos/home/AdultoMayor-perfil.jpg" alt="Campesino. Gökhan Tahincioğlu">
-                            <div>
-                                <h6 class="mb-0">Mateo Gómez</h6>
-                                <small>Cliente frecuente</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card reseña">
-                    <div class="card-body">
-                        <h4 class="card-title texto-verde-oscuro">"Una atención fantástica"</h4>
-                        <h5>★★★★★</h5>
-                        <div class="review-author">
-                            <img class="foto-circulo" src="recursos-graficos/home/Chica-vaquera.jpg" alt="Vaquera. José Lugo ">
-                            <div>
-                                <h6 class="mb-0">Elizabeth Martínez</h6>
-                                <small>Cliente frecuente</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card reseña">
-                    <div class="card-body">
-                        <h4 class="card-title texto-verde-oscuro">"Un producto estupendo"</h4>
-                        <h5>★★★★★</h5>
-                        <div class="review-author">
-                            <img class="foto-circulo" src="recursos-graficos/home/Señor-hacendado.jpg" alt="Hacendado. Israyosoy S.">
-                            <div>
-                                <h6 class="mb-0">Carlos Ruiz</h6>
-                                <small>Nuevo cliente</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+			</div>
+			<div class="row row-cols-1 row-cols-md-3 g-4">
+				<div class="col">
+					<div class="card reseña">
+						<div class="card-body">
+							<h4 class="card-title texto-verde-oscuro">"Un servicio magnífico"</h4>
+							<h5>★★★★★</h5>
+							<div class="review-author">
+								<img class="foto-circulo" src="recursos-graficos/home/AdultoMayor-perfil.jpg"
+									alt="Campesino. Gökhan Tahincioğlu">
+								<div>
+									<h6 class="mb-0">Mateo Gómez</h6>
+									<small>Cliente frecuente</small>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card reseña">
+						<div class="card-body">
+							<h4 class="card-title texto-verde-oscuro">"Una atención fantástica"</h4>
+							<h5>★★★★★</h5>
+							<div class="review-author">
+								<img class="foto-circulo" src="recursos-graficos/home/Chica-vaquera.jpg"
+									alt="Vaquera. José Lugo ">
+								<div>
+									<h6 class="mb-0">Elizabeth Martínez</h6>
+									<small>Cliente frecuente</small>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card reseña">
+						<div class="card-body">
+							<h4 class="card-title texto-verde-oscuro">"Un producto estupendo"</h4>
+							<h5>★★★★★</h5>
+							<div class="review-author">
+								<img class="foto-circulo" src="recursos-graficos/home/Señor-hacendado.jpg"
+									alt="Hacendado. Israyosoy S.">
+								<div>
+									<h6 class="mb-0">Carlos Ruiz</h6>
+									<small>Nuevo cliente</small>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 	</section>
 
 	<!-- ===========================================================================
@@ -319,8 +329,7 @@
 
 			<!-- Logo y redes sociales -->
 			<div class="footer-brand">
-				<img src="recursos-graficos/footer/forrajero-verde1.png" alt="Logo Forrajero"
-					class="footer-logo">
+				<img src="recursos-graficos/footer/forrajero-verde1.png" alt="Logo Forrajero" class="footer-logo">
 
                 <div class="footer-social">
                     <a href="#" aria-label="Facebook">
@@ -410,6 +419,8 @@
 	<!--Script de js-->
 	<script src="build/js/home.js"></script>
 	<script src="build/js/carrito.js"></script>
+	
+
 </body>
 
 </html>

@@ -1,38 +1,91 @@
 /*******************************************************************************
- * PÁGINA: Admin Crear producto
+ * PÁGINA: Admin Crear producto (build/js/adminCrear.js)
  ******************************************************************************/
 
-// Objeto que acumulará los datos
+// Objeto que acumulará los datos antes de enviar
 const mensajeValidado = {
     mNombreProducto: "",
     mEspecie: "",
     mMarca: "",
-    mPeso: "",
     mCosto: "",
     mPrecio: "",
+    mExistencia: "",
     mDescripcion: "",
-    mDestacado: "",
-    mEstado: ""
+    mDestacado: "inactivo",
+    mEstado: "inactivo",
+    mImagen: ""
 };
 
 function reiniciarMensajeValidado() {
     mensajeValidado.mNombreProducto = "";
     mensajeValidado.mEspecie = "";
     mensajeValidado.mMarca = "";
-    mensajeValidado.mPeso = "";
     mensajeValidado.mCosto = "";
     mensajeValidado.mPrecio = "";
+    mensajeValidado.mExistencia = "";
     mensajeValidado.mDescripcion = "";
-    mensajeValidado.mDestacado = "";
+    mensajeValidado.mDestacado = "inactivo";
     mensajeValidado.mEstado = "inactivo";
     mensajeValidado.mImagen = "";
 }
 
 //=============================================================================
-//                              Validaciones
+//                       AUTENTICACIÓN Y ROL
 //=============================================================================
 
-// Diana - Validación del Nombre del producto
+function esAdmin() {
+    const usuarioSesion = JSON.parse(localStorage.getItem('usuarioActivo')) || null;
+    return usuarioSesion && usuarioSesion.rol === 'admin';
+}
+
+function verificarAccesoAdmin() {
+    if (!esAdmin()) {
+        mostrarModalAccesoDenegado("Acceso denegado: No tienes permisos para acceder a esta página.");
+        return false;
+    }
+    return true;
+}
+
+function mostrarModalAccesoDenegado(mensaje) {
+    const modal = document.createElement('DIV');
+    modal.classList.add('modal-fullscreen-overlay');
+
+    const contenidoModal = document.createElement('DIV');
+    contenidoModal.classList.add('contenido-modal-denegado');
+
+    contenidoModal.innerHTML = `
+        <h3 class="text-center titulo-denegado">${mensaje}</h3>
+        <div class="d-flex admin-btns justify-content-center mt-4">
+            <button type="button" class="btn-cancelar">Entendido</button>
+        </div>
+    `;
+
+    modal.appendChild(contenidoModal);
+
+    const redirigir = () => {
+        cerrarModalGenerico('.modal-fullscreen-overlay');
+        window.location.href = "index.html";
+    };
+
+    modal.addEventListener('click', function (evento) {
+        if (evento.target === modal) redirigir();
+    });
+
+    const btnEntendido = contenidoModal.querySelector('.btn-cancelar');
+    btnEntendido?.addEventListener('click', redirigir);
+
+    document.body.classList.add('overflow-hidden');
+    document.body.appendChild(modal);
+
+    setTimeout(() => {
+        modal.classList.add('is-visible');
+    }, 10);
+}
+
+//=============================================================================
+//                              VALIDACIONES
+//=============================================================================
+
 function validarNombreProducto(inputNombreProducto) {
     if (!inputNombreProducto) return "No se encontró el campo Nombre Producto";
     const nombreProducto = inputNombreProducto.value.trim();
@@ -42,14 +95,12 @@ function validarNombreProducto(inputNombreProducto) {
     return undefined;
 }
 
-// Validación de Especie
 function validarEspecie(selectEspecie) {
-    if (!selectEspecie) return "No se encontró el selector de motivo.";
+    if (!selectEspecie) return "No se encontró el selector de especie.";
     if (selectEspecie.value === "") return `<span class="alerta-titulo">Debe seleccionar una especie.</span>`;
     return undefined;
 }
 
-// Oscar - VALIDACIÓN DEL CAMPO MARCA
 function validarMarca(selectMarca) {
     if (!selectMarca) return "No se encontró el campo Marca";
     const marca = selectMarca.value.trim();
@@ -59,52 +110,7 @@ function validarMarca(selectMarca) {
     return undefined;
 }
 
-
-// Restringe el input para que solo acepte dígitos y máximo un punto decimal
-function restringirSoloNumeros(inputElement) {
-    if (!inputElement) return;
-
-    inputElement.addEventListener('keydown', function (e) {
-        // 1. Teclas de navegación y control permitidas
-        const teclasPermitidas = [
-            'Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Enter'
-        ];
-
-        // Permitir controles del sistema (como Ctrl+C, Ctrl+V, Tab, etc.)
-        if (teclasPermitidas.includes(e.key) || e.ctrlKey || e.metaKey) {
-            return;
-        }
-
-        // 2. BLOQUEO DEL SEGUNDO PUNTO:
-        if (e.key === '.') {
-            // Si el valor actual del input ya contiene un punto, bloqueamos la tecla
-            if (e.target.value.includes('.')) {
-                e.preventDefault();
-            }
-            return;
-        }
-
-        // 3. Bloquear cualquier tecla que NO sea un número del 0 al 9
-        if (!/^[0-9]$/.test(e.key)) {
-            e.preventDefault();
-        }
-    });
-}
-document.addEventListener('DOMContentLoaded', () => {
-    const eCosto = document.getElementById("costo");
-    const ePrecio = document.getElementById("precioVenta");
-    const eExsistencia = document.getElementById("existencia");
-
-    restringirSoloNumeros(eCosto);
-    restringirSoloNumeros(ePrecio);
-    restringirSoloNumeros(eExsistencia);
-
-    // ... el resto de tu código
-});
-
-// Validación del campo Costo (MXN)
 function validarCosto(eCosto) {
-
     if (!eCosto) return "No se encontró el campo Costo";
     const costo = eCosto.value.trim();
     const alertMensaje = `<span class="alerta-titulo narnaja-text">El costo </span>`;
@@ -116,7 +122,6 @@ function validarCosto(eCosto) {
     return undefined;
 }
 
-// Vane - PRECIO DE VENTA
 function validarPrecioVenta(ePrecioVenta) {
     if (!ePrecioVenta) return "No se encontró el campo Precio de Venta";
     const precioVenta = ePrecioVenta.value.trim();
@@ -127,7 +132,6 @@ function validarPrecioVenta(ePrecioVenta) {
     return undefined;
 }
 
-// EXISTENCIA
 function validarExistencia(eExistencia) {
     if (!eExistencia) return "No se encontró el campo Existencia";
     const existencia = eExistencia.value.trim();
@@ -184,34 +188,6 @@ function validarImagen(inputImagen) {
     return undefined;
 }
 
-/**
- * Convierte un archivo de imagen en una cadena de texto en formato Data URL (Base64).
- * 
- * ¿Por qué se utiliza una Promise?
- * La lectura de archivos mediante 'FileReader' en JavaScript es una operación asíncrona.
- * Retornar una Promise permite pausar la ejecución mediante 'await' en el flujo principal
- * hasta que el archivo se haya leído por completo, evitando guardar datos incompletos en el JSON.
- * 
- * @param {File} imagen - Objeto 'File' obtenido desde el input de tipo file.
- * @returns {Promise<string>} Una Promesa que se resuelve devolviendo el string en Base64.
- */
-function obtenerBase64(imagen) {
-    return new Promise((resolve, reject) => {
-        // Instanciamos el lector de archivos de la API nativa de JavaScript
-        const reader = new FileReader();
-
-        // Leemos el archivo binario y lo transformamos a una cadena Data URL (base64)
-        reader.readAsDataURL(imagen);
-
-        // Evento que se dispara cuando la lectura finaliza exitosamente
-        reader.onload = () => resolve(reader.result);
-
-        // Evento que se dispara si ocurre un problema al procesar el archivo
-        reader.onerror = error => reject(error);
-    });
-}
-
-// DESCRIPCIÓN 
 function validarMensaje(inputMensaje) {
     if (!inputMensaje) return "No se encontró la caja de comentarios.";
     const texto = inputMensaje.value.trim();
@@ -225,32 +201,74 @@ function validarMensaje(inputMensaje) {
     return undefined;
 }
 
-const COMENTARIO = document.getElementById("descripcion-producto");
-const CONTADOR = document.getElementById("contador");
-const longitud_maxima = 300;
+//=============================================================================
+//                              UTILIDADES Y HELPERS
+//=============================================================================
+
+function restringirSoloNumeros(inputElement) {
+    if (!inputElement) return;
+
+    inputElement.addEventListener('keydown', function (e) {
+        const teclasPermitidas = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Enter'];
+
+        if (teclasPermitidas.includes(e.key) || e.ctrlKey || e.metaKey) {
+            return;
+        }
+
+        if (e.key === '.') {
+            if (e.target.value.includes('.')) {
+                e.preventDefault();
+            }
+            return;
+        }
+
+        if (!/^[0-9]$/.test(e.key)) {
+            e.preventDefault();
+        }
+    });
+}
+
+function obtenerBase64(imagen) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(imagen);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+    });
+}
 
 function actualizarContador() {
-    const COMENTARIO = document.getElementById("descripcion-producto");
-    const CONTADOR = document.getElementById("contador");
-    const longitud_maxima = 300;
+    const comentario = document.getElementById("descripcion-producto");
+    const contador = document.getElementById("contador");
+    const longitudMaxima = 300;
 
-    if (!COMENTARIO || !CONTADOR) return;
+    if (!comentario || !contador) return;
 
-    let texto = COMENTARIO.value;
-    let texto_sin_espacios = texto.trim();
+    let texto = comentario.value;
+    let textoSinEspacios = texto.trim();
     let longitud = texto.length;
-    let numero_de_palabras = texto_sin_espacios.length > 0 ? texto_sin_espacios.split(/\s+/).length : 0;
+    let numeroPalabras = textoSinEspacios.length > 0 ? textoSinEspacios.split(/\s+/).length : 0;
 
-    let mensaje = `${longitud} de ${longitud_maxima} caracteres | ${numero_de_palabras} palabras`;
+    let mensaje = `${longitud} de ${longitudMaxima} caracteres | ${numeroPalabras} palabras`;
 
-    if (longitud > 0 && texto_sin_espacios.length === 0) {
+    if (longitud > 0 && textoSinEspacios.length === 0) {
         mensaje = "¡El texto no puede contener solo espacios en blanco!";
-    } else if (longitud > longitud_maxima) {
-        mensaje = `¡Has excedido el límite! (${longitud} / ${longitud_maxima})`;
+    } else if (longitud > longitudMaxima) {
+        mensaje = `¡Has excedido el límite! (${longitud} / ${longitudMaxima})`;
     }
 
-    CONTADOR.textContent = mensaje;
-    CONTADOR.style.color = (longitud > longitud_maxima || (longitud > 0 && texto_sin_espacios.length === 0)) ? "red" : "black";
+    contador.textContent = mensaje;
+    contador.style.color = (longitud > longitudMaxima || (longitud > 0 && textoSinEspacios.length === 0)) ? "red" : "black";
+}
+
+function visibilidadProducto() {
+    const checkVisibilidad = document.querySelector('.toggle-switch input[type="checkbox"]');
+    const mensajeVisibilidad = document.querySelector('.estado-texto');
+
+    if (!checkVisibilidad || !mensajeVisibilidad) return;
+    checkVisibilidad.addEventListener('change', function (e) {
+        mensajeVisibilidad.textContent = e.target.checked ? "activo" : "inactivo";
+    });
 }
 
 function productoDestacado() {
@@ -258,41 +276,47 @@ function productoDestacado() {
     const mensajeDestacado = document.getElementById('texto-destacado');
     if (!checkDestacado || !mensajeDestacado) return;
 
-    mensajeDestacado.textContent = checkDestacado.checked ? "SÍ" : "NO";
-
     checkDestacado.addEventListener('change', function (e) {
-        if (e.target.checked) {
-            mensajeDestacado.textContent = "SÍ";
-            mensajeValidado.mDestacado = "activo";
-        } else {
-            mensajeDestacado.textContent = "NO";
-            mensajeValidado.mDestacado = "inactivo";
-        }
+        mensajeDestacado.textContent = e.target.checked ? "SÍ" : "NO";
     });
 }
 
-/* -----------------------------------------------------------------------------
-   VALIDACIÓN MAESTRA Y ENVÍO DEL FORMULARIO
------------------------------------------------------------------------------ */
+function mostrarError(selector, mensajeError) {
+    const elemento = document.querySelector(selector);
+    if (elemento) {
+        elemento.innerHTML = mensajeError || "";
+    }
+}
+
+//=============================================================================
+//                      INICIALIZACIÓN Y EVENTOS DOM
+//=============================================================================
+
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Inicializar interactividad de los toggles y contadores una sola vez
+    // Verificación estricta de permisos al cargar
+    if (!verificarAccesoAdmin()) return;
+
+    // 1. Restricciones de teclado para inputs numéricos
+    restringirSoloNumeros(document.getElementById("costo"));
+    restringirSoloNumeros(document.getElementById("precioVenta"));
+    restringirSoloNumeros(document.getElementById("existencia"));
+
+    // 2. Interfaz visual (Toggles y Contador)
     visibilidadProducto();
     productoDestacado();
 
     const formulario = document.querySelector("#formulario-adminCrear");
-    const COMENTARIO = document.getElementById("descripcion-producto");
+    const campoDescripcion = document.getElementById("descripcion-producto");
 
-    if (COMENTARIO) {
-        COMENTARIO.addEventListener("input", actualizarContador);
+    if (campoDescripcion) {
+        campoDescripcion.addEventListener("input", actualizarContador);
         actualizarContador();
     }
 
-    // 2. Evento Submit del formulario
+    // 3. Envío de Formulario
     if (formulario) {
         formulario.addEventListener('submit', async function (e) {
             e.preventDefault();
-
-            // Limpiamos el objeto temporal antes de validar
             reiniciarMensajeValidado();
 
             // Referencias del DOM
@@ -306,7 +330,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const inputImagen = document.getElementById("imagen-principal");
             const inputDescripcion = document.getElementById("descripcion-producto");
 
-            // Referencias a los toggles/checkboxes
             const checkVisibilidad = document.querySelector('.toggle-switch input[type="checkbox"]');
             const checkDestacado = document.getElementById('check-destacado');
 
@@ -320,7 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const errorImagen = validarImagen(inputImagen);
             const errorDescripcion = validarMensaje(inputDescripcion);
 
-            // Mostrar u ocultar mensajes de error en el DOM
+            // Renderizar errores
             mostrarError("#error-nombre p", errorNombre);
             mostrarError("#error-especie p", errorEspecie);
             mostrarError("#error-marca p", errorMarca);
@@ -330,15 +353,8 @@ document.addEventListener('DOMContentLoaded', () => {
             mostrarError("#error-imagen", errorImagen);
             mostrarError("#error-mensaje p", errorDescripcion);
 
-            const hayErrores =
-                errorNombre ||
-                errorEspecie ||
-                errorMarca ||
-                errorCosto ||
-                errorPrecioVenta ||
-                errorExistencia ||
-                errorImagen ||
-                errorDescripcion;
+            const hayErrores = errorNombre || errorEspecie || errorMarca || errorCosto || 
+                               errorPrecioVenta || errorExistencia || errorImagen || errorDescripcion;
 
             if (hayErrores) {
                 if (divAlerta) {
@@ -348,11 +364,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>`;
                 }
-                console.warn("Envío bloqueado por errores de validación.");
                 return;
             }
 
-            // Lectura y asignación de datos validados
+            // Mapeo de datos validados
             mensajeValidado.mNombreProducto = inputNombreProducto.value.trim();
             mensajeValidado.mEspecie = selectEspecie.options[selectEspecie.selectedIndex].text;
             mensajeValidado.mMarca = selectMarca.options[selectMarca.selectedIndex].text;
@@ -360,68 +375,41 @@ document.addEventListener('DOMContentLoaded', () => {
             mensajeValidado.mPrecio = ePrecioVenta.value.trim();
             mensajeValidado.mExistencia = eExistencia.value.trim();
             mensajeValidado.mDescripcion = inputDescripcion.value.trim();
-
-            // CAPTURA DIRECTA DE ESTADO Y DESTACADO (Evita que queden vacíos)
             mensajeValidado.mEstado = (checkVisibilidad && checkVisibilidad.checked) ? "activo" : "inactivo";
-            mensajeValidado.mDestacado = checkDestacado && checkDestacado.checked ? "activo" : "inactivo";
-            // Procesamiento de la Imagen
+            mensajeValidado.mDestacado = (checkDestacado && checkDestacado.checked) ? "activo" : "inactivo";
+
+            // Procesar Imagen a Base64
             const archivoImagen = inputImagen.files[0];
             if (archivoImagen) {
                 try {
                     mensajeValidado.mImagen = await obtenerBase64(archivoImagen);
                 } catch (error) {
-                    console.error("Error al convertir la imagen a Base64:", error);
+                    console.error("Error al procesar la imagen:", error);
                     mensajeValidado.mImagen = "recursos-graficos/productos/placeholder.png";
                 }
             } else {
                 mensajeValidado.mImagen = "recursos-graficos/productos/placeholder.png";
             }
 
-            // Envío de datos al JSON-Server
+            // Guardar registro
             await enviarDatos();
-
-            if (divAlerta) {
-                divAlerta.innerHTML = `
-                <div class="alert bg-success text-white alert-dismissible fade show" role="alert">
-                    Formulario enviado <span class="alerta-titulo">Correctamente</span>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>`;
-            }
-
-            // Resetear el formulario tras el envío exitoso
-            formulario.reset();
-
-            // Reestablecer los textos visuales de los toggles tras el reset
-            const mensajeVisibilidad = document.querySelector('.estado-texto');
-            const mensajeDestacado = document.getElementById('texto-destacado');
-            if (mensajeVisibilidad) mensajeVisibilidad.textContent = "inactivo";
-            if (mensajeDestacado) mensajeDestacado.textContent = "NO";
-
-            actualizarContador();
-            console.log("¡ÉXITO TOTAL! Objeto enviado:", mensajeValidado);
         });
     }
 });
 
-function mostrarError(selector, mensajeError) {
-    const elemento = document.querySelector(selector);
-    if (elemento) {
-        elemento.innerHTML = mensajeError || "";
-    }
-}
+//=============================================================================
+//                      PETICIÓN POST / JSON-SERVER
+//=============================================================================
 
-/* -----------------------------------------------------------------------------
-   PETICIÓN API / JSON-SERVER
------------------------------------------------------------------------------ */
 const API_URL = 'http://localhost:3000/productos';
 
 async function enviarDatos() {
-    mostrarModal()
+    mostrarModalLoader();
     try {
         const resActual = await fetch(API_URL);
         const productosActuales = await resActual.json();
 
-        // Calculamos el ID incremental correctamente
+        // Cálculo de ID incremental numérico / string
         const ultimoId = productosActuales.reduce((max, p) => Number(p.id) > max ? Number(p.id) : max, 0);
         const nuevoId = ultimoId + 1;
 
@@ -429,7 +417,7 @@ async function enviarDatos() {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                id: String(nuevoId), // Se asigna como string o number según tu JSON
+                id: String(nuevoId),
                 nombreProducto: mensajeValidado.mNombreProducto,
                 descripcion: mensajeValidado.mDescripcion || "",
                 destacado: mensajeValidado.mDestacado,
@@ -447,56 +435,47 @@ async function enviarDatos() {
             throw new Error(`Error status: ${response.status}`);
         }
 
-        const resultado = await response.json();
-        console.log("Producto guardado exitosamente en JSON-Server:", resultado);
+        cerrarModalGenerico('.modal-overlay');
+        window.location.href = 'adminHome.html';
+
     } catch (error) {
         console.error('Fallo al conectar con la API:', error);
+        alert("Hubo un error al guardar el producto.");
+        cerrarModalGenerico('.modal-overlay');
     }
-
-    cerrarModal();
-    window.location.href = 'adminHome.html';
 }
 
+//=============================================================================
+//                               MODALES
+//=============================================================================
 
-function mostrarModal() {
+function mostrarModalLoader() {
     const modal = document.createElement('DIV');
     const carga = document.createElement('DIV');
-    carga.innerHTML=  `
+    carga.innerHTML = `
         <div class="contenedor-loader">
-  <img class="animacion-carga" src="recursos-graficos/formulario-contactanos/Forrajero-naranja.png" alt="Cargando">
-</div>`
+            <img class="animacion-carga" src="recursos-graficos/formulario-contactanos/Forrajero-naranja.png" alt="Cargando">
+        </div>`;
     modal.classList.add('modal-overlay');
 
-
-    // modal.addEventListener('click', function () {
-    //     cerrarModal()
-    // })
-
-    const body = document.querySelector('body');
-    body.classList.add('overflow-hiden');
-    body.appendChild(modal);
+    document.body.classList.add('overflow-hidden');
+    document.body.appendChild(modal);
     modal.appendChild(carga);
 
     setTimeout(() => {
         modal.classList.add('is-visible');
     }, 10);
-
 }
 
-function cerrarModal() {
-    const modal = document.querySelector('.modal-overlay');
-    const body = document.querySelector('body');
-
+function cerrarModalGenerico(selectorModal) {
+    const modal = document.querySelector(selectorModal);
 
     if (modal) {
         modal.classList.remove('is-visible');
-        body.classList.remove('overflow-hiden');
+        document.body.classList.remove('overflow-hidden');
 
         setTimeout(() => {
             modal.remove();
         }, 300);
     }
-
 }
-
-

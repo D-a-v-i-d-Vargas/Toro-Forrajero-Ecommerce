@@ -25,21 +25,22 @@
 
     <!--CSS Globales-->
     <link rel="stylesheet" href="build/css/app.css">
+    <script type="module" src="build/js/adminAuth.js"></script>
 </head>
 
 <body>
     <!--Header, barras de nav, herro---------------------------------------------------------------->
-    <header>
-        <!-- ===========================================================================
+	<header>
+		<!-- ===========================================================================
             SECCIÓN: NAV BAR 1 
         ============================================================================ -->
-        <nav class="navbar navbar-1">
-            <div class="container-fluid px-4">
+		<nav class="navbar navbar-1">
+			<div class="container-fluid px-4">
 
-                <div class="navbar-brand">
-                    <img src="recursos-graficos/navbar/forrajero-sinfondo.png" alt="Logo sin fondo de Toro Forrajero"
-                        class="logo-navbar d-inline-block align-text-top me-2">
-                </div>
+				<div class="navbar-brand">
+					<img src="recursos-graficos/navbar/forrajero-sinfondo.png" alt="Logo sin fondo de Toro Forrajero"
+						class="logo-navbar d-inline-block align-text-top me-2">
+				</div>
 				<ul class="navbar-nav flex-row ms-auto gap-4">
 					<li class="nav-item">
 						<a class="nav-link icon-link" href="inicioSesion.html">
@@ -48,33 +49,34 @@
 						</a>
 					</li>
 
-                    <li class="nav-item carrito">
-                        <a class="nav-link icon-link" href="carrito.html">
-                            <div class="cart-icon-wrapper">
-                                <i class="bi bi-cart3"></i>
-                                <!-- <span class="contador-carrito">0</span> -->
-                            </div>
-                            <span>Carrito</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+					<li class="nav-item carrito">
+						<a class="nav-link icon-link" href="carrito.html">
+							<div class="cart-icon-wrapper">
+								<i class="bi bi-cart3"></i>
+								<!-- <span class="contador-carrito">0</span> -->
+							</div>
+							<span>Carrito</span>
+						</a>
+					</li>
+				</ul>
+			</div>
 
-        </nav>
+		</nav>
 
-        <!-- ===========================================================================
+		<!-- ===========================================================================
             SECCIÓN: NAV BAR 2 
         ============================================================================ -->
 
-        <nav class="navbar2">
-            <ul>
-                <li><a href="index.html">INICIO</a></li>
-                <li><a href="acercaNosotros.html" class="active">NOSOTROS</a></li>
-                <li><a href="contactanos.html">CONTACTO</a></li>
-                <li><a href="productos.html">PRODUCTOS</a></li>
-                <div class="indicator"></div>
-            </ul>
-        </nav>
+		<nav class="navbar2">
+			<ul>
+				<li><a href="index.html">INICIO</a></li>
+				<li><a href="acercaNosotros.html">NOSOTROS</a></li>
+				<li><a href="contactanos.html">CONTACTO</a></li>
+				<li><a href="productos.html" id="linkProductos">PRODUCTOS</a></li>
+				<div class="indicator"></div>
+			</ul>
+		</nav>
+
 
         <!-- ===========================================================================
             SECCIÓN: HERO 
@@ -609,7 +611,8 @@
     <!--Script de js-->
     <script src="build/js/acercadeNosotros.js"></script>
     <script src="build/js/carrito.js"></script>
-    <script src="build/js/carrito.js"></script>
+    <script type="module" src="build/js/adminAuth.js"></script>
+    
 </body>
 
 </html>
