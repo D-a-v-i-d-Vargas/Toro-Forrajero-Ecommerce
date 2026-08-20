@@ -79,11 +79,17 @@
 /* ==========================================================
     GRID DE PRODUCTOS
 ========================================================== */
+.titulo-producto{
+    margin-top: 3rem;
+    margin-left: 100px;
+}
 
 .productos-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 25px;
+    margin: 100px;
+    margin-top: 50px;
 }
 
 
