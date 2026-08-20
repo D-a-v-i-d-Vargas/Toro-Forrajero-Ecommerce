@@ -165,5 +165,6 @@ btnIniciarSesion.addEventListener("click", async function (e) {
     localStorage.setItem("usuarioActivo", JSON.stringify(usuarioAutenticado));
 
     // Redireccionar a productos
-    window.location.href = "productos.html";
+    console.log(JSON.stringify(usuarioAutenticado));
+    window.location = usuarioAutenticado.rol === "admin" ? "adminCrear.html" : "productos.html";
 });
