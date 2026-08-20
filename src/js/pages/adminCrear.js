@@ -158,7 +158,7 @@ function visibilidadProducto() {
     });
 }
 
-// Esther - IMAGEN
+// IMAGEN
 function validarImagen(inputImagen) {
     if (!inputImagen) return "No se encuentra el campo de la imagen";
 
