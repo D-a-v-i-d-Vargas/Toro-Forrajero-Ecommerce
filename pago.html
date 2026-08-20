@@ -35,35 +35,33 @@
 	<!-- ===========================================================================
         SECCIÓN: ENCABEZADO Y NAVEGACIÓN (HEADER)
     ============================================================================ -->
-	<header class="sticky-top">
-		<!-- NAV BAR 1: Logo y Accesos rápidos -->
-		<nav class="navbar navbar-1">
-			<div class="container-fluid px-4">
-				<div class="navbar-brand">
-					<img src="recursos-graficos/navbar/forrajero-sinfondo.png" alt="Logo sin fondo de Toro Forrajero"
-						class="logo-navbar d-inline-block align-text-top me-2">
-				</div>
-				<ul class="navbar-nav flex-row ms-auto gap-4">
-					<li class="nav-item">
-						<a class="nav-link icon-link" href="cuenta.html"
-							style="display:flex; flex-direction:column; align-items:center; gap:2px; font-size:13px;">
-							<i class="bi bi-person" style="font-size:18px;"></i>
-							<span>Mi cuenta</span>
-						</a>
-					</li>
-					<li class="nav-item carrito">
-						<a class="nav-link icon-link" href="carrito.html"
-							style="display:flex; flex-direction:column; align-items:center; gap:2px; font-size:13px;">
-							<div class="cart-icon-wrapper">
-								<i class="bi bi-cart3" style="font-size:18px;"></i>
-								<!-- <span class="contador-carrito">0</span> -->
-							</div>
-							<span>Carrito</span>
-						</a>
-					</li>
-				</ul>
-			</div>
-		</nav>
+	<!-- Header y Navegación -->
+    <header>
+        <nav class="navbar navbar-1">
+            <div class="container-fluid px-4">
+                <div class="navbar-brand">
+                    <img src="recursos-graficos/navbar/forrajero-sinfondo.png" alt="Logo sin fondo de Toro Forrajero"
+                        class="logo-navbar d-inline-block align-text-top me-2">
+                </div>
+                <ul class="navbar-nav flex-row ms-auto gap-4">
+                    <li class="nav-item">
+                        <a class="nav-link icon-link" href="inicioSesion.html">
+                            <i class="bi bi-person"></i>
+                            <span>Mi cuenta</span>
+                        </a>
+                    </li>
+                    <li class="nav-item carrito">
+                        <a class="nav-link icon-link" href="carrito.html">
+                            <div class="cart-icon-wrapper">
+                                <i class="bi bi-cart3"></i>
+                                <!-- <span class="contador-carrito">0</span> -->
+                            </div>
+                            <span>Carrito</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
 		<!-- NAV BAR 2: Menú de navegación principal -->
 		<nav class="navbar2">
@@ -95,11 +93,11 @@
 				<details class="order-summary-bar px-4 py-3 mb-4" data-aos="fade-up" data-aos-delay="150">
 					<summary class="d-flex justify-content-between align-items-center">
 						<span><i class="bi bi-chevron-down me-2"></i>Resumen del pedido</span>
-						<span id="total-pedido">$12,090.00 MXN</span>
+						   <span id="total-pedido">$0.00 MXN</span>
 					</summary>
 					<div class="pt-3">
 						<!-- Aquí puede ir el detalle de productos del carrito -->
-						<p class="mb-0 small">xxxxxxxxxxxxxxxxxxx...</p>
+						<div id="detalle-pedido"></div>
 					</div>
 				</details>
 
@@ -128,6 +126,75 @@
 						</div>
 					</div>
 
+					<!-- Retiro en tienda (se muestra al elegir "Retiro en tienda") -->
+					<div class="mb-3" id="bloque-retiro-tienda" style="display: none;">
+
+						<div class="retiro-tienda-card">
+
+							<!-- Encabezado -->
+							<div class="retiro-tienda-header">
+								<i class="bi bi-geo-alt-fill retiro-tienda-header-icon"></i>
+								<div>
+									<p class="retiro-tienda-title">Retira tu pedido en nuestra sucursal</p>
+									<p class="retiro-tienda-subtitle">Tu pedido estará listo para recoger aquí.</p>
+								</div>
+							</div>
+
+							<!-- Mapa + información -->
+							<div class="row g-3 align-items-stretch">
+
+								<!-- Mapa -->
+								<div class="col-md-7">
+									<div class="retiro-tienda-mapa">
+										<iframe
+											src="https://maps.google.com/maps?q=Cerro+Lejos&output=embed"
+											width="100%"
+											height="100%"
+											style="border:0; display:block; min-height: 220px;"
+											allowfullscreen=""
+											loading="lazy"
+											referrerpolicy="no-referrer-when-downgrade">
+										</iframe>
+									</div>
+								</div>
+
+								<!-- Panel de información para retiro en tienda -->
+								<div class="col-md-5">
+									<div class="retiro-tienda-info h-100">
+
+										<div class="retiro-info-item">
+											<div class="retiro-info-icon">
+												<i class="bi bi-geo-alt-fill"></i>
+											</div>
+											<div>
+												<p class="retiro-info-title">Dirección</p>
+												<p class="retiro-info-text">
+													Cerro de la Estrella
+												</p>
+											</div>
+										</div>
+
+										<hr class="retiro-info-divider">
+
+										<div class="retiro-info-item">
+											<div class="retiro-info-icon">
+												<i class="bi bi-clock-fill"></i>
+											</div>
+											<div>
+												<p class="retiro-info-title">Horario de atención</p>
+												<p class="retiro-info-text">
+													10:00 a.m. - 7:00 p.m.
+												</p>
+											</div>
+										</div>
+
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
 					<!-- Dirección de entrega -->
 					<div class="mb-3" id="bloque-direccion" data-aos="fade-up" data-aos-delay="250">
 						<p class="checkout-section-label mb-2">Dirección de entrega:</p>
@@ -136,92 +203,124 @@
 							<div class="col-md-6">
 								<select id="estado" name="estado" class="form-select address-input py-2">
 									<option value="" disabled selected>Estado</option>
+									 <option value="ags">Aguascalientes</option>
+									<option value="bc">Baja California</option>
+									<option value="bcs">Baja California Sur</option>
+									<option value="camp">Campeche</option>
+									<option value="chis">Chiapas</option>
+									<option value="chih">Chihuahua</option>
 									<option value="cdmx">Ciudad de México</option>
-									<option value="jalisco">Jalisco</option>
-									<option value="nuevo-leon">Nuevo León</option>
-									<option value="slp">San Luis Potosi</option>
+									<option value="coah">Coahuila</option>
+									<option value="col">Colima</option>
+									<option value="dgo">Durango</option>
+									<option value="gto">Guanajuato</option>
+									<option value="gro">Guerrero</option>
+									<option value="hgo">Hidalgo</option>
+									<option value="jal">Jalisco</option>
+									<option value="mex">Estado de México</option>
+									<option value="mich">Michoacán</option>
+									<option value="mor">Morelos</option>
+									<option value="nay">Nayarit</option>
+									<option value="nl">Nuevo León</option>
+									<option value="oax">Oaxaca</option>
+									<option value="pue">Puebla</option>
+									<option value="qro">Querétaro</option>
+									<option value="qroo">Quintana Roo</option>
+									<option value="slp">San Luis Potosí</option>
+									<option value="sin">Sinaloa</option>
+									<option value="son">Sonora</option>
+									<option value="tab">Tabasco</option>
+									<option value="tamps">Tamaulipas</option>
+									<option value="tlax">Tlaxcala</option>
+									<option value="ver">Veracruz</option>
+									<option value="yuc">Yucatán</option>
+									<option value="zac">Zacatecas</option>
 								</select>
+								<div id="error-estado" class="narnaja-text small mt-1 text-center"><p></p></div>
 							</div>
 							<div class="col-md-6">
 								<input type="text" id="ciudad" name="ciudad" autocomplete="off"
-									class="form-control address-input py-2 text-end" placeholder="Ciudad de México">
+									class="form-control address-input py-2 text-end" placeholder="Ciudad">
+									<div id="error-ciudad" class="narnaja-text small mt-1 text-center"><p></p></div>
 							</div>
 						</div>
 
 						<div class="mb-3">
 							<input type="text" id="direccion" name="direccion" autocomplete="off"
 								class="form-control address-input py-2 text-end" placeholder="Dirección">
+								<div id="error-direccion" class="narnaja-text small mt-1 text-center"><p></p></div>
 						</div>
 
 						<div class="row g-3 mb-3">
-							<div class="col-6 col-md-3">
-								<input type="text" id="numero-exterior" name="numero_exterior" autocomplete="off"
-									class="form-control address-input py-2 text-center" placeholder="No. Exterior">
-							</div>
-							<div class="col-6 col-md-3">
-								<input type="text" id="numero-interior" name="numero_interior" autocomplete="off"
-									class="form-control address-input py-2 text-center" placeholder="No. Interior">
-							</div>
-							<div class="col-6 col-md-3">
-								<input type="text" id="codigo-postal" name="codigo_postal" maxlength="5"
-									autocomplete="off" class="form-control address-input py-2 text-center"
-									placeholder="Código Postal">
-							</div>
-							<div class="col-6 col-md-3">
-								<input type="text" id="ciudad-2" name="ciudad_2" autocomplete="off"
-									class="form-control address-input py-2 text-end" placeholder="Ciudad">
-							</div>
-						</div>
+   						 <div class="col-6 col-md-3">
+        					<input type="text" id="numero-exterior" name="numero_exterior" autocomplete="off"
+            					class="form-control address-input py-2 text-center" placeholder="No. Exterior">
+
+       					 <div id="error-numero-exterior" class="narnaja-text mt-1 text-center">
+           				 <p></p>
+       					 </div>
+    					</div>
+
+   						 <div class="col-6 col-md-3">
+       					 <input type="text" id="numero-interior" name="numero_interior" autocomplete="off"
+          				  class="form-control address-input py-2 text-center" placeholder="No. Interior">
+
+        				<div id="error-numero-interior" class="narnaja-text small mt-1 text-center">
+            			<p></p>
+       					 </div>
+   					 </div>
+
+   				 		<div class="col-6 col-md-3">
+       			 			<input type="text" id="codigo-postal" name="codigo_postal" maxlength="5"
+            					autocomplete="off" class="form-control address-input py-2 text-center"
+           						 placeholder="Código Postal">
+
+        				<div id="error-codigo-postal" class="narnaja-text small mt-1 text-center">
+            			<p></p>
+       				 </div>
+   					 </div>
+
+   						 <div class="col-6 col-md-3">
+        				<input type="text" id="ciudad-2" name="ciudad_2" autocomplete="off"
+           				 class="form-control address-input py-2 text-end" placeholder="Ciudad">
+
+        				<div id="error-ciudad-2" class="narnaja-text small mt-1 text-center">
+          			  <p></p>
+       				 </div>
+   					 </div>
+					</div>
 
 						<div class="mb-3">
-							<input type="tel" id="telefono" name="telefono" maxlength="10" pattern="[0-9]{10}"
-								autocomplete="off" class="form-control address-input py-2 text-end"
-								placeholder="Teléfono">
-						</div>
+   						 <input type="tel" id="telefono" name="telefono" maxlength="10" pattern="[0-9]{10}"
+        					autocomplete="off" class="form-control address-input py-2 text-end"
+        					placeholder="Teléfono">
 
-						<div class="mb-4">
-							<input type="email" id="correo" name="correo" autocomplete="off"
-								class="form-control address-input py-2 text-end" placeholder="Correo electronico">
-						</div>
+    				<div id="error-telefono" class="narnaja-text small mt-1 text-center">
+       				 <p></p>
+    					</div>
 					</div>
+
+					<div class="mb-4">
+   						 <input type="email" id="correo" name="correo" autocomplete="off"
+        			class="form-control address-input py-2 text-end" placeholder="Correo electronico">
+
+   					 <div id="error-correo" class="narnaja-text small mt-1 text-center">
+       					 <p></p>
+    					</div>
+						</div>
 
 					<div class="d-grid gap-2 col-10 mx-auto mb-4">
 						<button class="btn btn-primary" type="submit">Continuar</button>
 					</div>
 
-				</form>
-
-				<!-- Retiro en tienda (se muestra al elegir "Retiro en tienda") -->
-				<div class="mb-3" id="bloque-retiro-tienda" style="display: none;">
-					<p class="checkout-section-label mb-2">Retiro en tienda:</p>
-
-					<div class="mb-3" style="border-radius: 8px; overflow: hidden; border: 1px solid var(--color-naranjaClaro);">
-						<iframe
-							src="https://maps.google.com/maps?q=Cerro+Lejos&output=embed"
-							width="100%"
-							height="220"
-							style="border:0; display:block;"
-							allowfullscreen=""
-							loading="lazy"
-							referrerpolicy="no-referrer-when-downgrade">
-						</iframe>
 					</div>
-
-					<div class="address-input p-3">
-						<p class="mb-2">
-							<i class="bi bi-geo-alt-fill me-2"></i>
-							Cerro Lejos, a dos horas de la ciudad
-						</p>
-						<p class="mb-0">
-							<i class="bi bi-clock me-2"></i>
-							10:00 a.m. - 7:00 p.m.
-						</p>
-					</div>
-				</div>
-
+					</form>
 			</div>
 		</section>
-		<section class="pago-container">
+
+
+
+					<section class="pago-container">
 
 				<!-- Opciones superiores -->
 				<div class="opciones-pago mb-4">
@@ -263,15 +362,16 @@
 
 								<!-- Nombre -->
 								<div class="col-md-6">
-									<label for="nombreTitular" class="form-label">
-										Nombre del titular
-									</label>
+								<label for="nombreTitular" class="form-label">
+									Nombre del titular
+								</label>
 
-									<input
-										type="text"
-										class="form-control"
-										id="nombreTitular"
-										required>
+								<input
+									type="text"
+									class="form-control"
+									id="nombreTitular">
+
+								<small class="mensaje-error" id="errorNombre"></small>
 								</div>
 
 
@@ -285,9 +385,9 @@
 										type="text"
 										class="form-control"
 										id="numeroTarjeta"
-										placeholder="0000 0000 0000 0000"
-										maxlength="19"
-										required>
+										placeholder="0000 0000 0000 0000">
+
+									<small class="mensaje-error" id="errorTarjeta"></small>
 								</div>
 
 
@@ -300,10 +400,10 @@
 
 									<div class="row g-2">
 
-										<div class="col-6">
-											<select class="form-select" id="mesExpiracion" required>
-												<option value="" selected disabled>Mes</option>
-												<option value="01">01</option>
+							<div class="col-6">
+								<select class="form-select" id="mesExpiracion" >
+									<option value="" selected disabled>Mes</option>
+									<option value="01">01</option>
 												<option value="02">02</option>
 												<option value="03">03</option>
 												<option value="04">04</option>
@@ -319,7 +419,7 @@
 										</div>
 
 										<div class="col-6">
-											<select class="form-select" id="anioExpiracion" required>
+											<select class="form-select" id="anioExpiracion" >
 												<option value="" selected disabled>Año</option>
 												<option value="2026">2026</option>
 												<option value="2027">2027</option>
@@ -332,11 +432,13 @@
 
 									</div>
 
+									<small class="mensaje-error" id="errorFecha"></small>
 								</div>
 
 
 								<!-- CVV -->
 								<div class="col-md-3">
+
 									<label for="cvv" class="form-label">
 										Código de Seguridad
 									</label>
@@ -345,9 +447,10 @@
 										type="password"
 										class="form-control"
 										id="cvv"
-										placeholder="3 dígitos"
-										maxlength="3"
-										required>
+										placeholder="3 dígitos">
+
+									<small class="mensaje-error" id="errorCvv"></small>
+
 								</div>
 
 
@@ -424,7 +527,7 @@
 
 			<!-- Logo y redes sociales -->
 			<div class="footer-brand">
-				<img src="recursos-graficos/footer/forrajero-verde.png" alt="Logo Forrajero" class="footer-logo">
+				<img src="recursos-graficos/footer/forrajero-verde1.png" alt="Logo Forrajero" class="footer-logo">
 
 				<div class="footer-social">
 					<a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>

@@ -1,6 +1,11 @@
 .cart-icon-wrapper {
     position: relative;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2rem; /* mismo tamaño que .icon-link */
+    line-height: 1; /* evita que herede espacio extra de line-height */
+    
 }
 
 .contador-carrito {
