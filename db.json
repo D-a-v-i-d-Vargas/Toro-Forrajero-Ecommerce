@@ -322,7 +322,8 @@
       "areaInteres": "Productos para ovino",
       "correo": "k_montserratls@hotmail.com",
       "contraseña": "asdfghjk",
-      "estado": "Activo"
+      "estado": "Activo",
+      "rol": "user"
     },
     {
       "id": "2",
@@ -332,7 +333,8 @@
       "areaInteres": "Productos para ovino",
       "correo": "oscar_m@hotmail.com",
       "contraseña": "contraseña",
-      "estado": "Inactivo"
+      "estado": "Inactivo",
+      "rol": "user"
     },
     {
       "id": "3",
@@ -342,7 +344,8 @@
       "areaInteres": "Productos para ovino",
       "correo": "karen@gmail.com",
       "contraseña": "contraseña",
-      "estado": "Activo"
+      "estado": "Activo",
+      "rol": "user"
     },
     {
       "id": "4",
@@ -352,7 +355,8 @@
       "areaInteres": "Productos para bovino",
       "correo": "ana@gmail.com",
       "contraseña": "12345678Ana",
-      "estado": "Activo"
+      "estado": "Activo",
+      "rol": "user"
     },
     {
       "id": "5",
@@ -362,7 +366,19 @@
       "areaInteres": "Productos para ovino",
       "correo": "van@gmail.com",
       "contraseña": "12345678V",
-      "estado": "Activo"
+      "estado": "Activo",
+      "rol": "user"
+    },
+    {
+      "id": "6",
+      "nombre": "admin",
+      "apellido": "admin",
+      "telefono": 5524960521,
+      "areaInteres": "Productos para ovino",
+      "correo": "admin@gmail.com",
+      "contraseña": "admin123",
+      "estado": "Activo",
+      "rol": "admin"
     }
   ]
 }

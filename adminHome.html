@@ -35,21 +35,20 @@
     <header class="sticky-top">
         <!-- NAV BAR 1: Logo y Accesos rápidos -->
         <nav class=" navbar navbar-1">
-        <div class="container-fluid px-4">
-            <div class="navbar-brand">
-                <img src="recursos-graficos/navbar/forrajero-sinfondo.png" alt="Logo sin fondo de Toro Forrajero"
-                    class="logo-navbar d-inline-block align-text-top me-2">
+            <div class="container-fluid px-4">
+                <div class="navbar-brand">
+                    <img src="recursos-graficos/navbar/forrajero-sinfondo.png" alt="Logo sin fondo de Toro Forrajero"
+                        class="logo-navbar d-inline-block align-text-top me-2">
+                </div>
+                <ul class="navbar-nav flex-row ms-auto gap-4">
+                    <li class="nav-item">
+                        <a class="nav-link icon-link" href="inicioSesion.html">
+                            <i class="bi bi-person"></i>
+                            <span>Admin</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <ul class="navbar-nav flex-row ms-auto gap-4">
-                <li class="nav-item">
-                    <a class="nav-link icon-link" href="inicioSesion.html">
-                        <i class="bi bi-person"></i>
-                        <span>Admin</span>
-                    </a>
-                </li>
-
-            </ul>
-        </div>
         </nav>
 
         <!-- NAV BAR 2: Menú de navegación principal -->
@@ -59,15 +58,17 @@
                 <li><a href="acercaNosotros.html">NOSOTROS</a></li>
                 <li><a href="contactanos.html">CONTACTO</a></li>
                 <li><a href="productos.html" class="active">PRODUCTOS</a></li>
-
             </ul>
         </nav>
         <nav class="navbar3">
-
-            <li><a class="navbar3-section" href="adminHome.html">Ver Productos</a></li>
-            <li><a href="adminCrear.html">Nuevo Productos</a></li>
-
-
+            <ul>
+                <li>
+                    <a class="navbar3-section" href="adminHome.html">VER PRODUCTOS</a>
+                </li>
+                <li>
+                    <a href="adminCrear.html">NUEVO PRODUCTO</a>
+                </li>
+            </ul>
         </nav>
     </header>
 
@@ -76,239 +77,102 @@
     ============================================================================ -->
     <main class="container my-5">
 
-
-
-        <!-- -------------------------------------------------------------------
-            1. ENCABEZADO DE PÁGINA (Título y Descripción)
-        -------------------------------------------------------------------- -->
-        <section>
-
-        </section>
-
-
-        <!-- -------------------------------------------------------------------
-            2. FILTROS Y CATEGORÍAS (Especie y Marca)
-        -------------------------------------------------------------------- -->
         <section class="productos">
+            <h1>Administrar Productos</h1>
 
-            <h1>Ver Productos</h1>
-
-            <section class="filtro-especies">
-
+            <!-- FILTRO DE ESPECIES -->
+            <section class="filtro-especies mb-4">
                 <div class="titulo-especie">
                     <h3>Especie</h3>
                 </div>
 
                 <div class="contenedor-especies">
-
                     <!-- Bovinos -->
                     <button type="button" class="especie" data-especie="bovinos">
-
                         <div class="imagen-especie">
                             <img src="recursos-graficos/productos/bovino.jpeg" alt="Bovinos">
                         </div>
-
-                        <span class="nombre-especie">
-                            Bovinos
-                        </span>
-
+                        <span class="nombre-especie">Bovinos</span>
                     </button>
 
                     <!-- Porcinos -->
                     <button type="button" class="especie" data-especie="porcinos">
-
                         <div class="imagen-especie">
                             <img src="recursos-graficos/productos/porcinos.jpeg" alt="Porcinos">
                         </div>
-
-                        <span class="nombre-especie">
-                            Porcinos
-                        </span>
-
+                        <span class="nombre-especie">Porcinos</span>
                     </button>
 
                     <!-- Aves -->
                     <button type="button" class="especie" data-especie="aves">
-
                         <div class="imagen-especie">
                             <img src="recursos-graficos/productos/aves.jpeg" alt="Aves">
                         </div>
-
-                        <span class="nombre-especie">
-                            Aves
-                        </span>
-
+                        <span class="nombre-especie">Aves</span>
                     </button>
 
                     <!-- Ovinos -->
                     <button type="button" class="especie" data-especie="ovinos">
-
                         <div class="imagen-especie">
                             <img src="recursos-graficos/productos/ovino.png" alt="Ovinos">
                         </div>
-
-                        <span class="nombre-especie">
-                            Ovinos
-                        </span>
-
+                        <span class="nombre-especie">Ovinos</span>
                     </button>
-
                 </div>
-
             </section>
 
+            <!-- DROPDOWNS: MARCA Y VISIBILIDAD (CORREGIDO CON ESPACIADO SUPERIOR Y TEXTO SELECCIONADO) -->
+
+            <div class="d-flex justify-content-center gap-4 mt-5 mb-4 filtros-adminHome">
+
+                <!-- Filtro Marca -->
+                <div class="btn-group marca-group">
+                    <button type="button" class="btn btn-marca" disabled>Marca</button>
+                    <button type="button" class="btn btn-dropdown dropdown-toggle dropdown-toggle-split"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <span id="textoMarcaSeleccionada">Todas</span>
+                    </button>
+                    <ul class="dropdown-menu w-100">
+                        <li><a class="dropdown-item filtro-marca" id="filtro-marca-todas" href="#"
+                                data-marca="">Todas</a></li>
+                        <li><a class="dropdown-item filtro-marca" id="filtro-marca-adm" href="#"
+                                data-marca="ADM">ADM</a></li>
+                        <li><a class="dropdown-item filtro-marca" id="filtro-marca-nogal" href="#"
+                                data-marca="El Nogal">El Nogal</a></li>
+                        <li><a class="dropdown-item filtro-marca" id="filtro-marca-arandas" href="#"
+                                data-marca="Alimentos Arandas">Alimentos Arandas</a></li>
+                    </ul>
+                </div>
+
+                <!-- Filtro Visibilidad / Estado -->
+                <div class="btn-group marca-group">
+                    <button type="button" class="btn btn-marca" disabled>Visibilidad</button>
+                    <button type="button" class="btn btn-dropdown dropdown-toggle dropdown-toggle-split"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <span id="textoVisibilidadSeleccionada" class="">Todos</span>
+                    </button>
+                    <ul class="dropdown-menu w-100">
+                        <li><a class="dropdown-item filtro-visibilidad" id="filtro-vis-todos" href="#"
+                                data-estado="">Todos</a></li>
+                        <li><a class="dropdown-item filtro-visibilidad" id="filtro-vis-activo" href="#"
+                                data-estado="activo">Activo</a></li>
+                        <li><a class="dropdown-item filtro-visibilidad" id="filtro-vis-inactivo" href="#"
+                                data-estado="inactivo">Inactivo</a></li>
+                    </ul>
+                </div>
+
+            </div>
 
         </section>
 
-        <!-- BOTÓN DE MARCA -->
-        <div class="d-flex justify-content-around  gap-4">
-            <section>
-
-                <!-- En realidad, será la "unión" de dos botones. Ambos por bootstrap, 
-        solo que uno será con la categoría button group, y el otro con dropdown para hacerlo desplegable. -->
-
-                <div class="btn-group marca-group">
-
-                    <!-- Botón izquierdo-->
-                    <button type="button" class="btn btn-marca" disabled>
-                        <!--Le ponemos disabled para que no sea clileable-->
-                        Marca <!-- visible -->
-                    </button>
-
-                    <!-- Botón derecho desplegable -->
-                    <button type="button" class="btn btn-dropdown dropdown-toggle dropdown-toggle-split"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-
-                        <span class="visually-hidden">menú desplegable</span>
-                        <!-- para que no aparezca el titulo en el botón der.-->
-
-                    </button>
-
-                    <!-- Menú desplegable -->
-                    <ul class="dropdown-menu w-100">
-                        <li>
-                            <a class="dropdown-item" id="adm" href="#"> <!-- El backend reemplazará el href -->
-                                ADM
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" id="nogal" href="#"> <!-- El backend reemplazará el href -->
-                                El Nogal
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" id="arandas" href="#"> <!-- El backend reemplazará el href -->
-                                Alimentos Arandas
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section>
-
-                <!-- En realidad, será la "unión" de dos botones. Ambos por bootstrap, 
-        solo que uno será con la categoría button group, y el otro con dropdown para hacerlo desplegable. -->
-
-                <div class="btn-group marca-group">
-
-                    <!-- Botón izquierdo-->
-                    <button type="button" class="btn btn-marca" disabled>
-                        <!--Le ponemos disabled para que no sea clileable-->
-                        Visibilidad <!-- visible -->
-                    </button>
-
-                    <!-- Botón derecho desplegable -->
-                    <button type="button" class="btn btn-dropdown dropdown-toggle dropdown-toggle-split"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-
-                        <span class="visually-hidden">menú desplegable</span>
-                        <!-- para que no aparezca el titulo en el botón der.-->
-
-                    </button>
-
-                    <!-- Menú desplegable -->
-                    <ul class="dropdown-menu w-100">
-                        <li>
-                            <a class="dropdown-item" id="adm" href="#"> <!-- El backend reemplazará el href -->
-                                Activo
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" id="nogal" href="#"> <!-- El backend reemplazará el href -->
-                                Inactivo
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-        </div>
-
-
-
-
-        <!-- -------------------------------------------------------------------
-            3. CATÁLOGOS Y TARJETAS DE PRODUCTOS (GRID)
-        -------------------------------------------------------------------- -->
+        <!-- TABLA O CONTENEDOR DE PRODUCTOS ADMIN -->
         <section class="catalogo-productos activo">
             <div class="productos-grid" id="catalogo-productos">
-                <!-- Aquí se inyectarán dinámicamente los productos desde JS -->
+                <!-- Se renderiza desde JS -->
             </div>
         </section>
 
-
-
-        <!-- =====================================================
-        ENCABEZADO
-    ====================================================== -->
-        <section>
-
-
-        </section>
-
-        <!-- =====================================================
-        BOTONES DE CATEGORÍAS
-    ====================================================== -->
-        <!--  <section class="categorias-productos">
-
-        <button
-            type="button"
-            class="boton-categoria activo"
-            data-categoria="ganado"
-        >
-            Ganado
-        </button>
-
-        <button
-            type="button"
-            class="boton-categoria"
-            data-categoria="puercos"
-        >
-            Puercos
-        </button>
-
-        <button
-            type="button"
-            class="boton-categoria"
-            data-categoria="gallinas"
-        >
-            Gallinas
-        </button>
-
-        <button
-            type="button"
-            class="boton-categoria"
-            data-categoria="borregos"
-        >
-            Borregos
-        </button>
-
-    </section> -->
-
-
     </main>
-
-
 
     <!-- ===========================================================================
         SECCIÓN: PIE DE PÁGINA (FOOTER)
@@ -364,33 +228,21 @@
 
         </div>
 
-
-
-
-
-
-
-
         <!-- Línea inferior -->
         <div class="footer-bottom">
             <p>© 2026 Toro Forrajero. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-
-
-<!-- Bootstrap script -->
+    <!-- Bootstrap script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
 
     <script src="build/js/itemsController.js"></script>
-    
-    <!-- 1. Corregido el <script?> y asignado type="module" -->
-    <script type="module" src="build/js/adminHome.js"></script> 
-    
-    <!-- 2. Quita la línea de adminEditar.js de aquí para evitar que duplique variables -->
-
+    <script type="module" src="build/js/adminHome.js"></script>
+    <script type="module" src="build/js/adminAuth.js"></script>
     <script src="build/js/carrito.js"></script>
 </body>
+
 </html>
