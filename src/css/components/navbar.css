@@ -102,8 +102,8 @@
 	display: flex !important;
 	justify-content: center;
 	gap: 2rem;
-	  list-style: none;
-	
+	list-style: none;
+
 }
 
 .navbar3 li a {
@@ -113,6 +113,7 @@
 	font-size: 1rem;
 	white-space: nowrap;
 }
+
 .navbar3 li a:hover {
 	text-decoration: none;
 	color: var(--color-naranjaFuerte);
@@ -121,7 +122,7 @@
 	white-space: nowrap;
 }
 
-.navbar3-section{
+.navbar3-section {
 	color: var(--color-naranjaFuerte) !important;
 }
 
@@ -142,18 +143,79 @@
 }
 
 /* -----------------------------------------------------------------------------
+   SECCION: NAV BAR 3 (SUBMENÚ ADMIN)
+----------------------------------------------------------------------------- */
+
+/* Configuración base del contenedor (SIN display: flex ni !important) */
+.navbar3 {
+    background: var(--color-verdeFuerte);
+    padding: 0.75rem 1rem;
+    position: relative;
+}
+
+/* Flexbox aplicado a la lista interna para alinear items horizontalmente */
+.navbar3 ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Enlaces del submenú */
+.navbar3 li a {
+    text-decoration: none;
+    color: var(--color-fondo);
+    font-weight: bold;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+.navbar3 li a:hover {
+    color: var(--color-naranjaFuerte);
+}
+
+.navbar3-section {
+    color: var(--color-naranjaFuerte) !important;
+}
+/* -----------------------------------------------------------------------------
    POSICIÓN DEL INDICADOR (SEGÚN LA PÁGINA ACTIVA Y HOVER)
 ----------------------------------------------------------------------------- */
 
 /* 1. Posición inicial por defecto según el botón que tenga la clase .active */
-.navbar2 ul li:has(a.active):nth-child(1) ~.indicator { left: 0; }
-.navbar2 ul li:has(a.active):nth-child(2) ~.indicator { left: 150px; }
-.navbar2 ul li:has(a.active):nth-child(3) ~.indicator { left: 300px; }
-.navbar2 ul li:has(a.active):nth-child(4) ~.indicator { left: 450px; }
+.navbar2 ul li:has(a.active):nth-child(1)~.indicator {
+	left: 0;
+}
+
+.navbar2 ul li:has(a.active):nth-child(2)~.indicator {
+	left: 150px;
+}
+
+.navbar2 ul li:has(a.active):nth-child(3)~.indicator {
+	left: 300px;
+}
+
+.navbar2 ul li:has(a.active):nth-child(4)~.indicator {
+	left: 450px;
+}
 
 
 /* 2. Movimiento al pasar el mouse (sobreescribe la posición activa temporalmente) */
-.navbar2 ul li:nth-child(1):hover ~.indicator { left: 0 !important; }
-.navbar2 ul li:nth-child(2):hover ~.indicator { left: 150px !important; }
-.navbar2 ul li:nth-child(3):hover ~.indicator { left: 300px !important; }
-.navbar2 ul li:nth-child(4):hover ~.indicator { left: 450px !important; }
+.navbar2 ul li:nth-child(1):hover~.indicator {
+	left: 0 !important;
+}
+
+.navbar2 ul li:nth-child(2):hover~.indicator {
+	left: 150px !important;
+}
+
+.navbar2 ul li:nth-child(3):hover~.indicator {
+	left: 300px !important;
+}
+
+.navbar2 ul li:nth-child(4):hover~.indicator {
+	left: 450px !important;
+}
