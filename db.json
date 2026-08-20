@@ -8,7 +8,7 @@
       "precio": 300,
       "existencia": 20,
       "descripcion": "Alimento balanceado de alta tecnología para vacas altas productoras. Elaborado con ingredientes de alta calidad.",
-       "imagen": "recursos-graficos/productos/bovino/bovino-adm-mezcla-nutridor.png",
+      "imagen": "recursos-graficos/productos/bovino/bovino-adm-mezcla-nutridor.png",
       "estado": "activo",
       "destacado": "activo",
       "id": 1
