@@ -29,25 +29,30 @@
 
 <body>
     <!--Header, barras de nav, herro---------------------------------------------------------------->
-    <header class="sticky-top"">
+    <header class="sticky-top">
         <!-- NAV BAR 1: Logo y Accesos rápidos -->
-        <nav class=" navbar navbar-1">
-        <div class="container-fluid px-4">
-            <div class="navbar-brand">
-                <img src="recursos-graficos/navbar/forrajero-sinfondo.png" alt="Logo sin fondo de Toro Forrajero"
-                    class="logo-navbar d-inline-block align-text-top me-2">
-            </div>
-            <ul class="navbar-nav flex-row ms-auto gap-4">
-                <li class="nav-item">
-                    <a class="nav-link icon-link" href="inicioSesion.html">
-                        <i class="bi bi-person"> </i>
-                        <span>Admin</span>
-                    </a>
-                </li>
+		<nav class="navbar navbar-1">
+			<div class="container-fluid px-4">
 
-            </ul>
-        </div>
-        </nav>
+				<!-- INYECCIÓN: Redirección al index en el logo -->
+				<a class="navbar-brand" href="index.html">
+					<img src="recursos-graficos/navbar/forrajero-sinfondo.png" alt="Logo sin fondo de Toro Forrajero"
+						class="logo-navbar d-inline-block align-text-top me-2">
+				</a>
+
+				<!-- INYECCIÓN: Homologación de tamaño y alineación para íconos -->
+				<ul class="navbar-nav flex-row ms-auto gap-4 align-items-center">
+					<li class="nav-item">
+						<a class="nav-link icon-link d-flex flex-column align-items-center text-center" href="inicioSesion.html">
+							<div class="user-icon-wrapper d-flex align-items-center justify-content-center" style="height: 35px;">
+								<i class="bi bi-person fs-3"></i>
+							</div>
+							<span>Mi cuenta</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
 
         <!-- NAV BAR 2: Menú de navegación principal -->
         <nav class="navbar2">
