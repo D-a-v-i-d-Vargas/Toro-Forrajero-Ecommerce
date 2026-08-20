@@ -57,6 +57,20 @@
                 </ul>
             </div>
 
+            <nav class="navbar2">
+                <ul>
+                    <li><a href="index.html">INICIO</a></li>
+                    <li><a href="acercaNosotros.html">NOSOTROS</a></li>
+                    <li><a href="contactanos.html">CONTACTO</a></li>
+                    <li><a href="productos.html">PRODUCTOS</a></li>
+                    <div class="indicator"></div>
+                </ul>
+            </nav>
+            <nav class="navbar3 d-none" id="navbarAdmin">
+                <li><a href="adminHome.html">Ver Productos</a></li>
+                <li><a href="adminCrear.html">Nuevo Productos</a></li>
+            </nav>
+
         </nav>
 
         <!-- ===========================================================================
@@ -73,6 +87,14 @@
             </ul>
         </nav>
 
+
+        <nav class="navbar3 d-none align-items-center" id="navbarAdmin">
+            <ul class="d-flex list-unstyled m-0 gap-3">
+                <li><a href="adminHome.html">Ver Productos</a></li>
+                <li><a href="adminCrear.html">Nuevo Producto</a></li>
+            </ul>
+        </nav>
+
     </header>
 
     <!-- ==========================================================================
@@ -86,7 +108,8 @@
         <!-- Título Animado -->
         <div class="row mb-5 fade-up">
             <div class="col-12">
-                <h1 class="display-4 fw-bold text-center text-forrajero-green" style="font-family: 'Geologica', sans-serif;">
+                <h1 class="display-4 fw-bold text-center text-forrajero-green"
+                    style="font-family: 'Geologica', sans-serif;">
                     ¿Todo listo?
                 </h1>
             </div>
@@ -99,7 +122,8 @@
 
                 <!-- Botón Proceder al Pago (Se mantiene fijo abajo) -->
                 <div class="text-center mt-5 fade-up delay-3" id="btn-proceder-pago">
-                    <a href="pago.html" class="btn bg-forrajero-orange rounded-1 fw-bold fs-5 px-5 py-3 shadow-sm border-0">
+                    <a href="pago.html"
+                        class="btn bg-forrajero-orange rounded-1 fw-bold fs-5 px-5 py-3 shadow-sm border-0">
                         Proceder al pago
                     </a>
                 </div>
@@ -116,8 +140,7 @@
 
             <!-- Logo y redes sociales -->
             <div class="footer-brand">
-                <img src="recursos-graficos/footer/forrajero-verde1.png" alt="Logo Forrajero"
-                    class="footer-logo">
+                <img src="recursos-graficos/footer/forrajero-verde1.png" alt="Logo Forrajero" class="footer-logo">
 
                 <div class="footer-social">
                     <a href="#" aria-label="Facebook">
@@ -207,6 +230,7 @@
     <!--Script de js-->
     <script src="build/js/home.js"></script>
     <script src="build/js/carrito.js"></script>
+    <script type="module" src="build/js/adminAuth.js"></script>
 </body>
 
 </html>

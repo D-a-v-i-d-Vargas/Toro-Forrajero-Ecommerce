@@ -2,10 +2,16 @@
 const itemsController = new ItemsController(0);
 
 // ==========================================
-// 1. CONFIGURACIÓN DE INTERFAZ Y EVENTOS
+// 1. INICIALIZACIÓN Y EVENTOS DE INTERFAZ
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
-    // Referencias al DOM
+    // A. Carga inicial del producto si existe ID en localStorage
+    const idProducto = localStorage.getItem('idProductoEditar');
+    if (idProducto) {
+        cargarProducto(idProducto);
+    }
+
+    // B. Referencias al DOM
     const inputImagen = document.getElementById('imagen-principal');
     const btnPreview = document.getElementById('btn-preview');
     const btnCerrarModal = document.getElementById('btn-cerrar-modal');
@@ -32,9 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
         btnCerrarModal?.addEventListener('click', () => myModal.hide());
     }
 
-    // LISTENER DE CAMBIO DE IMAGEN CON VALIDACIÓN Y BASE64
+    // Listener de cambio de imagen con validación y Base64
     inputImagen?.addEventListener('change', async (e) => {
-        // Validar la imagen
         const error = validarImagen(inputImagen);
 
         if (error) {
@@ -49,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (file) {
             if (nombreArchivo) nombreArchivo.textContent = file.name;
 
-            // Convertimos a Base64 para actualizar la vista previa en el modal
             const base64String = await obtenerBase64(file);
             if (imgPreviewTarget) {
                 imgPreviewTarget.src = base64String;
@@ -94,15 +98,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ==========================================
-// 2. CARGA INICIAL DEL PRODUCTO
+// 2. PETICIÓN GET / CARGAR PRODUCTO
 // ==========================================
-document.addEventListener('DOMContentLoaded', () => {
-    const id = localStorage.getItem('idProductoEditar');
-    if (id) {
-        cargarProducto(id);
-    }
-});
-
 export async function cargarProducto(id) {
     if (!id) return;
 
@@ -189,7 +186,7 @@ function obtenerNombreImagenRegex(path) {
 }
 
 // ==========================================
-// 3. PETICIÓN PUT / ACTUALIZAR
+// 3. PETICIÓN PUT / ACTUALIZAR PRODUCTO
 // ==========================================
 async function guardarCambios() {
     mostrarModal();
@@ -200,7 +197,6 @@ async function guardarCambios() {
 
     let rutaImagen = imagenActual;
 
-    // Si seleccionó una nueva imagen, la convertimos a Base64 para guardarla directamente en db.json
     if (inputImagen && inputImagen.files.length > 0) {
         rutaImagen = await obtenerBase64(inputImagen.files[0]);
     }
@@ -213,7 +209,7 @@ async function guardarCambios() {
         precio: parseFloat(document.querySelector('#precioVenta')?.value) || 0,
         existencia: parseInt(document.querySelector('#existencia')?.value) || 0,
         descripcion: document.querySelector('#descripcion-producto')?.value.trim() || '',
-        imagen: rutaImagen, // Guardará la cadena base64 o la ruta existente
+        imagen: rutaImagen,
         estado: document.querySelector('#check-visibilidad')?.checked ? 'activo' : 'inactivo',
         destacado: document.querySelector('#check-destacado')?.checked ? 'activo' : 'inactivo'
     };
@@ -236,10 +232,12 @@ async function guardarCambios() {
     } catch (error) {
         console.error("Error en la petición PUT:", error);
         alert("Hubo un fallo al intentar guardar los cambios.");
+        cerrarModal();
     }
 }
+
 // ==========================================
-// 4. FUNCIONES DE VALIDACIÓN Y BASE64
+// 4. FUNCIONES AUXILIARES Y MODAL CARGA
 // ==========================================
 function validarImagen(inputImagen) {
     if (!inputImagen) return "No se encuentra el campo de la imagen";
@@ -275,22 +273,14 @@ function obtenerBase64(imagen) {
     });
 }
 
-
-
-
 function mostrarModal() {
     const modal = document.createElement('DIV');
     const carga = document.createElement('DIV');
-    carga.innerHTML=  `
+    carga.innerHTML = `
         <div class="contenedor-loader">
-  <img class="animacion-carga" src="recursos-graficos/formulario-contactanos/Forrajero-naranja.png" alt="Cargando">
-</div>`
+            <img class="animacion-carga" src="recursos-graficos/formulario-contactanos/Forrajero-naranja.png" alt="Cargando">
+        </div>`;
     modal.classList.add('modal-overlay');
-
-
-    // modal.addEventListener('click', function () {
-    //     cerrarModal()
-    // })
 
     const body = document.querySelector('body');
     body.classList.add('overflow-hiden');
@@ -300,13 +290,11 @@ function mostrarModal() {
     setTimeout(() => {
         modal.classList.add('is-visible');
     }, 10);
-
 }
 
 function cerrarModal() {
     const modal = document.querySelector('.modal-overlay');
     const body = document.querySelector('body');
-
 
     if (modal) {
         modal.classList.remove('is-visible');
@@ -316,7 +304,4 @@ function cerrarModal() {
             modal.remove();
         }, 300);
     }
-
 }
-
-

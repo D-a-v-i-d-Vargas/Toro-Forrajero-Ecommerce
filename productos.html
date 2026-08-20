@@ -26,6 +26,7 @@
     <!--CSS Globales-->
     <link rel="stylesheet" href="build/css/app.css">
     <link rel="stylesheet" href="build/css/productos.css">
+    <script type="module" src="build/js/adminAuth.js"></script>
 </head>
 
 <body>
@@ -70,6 +71,7 @@
                 <div class="indicator"></div>
             </ul>
         </nav>
+
     </header>
 
     <!-- ===========================================================================
@@ -165,42 +167,33 @@
         <!-- BOTÓN DE MARCA -->
         <section>
 
-            <!-- En realidad, será la "unión" de dos botones. Ambos por bootstrap, 
-        solo que uno será con la categoría button group, y el otro con dropdown para hacerlo desplegable. -->
 
             <div class="btn-group marca-group">
 
-                <!-- Botón izquierdo-->
+                <!-- Botón izquierdo (Se queda fijo con "Marca") -->
                 <button type="button" class="btn btn-marca" disabled>
-                    <!--Le ponemos disabled para que no sea clileable-->
-                    Marca <!-- visible -->
+                    Marca
                 </button>
 
-                <!-- Botón derecho desplegable -->
-                <button type="button" class="btn btn-dropdown dropdown-toggle dropdown-toggle-split"
+                <!-- Botón derecho desplegable (Le agregamos id="btn-dropdown-texto") -->
+                <button type="button" class="btn btn-dropdown dropdown-toggle dropdown-toggle-split" id="texto-marca"
                     data-bs-toggle="dropdown" aria-expanded="false">
-
-                    <span class="visually-hidden">menú desplegable</span>
-                    <!-- para que no aparezca el titulo en el botón der.-->
-
+                    Todas las marcas
                 </button>
 
                 <!-- Menú desplegable -->
                 <ul class="dropdown-menu w-100">
                     <li>
-                        <a class="dropdown-item" id="adm" href="#"> <!-- El backend reemplazará el href -->
-                            ADM
-                        </a>
+                        <a class="dropdown-item active" id="todas-marcas" href="#">Todas las marcas</a>
                     </li>
                     <li>
-                        <a class="dropdown-item" id="nogal" href="#"> <!-- El backend reemplazará el href -->
-                            El Nogal
-                        </a>
+                        <a class="dropdown-item" id="adm" href="#">ADM</a>
                     </li>
                     <li>
-                        <a class="dropdown-item" id="arandas" href="#"> <!-- El backend reemplazará el href -->
-                            Alimentos Arandas
-                        </a>
+                        <a class="dropdown-item" id="nogal" href="#">El Nogal</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" id="arandas" href="#">Alimentos Arandas</a>
                     </li>
                 </ul>
             </div>

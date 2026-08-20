@@ -15,7 +15,7 @@ async function cargarProductos() {
         itemsController.items = [];
 
         // 2. Filtramos solo los productos cuyo estado sea "activo" (o "Activo")
-        const productosActivos = productos.filter(producto => 
+        const productosActivos = productos.filter(producto =>
             String(producto.estado).toLowerCase() === 'activo'
         );
 
@@ -46,16 +46,16 @@ async function cargarProductos() {
  * * Función auxiliar para actualizar el DOM y reactivar los escuchadores del carrito
  */
 function actualizarCatalogoYEventos(items) {
-	renderizarHTML(items);
+    renderizarHTML(items);
 
     actualizarBadgeNavegacion();
 }
 
 function renderizarHTML(items) {
-	const catalogo = document.getElementById('catalogo-productos');
-	if (!catalogo) return;
+    const catalogo = document.getElementById('catalogo-productos');
+    if (!catalogo) return;
 
-	catalogo.innerHTML = items.map(producto => `
+    catalogo.innerHTML = items.map(producto => `
         <article class="tarjeta-producto">
             <img src="${producto.imagen}" alt="${producto.nombreProducto}">
 
@@ -80,8 +80,8 @@ function renderizarHTML(items) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-	cargarProductos();
-	renderizarHTML(itemsController.items);
+    cargarProductos();
+    renderizarHTML(itemsController.items);
 });
 
 //FILTRANDO POR ESPECIE Y MARCA
@@ -98,7 +98,7 @@ const mapaEspecies = {
 
 // FILTRO POR ESPECIE Y MARCA
 function aplicarFiltros() {
-    
+
     const productosFiltrados = itemsController.items.filter(producto => {
         const cumpleMarca = marcaSeleccionada ? producto.marca === marcaSeleccionada : true;
         const cumpleEspecie = especieSeleccionada ? producto.especie === especieSeleccionada : true;
@@ -110,25 +110,35 @@ function aplicarFiltros() {
 
 // BTN MARCA
 const botonesMarca = [
+    { id: 'todas-marcas', marca: null },
     { id: 'adm', marca: 'ADM' },
     { id: 'nogal', marca: 'El Nogal' },
     { id: 'arandas', marca: 'Alimentos Arandas' }
 ];
 
+
+const textoMarcaSeleccionada = document.getElementById('texto-marca');
+
 botonesMarca.forEach(({ id, marca }) => {
     const btn = document.getElementById(id);
     if (!btn) return;
-	//para marcar o desmarcar un btn
-    btn.addEventListener('click', () => {
-        if (marcaSeleccionada === marca) {
-            marcaSeleccionada = null;
-            btn.classList.remove('activo');
-        } else {
-            // Desmarca otros botones de marca cuando se selecciona uno
-            botonesMarca.forEach(b => document.getElementById(b.id)?.classList.remove('activo'));
-            marcaSeleccionada = marca;
-            btn.classList.add('activo');
+
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        //Remueve la clase activa
+        botonesMarca.forEach(b => document.getElementById(b.id)?.classList.remove('active'));
+
+        // La reasigna
+        btn.classList.add('active');
+
+        if (textoMarcaSeleccionada) {
+            textoMarcaSeleccionada.textContent = btn.textContent.trim();
         }
+
+        // Actualiza marca
+        marcaSeleccionada = marca;
+
         aplicarFiltros();
     });
 });
@@ -166,12 +176,12 @@ document.addEventListener("DOMContentLoaded", () => {
    ==================================================== */
 
 // 1. Vigilante global para los clics en cualquier botón de carrito
-document.addEventListener('click', function(e) {
+document.addEventListener('click', function (e) {
     // Si el elemento clickeado tiene la clase 'boton-carrito'
     if (e.target.classList.contains('boton-carrito')) {
         const btn = e.target;
         const nombreExacto = btn.getAttribute('data-producto');
-        
+
         // Buscar el producto en nuestro catálogo
         const productoSeleccionado = itemsController.items.find(
             producto => String(producto.nombreProducto).trim() === String(nombreExacto).trim()
@@ -182,10 +192,10 @@ document.addEventListener('click', function(e) {
             let carritoProductos = [];
             try {
                 carritoProductos = JSON.parse(localStorage.getItem('carrito')) || [];
-            } catch(error) {
+            } catch (error) {
                 carritoProductos = []; // Si había un error previo en la memoria, empezamos de cero
             }
-            
+
             carritoProductos.push(productoSeleccionado);
             localStorage.setItem('carrito', JSON.stringify(carritoProductos));
 
