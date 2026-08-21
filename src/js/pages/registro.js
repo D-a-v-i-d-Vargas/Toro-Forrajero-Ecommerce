@@ -134,6 +134,21 @@ function validarConfirmarContraseña(inputContraseña, inputConfirmar) {
 	VALIDACIÓN MAESTRA Y ENVÍO DEL FORMULARIO
 ----------------------------------------------------------------------------- */
 document.addEventListener('DOMContentLoaded', () => {
+	// Codigo agregando Bandera, ya que se observa que al usar json-server,
+	// la pagina hace refresh, haciendo que el modal nunca se muestre
+	// Por lo que si el registro es exitoso, este dato se guarda en sessionStorage
+	// Verificamos si venimos de un registro exitoso tras el reload de json-server
+    if (sessionStorage.getItem('registroExitoso') === 'true') {
+        const modalElement = document.getElementById('modalExito');
+        if (modalElement) {
+            const modalExito = new bootstrap.Modal(modalElement);
+            modalExito.show();
+        }
+        // Limpiar la bandera para que no reaparezca en recargas manuales futuras
+        sessionStorage.removeItem('registroExitoso');
+    }
+
+
 	const formulario = document.querySelector("#formulario-registro");
 	const btnUnirme = document.getElementById("#btnUnirme") || document.querySelector("button[type='submit'], #btnUnirme"); // o tu selector del botón
 
@@ -224,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			//Manda datos a la API
 			await enviarDatos();
-
+			console.log("LLEGÓ AQUÍ");
 			if (divAlerta) {
 				divAlerta.innerHTML = `
                 <div class="alert bg-success text-white alert-dismissible fade show" role="alert">
@@ -304,7 +319,9 @@ async function enviarDatos() {
 
 		console.log("Usuario guardado exitosamente en LocalStorage:", nuevoUsuario);
 
-
+		//Funcionamiento del Modal
+		//Activamos la bandera antes de que json-server recargue la página
+        sessionStorage.setItem('registroExitoso', 'true');
 
 
 

@@ -22,6 +22,9 @@
 		rel="stylesheet">
 
 	<link rel="stylesheet" href="build/css/app.css">
+	<link rel="stylesheet" href="build/css/pages/home.css">
+	<link rel="stylesheet" href="build/css/home.css">
+
 	<script type="module" src="build/js/adminAuth.js"></script>
 </head>
 
@@ -34,22 +37,27 @@
 		<nav class="navbar navbar-1">
 			<div class="container-fluid px-4">
 
-				<div class="navbar-brand">
+				<!-- INYECCIÓN: Redirección al index en el logo -->
+				<a class="navbar-brand" href="index.html">
 					<img src="recursos-graficos/navbar/forrajero-sinfondo.png" alt="Logo sin fondo de Toro Forrajero"
 						class="logo-navbar d-inline-block align-text-top me-2">
-				</div>
-				<ul class="navbar-nav flex-row ms-auto gap-4">
+				</a>
+
+				<!-- INYECCIÓN: Homologación de tamaño y alineación para íconos -->
+				<ul class="navbar-nav flex-row ms-auto gap-4 align-items-center">
 					<li class="nav-item">
-						<a class="nav-link icon-link" href="inicioSesion.html">
-							<i class="bi bi-person"> </i>
+						<a class="nav-link icon-link d-flex flex-column align-items-center text-center" href="inicioSesion.html">
+							<div class="user-icon-wrapper d-flex align-items-center justify-content-center" style="height: 35px;">
+								<i class="bi bi-person fs-3"></i>
+							</div>
 							<span>Mi cuenta</span>
 						</a>
 					</li>
 
 					<li class="nav-item carrito">
-						<a class="nav-link icon-link" href="carrito.html">
-							<div class="cart-icon-wrapper">
-								<i class="bi bi-cart3"></i>
+						<a class="nav-link icon-link d-flex flex-column align-items-center text-center" href="carrito.html">
+							<div class="cart-icon-wrapper d-flex align-items-center justify-content-center" style="height: 35px;">
+								<i class="bi bi-cart3 fs-3"></i>
 								<!-- <span class="contador-carrito">0</span> -->
 							</div>
 							<span>Carrito</span>
@@ -95,9 +103,9 @@
 					el bienestar y rendimiento de tus animales.
 				</p>
 
-				<a href="#" class="btn-hero">
-					Comprar ahora →
-				</a>
+            <a href="productos.html" class="btn-hero">
+                Comprar ahora →
+            </a>
 
 			</div>
 
@@ -169,58 +177,20 @@
             SECCIÓN: PRODUCTOS DESTACADOS
         ============================================================================ -->
 	<section id="productos-destacados">
-		<h2>Productos destacados</h2>
-
-		<div class="productos-grid">
-			<div class="tarjeta-producto">
-				<img src="recursos-graficos/productos/ovino/ovino-adm-borrego-forte.png">
-
-				<div class="contenido-producto">
-					<h2>Borregos Forte</h2>
-					<p>Alimento balanceado de alta tecnología para ovinos en etapa de engorda y finalización. Elaborado
-						con
-						ingredientes de alta calidad.</p>
-					<span class="precio">$269.00 MXN</span>
-
-					<button type="button" class="boton-carrito">
-						Agregar al carrito
-					</button>
-				</div>
-			</div>
-
-			<div class="tarjeta-producto">
-				<img src="recursos-graficos/productos/aves/aves-adm-pollo-especial.png">
-
-				<div class="contenido-producto">
-					<h2>Pollo Especial</h2>
-					<p>Alimento balanceado de alta tecnología para pollitos de engorda. Elaborado con ingredientes de
-						alta
-						calidad.</p>
-					<span class="precio">$245.00 MXN</span>
-
-					<button type="button" class="boton-carrito">
-						Agregar al carrito
-					</button>
-				</div>
-			</div>
-
-			<div class="tarjeta-producto">
-				<img src="recursos-graficos/productos/bovino/bovino-adm-mezcla-nutridor.png">
-
-				<div class="contenido-producto">
-					<h2>Mezcla Nutridor</h2>
-					<p>Alimento balanceado de alta tecnología para vacas altas productoras. Elaborado con ingredientes
-						de
-						alta calidad.</p>
-					<span class="precio">$279.00 MXN</span>
-
-					<button type="button" class="boton-carrito">
-						Agregar al carrito
-					</button>
-				</div>
-			</div>
+		<div class="titulo-producto">
+			<h2>Productos destacados</h2>
 		</div>
-	</section>
+	
+		<!-- -------------------------------------------------------------------
+				TARJETAS DE PRODUCTOS (GRID)
+		-------------------------------------------------------------------- -->
+		<section class="catalogo-productos activo px-5 mb-5">
+			<div class="productos-grid" id="catalogo-productos">
+				<!-- Aquí se inyectarán dinámicamente los productos desde JS -->
+			</div>
+		</section>
+	</sention>
+
 	<!-- ===========================================================================
             SECCIÓN: MEJOR ALIMENTACIÓN
         ============================================================================ -->
@@ -417,10 +387,8 @@
 		crossorigin="anonymous"></script>
 
 	<!--Script de js-->
+	<script src="build/js/itemsController.js"></script>
 	<script src="build/js/home.js"></script>
-	<script src="build/js/carrito.js"></script>
-	
-
 </body>
 
 </html>

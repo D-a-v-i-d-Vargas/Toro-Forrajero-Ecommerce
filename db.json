@@ -2,13 +2,13 @@
   "productos": [
     {
       "nombreProducto": "Mezcla Nutridor 25kg",
-      "especie": "ovinos",
-      "marca": "El-nogal",
+      "especie": "Vacas",
+      "marca": "ADM",
       "costo": 200,
       "precio": 300,
       "existencia": 20,
       "descripcion": "Alimento balanceado de alta tecnología para vacas altas productoras. Elaborado con ingredientes de alta calidad.",
-      "imagen": "http://127.0.0.1:5502/recursos-graficos/productos/bovino/bovino-adm-mezcla-nutridor.png",
+      "imagen": "recursos-graficos/productos/bovino/bovino-adm-mezcla-nutridor.png",
       "estado": "activo",
       "destacado": "activo",
       "id": 1
@@ -21,7 +21,7 @@
       "precio": 279,
       "existencia": 20,
       "descripcion": "Alimento balanceado de alta tecnología para la engorda de bovinos. Elaborado con ingredientes de alta calidad.",
-      "imagen": "http://127.0.0.1:5502/recursos-graficos/productos/bovino/bovino-adm-mezcla-ganadera-malta.png",
+      "imagen": "recursos-graficos/productos/bovino/bovino-adm-mezcla-ganadera-malta.png",
       "estado": "activo",
       "destacado": "activo",
       "id": 2
@@ -56,7 +56,7 @@
       "id": 5,
       "nombreProducto": "Finalizador® Engorda Cerdos H.L. 25kg",
       "descripcion": "Alimento balanceado de alta tecnología para cerdos en finalización de la engorda de 78 a 104 kg.",
-      "destacado": "activo",
+      "destacado": "inactivo",
       "especie": "Cerdos",
       "costo": 200,
       "precio": 286,
@@ -160,7 +160,7 @@
       "id": 13,
       "nombreProducto": "Engorda 25kg",
       "descripcion": "Alimento completo para cerdos en finalización.",
-      "destacado": "activo",
+      "destacado": "inactivo",
       "especie": "Cerdos",
       "costo": 200,
       "precio": 369,
