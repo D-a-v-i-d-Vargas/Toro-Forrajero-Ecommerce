@@ -292,3 +292,42 @@ body {
     text-align: center;
 }
 
+
+		.envio-domicilio-banner {
+			background-color: var(--color-verdeFuerte);
+			border: 2px solid var(--color-naranjaClaro);
+			border-radius: 12px;
+			padding: 18px 24px;
+		}
+
+		.envio-domicilio-icon {
+			color: var(--color-naranjaClaro);
+			font-size: 1.6rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.envio-domicilio-title {
+			color: var(--color-naranjaClaro);
+			font-weight: 700;
+			font-size: 1.05rem;
+		}
+
+		.envio-domicilio-subtitle {
+			color: var(--color-textoBlanco);
+			font-size: 0.9rem;
+		}
+
+		.envio-domicilio-check {
+			background-color: var(--color-naranjaClaro);
+			color: var(--color-verdeFuerte);
+			width: 28px;
+			height: 28px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: 700;
+			flex-shrink: 0;
+		}
