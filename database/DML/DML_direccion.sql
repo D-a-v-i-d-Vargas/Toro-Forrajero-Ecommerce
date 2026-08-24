@@ -1,8 +1,21 @@
 -- ================================================
 -- 		Inserts para la Tabla direccion
 -- ================================================
-INSERT INTO direccion (calle, num_exterior, num_interior, codigo_postal, alcaldia, estado, tel, email, id_usuario) 
-VALUES 
+
+# Observación: id_usuario verificado contra la tabla usuario ya creada (10 clientes, IDs 1-10).
+
+INSERT INTO direccion (
+    calle,
+    num_exterior,
+    num_interior,
+    codigo_postal,
+    alcaldia,
+    estado,
+    tel,
+    email,
+    id_usuario
+)
+VALUES
 ('Av. Reforma', '450', NULL, '06600', 'Ciudad de México', 'Ciudad de México', '5511223344', 'ana@gmail.com', 1),
 ('Calle Hidalgo', '88', 'A', '42000', 'Pachuca', 'Hidalgo', '7712345566', 'jperez11@hotmail.com', 2),
 ('Av. Toluca', '210', NULL, '50100', 'Toluca', 'Estado de México', '7221009988', 'mlopez@gmail.com', 3),
