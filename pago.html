@@ -29,6 +29,47 @@
 	<link rel="stylesheet" href="build/css/pago.css">
 	<!-- Estilos del bloque de pago (tarjeta / pago exprés) -->
 	<link rel="stylesheet" href="src/css/pages/pago.css">
+
+	<style>
+		.envio-domicilio-banner {
+			background-color: #2f3a20;
+			border: 2px solid #e8a13d;
+			border-radius: 12px;
+			padding: 18px 24px;
+		}
+
+		.envio-domicilio-icon {
+			color: #e8a13d;
+			font-size: 1.6rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.envio-domicilio-title {
+			color: #e8a13d;
+			font-weight: 700;
+			font-size: 1.05rem;
+		}
+
+		.envio-domicilio-subtitle {
+			color: #f2ead9;
+			font-size: 0.9rem;
+		}
+
+		.envio-domicilio-check {
+			background-color: #e8a13d;
+			color: #2f3a20;
+			width: 28px;
+			height: 28px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: 700;
+			flex-shrink: 0;
+		}
+	</style>
 </head>
 
 <body>
@@ -110,94 +151,20 @@
 
 				<form id="formulario-checkout" novalidate>
 
-					<!-- Método de entrega -->
+					<!-- Método de entrega: envío a domicilio (único método disponible) -->
 					<div class="mb-4" data-aos="fade-up" data-aos-delay="200">
-						<p class="checkout-section-label mb-2">Método de entrega:</p>
-						<div class="row g-3">
-							<div class="col-md-6">
-								<button type="button"
-									class="delivery-method-btn active w-100 d-flex align-items-center justify-content-center gap-2"
-									data-metodo="domicilio">
-									<i class="bi bi-box-seam fs-5"></i>
-									Envío a domicilio
-								</button>
-							</div>
-							<div class="col-md-6">
-								<button type="button"
-									class="delivery-method-btn w-100 d-flex align-items-center justify-content-center gap-2"
-									data-metodo="tienda">
-									<i class="bi bi-geo-alt-fill fs-5"></i>
-									Retiro en tienda
-								</button>
-							</div>
-						</div>
-					</div>
-
-					<!-- Retiro en tienda (se muestra al elegir "Retiro en tienda") -->
-					<div class="mb-3" id="bloque-retiro-tienda" style="display: none;">
-
-						<div class="retiro-tienda-card">
-
-							<!-- Encabezado -->
-							<div class="retiro-tienda-header">
-								<i class="bi bi-geo-alt-fill retiro-tienda-header-icon"></i>
+						<div class="envio-domicilio-banner d-flex align-items-center justify-content-between">
+							<div class="d-flex align-items-center gap-3">
+								<div class="envio-domicilio-icon">
+									<i class="bi bi-box-seam"></i>
+								</div>
 								<div>
-									<p class="retiro-tienda-title">Retira tu pedido en nuestra sucursal</p>
-									<p class="retiro-tienda-subtitle">Tu pedido estará listo para recoger aquí.</p>
+									<p class="envio-domicilio-title mb-0">Envío a domicilio</p>
+									<p class="envio-domicilio-subtitle mb-0">Llevamos tu pedido hasta la puerta de tu hogar.</p>
 								</div>
 							</div>
-
-							<!-- Mapa + información -->
-							<div class="row g-3 align-items-stretch">
-
-								<!-- Mapa -->
-								<div class="col-md-7">
-									<div class="retiro-tienda-mapa">
-										<iframe
-											src="https://maps.google.com/maps?q=Cerro+Lejos&output=embed"
-											width="100%"
-											height="100%"
-											style="border:0; display:block; min-height: 220px;"
-											allowfullscreen=""
-											loading="lazy"
-											referrerpolicy="no-referrer-when-downgrade">
-										</iframe>
-									</div>
-								</div>
-
-								<!-- Panel de información para retiro en tienda -->
-								<div class="col-md-5">
-									<div class="retiro-tienda-info h-100">
-
-										<div class="retiro-info-item">
-											<div class="retiro-info-icon">
-												<i class="bi bi-geo-alt-fill"></i>
-											</div>
-											<div>
-												<p class="retiro-info-title">Dirección</p>
-												<p class="retiro-info-text">
-													Cerro de la Estrella
-												</p>
-											</div>
-										</div>
-
-										<hr class="retiro-info-divider">
-
-										<div class="retiro-info-item">
-											<div class="retiro-info-icon">
-												<i class="bi bi-clock-fill"></i>
-											</div>
-											<div>
-												<p class="retiro-info-title">Horario de atención</p>
-												<p class="retiro-info-text">
-													10:00 a.m. - 7:00 p.m.
-												</p>
-											</div>
-										</div>
-
-									</div>
-								</div>
-
+							<div class="envio-domicilio-check">
+								<i class="bi bi-check-lg"></i>
 							</div>
 						</div>
 					</div>
