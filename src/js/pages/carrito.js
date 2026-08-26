@@ -1,15 +1,37 @@
 /**
-    * ============================================================================
-    * LÓGICA DEL CARRITO DE COMPRAS (RENDERIZADO DINÁMICO Y PERSISTENCIA)
-    * ============================================================================
-    * Descripción: Este script lee el 'localStorage', agrupa productos duplicados,
-    * genera el HTML inicial y maneja el incremento/decremento actualizando ÚNICAMENTE
-    * los nodos de texto necesarios, evitando re-renderizados que disparen animaciones.
+ * ============================================================================
+ * INTERCEPTOR DIRECTO PARA EL LI DEL CARRITO (ICONO + TEXTO)
+ * ============================================================================
  */
+document.addEventListener('click', (e) => {
+    // Detecta si el clic ocurrió dentro del <li class="nav-item carrito"> o en el enlace
+    const itemCarrito = e.target.closest('li.carrito') || e.target.closest('a[href*="carrito.html"]');
 
+    if (itemCarrito) {
+        const usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo'))
+            || JSON.parse(sessionStorage.getItem('usuarioActivo'));
+
+        // Si NO hay usuario activo, cancelamos el enlace y mostramos el modal personalizado
+        if (!usuarioActivo) {
+            e.preventDefault();   // Evita que el navegador vaya a carrito.html
+            e.stopPropagation();  // Detiene la propagación del evento
+
+            mostrarModalAcceso('Debes iniciar sesión para acceder al carrito.');
+        }
+    }
+}, true);
+
+/**
+ * ============================================================================
+ * LÓGICA DE RENDERIZADO INTERNA DE CARRITO.HTML
+ * ============================================================================
+ */
 document.addEventListener('DOMContentLoaded', () => {
     const contenedor = document.getElementById('contenedor-productos-carrito');
     const btnPago = document.getElementById('btn-proceder-pago');
+
+    // Si no estamos en la vista de carrito.html, no ejecutamos el renderizado de lista
+    if (!contenedor) return;
 
     const carritoCrudo = JSON.parse(localStorage.getItem('carrito')) || [];
 
@@ -64,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                 ${producto.cantidad}
                             </div>
                             
-                            <!-- NUEVO BOTÓN: Eliminar Artículo -->
                             <button class="btn-eliminar ms-3" data-nombre="${producto.nombreProducto}" data-index="${index}">
                                 <i class="bi bi-trash3 me-1"></i> Eliminar artículo
                             </button>
@@ -88,9 +109,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function asignarEventosBotones(productos) {
         const btnSumarList = document.querySelectorAll('.btn-sumar');
         const btnRestarList = document.querySelectorAll('.btn-restar');
-        const btnEliminarList = document.querySelectorAll('.btn-eliminar'); // Seleccionamos el nuevo botón
+        const btnEliminarList = document.querySelectorAll('.btn-eliminar');
 
-        // Evento Sumar
         btnSumarList.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const nombre = e.target.getAttribute('data-nombre');
@@ -105,7 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Evento Restar
         btnRestarList.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const nombre = e.target.getAttribute('data-nombre');
@@ -126,10 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // NUEVO EVENTO: Eliminar por completo
         btnEliminarList.forEach(btn => {
             btn.addEventListener('click', (e) => {
-                // Usamos closest por si el usuario le da clic al ícono de la papelera en lugar del texto
                 const boton = e.target.closest('.btn-eliminar'); 
                 const nombre = boton.getAttribute('data-nombre');
                 const indexHtml = boton.getAttribute('data-index');
@@ -142,16 +159,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /**
-     * Función auxiliar para borrar un artículo del arreglo y del DOM
-     */
     function eliminarProductoPorCompleto(productos, arrayIndex, domIndex) {
-        productos.splice(arrayIndex, 1); // Lo quitamos del arreglo
-        actualizarAlmacenamiento(productos); // Actualizamos memoria
+        productos.splice(arrayIndex, 1);
+        actualizarAlmacenamiento(productos);
         
         const tarjetaDOM = document.getElementById(`tarjeta-${domIndex}`);
         if (tarjetaDOM) {
-            tarjetaDOM.remove(); // Lo quitamos visualmente sin recargar
+            tarjetaDOM.remove();
         }
 
         if (productos.length === 0) {
@@ -196,3 +210,99 @@ document.addEventListener('DOMContentLoaded', () => {
         if (btnPago) btnPago.style.display = 'none';
     }
 });
+
+// ====================================================
+// MODAL DE ACCESO / ALERTA REUTILIZABLE
+// ====================================================
+function mostrarModalAcceso(mensaje, urlRedireccion = null) {
+    const modal = document.createElement('DIV');
+    modal.classList.add('modal-fullscreen-overlay');
+
+    const contenidoModal = document.createElement('DIV');
+    contenidoModal.classList.add('contenido-modal-denegado');
+
+    contenidoModal.innerHTML = `
+        <h3 class="text-center titulo-denegado">${mensaje}</h3>
+        <div class="d-flex admin-btns justify-content-center mt-4">
+            <button type="button" class="btn-cancelar">Entendido</button>
+        </div>
+    `;
+
+    modal.appendChild(contenidoModal);
+
+    const ejecutarCierre = () => {
+        modal.classList.remove('is-visible');
+        document.body.classList.remove('overflow-hidden');
+        setTimeout(() => {
+            modal.remove();
+            if (urlRedireccion) {
+                window.location.href = urlRedireccion;
+            }
+        }, 300);
+    };
+
+    // Cerrar al hacer clic fuera del contenido o en el botón
+    modal.addEventListener('click', (evento) => {
+        if (evento.target === modal) ejecutarCierre();
+    });
+
+    const btnEntendido = contenidoModal.querySelector('.btn-cancelar');
+    btnEntendido?.addEventListener('click', ejecutarCierre);
+
+    document.body.classList.add('overflow-hidden');
+    document.body.appendChild(modal);
+
+    setTimeout(() => {
+        modal.classList.add('is-visible');
+    }, 10);
+}
+
+// ====================================================
+// CONTROL DE ACCESOS CENTRALIZADO
+// ====================================================
+(function controlarAccesos() {
+    const usuarioSesion = JSON.parse(localStorage.getItem("usuarioActivo")) 
+                        || JSON.parse(sessionStorage.getItem("usuarioActivo"));
+
+    let paginaActual = window.location.pathname.split("/").pop();
+    if (paginaActual === "") paginaActual = "index.html";
+
+    // Páginas exclusivas de Administrador
+    const paginasAdmin = [
+        "adminHome.html", 
+        "adminCrear.html", 
+        "adminEditar.html"
+    ];
+
+    // Páginas exclusivas de Clientes / Usuarios Públicos
+    const paginasCliente = [
+        "index.html",
+        "productos.html",
+        "pago.html",
+        "acercaNosotros.html",
+        "contactanos.html",
+        "carrito.html"
+    ];
+
+    // 1. CASO ADMIN: Si es ADMIN e intenta entrar a páginas del cliente/tienda
+    if (usuarioSesion && usuarioSesion.rol === "admin") {
+        if (paginasCliente.includes(paginaActual)) {
+            mostrarModalAcceso(
+                "Los administradores deben navegar únicamente desde el panel de administración.", 
+                "adminHome.html"
+            );
+            return;
+        }
+    }
+
+    // 2. CASO CLIENTE / INVITADO: Si intenta ingresar a páginas de administración sin permisos
+    if (paginasAdmin.includes(paginaActual)) {
+        if (!usuarioSesion || usuarioSesion.rol !== "admin") {
+            mostrarModalAcceso(
+                "Acceso denegado. Se requieren permisos de administrador.", 
+                "inicioSesion.html"
+            );
+            return;
+        }
+    }
+})();

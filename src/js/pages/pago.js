@@ -1,75 +1,56 @@
-// APARTADO DE FINALIZAR COMPRA 
+// ==========================================
+// 0. VERIFICACIÓN DE SESIÓN EN PAGO / CHECKOUT
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+    const usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo')) 
+                       || JSON.parse(sessionStorage.getItem('usuarioActivo'));
 
+    // Si NO hay sesión activa, redirige inmediatamente al index.html
+    if (!usuarioActivo) {
+        window.location.href = 'index.html';
+        return;
+    }
+});
 
-// Espera a que el HTML termine de cargar
+// ==========================================
+// 1. RESUMEN DEL PEDIDO
+// ==========================================
 document.addEventListener('DOMContentLoaded', mostrarResumenPedido);
 
-// Muestra los productos y el total del carrito
 function mostrarResumenPedido() {
-
-    // Obtiene los productos guardados en localStorage
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-
-    // Contenedor donde se mostrarán los productos
     const detallePedido = document.getElementById('detalle-pedido');
-
-    // Elemento donde se mostrará el total
     const totalPedido = document.getElementById('total-pedido');
 
-    // Verifica que existan los elementos en el HTML
     if (!detallePedido || !totalPedido) return;
 
-    // Limpia el contenedor antes de agregar contenido
-    detallePedido.innerHTML = '';
-
-    // Variable para acumular el total
-    let total = 0;
-
-    // Si el carrito está vacío
     if (carrito.length === 0) {
-        detallePedido.innerHTML = `
-            <p class="mb-0 small">
-                No hay productos en el carrito.
-            </p>
-        `;
-
+        detallePedido.innerHTML = `<p class="mb-0 small">No hay productos en el carrito.</p>`;
         totalPedido.textContent = '$0.00 MXN';
         return;
     }
 
-    // Recorre todos los productos del carrito
+    let total = 0;
+    let htmlContenido = '';
+
     carrito.forEach(producto => {
-
-        // Suma el precio al total
         total += producto.precio;
-
-        // Agrega el producto al resumen
-        detallePedido.innerHTML += `
+        htmlContenido += `
             <div class="d-flex justify-content-between mb-2">
                 <span>${producto.nombreProducto}</span>
-                <span>$${producto.precio}.00</span>
+                <span>$${producto.precio.toLocaleString('es-MX', { minimumFractionDigits: 2 })}</span>
             </div>
         `;
     });
 
-    // Muestra el total final
-    totalPedido.textContent =
-        `$${total.toLocaleString('es-MX')}.00 MXN`;
+    detallePedido.innerHTML = htmlContenido;
+    totalPedido.textContent = `$${total.toLocaleString('es-MX', { minimumFractionDigits: 2 })} MXN`;
 }
 
-
-
-
-
-
-
 // ==========================================
-// boton de estado 
+// 2. TOGGLE MÉTODO DE ENTREGA Y ESTADO
 // ==========================================
-
-	document.addEventListener('DOMContentLoaded', () => {
-
-    // Sincronizar campo "Ciudad" con el Estado seleccionado
+document.addEventListener('DOMContentLoaded', () => {
     const selectEstado = document.getElementById('estado');
     const inputCiudad = document.getElementById('ciudad');
 
@@ -80,7 +61,6 @@ function mostrarResumenPedido() {
         });
     }
 
-    // : Envío a domicilio / Retiro en tienda
     const bloqueDireccion = document.getElementById('bloque-direccion');
     const bloqueRetiroTienda = document.getElementById('bloque-retiro-tienda');
 
@@ -89,42 +69,27 @@ function mostrarResumenPedido() {
             document.querySelectorAll('.delivery-method-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
-            if (btn.dataset.metodo === 'tienda') {
-                bloqueDireccion.style.display = 'none';
-                bloqueRetiroTienda.style.display = 'block';
-            } else {
-                bloqueDireccion.style.display = 'block';
-                bloqueRetiroTienda.style.display = 'none';
-            }
+            const esTienda = btn.dataset.metodo === 'tienda';
+            if (bloqueDireccion) bloqueDireccion.style.display = esTienda ? 'none' : 'block';
+            if (bloqueRetiroTienda) bloqueRetiroTienda.style.display = esTienda ? 'block' : 'none';
         });
     });
-
 });
 
-
-
-
-/////////////////////////////////////////////////
-// ///////////////////validaciones Dirección (Checkout)
 // ==========================================
-// VALIDACIONES FORMULARIO DE DIRECCIÓN
-// (Mismo estilo/patrón que contactanos.js)
+// 3. VALIDACIONES DIRECCIÓN (CHECKOUT)
 // ==========================================
-
-// Regresa el método de entrega actualmente seleccionado ("domicilio" o "tienda")
 function obtenerMetodoEntrega() {
     const btnActivo = document.querySelector(".delivery-method-btn.active");
     return btnActivo ? btnActivo.dataset.metodo : "domicilio";
 }
 
-// Estado
 function validarEstado(selectEstado) {
     if (!selectEstado) return "No se encontró el campo estado.";
     if (selectEstado.value === "") return `<span class="alerta-titulo">Estado:</span> Debes seleccionar un estado.`;
     return undefined;
 }
 
-// Ciudad (se usa para el campo "ciudad" y también para "ciudad-2")
 function validarCiudadCheckout(inputCiudad, etiqueta = "Ciudad") {
     if (!inputCiudad) return `No se encontró el campo ${etiqueta.toLowerCase()}.`;
     const ciudad = inputCiudad.value.trim();
@@ -133,7 +98,6 @@ function validarCiudadCheckout(inputCiudad, etiqueta = "Ciudad") {
     return undefined;
 }
 
-// Dirección
 function validarDireccion(inputDireccion) {
     if (!inputDireccion) return "No se encontró el campo dirección.";
     const direccion = inputDireccion.value.trim();
@@ -142,7 +106,6 @@ function validarDireccion(inputDireccion) {
     return undefined;
 }
 
-// No. Exterior (obligatorio)
 function validarNumeroExterior(inputNumExt) {
     if (!inputNumExt) return "No se encontró el campo No. Exterior.";
     const numero = inputNumExt.value.trim();
@@ -151,7 +114,6 @@ function validarNumeroExterior(inputNumExt) {
     return undefined;
 }
 
-// No. Interior (opcional: solo se valida el formato si el usuario escribió algo)
 function validarNumeroInterior(inputNumInt) {
     if (!inputNumInt) return undefined;
     const numero = inputNumInt.value.trim();
@@ -161,7 +123,6 @@ function validarNumeroInterior(inputNumInt) {
     return undefined;
 }
 
-// Código Postal
 function validarCodigoPostal(inputCP) {
     if (!inputCP) return "No se encontró el campo Código Postal.";
     const cp = inputCP.value.trim();
@@ -170,7 +131,6 @@ function validarCodigoPostal(inputCP) {
     return undefined;
 }
 
-// Teléfono
 function validarTelefonoCheckout(inputTelefono) {
     if (!inputTelefono) return "No se encontró el campo teléfono.";
     const telefono = inputTelefono.value.replace(/[\s-]/g, "");
@@ -179,7 +139,6 @@ function validarTelefonoCheckout(inputTelefono) {
     return undefined;
 }
 
-// Correo electrónico
 function validarCorreoCheckout(inputCorreo) {
     if (!inputCorreo) return "No se encontró el campo correo.";
     const correo = inputCorreo.value.trim();
@@ -189,7 +148,6 @@ function validarCorreoCheckout(inputCorreo) {
     return undefined;
 }
 
-// Inyecta (o limpia) el mensaje de error en el <p> correspondiente
 function mostrarErrorCheckout(selector, mensajeError) {
     const elemento = document.querySelector(selector);
     if (elemento) {
@@ -201,9 +159,8 @@ const formularioCheckout = document.getElementById("formulario-checkout");
 
 if (formularioCheckout) {
     formularioCheckout.addEventListener("submit", function (e) {
-        e.preventDefault(); // Evita que se recargue la página al dar "Continuar"
+        e.preventDefault();
 
-        // Referencias a los campos
         const inputEstado = document.getElementById("estado");
         const inputCiudad = document.getElementById("ciudad");
         const inputDireccion = document.getElementById("direccion");
@@ -223,15 +180,12 @@ if (formularioCheckout) {
 
         const metodoEntrega = obtenerMetodoEntrega();
 
-        // Si el usuario eligió "Retiro en tienda" no se valida la dirección
         if (metodoEntrega === "tienda") {
             selectoresError.forEach(sel => mostrarErrorCheckout(sel, ""));
-            console.log("Retiro en tienda: se omite la validación de dirección. Continuando...");
-            // Aquí puedes avanzar al siguiente paso del checkout
+            console.log("Retiro en tienda seleccionado.");
             return;
         }
 
-        // Ejecutar validaciones (envío a domicilio)
         const errorEstado = validarEstado(inputEstado);
         const errorCiudad = validarCiudadCheckout(inputCiudad, "Ciudad");
         const errorDireccion = validarDireccion(inputDireccion);
@@ -242,7 +196,6 @@ if (formularioCheckout) {
         const errorTelefono = validarTelefonoCheckout(inputTelefono);
         const errorCorreo = validarCorreoCheckout(inputCorreo);
 
-        // Mostrar (o limpiar) los errores en el DOM
         mostrarErrorCheckout("#error-estado p", errorEstado);
         mostrarErrorCheckout("#error-ciudad p", errorCiudad);
         mostrarErrorCheckout("#error-direccion p", errorDireccion);
@@ -257,116 +210,71 @@ if (formularioCheckout) {
             errorNumInt || errorCP || errorCiudad2 || errorTelefono || errorCorreo;
 
         if (hayErrores) {
-            console.warn("Envío bloqueado: revisa los campos de dirección resaltados.");
+            console.warn("Envío bloqueado: revisa los campos de dirección.");
             return;
         }
 
-        console.log("Dirección validada correctamente. Continuando al pago...");
-        // Aquí continúa la lógica del checkout (ej. avanzar a la sección de pago)
+        console.log("Dirección validada correctamente.");
     });
 }
 
-/////////////////////////////////////////////////
-// ////////////////////////validaciones Tarjeta
 // ==========================================
-// VALIDACIONES TARJETA
+// 4. VALIDACIONES TARJETA DE CRÉDITO / PAGO
 // ==========================================
+const formularioPago = document.getElementById("formularioPago");
 
-const formulario = document.getElementById("formularioPago");
+if (formularioPago) {
+    formularioPago.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-formulario.addEventListener("submit", function (e) {
+        const elErrorNombre = document.getElementById("errorNombre");
+        const elErrorTarjeta = document.getElementById("errorTarjeta");
+        const elErrorFecha = document.getElementById("errorFecha");
+        const elErrorCvv = document.getElementById("errorCvv");
 
-    e.preventDefault();
+        if (elErrorNombre) elErrorNombre.textContent = "";
+        if (elErrorTarjeta) elErrorTarjeta.textContent = "";
+        if (elErrorFecha) elErrorFecha.textContent = "";
+        if (elErrorCvv) elErrorCvv.textContent = "";
 
-    // Limpiar mensajes
-    document.getElementById("errorNombre").textContent = "";
-    document.getElementById("errorTarjeta").textContent = "";
-    document.getElementById("errorFecha").textContent = "";
-    document.getElementById("errorCvv").textContent = "";
+        let valido = true;
 
-    let valido = true;
+        const nombre = document.getElementById("nombreTitular")?.value.trim() || "";
+        const tarjeta = document.getElementById("numeroTarjeta")?.value.replace(/\s/g, "") || "";
+        const mes = document.getElementById("mesExpiracion")?.value || "";
+        const anio = document.getElementById("anioExpiracion")?.value || "";
+        const cvv = document.getElementById("cvv")?.value.trim() || "";
 
-    // Obtener valores
-    const nombre = document.getElementById("nombreTitular").value.trim();
+        // Validar Nombre
+        if (nombre === "") {
+            if (elErrorNombre) elErrorNombre.textContent = "El nombre del titular es obligatorio.";
+            valido = false;
+        } else if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(nombre)) {
+            if (elErrorNombre) elErrorNombre.textContent = "Introduce un nombre válido.";
+            valido = false;
+        }
 
-    const tarjeta = document
-        .getElementById("numeroTarjeta")
-        .value
-        .replace(/\s/g, "");
+        // Validar Tarjeta
+        if (!/^\d{16}$/.test(tarjeta)) {
+            if (elErrorTarjeta) elErrorTarjeta.textContent = "La tarjeta debe tener 16 dígitos.";
+            valido = false;
+        }
 
-    const mes = document.getElementById("mesExpiracion").value;
-    const anio = document.getElementById("anioExpiracion").value;
+        // Validar Fecha
+        if (mes === "" || anio === "") {
+            if (elErrorFecha) elErrorFecha.textContent = "Selecciona el mes y año de expiración.";
+            valido = false;
+        }
 
-    const cvv = document.getElementById("cvv").value.trim();
+        // Validar CVV
+        if (!/^\d{3}$/.test(cvv)) {
+            if (elErrorCvv) elErrorCvv.textContent = "El CVV debe tener 3 dígitos.";
+            valido = false;
+        }
 
-
-    // ==========================================
-    // VALIDAR NOMBRE
-    // ==========================================
-
-    if (nombre === "") {
-
-        document.getElementById("errorNombre").textContent =
-            "El nombre del titular es obligatorio.";
-
-        valido = false;
-
-    } else if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(nombre)) {
-
-        document.getElementById("errorNombre").textContent =
-            "Introduce un nombre válido.";
-
-        valido = false;
-    }
-
-
-    // ==========================================
-    // VALIDAR TARJETA
-    // ==========================================
-
-    if (!/^\d{16}$/.test(tarjeta)) {
-
-        document.getElementById("errorTarjeta").textContent =
-            "La tarjeta debe tener 16 dígitos.";
-
-        valido = false;
-    }
-
-
-    // ==========================================
-    // VALIDAR FECHA DE EXPIRACIÓN
-    // ==========================================
-
-    if (mes === "" || anio === "") {
-
-        document.getElementById("errorFecha").textContent =
-            "Selecciona el mes y año de expiración.";
-
-        valido = false;
-    }
-
-
-    // ==========================================
-    // VALIDAR CVV
-    // ==========================================
-
-    if (!/^\d{3}$/.test(cvv)) {
-
-        document.getElementById("errorCvv").textContent =
-            "El CVV debe tener 3 dígitos.";
-
-        valido = false;
-    }
-
-
-    // ==========================================
-    // RESULTADO
-    // ==========================================
-
-    if (valido) {
-
-        alert("Pago realizado correctamente");
-
-    }
-
-});
+        if (valido) {
+            alert("Pago realizado correctamente");
+            // Aquí se enviará la petición `fetch` POST al Controller de Spring Boot
+        }
+    });
+}

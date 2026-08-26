@@ -1,25 +1,36 @@
-document.addEventListener('DOMContentLoaded', function () {
-    cargarProductos();
-});
-
 const itemsController = new ItemsController(0);
 const API_URL = 'http://localhost:3000/productos';
 
+let marcaSeleccionada = null;
+let especieSeleccionada = null;
+
+const mapaEspecies = {
+    "bovinos": "Bovinos",
+    "porcinos": "Porcinos",
+    "aves": "Aves",
+    "ovinos": "Ovinos"
+};
+
+const botonesMarca = [
+    { id: 'todas-marcas', marca: null },
+    { id: 'adm', marca: 'ADM' },
+    { id: 'nogal', marca: 'El Nogal' },
+    { id: 'arandas', marca: 'Alimentos Arandas' }
+];
+
+// --- 1. CARGA INICIAL Y API ---
 async function cargarProductos() {
     try {
         const res = await fetch(API_URL);
         if (!res.ok) throw new Error("Error al obtener Productos");
         const productos = await res.json();
 
-        // 1. Limpiamos la lista local
         itemsController.items = [];
 
-        // 2. Filtramos solo los productos cuyo estado sea "activo" (o "Activo")
         const productosActivos = productos.filter(producto =>
             String(producto.estado).toLowerCase() === 'activo'
         );
 
-        // 3. Agregamos al controlador únicamente los productos activos
         productosActivos.forEach(producto => {
             itemsController.addItem(
                 producto.id,
@@ -35,30 +46,43 @@ async function cargarProductos() {
             );
         });
 
-        // 4. Actualizamos el catálogo con los elementos ya filtrados
-        actualizarCatalogoYEventos(itemsController.items);
+        aplicarFiltros();
+        actualizarBadgeNavegacion();
 
     } catch (error) {
-        console.error("No se pudo cargar el catálogo ):", error);
+        console.error("No se pudo cargar el catálogo:", error);
     }
 }
-/**
- * * Función auxiliar para actualizar el DOM y reactivar los escuchadores del carrito
- */
-function actualizarCatalogoYEventos(items) {
-    renderizarHTML(items);
 
-    actualizarBadgeNavegacion();
+// --- 2. RENDERIZADO Y FILTROS ---
+function aplicarFiltros() {
+    const productosFiltrados = itemsController.items.filter(producto => {
+        const cumpleMarca = marcaSeleccionada 
+            ? String(producto.marca).toLowerCase() === String(marcaSeleccionada).toLowerCase() 
+            : true;
+            
+        const cumpleEspecie = especieSeleccionada 
+            ? String(producto.especie).toLowerCase() === String(especieSeleccionada).toLowerCase() 
+            : true;
+
+        return cumpleMarca && cumpleEspecie;
+    });
+
+    renderizarHTML(productosFiltrados);
 }
 
 function renderizarHTML(items) {
     const catalogo = document.getElementById('catalogo-productos');
     if (!catalogo) return;
 
+    if (items.length === 0) {
+        catalogo.innerHTML = `<p class="no-productos">No se encontraron productos con los filtros seleccionados.</p>`;
+        return;
+    }
+
     catalogo.innerHTML = items.map(producto => `
         <article class="tarjeta-producto">
             <img src="${producto.imagen}" alt="${producto.nombreProducto}">
-
             <div class="contenido-producto">
                 <h2>${producto.nombreProducto}</h2>
                 <p>${producto.descripcion}</p>
@@ -69,8 +93,7 @@ function renderizarHTML(items) {
                     <button 
                         type="button" 
                         class="boton-carrito" 
-                        data-producto="${producto.nombreProducto}" 
-                        data-precio="${producto.precio}">
+                        data-producto="${producto.nombreProducto}">
                         Agregar al carrito
                     </button>
                 </div>
@@ -79,81 +102,34 @@ function renderizarHTML(items) {
     `).join('');
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    cargarProductos();
-    renderizarHTML(itemsController.items);
-});
+// --- 3. EVENTOS DE FILTRADO ---
+function inicializarEventosFiltros() {
+    const textoMarcaSeleccionada = document.getElementById('texto-marca');
 
-//FILTRANDO POR ESPECIE Y MARCA
+    botonesMarca.forEach(({ id, marca }) => {
+        const btn = document.getElementById(id);
+        if (!btn) return;
 
-let marcaSeleccionada = null;
-let especieSeleccionada = null;
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            botonesMarca.forEach(b => document.getElementById(b.id)?.classList.remove('active'));
+            btn.classList.add('active');
 
-const mapaEspecies = {
-    "bovinos": "Vacas",
-    "porcinos": "Cerdos",
-    "aves": "Aves",
-    "ovinos": "Borregos"
-};
+            if (textoMarcaSeleccionada) {
+                textoMarcaSeleccionada.textContent = btn.textContent.trim();
+            }
 
-// FILTRO POR ESPECIE Y MARCA
-function aplicarFiltros() {
-
-    const productosFiltrados = itemsController.items.filter(producto => {
-        const cumpleMarca = marcaSeleccionada ? producto.marca === marcaSeleccionada : true;
-        const cumpleEspecie = especieSeleccionada ? producto.especie === especieSeleccionada : true;
-
-        return cumpleMarca && cumpleEspecie;
+            marcaSeleccionada = marca;
+            aplicarFiltros();
+        });
     });
-    renderizarHTML(productosFiltrados);
-}
-
-// BTN MARCA
-const botonesMarca = [
-    { id: 'todas-marcas', marca: null },
-    { id: 'adm', marca: 'ADM' },
-    { id: 'nogal', marca: 'El Nogal' },
-    { id: 'arandas', marca: 'Alimentos Arandas' }
-];
-
-
-const textoMarcaSeleccionada = document.getElementById('texto-marca');
-
-botonesMarca.forEach(({ id, marca }) => {
-    const btn = document.getElementById(id);
-    if (!btn) return;
-
-    btn.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        //Remueve la clase activa
-        botonesMarca.forEach(b => document.getElementById(b.id)?.classList.remove('active'));
-
-        // La reasigna
-        btn.classList.add('active');
-
-        if (textoMarcaSeleccionada) {
-            textoMarcaSeleccionada.textContent = btn.textContent.trim();
-        }
-
-        // Actualiza marca
-        marcaSeleccionada = marca;
-
-        aplicarFiltros();
-    });
-});
-
-// BTN ESPECIE
-document.addEventListener("DOMContentLoaded", () => {
-    cargarProductos();
-    renderizarHTML(itemsController.items);
 
     const botonesEspecie = document.querySelectorAll(".filtro-especies .especie");
 
     botonesEspecie.forEach(boton => {
         boton.addEventListener("click", () => {
             const especieData = boton.getAttribute("data-especie");
-            const especieNombre = mapaEspecies[especieData];
+            const especieNombre = mapaEspecies[especieData] || especieData;
 
             if (boton.classList.contains("activo")) {
                 boton.classList.remove("activo");
@@ -167,53 +143,56 @@ document.addEventListener("DOMContentLoaded", () => {
             aplicarFiltros();
         });
     });
-});
+}
 
-
-
-/* ====================================================
-    NUEVO MOTOR DEL CARRITO (DELEGACIÓN DE EVENTOS)
-   ==================================================== */
-
-// 1. Vigilante global para los clics en cualquier botón de carrito
+// --- 4. MOTOR DEL CARRITO (CON VERIFICACIÓN AL HACER CLIC) ---
 document.addEventListener('click', function (e) {
-    // Si el elemento clickeado tiene la clase 'boton-carrito'
     if (e.target.classList.contains('boton-carrito')) {
+
+        // 1. Verificar si hay un usuario activo (Cliente)
+        const usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo')) 
+                           || JSON.parse(sessionStorage.getItem('usuarioActivo'));
+
+        if (!usuarioActivo) {
+            // Guardar a dónde quería ir el usuario
+            sessionStorage.setItem('redirectAfterLogin', 'productos.html');
+            
+            alert('Debes iniciar sesión para agregar productos al carrito.');
+            window.location.href = 'inicioSesion.html';
+            return; // Detener la adición al carrito
+        }
+
+        // 2. Si la sesión existe, agregar el producto normalmente
         const btn = e.target;
         const nombreExacto = btn.getAttribute('data-producto');
 
-        // Buscar el producto en nuestro catálogo
         const productoSeleccionado = itemsController.items.find(
             producto => String(producto.nombreProducto).trim() === String(nombreExacto).trim()
         );
 
         if (productoSeleccionado) {
-            // --- A) GUARDAR EL PRODUCTO EN LOCALSTORAGE ---
             let carritoProductos = [];
             try {
                 carritoProductos = JSON.parse(localStorage.getItem('carrito')) || [];
             } catch (error) {
-                carritoProductos = []; // Si había un error previo en la memoria, empezamos de cero
+                carritoProductos = [];
             }
 
             carritoProductos.push(productoSeleccionado);
             localStorage.setItem('carrito', JSON.stringify(carritoProductos));
 
-            // --- B) ACTUALIZAR EL NÚMERO DEL CONTADOR ---
             let contador = parseInt(localStorage.getItem('contadorCarrito')) || 0;
             contador++;
             localStorage.setItem('contadorCarrito', contador);
 
-            // --- C) REFLEJAR EL CAMBIO EN LA INTERFAZ ---
             actualizarBadgeNavegacion(contador);
         }
     }
 });
 
-// 2. Función dedicada exclusivamente a pintar el número en el Navbar
 function actualizarBadgeNavegacion(forzarContador = null) {
     const divcarrito = document.querySelector('.cart-icon-wrapper');
-    if (!divcarrito) return; // Si no hay carrito en esta página, no hacemos nada
+    if (!divcarrito) return;
 
     let carrito = divcarrito.querySelector('.contador-carrito');
     if (!carrito) {
@@ -222,17 +201,20 @@ function actualizarBadgeNavegacion(forzarContador = null) {
         divcarrito.append(carrito);
     }
 
-    // Tomamos el contador forzado (si venimos de un clic) o leemos la memoria
-    let contador = forzarContador !== null ? forzarContador : (parseInt(localStorage.getItem('contadorCarrito')) || 0);
+    let contador = forzarContador !== null 
+        ? forzarContador 
+        : (parseInt(localStorage.getItem('contadorCarrito')) || 0);
 
     if (contador > 0) {
         carrito.style.display = 'block';
-        if (contador >= 100) {
-            carrito.innerHTML = `<span class="carrito-mas">+</span>99`;
-        } else {
-            carrito.textContent = contador;
-        }
+        carrito.innerHTML = contador >= 100 ? `<span class="carrito-mas">+</span>99` : contador;
     } else {
         carrito.style.display = 'none';
     }
 }
+
+// --- 5. PUNTO DE ENTRADA ÚNICO ---
+document.addEventListener('DOMContentLoaded', () => {
+    cargarProductos();
+    inicializarEventosFiltros();
+});
