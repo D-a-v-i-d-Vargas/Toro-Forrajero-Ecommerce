@@ -288,12 +288,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 fecha: mensajeValidado.mFecha
             }
             )
-            .then(() => {
+            .then((response) => {
+                console.log("Email enviado exitosamente: ", response)
             formulario.reset();
             actualizarContador();
             })
             .catch(error => {
-            console.error(error);
+            console.error("Error de EmailJS: ", error);
             });
         });
     }
