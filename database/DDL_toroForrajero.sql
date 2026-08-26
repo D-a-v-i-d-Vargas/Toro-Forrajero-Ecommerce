@@ -78,14 +78,14 @@ CREATE TABLE IF NOT EXISTS `toro_forrajero_db`.`metodo_pago` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `toro_forrajero_db`.`direccion` (
   `id_direccion` INT NOT NULL AUTO_INCREMENT,
-  `estado` VARCHAR(45) NOT NULL,
   `calle` VARCHAR(45) NOT NULL,
   `num_exterior` VARCHAR(45) NOT NULL,
   `num_interior` VARCHAR(45) NULL,
-  `codigo_postal` INT NOT NULL,
-  `ciudad` VARCHAR(45) NOT NULL,
-  `telefono` VARCHAR(10) NOT NULL,
-  `correo_electronico` VARCHAR(50) NOT NULL,
+  `codigo_postal` VARCHAR(10) NOT NULL,
+  `alcaldia` VARCHAR(45) NOT NULL,
+  `estado` VARCHAR(45) NOT NULL,
+  `tel` VARCHAR(10) NOT NULL,
+  `email` VARCHAR(50) NOT NULL,
   `id_usuario` INT NOT NULL,
   PRIMARY KEY (`id_direccion`), 
   INDEX `fk_direccion_usuario1_idx` (`id_usuario` ASC) VISIBLE,
@@ -95,7 +95,6 @@ CREATE TABLE IF NOT EXISTS `toro_forrajero_db`.`direccion` (
     ON DELETE CASCADE
     ON UPDATE CASCADE
 ) ENGINE = InnoDB;
-
 -- -----------------------------------------------------
 -- Table `toro_forrajero_db`.`carrito`
 -- -----------------------------------------------------
