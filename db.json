@@ -390,6 +390,28 @@
       "contraseña": "AdminPass123!",
       "estado": "Activo",
       "rol": "admin"
+    },
+    {
+      "id": "8",
+      "nombre": "Elias",
+      "apellido": "Lopez",
+      "telefono": 9765678394,
+      "areaInteres": "Productos para ovino",
+      "correo": "elias@gmail.com",
+      "contraseña": "12345678910",
+      "estado": "Activo",
+      "rol": "admin"
+    },
+    {
+      "id": "9",
+      "nombre": "Diego",
+      "apellido": "Lopez",
+      "telefono": 5500000000,
+      "areaInteres": "Productos para bovino",
+      "correo": "diego@gmail.com",
+      "contraseña": "admin!",
+      "estado": "Activo",
+      "rol": "admin"
     }
   ]
 }

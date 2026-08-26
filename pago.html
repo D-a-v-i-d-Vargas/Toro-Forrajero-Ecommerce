@@ -37,8 +37,8 @@
         SECCIÓN: ENCABEZADO Y NAVEGACIÓN (HEADER)
     ============================================================================ -->
 	<!-- Header y Navegación -->
-    <header>
-        		<nav class="navbar navbar-1">
+	<header>
+		<nav class="navbar navbar-1">
 			<div class="container-fluid px-4">
 
 				<!-- INYECCIÓN: Redirección al index en el logo -->
@@ -48,19 +48,23 @@
 				</a>
 
 				<!-- INYECCIÓN: Homologación de tamaño y alineación para íconos -->
-				<ul class="navbar-nav flex-row ms-auto gap-4 align-items-center">
+				<ul class="cuenta navbar-nav flex-row ms-auto gap-4 align-items-center">
 					<li class="nav-item">
-						<a class="nav-link icon-link d-flex flex-column align-items-center text-center" href="inicioSesion.html">
-							<div class="user-icon-wrapper d-flex align-items-center justify-content-center" style="height: 35px;">
+						<a class="nav-link icon-link d-flex flex-column align-items-center text-center"
+							href="inicioSesion.html">
+							<div class="user-icon-wrapper d-flex align-items-center justify-content-center"
+								style="height: 35px;">
 								<i class="bi bi-person fs-3"></i>
 							</div>
-							<span>Mi cuenta</span>
+							<span class="nombre-cuenta">Mi cuenta</span>
 						</a>
 					</li>
 
 					<li class="nav-item carrito">
-						<a class="nav-link icon-link d-flex flex-column align-items-center text-center" href="carrito.html">
-							<div class="cart-icon-wrapper d-flex align-items-center justify-content-center" style="height: 35px;">
+						<a class="nav-link icon-link d-flex flex-column align-items-center text-center"
+							href="carrito.html">
+							<div class="cart-icon-wrapper d-flex align-items-center justify-content-center"
+								style="height: 35px;">
 								<i class="bi bi-cart3 fs-3"></i>
 								<!-- <span class="contador-carrito">0</span> -->
 							</div>
@@ -101,7 +105,7 @@
 				<details class="order-summary-bar px-4 py-3 mb-4" data-aos="fade-up" data-aos-delay="150">
 					<summary class="d-flex justify-content-between align-items-center">
 						<span><i class="bi bi-chevron-down me-2"></i>Resumen del pedido</span>
-						   <span id="total-pedido">$0.00 MXN</span>
+						<span id="total-pedido">$0.00 MXN</span>
 					</summary>
 					<div class="pt-3">
 						<!-- Aquí puede ir el detalle de productos del carrito -->
@@ -120,7 +124,8 @@
 								</div>
 								<div>
 									<p class="envio-domicilio-title mb-0">Envío a domicilio</p>
-									<p class="envio-domicilio-subtitle mb-0">Llevamos tu pedido hasta la puerta de tu hogar.</p>
+									<p class="envio-domicilio-subtitle mb-0">Llevamos tu pedido hasta la puerta de tu
+										hogar.</p>
 								</div>
 							</div>
 							<div class="envio-domicilio-check">
@@ -170,91 +175,97 @@
 									<option value="yuc">Yucatán</option>
 									<option value="zac">Zacatecas</option>
 								</select>
-								<div id="error-estado" class="narnaja-text small mt-1 text-center"><p></p></div>
+								<div id="error-estado" class="narnaja-text small mt-1 text-center">
+									<p></p>
+								</div>
 							</div>
 							<div class="col-md-6">
 								<input type="text" id="ciudad" name="ciudad" autocomplete="off"
 									class="form-control address-input py-2 text-end" placeholder="Ciudad">
-									<div id="error-ciudad" class="narnaja-text small mt-1 text-center"><p></p></div>
+								<div id="error-ciudad" class="narnaja-text small mt-1 text-center">
+									<p></p>
+								</div>
 							</div>
 						</div>
 
 						<div class="mb-3">
 							<input type="text" id="direccion" name="direccion" autocomplete="off"
 								class="form-control address-input py-2 text-end" placeholder="Dirección">
-								<div id="error-direccion" class="narnaja-text small mt-1 text-center"><p></p></div>
+							<div id="error-direccion" class="narnaja-text small mt-1 text-center">
+								<p></p>
+							</div>
 						</div>
 
 						<div class="row g-3 mb-3">
-   						 <div class="col-6 col-md-3">
-        					<input type="text" id="numero-exterior" name="numero_exterior" autocomplete="off"
-            					class="form-control address-input py-2 text-center" placeholder="No. Exterior">
+							<div class="col-6 col-md-3">
+								<input type="text" id="numero-exterior" name="numero_exterior" autocomplete="off"
+									class="form-control address-input py-2 text-center" placeholder="No. Exterior">
 
-       					 <div id="error-numero-exterior" class="narnaja-text mt-1 text-center">
-           				 <p></p>
-       					 </div>
-    					</div>
+								<div id="error-numero-exterior" class="narnaja-text mt-1 text-center">
+									<p></p>
+								</div>
+							</div>
 
-   						 <div class="col-6 col-md-3">
-       					 <input type="text" id="numero-interior" name="numero_interior" autocomplete="off"
-          				  class="form-control address-input py-2 text-center" placeholder="No. Interior">
+							<div class="col-6 col-md-3">
+								<input type="text" id="numero-interior" name="numero_interior" autocomplete="off"
+									class="form-control address-input py-2 text-center" placeholder="No. Interior">
 
-        				<div id="error-numero-interior" class="narnaja-text small mt-1 text-center">
-            			<p></p>
-       					 </div>
-   					 </div>
+								<div id="error-numero-interior" class="narnaja-text small mt-1 text-center">
+									<p></p>
+								</div>
+							</div>
 
-   				 		<div class="col-6 col-md-3">
-       			 			<input type="text" id="codigo-postal" name="codigo_postal" maxlength="5"
-            					autocomplete="off" class="form-control address-input py-2 text-center"
-           						 placeholder="Código Postal">
+							<div class="col-6 col-md-3">
+								<input type="text" id="codigo-postal" name="codigo_postal" maxlength="5"
+									autocomplete="off" class="form-control address-input py-2 text-center"
+									placeholder="Código Postal">
 
-        				<div id="error-codigo-postal" class="narnaja-text small mt-1 text-center">
-            			<p></p>
-       				 </div>
-   					 </div>
+								<div id="error-codigo-postal" class="narnaja-text small mt-1 text-center">
+									<p></p>
+								</div>
+							</div>
 
-   						 <div class="col-6 col-md-3">
-        				<input type="text" id="ciudad-2" name="ciudad_2" autocomplete="off"
-           				 class="form-control address-input py-2 text-end" placeholder="Ciudad">
+							<div class="col-6 col-md-3">
+								<input type="text" id="ciudad-2" name="ciudad_2" autocomplete="off"
+									class="form-control address-input py-2 text-end" placeholder="Ciudad">
 
-        				<div id="error-ciudad-2" class="narnaja-text small mt-1 text-center">
-          			  <p></p>
-       				 </div>
-   					 </div>
-					</div>
-
-						<div class="mb-3">
-   						 <input type="tel" id="telefono" name="telefono" maxlength="10" pattern="[0-9]{10}"
-        					autocomplete="off" class="form-control address-input py-2 text-end"
-        					placeholder="Teléfono">
-
-    				<div id="error-telefono" class="narnaja-text small mt-1 text-center">
-       				 <p></p>
-    					</div>
-					</div>
-
-					<div class="mb-4">
-   						 <input type="email" id="correo" name="correo" autocomplete="off"
-        			class="form-control address-input py-2 text-end" placeholder="Correo electronico">
-
-   					 <div id="error-correo" class="narnaja-text small mt-1 text-center">
-       					 <p></p>
-    					</div>
+								<div id="error-ciudad-2" class="narnaja-text small mt-1 text-center">
+									<p></p>
+								</div>
+							</div>
 						</div>
 
-					<div class="d-grid gap-2 col-10 mx-auto mb-4">
-						<button class="btn btn-primary" type="submit">Continuar</button>
-					</div>
+						<div class="mb-3">
+							<input type="tel" id="telefono" name="telefono" maxlength="10" pattern="[0-9]{10}"
+								autocomplete="off" class="form-control address-input py-2 text-end"
+								placeholder="Teléfono">
+
+							<div id="error-telefono" class="narnaja-text small mt-1 text-center">
+								<p></p>
+							</div>
+						</div>
+
+						<div class="mb-4">
+							<input type="email" id="correo" name="correo" autocomplete="off"
+								class="form-control address-input py-2 text-end" placeholder="Correo electronico">
+
+							<div id="error-correo" class="narnaja-text small mt-1 text-center">
+								<p></p>
+							</div>
+						</div>
+
+						<div class="d-grid gap-2 col-10 mx-auto mb-4">
+							<button class="btn btn-primary" type="submit">Continuar</button>
+						</div>
 
 					</div>
-					</form>
+				</form>
 			</div>
 		</section>
 
 
 
-					<section class="pago-container">
+		<section class="pago-container">
 
 			<!-- Opciones superiores -->
 			<div class="opciones-pago mb-4">
@@ -294,19 +305,16 @@
 
 						<div class="row g-3">
 
-								<!-- Nombre -->
-								<div class="col-md-6">
+							<!-- Nombre -->
+							<div class="col-md-6">
 								<label for="nombreTitular" class="form-label">
 									Nombre del titular
 								</label>
 
-								<input
-									type="text"
-									class="form-control"
-									id="nombreTitular">
+								<input type="text" class="form-control" id="nombreTitular">
 
 								<small class="mensaje-error" id="errorNombre"></small>
-								</div>
+							</div>
 
 
 							<!-- Número tarjeta -->
@@ -315,14 +323,11 @@
 									Número de Tarjeta
 								</label>
 
-									<input
-										type="text"
-										class="form-control"
-										id="numeroTarjeta"
-										placeholder="0000 0000 0000 0000">
+								<input type="text" class="form-control" id="numeroTarjeta"
+									placeholder="0000 0000 0000 0000">
 
-									<small class="mensaje-error" id="errorTarjeta"></small>
-								</div>
+								<small class="mensaje-error" id="errorTarjeta"></small>
+							</div>
 
 
 							<!-- Fecha expiración -->
@@ -334,58 +339,54 @@
 
 								<div class="row g-2">
 
-							<div class="col-6">
-								<select class="form-select" id="mesExpiracion" >
-									<option value="" selected disabled>Mes</option>
-									<option value="01">01</option>
-												<option value="02">02</option>
-												<option value="03">03</option>
-												<option value="04">04</option>
-												<option value="05">05</option>
-												<option value="06">06</option>
-												<option value="07">07</option>
-												<option value="08">08</option>
-												<option value="09">09</option>
-												<option value="10">10</option>
-												<option value="11">11</option>
-												<option value="12">12</option>
-											</select>
-										</div>
+									<div class="col-6">
+										<select class="form-select" id="mesExpiracion">
+											<option value="" selected disabled>Mes</option>
+											<option value="01">01</option>
+											<option value="02">02</option>
+											<option value="03">03</option>
+											<option value="04">04</option>
+											<option value="05">05</option>
+											<option value="06">06</option>
+											<option value="07">07</option>
+											<option value="08">08</option>
+											<option value="09">09</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+										</select>
+									</div>
 
-										<div class="col-6">
-											<select class="form-select" id="anioExpiracion" >
-												<option value="" selected disabled>Año</option>
-												<option value="2026">2026</option>
-												<option value="2027">2027</option>
-												<option value="2028">2028</option>
-												<option value="2029">2029</option>
-												<option value="2030">2030</option>
-												<option value="2031">2031</option>
-											</select>
-										</div>
-
-								</div>
-
-									<small class="mensaje-error" id="errorFecha"></small>
-								</div>
-
-
-								<!-- CVV -->
-								<div class="col-md-3">
-
-									<label for="cvv" class="form-label">
-										Código de Seguridad
-									</label>
-
-									<input
-										type="password"
-										class="form-control"
-										id="cvv"
-										placeholder="3 dígitos">
-
-									<small class="mensaje-error" id="errorCvv"></small>
+									<div class="col-6">
+										<select class="form-select" id="anioExpiracion">
+											<option value="" selected disabled>Año</option>
+											<option value="2026">2026</option>
+											<option value="2027">2027</option>
+											<option value="2028">2028</option>
+											<option value="2029">2029</option>
+											<option value="2030">2030</option>
+											<option value="2031">2031</option>
+										</select>
+									</div>
 
 								</div>
+
+								<small class="mensaje-error" id="errorFecha"></small>
+							</div>
+
+
+							<!-- CVV -->
+							<div class="col-md-3">
+
+								<label for="cvv" class="form-label">
+									Código de Seguridad
+								</label>
+
+								<input type="password" class="form-control" id="cvv" placeholder="3 dígitos">
+
+								<small class="mensaje-error" id="errorCvv"></small>
+
+							</div>
 
 
 							<!-- Botón -->
@@ -461,92 +462,92 @@
         SECCIÓN: PIE DE PÁGINA (FOOTER)
     ============================================================================ -->
 	<!-- Footer -->
-    <footer class="footer-forrajero" data-aos="fade-up">
-        <div class="footer-container">
+	<footer class="footer-forrajero" data-aos="fade-up">
+		<div class="footer-container">
 
 			<!-- Logo y redes sociales -->
 			<div class="footer-brand">
 				<img src="recursos-graficos/footer/forrajero-verde1.png" alt="Logo Forrajero" class="footer-logo">
 
-                <div class="footer-social">
-                    <a href="#" aria-label="Facebook">
-                        <i class="fa-brands fa-facebook"></i>
-                    </a>
+				<div class="footer-social">
+					<a href="#" aria-label="Facebook">
+						<i class="fa-brands fa-facebook"></i>
+					</a>
 
-                    <a href="#" aria-label="LinkedIn">
-                        <i class="fa-brands fa-linkedin"></i>
-                    </a>
+					<a href="#" aria-label="LinkedIn">
+						<i class="fa-brands fa-linkedin"></i>
+					</a>
 
-                    <a href="#" aria-label="YouTube">
-                        <i class="fa-brands fa-youtube"></i>
-                    </a>
+					<a href="#" aria-label="YouTube">
+						<i class="fa-brands fa-youtube"></i>
+					</a>
 
-                    <a href="#" aria-label="Instagram">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-                </div>
-            </div>
+					<a href="#" aria-label="Instagram">
+						<i class="fa-brands fa-instagram"></i>
+					</a>
+				</div>
+			</div>
 
-            <!-- Navegación -->
-            <div class="footer-column">
-                <h3>Navegación</h3>
+			<!-- Navegación -->
+			<div class="footer-column">
+				<h3>Navegación</h3>
 
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="acercaNosotros.html">Acerca de Nosotros</a></li>
-                    <li><a href="contactanos.html">Contacto</a></li>
-                    <li><a href="registro.html">Login / Registro</a></li>
-                </ul>
-            </div>
+				<ul>
+					<li><a href="index.html">Inicio</a></li>
+					<li><a href="acercaNosotros.html">Acerca de Nosotros</a></li>
+					<li><a href="contactanos.html">Contacto</a></li>
+					<li><a href="registro.html">Login / Registro</a></li>
+				</ul>
+			</div>
 
-            <!-- Productos -->
-            <div class="footer-column">
-                <h3>Productos</h3>
+			<!-- Productos -->
+			<div class="footer-column">
+				<h3>Productos</h3>
 
-                <ul>
-                    <li><a href="productos.html?categoria=bovinos">Alimento Bovino</a></li>
-                    <li><a href="productos.html?categoria=ovinos">Alimento Ovino</a></li>
-                    <li><a href="productos.html?categoria=aves">Aves de corral</a></li>
-                    <li><a href="productos.html?categoria=porcinos">Porcino</a></li>
-                </ul>
-            </div>
+				<ul>
+					<li><a href="productos.html?categoria=bovinos">Alimento Bovino</a></li>
+					<li><a href="productos.html?categoria=ovinos">Alimento Ovino</a></li>
+					<li><a href="productos.html?categoria=aves">Aves de corral</a></li>
+					<li><a href="productos.html?categoria=porcinos">Porcino</a></li>
+				</ul>
+			</div>
 
-            <!-- Atención al cliente -->
-            <div class="footer-column footer-contact">
-                <h3>Atención al cliente</h3>
+			<!-- Atención al cliente -->
+			<div class="footer-column footer-contact">
+				<h3>Atención al cliente</h3>
 
-                <ul>
-                    <li>
-                        <i class="fa-solid fa-phone"></i>
-                        <a href="tel:+523119553880">(311) 955-3880</a>
-                    </li>
+				<ul>
+					<li>
+						<i class="fa-solid fa-phone"></i>
+						<a href="tel:+523119553880">(311) 955-3880</a>
+					</li>
 
-                    <li>
-                        <i class="fa-solid fa-envelope"></i>
-                        <a href="mailto:soporte_toro_forrajero@outlook.com">
-                            soporte_toro_forrajero@outlook.com
-                        </a>
-                    </li>
+					<li>
+						<i class="fa-solid fa-envelope"></i>
+						<a href="mailto:soporte_toro_forrajero@outlook.com">
+							soporte_toro_forrajero@outlook.com
+						</a>
+					</li>
 
-                    <li>
-                        <i class="fa-solid fa-location-dot"></i>
-                        Cerro Lejos, A dos horas de la Ciudad
-                    </li>
+					<li>
+						<i class="fa-solid fa-location-dot"></i>
+						Cerro Lejos, A dos horas de la Ciudad
+					</li>
 
-                    <li>
-                        <i class="fa-solid fa-clock"></i>
-                        08:00 a.m. - 08:00 p.m.
-                    </li>
-                </ul>
-            </div>
+					<li>
+						<i class="fa-solid fa-clock"></i>
+						08:00 a.m. - 08:00 p.m.
+					</li>
+				</ul>
+			</div>
 
-        </div>
+		</div>
 
-        <!-- Línea inferior -->
-        <div class="footer-bottom">
-            <p>© 2026 Toro Forrajero. Todos los derechos reservados.</p>
-        </div>
-    </footer>
+		<!-- Línea inferior -->
+		<div class="footer-bottom">
+			<p>© 2026 Toro Forrajero. Todos los derechos reservados.</p>
+		</div>
+	</footer>
 
 	<!--Bootstrap script-->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
@@ -562,5 +563,6 @@
 	<script type="module" src="build/js/adminAuth.js"></script>
 
 </body>
+	<script src="build/js/cuenta.js"></script>
 
 </html>

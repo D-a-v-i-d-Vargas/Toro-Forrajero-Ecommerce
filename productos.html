@@ -36,37 +36,41 @@
     <header class="sticky-top">
         <!-- NAV BAR 1: Logo y Accesos rápidos -->
         <nav class="navbar navbar-1">
-			<div class="container-fluid px-4">
+            <div class="container-fluid px-4">
 
-				<!-- INYECCIÓN: Redirección al index en el logo -->
-				<a class="navbar-brand" href="index.html">
-					<img src="recursos-graficos/navbar/forrajero-sinfondo.png" alt="Logo sin fondo de Toro Forrajero"
-						class="logo-navbar d-inline-block align-text-top me-2">
-				</a>
+                <!-- INYECCIÓN: Redirección al index en el logo -->
+                <a class="navbar-brand" href="index.html">
+                    <img src="recursos-graficos/navbar/forrajero-sinfondo.png" alt="Logo sin fondo de Toro Forrajero"
+                        class="logo-navbar d-inline-block align-text-top me-2">
+                </a>
 
-				<!-- INYECCIÓN: Homologación de tamaño y alineación para íconos -->
-				<ul class="navbar-nav flex-row ms-auto gap-4 align-items-center">
-					<li class="nav-item">
-						<a class="nav-link icon-link d-flex flex-column align-items-center text-center" href="inicioSesion.html">
-							<div class="user-icon-wrapper d-flex align-items-center justify-content-center" style="height: 35px;">
-								<i class="bi bi-person fs-3"></i>
-							</div>
-							<span>Mi cuenta</span>
-						</a>
-					</li>
+                <!-- INYECCIÓN: Homologación de tamaño y alineación para íconos -->
+                <ul class="cuenta navbar-nav flex-row ms-auto gap-4 align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link icon-link d-flex flex-column align-items-center text-center"
+                            href="inicioSesion.html">
+                            <div class="user-icon-wrapper d-flex align-items-center justify-content-center"
+                                style="height: 35px;">
+                                <i class="bi bi-person fs-3"></i>
+                            </div>
+                            <span class="nombre-cuenta">Mi cuenta</span>
+                        </a>
+                    </li>
 
-					<li class="nav-item carrito">
-						<a class="nav-link icon-link d-flex flex-column align-items-center text-center" href="carrito.html">
-							<div class="cart-icon-wrapper d-flex align-items-center justify-content-center" style="height: 35px;">
-								<i class="bi bi-cart3 fs-3"></i>
-								<!-- <span class="contador-carrito">0</span> -->
-							</div>
-							<span>Carrito</span>
-						</a>
-					</li>
-				</ul>
-			</div>
-		</nav>
+                    <li class="nav-item carrito">
+                        <a class="nav-link icon-link d-flex flex-column align-items-center text-center"
+                            href="carrito.html">
+                            <div class="cart-icon-wrapper d-flex align-items-center justify-content-center"
+                                style="height: 35px;">
+                                <i class="bi bi-cart3 fs-3"></i>
+                                <!-- <span class="contador-carrito">0</span> -->
+                            </div>
+                            <span>Carrito</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
         <!-- NAV BAR 2: Menú de navegación principal -->
         <nav class="navbar2">
@@ -377,21 +381,22 @@
     [solamente funcionará cuando venga desde el footer, no afectará a la página de productos en sí por el if(categoria)]-->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const categoria = urlParams.get("categoria"); //buscamos por categoría, así como se busca en esos links ('categoria=aves')
+            const urlParams = new URLSearchParams(window.location.search);
+            const categoria = urlParams.get("categoria"); //buscamos por categoría, así como se busca en esos links ('categoria=aves')
 
-        if (categoria) {
-            const botonAActivar = document.querySelector(`.filtro-especies .especie[data-especie="${categoria}"]`); //activamos el filtro con esa categoría
+            if (categoria) {
+                const botonAActivar = document.querySelector(`.filtro-especies .especie[data-especie="${categoria}"]`); //activamos el filtro con esa categoría
 
-            if (botonAActivar) {
-                // Le damos 200milisegundos de tiempo para que haga click después de que se cargue la página para activar el filtro
-                setTimeout(() => {
-                    botonAActivar.click();
-                }, 200); 
+                if (botonAActivar) {
+                    // Le damos 200milisegundos de tiempo para que haga click después de que se cargue la página para activar el filtro
+                    setTimeout(() => {
+                        botonAActivar.click();
+                    }, 200);
+                }
             }
-        }
-    });
+        });
     </script>
+    	<script src="build/js/cuenta.js"></script>
 </body>
 
 </html>
