@@ -5,29 +5,23 @@
 -- =================================================================================================
 
 INSERT INTO metodo_pago (num_tarjeta, fecha_expiracion, id_usuario) VALUES 
-	(HEX(AES_ENCRYPT('8364506782364758', 'mi_clave_secreta')), '06/2028', 1),
-	(HEX(AES_ENCRYPT('4152313485960123', 'mi_clave_secreta')), '11/2027', 2),
-	(HEX(AES_ENCRYPT('5284910238475612', 'mi_clave_secreta')), '08/2029', 3),
-	(HEX(AES_ENCRYPT('4916238471029384', 'mi_clave_secreta')), '03/2026', 4),
-	(HEX(AES_ENCRYPT('5412983746501928', 'mi_clave_secreta')), '12/2028', 5),
-	(HEX(AES_ENCRYPT('4026183940512837', 'mi_clave_secreta')), '05/2030', 6),
-	(HEX(AES_ENCRYPT('5105293847162039', 'mi_clave_secreta')), '09/2027', 7),
-	(HEX(AES_ENCRYPT('4532819023847162', 'mi_clave_secreta')), '01/2029', 8),
-	(HEX(AES_ENCRYPT('5321894726103847', 'mi_clave_secreta')), '07/2028', 9),
-	(HEX(AES_ENCRYPT('4820193847562910', 'mi_clave_secreta')), '10/2026', 10);
+	('0kr5q9Kv/D4RF449rzYvsNNpL0i26ypcNQCM1doKjWI=', '06/2028', 1),
+	('S0a2Hm+kgTeHApTBUwB+z9NpL0i26ypcNQCM1doKjWI=', '11/2027', 2),
+	('iKKPWwa8ClrxlwEL2eUfPdNpL0i26ypcNQCM1doKjWI=', '08/2029', 3),
+	('MSkkvqJ/H52jH+eInQ8umtNpL0i26ypcNQCM1doKjWI=', '03/2026', 4),
+	('nk39UB4UqgoF45/FjuVPmdNpL0i26ypcNQCM1doKjWI=', '12/2028', 5),
+	('xqngSDhDTj1feddZTIV/sdNpL0i26ypcNQCM1doKjWI=', '05/2030', 6),
+	('iKKPWwa8ClrxlwEL2eUfPdNpL0i26ypcNQCM1doKjWI=', '09/2027', 7),
+	('0kr5q9Kv/D4RF449rzYvsNNpL0i26ypcNQCM1doKjWI=', '01/2029', 8),
+	('MSkkvqJ/H52jH+eInQ8umtNpL0i26ypcNQCM1doKjWI=', '07/2028', 9),
+	('xqngSDhDTj1feddZTIV/sdNpL0i26ypcNQCM1doKjWI=', '10/2026', 10);
+
+
 
 
 -- =================================================================================================
 -- Consultas de verificación
 -- =================================================================================================
 
--- 1. Consulta normal (Muestra el número de tarjeta encriptado/hexadecimal):
+-- 1. Consulta normal (Muestra el número de tarjeta encriptado):
 SELECT * FROM metodo_pago;
-
--- 2. Consulta desencriptada (Aplica UNHEX + AES_DECRYPT para recuperar la tarjeta original):
-SELECT 
-    id_metodo_pago,
-    CAST(AES_DECRYPT(UNHEX(num_tarjeta), 'mi_clave_secreta') AS CHAR) AS tarjeta_original,
-    fecha_expiracion,
-    id_usuario
-FROM metodo_pago;
