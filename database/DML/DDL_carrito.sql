@@ -20,6 +20,7 @@ INSERT INTO carrito (id_usuario) VALUES
 -- ========================================================
 -- Se agregan productos afines al área de interés de cada usuario
 INSERT INTO detalle_carrito (id_carrito, id_producto, cantidad) VALUES 
+
 -- Carrito 1 (Mateo - Bovinos)
 (1, 1, 2),  -- Mezcla Nutridor 25kg (El nogal)
 (1, 9, 1),  -- Engorda Ganado 25kg (El Nogal)
@@ -59,3 +60,6 @@ INSERT INTO detalle_carrito (id_carrito, id_producto, cantidad) VALUES
 -- Carrito 10 (Ximena - Bovinos)
 (10, 1, 3), -- Mezcla Nutridor 25kg (El nogal)
 (10, 17, 2);-- Ara H Engorda Ganado 12% Rol 25kg (Alimentos Arandas)
+
+INSERT INTO metodo_pago (num_tarjeta, fecha_expiracion, id_usuario) 
+VALUES ('1234567812345678', '12/2028', 5);
