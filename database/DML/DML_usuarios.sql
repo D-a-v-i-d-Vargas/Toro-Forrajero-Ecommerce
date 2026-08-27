@@ -11,7 +11,7 @@ INSERT INTO usuario (nombre, apellido, telefono, area_interes, correo, estado, c
 -- Ganado#Bovino987
 ('Valeria', 'Martínez', '5632109876', 'Aves', 'valeria.martinez@gmail.com', 'Sonora', '$2a$12$UeUFQ3tc7suxIhYj1VqPjeqv2lu8keSE1cVT6FAz0DVt7ytX5Irgm'),
 -- Comedero*Zamba21
-('Diego', 'González', '5587654321', 'Porcino', 'diego.gonzalez@hotmail.com', 'San Luis Potosí', '$2a$12$A3z0B.JvS1UsAEHJ4qnQy.q90dh3/Jf0q/QFBCg1XGc9Dsi43asD6'),
+('Diego', 'González', '5587654321', 'Porcino', 'diego.gonzalez@hotmail.com', 'San Luis Potosí', '$2a$12$96BO1gorBlkM6k0MqlypBe6IFHcXQEKb.XVWJEAWLzqsAGHcfGsey'),
 -- Alfalfa$Verde543
 ('Camila', 'Rodríguez', '5654321098', 'Ovino', 'camila.rodriguez@gmail.com', 'Michoacán', '$2a$12$B/4yIeipG5C3rBCr0CZkJevyUommTIPK9Xu9U4fEWbPpfbzpu2Yam'),
 -- Rancho*Patron2026
@@ -47,7 +47,7 @@ UPDATE usuario SET nombre = 'Santiago', apellido = 'López', telefono = '5545678
 
 UPDATE usuario SET nombre = 'Valeria', apellido = 'Martínez', telefono = '5632109876', area_interes = 'Aves', estado = 'Sonora', contrasena = '$2a$12$UeUFQ3tc7suxIhYj1VqPjeqv2lu8keSE1cVT6FAz0DVt7ytX5Irgm' WHERE correo = 'valeria.martinez@gmail.com';
 
-UPDATE usuario SET nombre = 'Diego', apellido = 'González', telefono = '5587654321', area_interes = 'Porcino', estado = 'San Luis Potosí', contrasena = '$2a$12$A3z0B.JvS1UsAEHJ4qnQy.q90dh3/Jf0q/QFBCg1XGc9Dsi43asD6' WHERE correo = 'diego.gonzalez@hotmail.com';
+UPDATE usuario SET nombre = 'Diego', apellido = 'González', telefono = '5587654321', area_interes = 'Porcino', estado = 'San Luis Potosí', contrasena = '$2a$12$96BO1gorBlkM6k0MqlypBe6IFHcXQEKb.XVWJEAWLzqsAGHcfGsey' WHERE correo = 'diego.gonzalez@hotmail.com';
 
 UPDATE usuario SET nombre = 'Camila', apellido = 'Rodríguez', telefono = '5654321098', area_interes = 'Ovino', estado = 'Michoacán', contrasena = '$2a$12$B/4yIeipG5C3rBCr0CZkJevyUommTIPK9Xu9U4fEWbPpfbzpu2Yam' WHERE correo = 'camila.rodriguez@gmail.com';
 
