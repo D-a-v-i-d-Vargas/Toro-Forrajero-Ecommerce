@@ -23,91 +23,67 @@
 
     <link rel="stylesheet" href="build/css/app.css">
     <link rel="shortcut icon" href="recursos-graficos/favicon.png" type="image/x-icon">
+    <script type="module" src="build/js/adminAuth.js"></script>
+
+    
 
 </head>
 
 <body>
     <!--Header, barras de nav, herro---------------------------------------------------------------->
-    <header>
-        <!-- ===========================================================================
+	<header>
+		<!-- ===========================================================================
             SECCIÓN: NAV BAR 1 
         ============================================================================ -->
-        <nav class="navbar navbar-1">
-            <div class="container-fluid px-4">
+		<nav class="navbar navbar-1">
+			<div class="container-fluid px-4">
 
-                <!-- INYECCIÓN: Redirección al index en el logo -->
-                <a class="navbar-brand" href="index.html">
-                    <img src="recursos-graficos/navbar/forrajero-sinfondo.png" alt="Logo sin fondo de Toro Forrajero"
-                        class="logo-navbar d-inline-block align-text-top me-2">
-                </a>
+				<!-- INYECCIÓN: Redirección al index en el logo -->
+				<a class="navbar-brand" href="index.html">
+					<img src="recursos-graficos/navbar/forrajero-sinfondo.png" alt="Logo sin fondo de Toro Forrajero"
+						class="logo-navbar d-inline-block align-text-top me-2">
+				</a>
 
-                <!-- INYECCIÓN: Homologación de tamaño y alineación para íconos -->
-                <ul class="cuenta navbar-nav flex-row ms-auto gap-4 align-items-center">
-                    <li class="nav-item">
-                        <a class="nav-link icon-link d-flex flex-column align-items-center text-center"
-                            href="inicioSesion.html">
-                            <div class="user-icon-wrapper d-flex align-items-center justify-content-center"
-                                style="height: 35px;">
-                                <i class="bi bi-person fs-3"></i>
-                            </div>
-                            <span class="nombre-cuenta">Mi cuenta</span>
-                        </a>
-                    </li>
+				<!-- INYECCIÓN: Homologación de tamaño y alineación para íconos -->
+				<ul class="cuenta navbar-nav flex-row ms-auto gap-4 align-items-center">
+					<li class="nav-item">
+						<a class="nav-link icon-link d-flex flex-column align-items-center text-center" href="inicioSesion.html">
+							<div class="user-icon-wrapper d-flex align-items-center justify-content-center" style="height: 35px;">
+								<i class="bi bi-person fs-3"></i>
+							</div>
+							<span class="nombre-cuenta">Mi cuenta</span>
+						</a>
+					</li>
 
-                    <li class="nav-item carrito">
-                        <a class="nav-link icon-link d-flex flex-column align-items-center text-center"
-                            href="carrito.html">
-                            <div class="cart-icon-wrapper d-flex align-items-center justify-content-center"
-                                style="height: 35px;">
-                                <i class="bi bi-cart3 fs-3"></i>
-                                <!-- <span class="contador-carrito">0</span> -->
-                            </div>
-                            <span>Carrito</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+					<li class="nav-item carrito">
+						<a class="nav-link icon-link d-flex flex-column align-items-center text-center" href="carrito.html">
+							<div class="cart-icon-wrapper d-flex align-items-center justify-content-center" style="height: 35px;">
+								<i class="bi bi-cart3 fs-3"></i>
+								<!-- <span class="contador-carrito">0</span> -->
+							</div>
+							<span>Carrito</span>
+						</a>
+					</li>
+				</ul>
+			</div>
 
-        <!-- <nav class="navbar2">
-                <ul>
-                    <li><a href="index.html">INICIO</a></li>
-                    <li><a href="acercaNosotros.html">NOSOTROS</a></li>
-                    <li><a href="contactanos.html">CONTACTO</a></li>
-                    <li><a href="productos.html">PRODUCTOS</a></li>
-                    <div class="indicator"></div>
-                </ul>
-            </nav>
-            <nav class="navbar3 d-none" id="navbarAdmin">
-                <li><a href="adminHome.html">Ver Productos</a></li>
-                <li><a href="adminCrear.html">Nuevo Productos</a></li>
-            </nav> -->
+		</nav>
 
-        </nav>
-
-        <!-- ===========================================================================
+		<!-- ===========================================================================
             SECCIÓN: NAV BAR 2 
         ============================================================================ -->
 
-        <nav class="navbar2">
-            <ul>
-                <li><a href="index.html">INICIO</a></li>
-                <li><a href="acercaNosotros.html">NOSOTROS</a></li>
-                <li><a href="contactanos.html">CONTACTO</a></li>
-                <li><a href="productos.html">PRODUCTOS</a></li>
-                <div class="indicator"></div>
-            </ul>
-        </nav>
+		<nav class="navbar2">
+			<ul>
+				<li><a href="index.html" class="active">INICIO</a></li>
+				<li><a href="acercaNosotros.html">NOSOTROS</a></li>
+				<li><a href="contactanos.html">CONTACTO</a></li>
+				<li><a href="productos.html" id="linkProductos">PRODUCTOS</a></li>
+				<div class="indicator"></div>
+			</ul>
+		</nav>
 
-
-        <nav class="navbar3 d-none align-items-center" id="navbarAdmin">
-            <ul class="d-flex list-unstyled m-0 gap-3">
-                <li><a href="adminHome.html">Ver Productos</a></li>
-                <li><a href="adminCrear.html">Nuevo Producto</a></li>
-            </ul>
-        </nav>
-
-    </header>
+	</header>
 
     <!-- ==========================================================================
         SECCIÓN PRINCIPAL: ¿TODO LISTO? (RESUMEN DE CARRITO)
@@ -245,5 +221,6 @@
     <script type="module" src="build/js/adminAuth.js"></script>
 </body>
 	<script src="build/js/cuenta.js"></script>
+    
 
 </html>
