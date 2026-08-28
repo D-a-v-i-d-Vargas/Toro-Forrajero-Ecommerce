@@ -30,7 +30,7 @@ UPDATE productos SET imagen = 'recursos-graficos/productos/porcino/porcino-adm-e
 UPDATE productos SET imagen = 'recursos-graficos/productos/porcino/porcino-adm-growpig.png' WHERE id_producto = 6;
 UPDATE productos SET imagen = 'recursos-graficos/productos/porcino/porcino-nogal-engorda.png' WHERE id_producto = 13;
 UPDATE productos SET imagen = 'recursos-graficos/productos/porcino/porcino-nogal-crecimiento.png' WHERE id_producto = 14;
-UPDATE productos SET imagen = 'recursos-graficos/productos/porcino/porcino-aranda-crecierdo.png' WHERE id_producto = 21;
+UPDATE productos SET imagen = 'recursos-graficos/productos/porcino/porcino-aranda-crecicerdo.png' WHERE id_producto = 21;
 UPDATE productos SET imagen = 'recursos-graficos/productos/porcino/porcino-aranda-destete.png' WHERE id_producto = 22;
 
 -- ====================================================

@@ -1,4 +1,4 @@
-INSERT INTO detalle_pedido (id_pedido, id_producto, cantidad, precio_unitario, subtotal) VALUES
+INSERT INTO detalle_pedido (pedido_id, producto_id, cantidad, precio_unitario, subtotal) VALUES
 -- Pedido Bovinos 
 (1, 1, 2, 300.00, 600.00),
 (1, 2, 1, 279.00, 279.00),
