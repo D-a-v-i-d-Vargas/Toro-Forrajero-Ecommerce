@@ -1,16 +1,14 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="width:100% !important; border-collapse:collapse; padding:0; margin:0; table-layout: fixed;">
   <tr style="padding:0; margin:0;">
     <td align="center" width="100%" style="width:100% !important; background-color: #f9f3dd; padding: 0 !important; margin: 0 !important;">
-      <!-- La clave es width="100%" y style="width: 100% !important;" -->
       <img src="img/logo-forrajero.jpg" alt="Logo El Toro Forrajero" width="100%" style="width: 100% !important; max-width: 100% !important; display: block; border: 0; padding: 0; margin: 0;">
     </td>
   </tr>
 </table>
 
-<!-- Un pequeño salto de línea para separar el banner del título -->
 <br>
 
-<h1 align="center">🐂 El Toro Forrajero</h1>
+<h1 align="center">🐂 El Toro Forrajero - Frontend</h1>
 
 <p align="center">
     <img src="https://img.shields.io/badge/Versi%C3%B3n-1.0.0-901e28?style=for-the-badge" alt="Version">
@@ -24,12 +22,20 @@
 
 <hr style="border: 1px solid #ae825b;">
 
+## 🚀 Enlaces de Interés
+* **Backend del Proyecto:** [Repositorio Backend GitHub](https://github.com/DIEGOELIASLOPEZ/Toro-Forrajero-Ecommerce---Backend)
+* **Plataforma en Producción (AWS EC2):** [El Toro Forrajero - En Vivo](https://toro-forrajero.duckdns.org)
+
+---
+
 ## 🌾 Visión General del Proyecto
 
 **El Toro Forrajero** es una plataforma web intuitiva y de alto rendimiento que actúa como un ecosistema digital bilateral. Nuestro objetivo es conectar de manera directa a los proveedores de insumos pecuarios con productores, zootecnistas y pequeños negocios de distribución, eliminando barreras comerciales. 
 
 Nuestro catálogo y logística se concentra en cuatro especies clave:
 🐄 **Bovinos** | 🐖 **Porcinos** | 🐎 **Equinos** | 🐓 **Aves de Corral**
+
+---
 
 ## 🎯 La Problemática y Propuesta de Valor (Enfoque CX)
 
@@ -51,32 +57,39 @@ Ofrecemos un entorno digital transparente que rompe el aislamiento comercial med
 </tr>
 </table>
 
+---
+
 ## 🛠️ Herramientas de Construcción (Tech Stack)
 
 <div align="center">
 
-| 🎨 Interfaz y Estilos (Frontend) | ⚙️ Lógica y Frameworks |
+| 🎨 Interfaz y Estilos | ⚙️ Automatización y Lógica |
 | :---: | :---: |
-| <img src="https://img.shields.io/badge/HTML5-a44936?style=for-the-badge&logo=html5&logoColor=white" /><br/><img src="https://img.shields.io/badge/CSS3-4a5163?style=for-the-badge&logo=css3&logoColor=white" /> | <img src="https://img.shields.io/badge/JavaScript-d9bc9a?style=for-the-badge&logo=javascript&logoColor=black" /><br/><img src="https://img.shields.io/badge/Bootstrap-8f9476?style=for-the-badge&logo=bootstrap&logoColor=white" /> |
+| <img src="https://img.shields.io/badge/HTML5-a44936?style=for-the-badge&logo=html5&logoColor=white" /><br/><img src="https://img.shields.io/badge/CSS3-4a5163?style=for-the-badge&logo=css3&logoColor=white" /><br/><img src="https://img.shields.io/badge/Bootstrap-8f9476?style=for-the-badge&logo=bootstrap&logoColor=white" /> | <img src="https://img.shields.io/badge/JavaScript-d9bc9a?style=for-the-badge&logo=javascript&logoColor=black" /><br/><img src="https://img.shields.io/badge/Gulp.js-CF4647?style=for-the-badge&logo=gulp&logoColor=white" /> |
 
 </div>
 
 <p align="center">
-    <i>Construido con estructura semántica pensada en SEO/Accesibilidad, diseño 100% responsivo y validaciones dinámicas del DOM en Vanilla JS.</i>
+    <i>Construido con automatización de tareas mediante Gulp, diseño responsivo y lógica modular de componentes.</i>
 </p>
+
+---
 
 ## 📂 Arquitectura del Directorio
 
 ```text
-el-toro-forrajero/
-├── css/
-│   └── styles.css       # Estilos en cascada del proyecto
-├── js/
-│   └── scripts.js       # Interactividad y validaciones (Vanilla JS)
-├── img/                 
-│   └── logo-forrajero.jpg # Recursos gráficos y multimedia
+el-toro-forrajero-frontend/
+├── build/               # Carpeta de salida generada automáticamente por Gulp
+├── database/            # Archivos y scripts para poblar la base de datos del backend
+├── img/                 # Recursos gráficos principales (incluyendo el banner y logotipo)
+├── recursos-graficos/   # Archivos de diseño y recursos visuales complementarios
+├── src/                 
+│   ├── css/             # Archivos de estilos fuente
+│   └── js/              # Scripts de interactividad y lógica de componentes
+├── db.json              # Base de datos local para json-server
+├── gulpfile.js          # Configuración de tareas de automatización y compilación (Gulp)
 ├── index.html           # Punto de entrada de la plataforma
-└── README.md            # Documentación
+└── README.md            # Documentación del repositorio
 ```
 ## 🤠 Equipo de Desarrollo: 404 Error Club
 
