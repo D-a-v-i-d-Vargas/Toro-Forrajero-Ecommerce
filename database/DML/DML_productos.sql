@@ -1,6 +1,8 @@
 -- ========================================================
 -- 1. Inserts para la Tabla Productos (con la columna imagen incluida)
 -- ========================================================
+ALTER TABLE productos MODIFY COLUMN imagen LONGTEXT;
+
 INSERT INTO productos(nombre, marca, especie, stock, costo, precio_venta, visibilidad, destacado, descripcion, imagen) VALUES
 ("Mezcla Nutridor 25kg", "El nogal", "Bovinos", 20, 200, 300, 1, 1, "Alimento balanceado de alta tecnología para vacas altas productoras. Elaborado con ingredientes de alta calidad.", "recursos-graficos/productos/bovino/bovino-adm-mezcla-nutridor.png"),
 ("Mezcla Ganadera 25kg", "ADM", "Bovinos", 20, 200.00, 279.00, 1, 1, "Alimento balanceado de alta tecnología para la engorda de bovinos. Elaborado con ingredientes de alta calidad.", "recursos-graficos/productos/bovino/bovino-adm-mezcla-ganadera-malta.png"),
